@@ -1,0 +1,58 @@
+{
+  "id": "vfx_fist_force",
+  "kind": "vfx",
+  "pipeline": "tools/build_b3b4_assets.py（程序化，0 积分）",
+  "frameCount": 4,
+  "frames": {
+    "vfx_fist_force_00.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.0344,
+      "usedColors": 4,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 141
+    },
+    "vfx_fist_force_01.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.092,
+      "usedColors": 4,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 377
+    },
+    "vfx_fist_force_02.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.1685,
+      "usedColors": 4,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 690
+    },
+    "vfx_fist_force_03.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.2397,
+      "usedColors": 4,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 982
+    }
+  },
+  "outOfPaletteTotal": 0,
+  "semiAlphaTotal": 0,
+  "status": "静态资源已产出；GUI F5 目检 / 实机对比度 / 帧率一律待实测",
+  "note": "报告内不含机器绝对路径",
+  "shapeLanguage": "贴地短距扇形波",
+  "q24Note": "PNG 为形状样板；运行时按 Q24=procedural_plus_pixelfx 走程序化 shader"
+}

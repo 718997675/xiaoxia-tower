@@ -1,0 +1,316 @@
+{
+  "version": 2,
+  "style": "pixel-guofeng",
+  "active": true,
+  "status": "Q16 = 路线 A 像素国风，用户已拍板。工程以此文件为生效规格。",
+  "supersedes": "asset-manifest.json (v1, 水墨国风基线，归档保留但工程停用)",
+  "note": "本轮只定义规则、未生成任何素材；此时跑资源核对会报『必需资源数量不足』，属预期进度缺口，不是规格错误。数值与 docs/04-像素国风规格修订.md 一一对应。",
+  "render": {
+    "logicalResolution": [
+      480,
+      270
+    ],
+    "integerScale": 4,
+    "targetViewport": [
+      1920,
+      1080
+    ],
+    "scalePolicy": "只允许整数倍缩放；异形分辨率用 letterbox 黑边，禁止非整数拉伸",
+    "characterScreenHeightPx": 256,
+    "screenHeightRatio": 0.237,
+    "hitboxLogical": [
+      24,
+      32
+    ],
+    "hitboxOffsetXLogical": 16,
+    "anchor": "脚底，全角色统一且落在同一整数像素行",
+    "facing": "只出朝右一套，按 facing 做 scale.x = ±1，仅作用于角色 Sprite2D 与特效节点，不作用于场景/UI",
+    "onscreenVfxCap": 24
+  },
+  "palette": {
+    "name": "xianxia-24",
+    "maxColors": 24,
+    "locked": true,
+    "coreColors": 20,
+    "reservedSlots": 4,
+    "groups": {
+      "mo": {
+        "dark": "#12161F",
+        "main": "#2A3140",
+        "light": "#4A5568",
+        "use": "背景/描边/暗部/山石"
+      },
+      "xuanzhi": {
+        "dark": "#8A8268",
+        "main": "#C9BFA3",
+        "light": "#E8DFC8",
+        "use": "亮部/UI底/文字"
+      },
+      "qingyu": {
+        "dark": "#2F6E6A",
+        "main": "#5FA8A0",
+        "light": "#9BD4CC",
+        "use": "灵力/治疗/木"
+      },
+      "zhusha": {
+        "dark": "#7A2420",
+        "main": "#C8453B",
+        "light": "#E8806F",
+        "use": "伤害/暴击/警示"
+      },
+      "jin": {
+        "dark": "#8A6520",
+        "main": "#D9A441",
+        "light": "#F2D089",
+        "use": "稀有/掉落/破境"
+      },
+      "zi": {
+        "dark": "#4A3A6B",
+        "main": "#8A6FC4",
+        "light": "#C0A8E0",
+        "use": "化神及以上/灵韵"
+      }
+    },
+    "functional": {
+      "outline": "#000000",
+      "flash": "#FFFFFF"
+    },
+    "realmTiers": [
+      {
+        "tier": 1,
+        "realms": [
+          "炼气",
+          "筑基"
+        ],
+        "color": "#4A5568",
+        "distinguishBy": "边框纹样 1/2 道 + 数字"
+      },
+      {
+        "tier": 2,
+        "realms": [
+          "金丹",
+          "元婴"
+        ],
+        "color": "#5FA8A0",
+        "distinguishBy": "边框纹样 3/4 道 + 数字"
+      },
+      {
+        "tier": 3,
+        "realms": [
+          "化神",
+          "炼虚"
+        ],
+        "color": "#8A6FC4",
+        "distinguishBy": "边框纹样 5/6 道 + 数字"
+      },
+      {
+        "tier": 4,
+        "realms": [
+          "合体",
+          "大乘",
+          "渡劫"
+        ],
+        "color": "#D9A441",
+        "distinguishBy": "亮阶递进 + 纹样 7/8/9 道"
+      }
+    ],
+    "rule": "9 境 / 12 词缀 / 4 流派靠图标形状与纹样区分，不得靠新增颜色"
+  },
+  "budget": {
+    "textureMemoryMB": 128,
+    "estimateMB_proceduralVfx": 2.57,
+    "estimateMB_spriteVfx": 3.14,
+    "baselineMB_v1": 46.9,
+    "memoryEstimateBasis": "宽 × 高 × bytesPerPixel(4, RGBA8) × 1.33(多级渐远)；含 UI 图集预留 1.00 MB。量级参考，非显存实测；真实占用取决于导入压缩设置"
+  },
+  "hardPromptConstraints": [
+    "方形像素块构成、硬边",
+    "无抗锯齿、无平滑渐变",
+    "明暗只用少量色阶",
+    "严格使用 xianxia-24 调色板内颜色",
+    "纯白色背景（生成后规整为透明底）",
+    "no blur, no anti-aliasing, no gradient shading, no text, no extra elements"
+  ],
+  "rules": [
+    {
+      "name": "人物序列帧",
+      "glob": "assets/char/**/*.png",
+      "naming": "^char_[a-z0-9]+_(idle|run|cast|hit|death)_r_[0-9]{2}$",
+      "baselineFrame": [
+        64,
+        64
+      ],
+      "maxSize": [
+        128,
+        128
+      ],
+      "minSize": [
+        32,
+        32
+      ],
+      "powerOfTwo": true,
+      "bytesPerPixel": 4,
+      "format": "PNG RGBA8 透明底硬边",
+      "required": true,
+      "minCount": 75,
+      "maxCount": 120,
+      "actions": {
+        "idle": 3,
+        "run": 4,
+        "cast": 4,
+        "hit": 1,
+        "death": 3
+      },
+      "characters": 5,
+      "spec": {
+        "facing": "只出朝右一套，工程内按 facing 做 scale.x = ±1 镜像",
+        "anchor": "脚底锚点全角色统一，落在同一整数像素行",
+        "bottomPadding": "角色底部留 ≥1 px 透明边",
+        "hitFlash": "闪白与顿帧交给 shader，不占用 hit 动画帧"
+      }
+    },
+    {
+      "name": "技能特效-程序化（Q18 推荐案）",
+      "glob": "assets/vfx/particles/*.png",
+      "naming": "^vfxp_[a-z0-9]+$",
+      "required": false,
+      "activeByDefault": true,
+      "minCount": 2,
+      "maxCount": 4,
+      "spec": {
+        "textures": [
+          "16x16 方粒贴图",
+          "32x32 光斑"
+        ],
+        "architecture": "GPUParticles2D + shader 拖尾/闪白，挂独立 VfxLayer，只监听 vfx_requested 信号，不参与命中判定、不阻塞结算",
+        "parameterization": "4 流派 × 12 词缀只改颜色/粒子数/拖尾角度即可产生视觉差异，无需补帧",
+        "hitboxAlignment": "首帧须与 24x32 判定框 / 身前 16 px 对齐"
+      }
+    },
+    {
+      "name": "技能特效-序列帧（Q18 备选案）",
+      "glob": "assets/vfx/frames/*.png",
+      "naming": "^vfx_[a-z0-9]+_[0-9]{2}$",
+      "baselineFrame": [
+        64,
+        64
+      ],
+      "maxSize": [
+        128,
+        128
+      ],
+      "minSize": [
+        32,
+        32
+      ],
+      "powerOfTwo": true,
+      "required": false,
+      "activeByDefault": false,
+      "minCount": 28,
+      "maxCount": 36,
+      "spec": {
+        "composition": "4 技能 × 6 帧 + 命中通用 4 帧",
+        "perSkillDistinct": "每个技能一套可辨识效果，满足『每次释放技能要有技能效果』",
+        "hitboxAlignment": "24x32 px 判定框，中心在角色身前 16 px × facing；特效首帧需与之对齐"
+      }
+    },
+    {
+      "name": "图标",
+      "glob": "assets/ui/icons/*.png",
+      "naming": "^icon_[a-z0-9_]+$",
+      "baselineFrame": [
+        16,
+        16
+      ],
+      "maxSize": [
+        32,
+        32
+      ],
+      "minSize": [
+        16,
+        16
+      ],
+      "powerOfTwo": true,
+      "required": false,
+      "minCount": 40,
+      "maxCount": 60,
+      "spec": {
+        "scope": "8 技能 / 4 流派 / 12 词缀 / 9 境界 / 装备 / 灵韵",
+        "rule": "靠形状区分，不靠新增颜色（24 色板锁定）"
+      }
+    },
+    {
+      "name": "UI 图集",
+      "glob": "assets/ui/atlas/*.png",
+      "naming": "^ui_[a-z0-9_]+$",
+      "required": false,
+      "spec": {
+        "canvasLogical": [
+          480,
+          270
+        ],
+        "ninePatch": true,
+        "font": "简中像素字体，授权与可用性待查证；不得默认可商用",
+        "textLayer": "文字层可单独以 2x(960x540) 渲染保清晰，但描边风格须统一"
+      }
+    }
+  ],
+  "needsManualRefinement": [
+    "帧间轮廓与服饰色块逐帧一致",
+    "只镜像角色与特效节点；统一顶光，避免强侧向高光（像素下光向翻转更显眼）",
+    "透明边缘溢色与 1px 描边不抖动",
+    "脚底切片锚点全角色统一且落在整数像素行",
+    "特效首帧与 24x32 判定框 / 身前 16 px 对齐",
+    "生成图必须纯白底 → 规整为透明硬边，禁止带白底入库",
+    "逐像素核对取色是否全部落在 24 色板内",
+    "不复制或换色规避受版权保护的角色与 IP；不模仿在世艺术家个人风格",
+    "字体授权核验；合规确认后方可入库"
+  ],
+  "acceptance": {
+    "paletteOutOfRangeColors": 0,
+    "powerOfTwoCompliance": 1.0,
+    "anchorConsistency": "全角色同一整数像素行",
+    "integerScaleOnly": true,
+    "transparentHardEdge": 1.0,
+    "note": "M7 像素规格验收，全部待实测"
+  },
+  "cardUI": {
+    "spec": "docs/12-卡牌UI规格.md",
+    "generator": "tools/build_buff_cards.py",
+    "status": "PROPOSAL · 形状样板，待 4x 实机排版复核",
+    "assets": {
+      "frames": [
+        "frame_common.png",
+        "frame_rare.png",
+        "frame_legend.png",
+        "frame_curse.png"
+      ],
+      "frameSize": [
+        96,
+        144
+      ],
+      "sigils": [
+        "sigil_dmg.png",
+        "sigil_attr.png",
+        "sigil_mech.png",
+        "sigil_res.png",
+        "sigil_surv.png",
+        "sigil_syn.png"
+      ],
+      "sigilSize": [
+        24,
+        24
+      ]
+    },
+    "rules": [
+      "24 色锁定板，越界色 0",
+      "半透明像素 0，硬边无抗锯齿",
+      "卡面 PNG 不含文字，文字由 UI 文字层渲染",
+      "类别靠形状、稀有度靠边框层次 + 色段",
+      "96x144 与 24x24 均为 1x 逻辑像素，实机按整数 4 倍"
+    ],
+    "credits": 0,
+    "sourceImages": 0,
+    "note": "矩形 UI 素材不纳入 qc_sprites.py 的方形逐帧口径，单独由 buff-card-report.json 自检"
+  }
+}

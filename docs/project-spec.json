@@ -1,0 +1,14 @@
+{
+  "requiredDirs": ["scenes", "scripts", "assets", "docs", "tools"],
+  "recommendedDirs": [],
+  "requiredFiles": ["project.godot", ".gitignore", "docs/design-freeze.json"],
+  "requireImportMeta": false,
+  "scanAbsolutePaths": true,
+  "scanDanglingRefs": true,
+  "refAllowlist": [],
+  "requireFrozenDesign": true,
+  "traceMarker": "@trace",
+  "checkLogPath": "",
+  "assetManifest": "docs/asset-manifest-godot.json",
+  "ignore": []
+}

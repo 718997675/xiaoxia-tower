@@ -1,0 +1,37 @@
+{
+  "id": "ovl_chill",
+  "kind": "ovl",
+  "pipeline": "tools/build_b3b4_assets.py（程序化，0 积分）",
+  "frameCount": 2,
+  "frames": {
+    "ovl_chill_00.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.2874,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 1177
+    },
+    "ovl_chill_01.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.2874,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 1177
+    }
+  },
+  "outOfPaletteTotal": 0,
+  "semiAlphaTotal": 0,
+  "status": "静态资源已产出；GUI F5 目检 / 实机对比度 / 帧率一律待实测",
+  "note": "报告内不含机器绝对路径",
+  "pulsePixelDeltaRatio": 0.0,
+  "pulsePolicy": "两帧同形状、只换亮阶（像素数差 0%，满足 docs/21 sheetPulse <=25%）",
+  "q24Note": "运行时可由 shader 替代；PNG 为形状样板"
+}

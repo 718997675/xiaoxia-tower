@@ -1,0 +1,149 @@
+{
+  "version": "0.1",
+  "status": "open",
+  "generatedRound": 11,
+  "spec": "docs/09-内容命名提案.md",
+  "ledger": "docs/08-决策收敛与需求追溯台账.md",
+  "note": "所有选项均为「推荐值 + 备选」，不是已确认决策。默认预选推荐值只为降低拍板成本；未提交回执前，design-freeze-draft.json 保持 frozen=false。",
+  "receiptHint": "在 assets/_preview/decision-card.html 逐项勾选后复制底部回执，发给助手即可。回执落地由 tools/apply_decisions.py 校验，默认 dry-run，不自动改基线。",
+  "groups": [
+    {"id": "conflict", "title": "① 必须先确认（台账矛盾）", "desc": "C01 决定 Q24 是否还存在，会连锁影响积分档位与 B4 做法。"},
+    {"id": "hardGate", "title": "② 硬门禁（不解除不能进阶段二）", "desc": "四项中 Q1 需要填本机实际版本号，助手不代填。任一未解除都不得建工程。"},
+    {"id": "contentBlocker", "title": "③ 内容阻塞（卡具体素材 / 机制）", "desc": "Q25–Q28 的完整提案见 09；确认后下一轮可一次性补齐 18 件图标（0 积分）。"},
+    {"id": "deferred", "title": "④ 可后补（不影响阶段一）", "desc": "已有显式假设或产物，沿用默认值即可。"}
+  ],
+  "items": [
+    {
+      "id": "C01", "group": "conflict", "need": "00 §2「Q7 第二问＝序列帧」与未决 Q18/Q24 互相矛盾，采用哪种收敛？",
+      "blocks": "Q24 是否关闭、B4 剩余 4 技能与 overlay 的做法、积分档位", "onResolve": "改 00 §2 那一行 + design-freeze-draft.json → conflicts",
+      "recommended": "accept_convergence",
+      "options": [
+        {"value": "accept_convergence", "label": "采纳收敛（推荐）", "note": "已产 4 组序列帧只作形状样板，实现形态仍卡 Q24 三选项；B4 可走程序化/pixelfx，积分 B 档 85–200。"},
+        {"value": "sequence_frames_decided", "label": "认定序列帧已定", "note": "关闭 Q24，B4 剩余 4 技能直接铺序列帧；对应积分 A 档 190–450，且需改写 08 §3。"}
+      ]
+    },
+    {
+      "id": "Q1", "group": "hardGate", "type": "text", "placeholder": "例如 4.3.stable（可附导出模板是否已装）",
+      "need": "你本机已安装的 Godot 具体小版本", "blocks": "全部脚本 API 口径、阶段二开工",
+      "onResolve": "改 01 技术章、SkillCaster.gd、export_presets.cfg",
+      "recommended": "", "note": "助手不代填环境事实；留空则硬门禁保持未解除，apply_decisions.py 会如实统计。"
+    },
+    {
+      "id": "Q3", "group": "hardGate", "need": "「横版 PK」是爬塔闯关战斗，还是纯 1v1 对战？",
+      "blocks": "核心循环、关卡结构、节点树", "onResolve": "改 01 §5/§9 与节点树、场景清单", "recommended": "stage_battle",
+      "options": [
+        {"value": "stage_battle", "label": "爬塔闯关战斗（推荐）", "note": "沿用 A6 既有假设与已完成的 9 层循环，零返工。"},
+        {"value": "pure_1v1", "label": "纯 1v1 对战", "note": "需重写 01 §5/§9、节点树、关卡结构，是全部选项里返工代价最高的一个。"}
+      ]
+    },
+    {
+      "id": "Q5", "group": "hardGate", "need": "确认 Roguelite 定名 + 失败只固化 1 条词条/灵韵？",
+      "blocks": "meta_save 存档结构（难回退）；Q26 方案 B 也依赖它", "onResolve": "改 01 §6 M3 与 §12 存档章", "recommended": "accept_roguelite",
+      "options": [
+        {"value": "accept_roguelite", "label": "接受（推荐）", "note": "DF-01 已据此实现，确认即可解锁存档设计与 Q26 方案 B。"},
+        {"value": "inherit_full_gear", "label": "改回继承整件装备", "note": "推翻 DF-01，需重算数值膨胀与传承上限，并重写 M3。"}
+      ]
+    },
+    {
+      "id": "Q8", "group": "hardGate", "need": "MetaSave 是否 Autoload？存档用 JSON 还是二进制？",
+      "blocks": "节点树、场景流、Autoload 划分", "onResolve": "改场景流文档与 Autoload 配置", "recommended": "autoload_json",
+      "options": [
+        {"value": "autoload_json", "label": "Autoload + JSON（推荐）", "note": "JSON 便于 M3 用两次 run 的 meta_save.json diff 取证。"},
+        {"value": "no_autoload_json", "label": "非 Autoload + JSON", "note": "需自行管理生命周期，场景流文档要改。"},
+        {"value": "autoload_binary", "label": "Autoload + 二进制", "note": "M3 的 diff 验收会变复杂，需另写解码工具。"}
+      ]
+    },
+    {
+      "id": "Q24", "group": "contentBlocker", "need": "技能特效实现形态：程序化 / 序列帧 / pixelfx（Q18 与 Q24 为同一问题）",
+      "blocks": "B4 剩余 4 技能 + 命中特效 + 5 组 overlay", "onResolve": "改 01 §9、asset-content-manifest.json、积分档位", "recommended": "procedural_plus_pixelfx",
+      "options": [
+        {"value": "procedural_plus_pixelfx", "label": "程序化为主 + pixelfx 补 overlay/命中（推荐）", "note": "主 8 技能仍守 06 §4 的 8 形状语言，避免 R16；pixelfx(MIT) 只补通用状态层。剩余积分最少。"},
+        {"value": "all_sprite_sheets", "label": "全序列帧", "note": "表现力上限最高，但需继续出图，积分 A 档；且与 C01「仅作形状样板」的收敛相斥。"},
+        {"value": "pixelfx_only", "label": "纯 pixelfx", "note": "最省成本，但西式奇幻统一画风会撞 06 §4 形状语言（R16），且该库无 release/tag，成熟度待复核。"}
+      ]
+    },
+    {
+      "id": "Q21", "group": "contentBlocker", "need": "Boss 单帧用 96 还是 128？", "blocks": "B3 两个 Boss",
+      "onResolve": "改 06 §3 与 regularize_sprites.py --size", "recommended": "128",
+      "options": [
+        {"value": "128", "label": "128（推荐）", "note": "2 的幂，与 64×64 同族，Boss 剪影更有压迫感；显存更高，需过 M4 的 ≤128 MB 贴图预算。"},
+        {"value": "96", "label": "96", "note": "不是 2 的幂，图集与整数缩放处会留取整瑕疵；显存略省。"}
+      ]
+    },
+    {
+      "id": "Q25", "group": "contentBlocker", "need": "12 条天劫词缀采用 09 §2 的命名与规则吗？",
+      "blocks": "12 件词缀图标（16×16 菱形框）", "onResolve": "改 02 P0-2、07 §7.3、build_icons.py", "recommended": "proposal_v1",
+      "options": [
+        {"value": "proposal_v1", "label": "按提案 v1（推荐）", "note": "沿用 02 已有 6 条 + 补 6 条；纯数值 2/12=16.7% ≤1/3，成对克制矩阵，奖励倍率改累加并 clamp 1.60。确认后下一轮 0 积分出 12 件图标。"},
+        {"value": "custom", "label": "我要改几条", "note": "请另附「编号 → 新名称/规则」清单；图标生成会等你改完再开工。"}
+      ]
+    },
+    {
+      "id": "Q26", "group": "contentBlocker", "need": "6 条传承灵韵采用 09 §3 的词条吗？extra_pool 口径选 A 还是 B？",
+      "blocks": "6 件灵韵图标（六边框）+ R27 口径断裂", "onResolve": "改 01 M3、07 §7.3；方案 B 另需改存档结构", "recommended": "proposal_b",
+      "options": [
+        {"value": "proposal_b", "label": "提案 + 方案 B（推荐，依赖 Q5）", "note": "保留机制型词条，新增 legacy_effects 字段；数值型 50% 折算进 extra_pool，机制型按 50% 效果强度生效。需先解除 Q5。"},
+        {"value": "proposal_a_numeric", "label": "提案 + 方案 A 全数值化", "note": "6 条全改成 extra_pool 点数，与 M3 零冲突、存档最简单；但撞 02 R8「解锁链不能全是数值」，6 条会高度雷同。"}
+      ]
+    },
+    {
+      "id": "Q27", "group": "contentBlocker", "need": "装备采用 09 §4 的「3 槽位 + 8 品类」吗？（R28：08 原写「8 个槽位」是错的）",
+      "blocks": "3 个槽位 ID 与装备规则；已产 8 件图标 ID 无需改", "onResolve": "改 01 装备章、07 §7.2 补槽位契约", "recommended": "proposal_3slots_8types",
+      "options": [
+        {"value": "proposal_3slots_8types", "label": "3 槽位 + 8 品类（推荐）", "note": "slot_1 初始 / slot_2 金丹 / slot_3 炼虚；每槽可装任意品类但同品类一局内不重复。已产 8 件 icon_gear_* 保持不变。"},
+        {"value": "eight_slots", "label": "坚持 8 个装备槽", "note": "与 01 §8 境界解锁表冲突，需重写 UI、存档与境界解锁链，属结构性返工。"}
+      ]
+    },
+    {
+      "id": "Q28", "group": "contentBlocker", "need": "M6 埋点字段采用 09 §5 吗？「无数据收集」假设怎么处理？",
+      "blocks": "耐玩性无法量化；01 §4 假设修订（R29）", "onResolve": "改 02 §5、01 §15（R30 需把 M6 并入正式验收表）", "recommended": "proposal_local_only",
+      "options": [
+        {"value": "proposal_local_only", "label": "本地日志（推荐）", "note": "user://telemetry/runs.jsonl 追加，不联网/不上传/不采集设备信息，设置里可导出与清空；需把 01 §4 改为「不联网不上传、本地埋点可关闭」。"},
+        {"value": "zero_logging", "label": "严守零日志", "note": "不改 01 §4；M6 四条动态检查只能靠人工录屏 + 手工记账，失去可验证性。"},
+        {"value": "cloud_upload", "label": "允许上传", "note": "与 01 A4「纯单机、无联网、无数据收集」正面冲突，需重写第 3/4 章并另做合规说明；不推荐。"}
+      ]
+    },
+    {
+      "id": "Q2_4_6_9", "group": "deferred", "need": "平台 / 9 层 8–12 min / 终局对策 / 变现，沿用现有显式假设吗？",
+      "blocks": "无（已有假设：桌面 1920×1080、纯单机无内购）", "onResolve": "补 01 平台与发布章", "recommended": "keep_assumptions",
+      "options": [
+        {"value": "keep_assumptions", "label": "沿用假设（推荐）", "note": "阶段一不阻塞，后续按需细化。"},
+        {"value": "revise", "label": "我要改", "note": "请另附要改的项；会牵动 01 §3/§4。"}
+      ]
+    },
+    {
+      "id": "Q15", "group": "deferred", "need": "内测留存基线、η=0.10、有效局数 N 现在给吗？",
+      "blocks": "耐玩性模型估算值无法校准", "onResolve": "改 02 §3 与 CSV longevity_*", "recommended": "defer",
+      "options": [
+        {"value": "defer", "label": "等实测（推荐）", "note": "所有数值继续标「待实测」，不拍脑袋改。"},
+        {"value": "provide_baseline", "label": "我现在给基线", "note": "请附具体数值，会重算 02 §3 的 N / L / η。"}
+      ]
+    },
+    {
+      "id": "Q19", "group": "deferred", "need": "渲染口径确认", "blocks": "无（不回则按 DF-13 默认执行）",
+      "onResolve": "确认 04 §2", "recommended": "default",
+      "options": [
+        {"value": "default", "label": "按 DF-13 默认（推荐）", "note": "480×270 × 整数 4 倍 = 1920×1080 + letterbox。"},
+        {"value": "custom", "label": "我要自定义", "note": "需重验全部资源尺寸与整数倍缩放口径。"}
+      ]
+    },
+    {
+      "id": "Q22", "group": "deferred", "need": "基础怪 3 种还是 4 种？（产物已做满 4 种，含剑魂）",
+      "blocks": "仅口径追认", "onResolve": "追认 06 §3 的怪种数", "recommended": "confirm_4",
+      "options": [
+        {"value": "confirm_4", "label": "追认 4 种（推荐）", "note": "与现有 60 帧产物一致，零返工。"},
+        {"value": "revert_to_3", "label": "回到 3 种", "note": "会作废剑魂 15 帧与 3 张源图，且 07/06 口径要回改。"}
+      ]
+    },
+    {
+      "id": "Q23", "group": "deferred", "need": "积分预算选档", "blocks": "无（三档均为量级估算，待实测）",
+      "onResolve": "回填 asset-content-manifest.json estimates", "recommended": "auto",
+      "options": [
+        {"value": "auto", "label": "随 Q24 联动（推荐）", "note": "Q24 定程序化 → B 档 85–200；定全序列帧 → A 档 190–450。"},
+        {"value": "A", "label": "A 全序列帧 190–450", "note": "表现力上限最高，出图成本最高。"},
+        {"value": "B", "label": "B 程序化 85–200", "note": "推荐档。"},
+        {"value": "C", "label": "C 一期最小 40–115", "note": "Boss 先复用换色，一期最小可跑。"}
+      ]
+    }
+  ]
+}

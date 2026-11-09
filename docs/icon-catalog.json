@@ -1,0 +1,623 @@
+{
+  "version": "v0.7",
+  "spec": "docs/07-图标与挂件形状规范.md",
+  "generator": "tools/build_icons.py",
+  "cost": "0 积分（程序化几何绘制，不调用出图模型）",
+  "paletteRule": "24 色锁定板（20 核心 + 4 预留），越界色必须为 0",
+  "frameGrammar": {
+    "skill": {
+      "frame": "octagon",
+      "size": 32,
+      "innerSource": "06 §4 特效形状"
+    },
+    "school": {
+      "frame": "circle",
+      "size": 32,
+      "innerSource": "4 流派符号，与挂件同形"
+    },
+    "affix": {
+      "frame": "diamond",
+      "size": 16,
+      "innerSource": "09 §2.5：12 个菱形内符号"
+    },
+    "realm": {
+      "frame": "scroll",
+      "size": 32,
+      "innerSource": "04 §4：4 段色 + 1-9 道刻痕"
+    },
+    "equipment": {
+      "frame": "shield",
+      "size": 32,
+      "innerSource": "剑/甲/冠/佩/靴/囊/印/环"
+    },
+    "legacy": {
+      "frame": "hexagon",
+      "size": 32,
+      "innerSource": "09 §3：6 种内嵌纹样"
+    }
+  },
+  "idContract": {
+    "spec": "docs/07 §7.2 + 09 §2.2/§3（R23 纪律：先定 ID 再生成，一经写入不得改名）",
+    "realm": [
+      "icon_realm_lianqi",
+      "icon_realm_zhuji",
+      "icon_realm_jindan",
+      "icon_realm_yuanying",
+      "icon_realm_huashen",
+      "icon_realm_lianxu",
+      "icon_realm_heti",
+      "icon_realm_dacheng",
+      "icon_realm_dujie"
+    ],
+    "equipment": [
+      "icon_gear_sword",
+      "icon_gear_armor",
+      "icon_gear_crown",
+      "icon_gear_pendant",
+      "icon_gear_boots",
+      "icon_gear_pouch",
+      "icon_gear_seal",
+      "icon_gear_ring"
+    ],
+    "affix": [
+      "icon_affix_xinmo",
+      "icon_affix_leijie",
+      "icon_affix_fengyin",
+      "icon_affix_jifeng",
+      "icon_affix_tiebi",
+      "icon_affix_jingfan",
+      "icon_affix_shiling",
+      "icon_affix_wuxiang",
+      "icon_affix_wuxu",
+      "icon_affix_nifeng",
+      "icon_affix_wuyin",
+      "icon_affix_gongjie"
+    ],
+    "legacy": [
+      "icon_legacy_jianhen",
+      "icon_legacy_fuyin",
+      "icon_legacy_danxi",
+      "icon_legacy_tiegu",
+      "icon_legacy_jiying",
+      "icon_legacy_lingquan"
+    ]
+  },
+  "sizeConflictR24": "v0.3 工单把词缀 32/境界 16/灵韵 16 标反；按 07 §2.1 校正为词缀 16、境界 32、灵韵 32。qc loose 扫描已允许 icons 目录 {16,32} 两档",
+  "producedByRound": {
+    "round9": 12,
+    "round10": 17,
+    "round12": 18
+  },
+  "items": [
+    {
+      "id": "icon_sword_qi",
+      "group": "skill",
+      "frame": "octagon",
+      "size": 32,
+      "innerSymbol": "sword_qi",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_flying_sword",
+      "group": "skill",
+      "frame": "octagon",
+      "size": 32,
+      "innerSymbol": "flying_sword",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_thunder_talisman",
+      "group": "skill",
+      "frame": "octagon",
+      "size": 32,
+      "innerSymbol": "thunder_talisman",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_paper_puppet",
+      "group": "skill",
+      "frame": "octagon",
+      "size": 32,
+      "innerSymbol": "paper_puppet",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_dan_fire",
+      "group": "skill",
+      "frame": "octagon",
+      "size": 32,
+      "innerSymbol": "dan_fire",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_rejuvenation",
+      "group": "skill",
+      "frame": "octagon",
+      "size": 32,
+      "innerSymbol": "rejuvenation",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_fist_force",
+      "group": "skill",
+      "frame": "octagon",
+      "size": 32,
+      "innerSymbol": "fist_force",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_vajra_body",
+      "group": "skill",
+      "frame": "octagon",
+      "size": 32,
+      "innerSymbol": "vajra_body",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_jian",
+      "group": "school",
+      "frame": "circle",
+      "size": 32,
+      "innerSymbol": "jian",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_fu",
+      "group": "school",
+      "frame": "circle",
+      "size": 32,
+      "innerSymbol": "fu",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_dan",
+      "group": "school",
+      "frame": "circle",
+      "size": 32,
+      "innerSymbol": "dan",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_ti",
+      "group": "school",
+      "frame": "circle",
+      "size": 32,
+      "innerSymbol": "ti",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "icon_realm_lianqi",
+      "group": "realm",
+      "frame": "scroll",
+      "size": 32,
+      "innerSymbol": "炼气·1 道刻痕",
+      "bandColor": "#4A5568",
+      "status": "produced",
+      "round": 10
+    },
+    {
+      "id": "icon_realm_zhuji",
+      "group": "realm",
+      "frame": "scroll",
+      "size": 32,
+      "innerSymbol": "筑基·2 道刻痕",
+      "bandColor": "#4A5568",
+      "status": "produced",
+      "round": 10
+    },
+    {
+      "id": "icon_realm_jindan",
+      "group": "realm",
+      "frame": "scroll",
+      "size": 32,
+      "innerSymbol": "金丹·3 道刻痕",
+      "bandColor": "#5FA8A0",
+      "status": "produced",
+      "round": 10
+    },
+    {
+      "id": "icon_realm_yuanying",
+      "group": "realm",
+      "frame": "scroll",
+      "size": 32,
+      "innerSymbol": "元婴·4 道刻痕",
+      "bandColor": "#5FA8A0",
+      "status": "produced",
+      "round": 10
+    },
+    {
+      "id": "icon_realm_huashen",
+      "group": "realm",
+      "frame": "scroll",
+      "size": 32,
+      "innerSymbol": "化神·5 道刻痕",
+      "bandColor": "#8A6FC4",
+      "status": "produced",
+      "round": 10
+    },
+    {
+      "id": "icon_realm_lianxu",
+      "group": "realm",
+      "frame": "scroll",
+      "size": 32,
+      "innerSymbol": "炼虚·6 道刻痕",
+      "bandColor": "#8A6FC4",
+      "status": "produced",
+      "round": 10
+    },
+    {
+      "id": "icon_realm_heti",
+      "group": "realm",
+      "frame": "scroll",
+      "size": 32,
+      "innerSymbol": "合体·7 道刻痕",
+      "bandColor": "#8A6520",
+      "status": "produced",
+      "round": 10
+    },
+    {
+      "id": "icon_realm_dacheng",
+      "group": "realm",
+      "frame": "scroll",
+      "size": 32,
+      "innerSymbol": "大乘·8 道刻痕",
+      "bandColor": "#D9A441",
+      "status": "produced",
+      "round": 10
+    },
+    {
+      "id": "icon_realm_dujie",
+      "group": "realm",
+      "frame": "scroll",
+      "size": 32,
+      "innerSymbol": "渡劫·9 道刻痕",
+      "bandColor": "#F2D089",
+      "status": "produced",
+      "round": 10
+    },
+    {
+      "id": "icon_gear_sword",
+      "group": "equipment",
+      "frame": "shield",
+      "size": 32,
+      "innerSymbol": "sword",
+      "status": "produced",
+      "round": 10,
+      "note": "形状样板；装备槽位 ID 以 01 装备系统最终定稿为准"
+    },
+    {
+      "id": "icon_gear_armor",
+      "group": "equipment",
+      "frame": "shield",
+      "size": 32,
+      "innerSymbol": "armor",
+      "status": "produced",
+      "round": 10,
+      "note": "形状样板；装备槽位 ID 以 01 装备系统最终定稿为准"
+    },
+    {
+      "id": "icon_gear_crown",
+      "group": "equipment",
+      "frame": "shield",
+      "size": 32,
+      "innerSymbol": "crown",
+      "status": "produced",
+      "round": 10,
+      "note": "形状样板；装备槽位 ID 以 01 装备系统最终定稿为准"
+    },
+    {
+      "id": "icon_gear_pendant",
+      "group": "equipment",
+      "frame": "shield",
+      "size": 32,
+      "innerSymbol": "pendant",
+      "status": "produced",
+      "round": 10,
+      "note": "形状样板；装备槽位 ID 以 01 装备系统最终定稿为准"
+    },
+    {
+      "id": "icon_gear_boots",
+      "group": "equipment",
+      "frame": "shield",
+      "size": 32,
+      "innerSymbol": "boots",
+      "status": "produced",
+      "round": 10,
+      "note": "形状样板；装备槽位 ID 以 01 装备系统最终定稿为准"
+    },
+    {
+      "id": "icon_gear_pouch",
+      "group": "equipment",
+      "frame": "shield",
+      "size": 32,
+      "innerSymbol": "pouch",
+      "status": "produced",
+      "round": 10,
+      "note": "形状样板；装备槽位 ID 以 01 装备系统最终定稿为准"
+    },
+    {
+      "id": "icon_gear_seal",
+      "group": "equipment",
+      "frame": "shield",
+      "size": 32,
+      "innerSymbol": "seal",
+      "status": "produced",
+      "round": 10,
+      "note": "形状样板；装备槽位 ID 以 01 装备系统最终定稿为准"
+    },
+    {
+      "id": "icon_gear_ring",
+      "group": "equipment",
+      "frame": "shield",
+      "size": 32,
+      "innerSymbol": "ring",
+      "status": "produced",
+      "round": 10,
+      "note": "形状样板；装备槽位 ID 以 01 装备系统最终定稿为准"
+    },
+    {
+      "id": "icon_affix_xinmo",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "half_cup",
+      "label": "心魔",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_leijie",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "bolt",
+      "label": "雷劫",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_fengyin",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "box_slash",
+      "label": "封印",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_jifeng",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "wind_lines",
+      "label": "疾风",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_tiebi",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "solid_shield",
+      "label": "铁壁",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_jingfan",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "twin_tri",
+      "label": "镜反",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_shiling",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "broken_chain",
+      "label": "噬灵",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_wuxiang",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "two_cells",
+      "label": "无相",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_wuxu",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "scatter4",
+      "label": "无序",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_nifeng",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "twin_arrow",
+      "label": "逆风",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_wuyin",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "eye_mist",
+      "label": "雾隐",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_affix_gongjie",
+      "group": "affix",
+      "frame": "diamond",
+      "size": 16,
+      "innerSymbol": "cross_diamond",
+      "label": "共劫",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_legacy_jianhen",
+      "group": "legacy",
+      "frame": "hexagon",
+      "size": 32,
+      "innerSymbol": "cross_slash",
+      "label": "剑痕",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_legacy_fuyin",
+      "group": "legacy",
+      "frame": "hexagon",
+      "size": 32,
+      "innerSymbol": "seal_grid",
+      "label": "符印",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_legacy_danxi",
+      "group": "legacy",
+      "frame": "hexagon",
+      "size": 32,
+      "innerSymbol": "tripod",
+      "label": "丹息",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_legacy_tiegu",
+      "group": "legacy",
+      "frame": "hexagon",
+      "size": 32,
+      "innerSymbol": "scale_plates",
+      "label": "铁骨",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_legacy_jiying",
+      "group": "legacy",
+      "frame": "hexagon",
+      "size": 32,
+      "innerSymbol": "speed_lines",
+      "label": "疾影",
+      "status": "produced",
+      "round": 12
+    },
+    {
+      "id": "icon_legacy_lingquan",
+      "group": "legacy",
+      "frame": "hexagon",
+      "size": 32,
+      "innerSymbol": "drop_ripple",
+      "label": "灵泉",
+      "status": "produced",
+      "round": 12
+    }
+  ],
+  "accessories": [
+    {
+      "id": "acc_sword",
+      "symbolKey": "jian",
+      "size": 16,
+      "innerSymbol": "jian",
+      "attachTo": "char_player cast 帧手部",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "acc_talisman",
+      "symbolKey": "fu",
+      "size": 16,
+      "innerSymbol": "fu",
+      "attachTo": "char_player cast 帧手部",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "acc_pill",
+      "symbolKey": "dan",
+      "size": 16,
+      "innerSymbol": "dan",
+      "attachTo": "char_player cast 帧手部",
+      "status": "produced",
+      "round": 9
+    },
+    {
+      "id": "acc_fist",
+      "symbolKey": "ti",
+      "size": 16,
+      "innerSymbol": "ti",
+      "attachTo": "char_player cast 帧手部",
+      "status": "produced",
+      "round": 9
+    }
+  ],
+  "pending": [],
+  "slotContract": {
+    "spec": "09 §4（Q27 已按推荐值确认：3 槽位 + 8 品类；R28 更正）",
+    "slots": [
+      "slot_1",
+      "slot_2",
+      "slot_3"
+    ],
+    "unlock": {
+      "slot_1": "初始",
+      "slot_2": "金丹（第 3 境）",
+      "slot_3": "炼虚（第 6 境）"
+    },
+    "rule": "每槽可装任意品类，但同品类一局内不可重复；8 件 icon_gear_* 按品类命名，无需改名",
+    "gearTypes": [
+      "gear_type_sword",
+      "gear_type_armor",
+      "gear_type_crown",
+      "gear_type_pendant",
+      "gear_type_boots",
+      "gear_type_pouch",
+      "gear_type_seal",
+      "gear_type_ring"
+    ]
+  },
+  "status": "形状样板，待目检与合规确认；不得直接入库",
+  "proposalRef": {
+    "spec": "docs/09-内容命名提案.md",
+    "status": "CONFIRMED by docs/decision-receipt.json（Q25=proposal_v1 / Q26=proposal_b / Q27=proposal_3slots_8types）",
+    "affix": "12 条词缀 ID 与符号已按 09 §2.5 生成；shiling 采纳备选「断链三节」避开与 xinmo 同族",
+    "legacy": "6 条灵韵纹样已按 09 §3 生成；R27 按方案 B 新增 legacy_effects，见 docs/10",
+    "equipment": "R28：8 个 ID 是品类非槽位；3 个 slot_* 已写入本目录 slotContract",
+    "note": "pending 18 件已全部产出，0 积分；Q1 仍未填，不进阶段二"
+  }
+}

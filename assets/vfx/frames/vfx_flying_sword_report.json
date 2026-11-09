@@ -1,0 +1,58 @@
+{
+  "id": "vfx_flying_sword",
+  "kind": "vfx",
+  "pipeline": "tools/build_b3b4_assets.py（程序化，0 积分）",
+  "frameCount": 4,
+  "frames": {
+    "vfx_flying_sword_00.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.0623,
+      "usedColors": 2,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 255
+    },
+    "vfx_flying_sword_01.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.0623,
+      "usedColors": 2,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 255
+    },
+    "vfx_flying_sword_02.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.062,
+      "usedColors": 2,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 254
+    },
+    "vfx_flying_sword_03.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.0601,
+      "usedColors": 2,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 246
+    }
+  },
+  "outOfPaletteTotal": 0,
+  "semiAlphaTotal": 0,
+  "status": "静态资源已产出；GUI F5 目检 / 实机对比度 / 帧率一律待实测",
+  "note": "报告内不含机器绝对路径",
+  "shapeLanguage": "斜向三道飞剑",
+  "q24Note": "PNG 为形状样板；运行时按 Q24=procedural_plus_pixelfx 走程序化 shader"
+}

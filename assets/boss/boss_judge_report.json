@@ -1,0 +1,220 @@
+{
+  "id": "boss_judge",
+  "kind": "boss",
+  "pipeline": "tools/build_b3b4_assets.py（程序化，0 积分）",
+  "frameCount": 18,
+  "frames": {
+    "boss_judge_idle_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_idle_r_01.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_idle_r_02.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_run_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_run_r_01.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_run_r_02.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_atk_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_atk_r_01.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5043,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8262
+    },
+    "boss_judge_atk_r_02.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.4973,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8147
+    },
+    "boss_judge_atk_r_03.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5017,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8220
+    },
+    "boss_judge_skill_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 7,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_skill_r_01.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 8,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_skill_r_02.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 8,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_skill_r_03.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 8,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_hit_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5099,
+      "usedColors": 1,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8355
+    },
+    "boss_judge_death_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.3336,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 5466
+    },
+    "boss_judge_death_r_01.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.2526,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 4138
+    },
+    "boss_judge_death_r_02.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.1558,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 2552
+    }
+  },
+  "outOfPaletteTotal": 0,
+  "semiAlphaTotal": 0,
+  "status": "静态资源已产出；GUI F5 目检 / 实机对比度 / 帧率一律待实测",
+  "note": "报告内不含机器绝对路径",
+  "frameTable": {
+    "idle": 3,
+    "run": 3,
+    "atk": 4,
+    "skill": 4,
+    "hit": 1,
+    "death": 3
+  },
+  "q21SizeReceipt": "128x128（docs/decision-receipt.json Q21）",
+  "phasePolicy": "只出第一阶段青玉/墨/朱砂；紫/金阶段运行时换色 + 纹样 5/7/9 道，不重画"
+}

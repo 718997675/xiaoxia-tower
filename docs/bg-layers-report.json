@@ -1,0 +1,483 @@
+{
+  "round": 31,
+  "tool": "tools/build_bg_layers.py",
+  "scope": "A1 / A2R / A3 / A4 四类塔层背景 x 四深度层",
+  "pipeline": "gpt-image2 回稿转录（A1 / A2R / A3 / A4 裁 16:9 -> 480x270 -> 分带切层；入库色阶模式 = faithful）",
+  "namingContract": "^bg_[a-z0-9_]+_L[1-4]$",
+  "layerSize": [
+    480,
+    270
+  ],
+  "paletteSource": "docs/asset-manifest-pixel.json（24 色锁定板）",
+  "darkSetDefinition": "docs/reference-art-report.json：luma < 60 的三个板色",
+  "scenes": [
+    {
+      "scene": "bg_normal",
+      "reference": "A1-bgnormal",
+      "referenceRole": "像素源（裁格 / 切带转录），非仅构图参考",
+      "floors": "1-3",
+      "tone": "常规塔层",
+      "shippedMode": "faithful",
+      "layers": {
+        "L1": {
+          "file": "bg_normal_L1.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            0,
+            68
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.2519,
+          "opaquePixels": 32640,
+          "usedColors": 14,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.2652,
+          "inkGroupRatio": 0.473,
+          "paperGroupRatio": 0.433
+        },
+        "L2": {
+          "file": "bg_normal_L2.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            68,
+            202
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.4963,
+          "opaquePixels": 64320,
+          "usedColors": 17,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.4869,
+          "inkGroupRatio": 0.7857,
+          "paperGroupRatio": 0.158
+        },
+        "L3": {
+          "file": "bg_normal_L3.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            202,
+            270
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.2519,
+          "opaquePixels": 32640,
+          "usedColors": 12,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.0893,
+          "inkGroupRatio": 0.2341,
+          "paperGroupRatio": 0.7574
+        },
+        "L4": {
+          "file": "bg_normal_L4.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": null,
+          "bandStrayPixels": 0,
+          "coverage": 0.0916,
+          "opaquePixels": 11877,
+          "usedColors": 4,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.8849,
+          "inkGroupRatio": 1.0,
+          "paperGroupRatio": 0.0
+        }
+      },
+      "l4AreaRatio": 0.0916,
+      "l4Under10Percent": true,
+      "combatZone": {
+        "zone": [
+          96,
+          94,
+          384,
+          202
+        ],
+        "darkPixelRatio": 0.5318,
+        "r22Proxy": "MEDIUM"
+      },
+      "l1DarkUnder20Percent": false,
+      "combatDarkUnder30Percent": false,
+      "combatDarkRatioFaithful": 0.5318,
+      "combatDarkRatioShipped": 0.5318,
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0
+    },
+    {
+      "scene": "bg_rest",
+      "reference": "A2R-bgrest",
+      "referenceRole": "像素源（裁格 / 切带转录），非仅构图参考",
+      "floors": "3/6/8",
+      "tone": "喘息层（全塔最亮）",
+      "shippedMode": "faithful",
+      "layers": {
+        "L1": {
+          "file": "bg_rest_L1.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            0,
+            68
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.2519,
+          "opaquePixels": 32640,
+          "usedColors": 12,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.0159,
+          "inkGroupRatio": 0.0456,
+          "paperGroupRatio": 0.8198
+        },
+        "L2": {
+          "file": "bg_rest_L2.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            68,
+            202
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.4963,
+          "opaquePixels": 64320,
+          "usedColors": 18,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.0735,
+          "inkGroupRatio": 0.1331,
+          "paperGroupRatio": 0.8101
+        },
+        "L3": {
+          "file": "bg_rest_L3.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            202,
+            270
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.2519,
+          "opaquePixels": 32640,
+          "usedColors": 11,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.042,
+          "inkGroupRatio": 0.0608,
+          "paperGroupRatio": 0.9344
+        },
+        "L4": {
+          "file": "bg_rest_L4.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": null,
+          "bandStrayPixels": 0,
+          "coverage": 0.0259,
+          "opaquePixels": 3352,
+          "usedColors": 4,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.8279,
+          "inkGroupRatio": 1.0,
+          "paperGroupRatio": 0.0
+        }
+      },
+      "l4AreaRatio": 0.0259,
+      "l4Under10Percent": true,
+      "combatZone": {
+        "zone": [
+          96,
+          94,
+          384,
+          202
+        ],
+        "darkPixelRatio": 0.0818,
+        "r22Proxy": "LOW"
+      },
+      "l1DarkUnder20Percent": true,
+      "combatDarkUnder30Percent": true,
+      "combatDarkRatioFaithful": 0.0818,
+      "combatDarkRatioShipped": 0.0818,
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0
+    },
+    {
+      "scene": "bg_high",
+      "reference": "A3-bghigh",
+      "referenceRole": "像素源（裁格 / 切带转录），非仅构图参考",
+      "floors": "7",
+      "tone": "高层复合敌群",
+      "shippedMode": "faithful",
+      "layers": {
+        "L1": {
+          "file": "bg_high_L1.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            0,
+            68
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.2519,
+          "opaquePixels": 32640,
+          "usedColors": 6,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.9613,
+          "inkGroupRatio": 0.9667,
+          "paperGroupRatio": 0.0
+        },
+        "L2": {
+          "file": "bg_high_L2.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            68,
+            202
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.4963,
+          "opaquePixels": 64320,
+          "usedColors": 11,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.8698,
+          "inkGroupRatio": 0.9049,
+          "paperGroupRatio": 0.0398
+        },
+        "L3": {
+          "file": "bg_high_L3.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            202,
+            270
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.2519,
+          "opaquePixels": 32640,
+          "usedColors": 11,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.3623,
+          "inkGroupRatio": 0.4007,
+          "paperGroupRatio": 0.5846
+        },
+        "L4": {
+          "file": "bg_high_L4.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": null,
+          "bandStrayPixels": 0,
+          "coverage": 0.0449,
+          "opaquePixels": 5819,
+          "usedColors": 4,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.8276,
+          "inkGroupRatio": 1.0,
+          "paperGroupRatio": 0.0
+        }
+      },
+      "l4AreaRatio": 0.0449,
+      "l4Under10Percent": true,
+      "combatZone": {
+        "zone": [
+          96,
+          94,
+          384,
+          202
+        ],
+        "darkPixelRatio": 0.8583,
+        "r22Proxy": "HIGH"
+      },
+      "l1DarkUnder20Percent": false,
+      "combatDarkUnder30Percent": false,
+      "combatDarkRatioFaithful": 0.8583,
+      "combatDarkRatioShipped": 0.8583,
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0
+    },
+    {
+      "scene": "bg_boss",
+      "reference": "A4-bgboss",
+      "referenceRole": "像素源（裁格 / 切带转录），非仅构图参考",
+      "floors": "5/9",
+      "tone": "Boss 层",
+      "shippedMode": "faithful",
+      "layers": {
+        "L1": {
+          "file": "bg_boss_L1.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            0,
+            68
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.2519,
+          "opaquePixels": 32640,
+          "usedColors": 13,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.5805,
+          "inkGroupRatio": 0.6216,
+          "paperGroupRatio": 0.2026
+        },
+        "L2": {
+          "file": "bg_boss_L2.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            68,
+            202
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.4963,
+          "opaquePixels": 64320,
+          "usedColors": 14,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.747,
+          "inkGroupRatio": 0.7969,
+          "paperGroupRatio": 0.119
+        },
+        "L3": {
+          "file": "bg_boss_L3.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": [
+            202,
+            270
+          ],
+          "bandStrayPixels": 0,
+          "coverage": 0.2519,
+          "opaquePixels": 32640,
+          "usedColors": 11,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.0644,
+          "inkGroupRatio": 0.0676,
+          "paperGroupRatio": 0.8551
+        },
+        "L4": {
+          "file": "bg_boss_L4.png",
+          "size": [
+            480,
+            270
+          ],
+          "band": null,
+          "bandStrayPixels": 0,
+          "coverage": 0.0685,
+          "opaquePixels": 8872,
+          "usedColors": 4,
+          "outOfPalette": 0,
+          "semiAlphaLevels": 0,
+          "darkRatio": 0.9714,
+          "inkGroupRatio": 1.0,
+          "paperGroupRatio": 0.0
+        }
+      },
+      "l4AreaRatio": 0.0685,
+      "l4Under10Percent": true,
+      "combatZone": {
+        "zone": [
+          96,
+          94,
+          384,
+          202
+        ],
+        "darkPixelRatio": 0.739,
+        "r22Proxy": "HIGH"
+      },
+      "l1DarkUnder20Percent": false,
+      "combatDarkUnder30Percent": false,
+      "combatDarkRatioFaithful": 0.739,
+      "combatDarkRatioShipped": 0.739,
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0
+    }
+  ],
+  "totals": {
+    "scenes": 4,
+    "layers": 16,
+    "composites": 4,
+    "bandStrayTotal": 0,
+    "outOfPaletteTotal": 0,
+    "semiAlphaTotal": 0,
+    "l4Under10PercentAll": true,
+    "combatDarkUnder30PercentAll": false
+  },
+  "boundaries": [
+    "四层仅做静态可导入资源，未接 Godot 场景、未做 Parallax2D 节点",
+    "视差系数 0.15/0.45/1.0/1.30 是 PROPOSAL 占位，待实测",
+    "方图 A1 / A3 按 16:9 居中裁切，会损失上下内容；如需完整构图需按提示词重出 16:9",
+    "默认不调色，原稿战斗区暗像素比可能超 30% 阈值，已在 r22Disclosure 如实登记",
+    "Q17 未拍板、GUI F5 未跑、正式战斗工程未建"
+  ],
+  "status": "HEADLESS 静态指标自检；画面未验证",
+  "sourceArt": {
+    "bg_normal": "A1-bgnormal",
+    "bg_rest": "A2R-bgrest",
+    "bg_high": "A3-bghigh",
+    "bg_boss": "A4-bgboss"
+  },
+  "supersedes": "第 29 轮几何重绘版（联系表留档为 *_geometric.png）",
+  "r22Disclosure": {
+    "shippedMode": "faithful",
+    "policy": "默认入库 = 原稿保真，不替用户改配色；--tuned 才按 24 色板阶梯把深墨提亮一档（形状/描边/浅色不变）。两版都留档",
+    "faithfulValues": {
+      "bg_normal": 0.5318,
+      "bg_rest": 0.0818,
+      "bg_high": 0.8583,
+      "bg_boss": 0.739
+    },
+    "shippedValues": {
+      "bg_normal": 0.5318,
+      "bg_rest": 0.0818,
+      "bg_high": 0.8583,
+      "bg_boss": 0.739
+    },
+    "threshold": 0.3,
+    "knownExceptions": [
+      "bg_normal",
+      "bg_high",
+      "bg_boss"
+    ],
+    "note": "R22 是回稿亮度代理，不是实机对比度实测；未达标场景已如实登记，不伪造 PASS，仍需 GUI F5 人工目检或按提示词重出浅调版本"
+  }
+}

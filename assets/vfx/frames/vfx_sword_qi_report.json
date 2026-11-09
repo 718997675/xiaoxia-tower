@@ -1,0 +1,71 @@
+{
+  "source": "8_bit_pixel_art_game_VFX_anima_2026-11-07T13-52-21.png",
+  "kind": "vfx",
+  "cells": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "hollow": false,
+  "append": false,
+  "crop": [
+    32,
+    32,
+    480,
+    480
+  ],
+  "frames": [
+    {
+      "file": "vfx_sword_qi_00.png",
+      "scale": 0.125,
+      "colorsBeforeSnap": 88,
+      "pixelsSnapped": 88,
+      "usedColors": 3,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_sword_qi_01.png",
+      "scale": 0.125,
+      "colorsBeforeSnap": 379,
+      "pixelsSnapped": 404,
+      "usedColors": 4,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_sword_qi_02.png",
+      "scale": 0.125,
+      "colorsBeforeSnap": 659,
+      "pixelsSnapped": 772,
+      "usedColors": 6,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_sword_qi_03.png",
+      "scale": 0.125,
+      "colorsBeforeSnap": 879,
+      "pixelsSnapped": 980,
+      "usedColors": 5,
+      "outOfPalette": 0
+    }
+  ],
+  "outputs": {
+    "frames": [
+      "vfx_sword_qi_00.png",
+      "vfx_sword_qi_01.png",
+      "vfx_sword_qi_02.png",
+      "vfx_sword_qi_03.png"
+    ],
+    "framesAddedThisBatch": [
+      "vfx_sword_qi_00.png",
+      "vfx_sword_qi_01.png",
+      "vfx_sword_qi_02.png",
+      "vfx_sword_qi_03.png"
+    ],
+    "sheet": "vfx_sword_qi_sheet.png",
+    "gif": "vfx_sword_qi.gif",
+    "preview": "vfx_sword_qi_preview.png",
+    "engineJson": "vfx_sword_qi.json"
+  },
+  "paletteOutOfRangeTotal": 0
+}

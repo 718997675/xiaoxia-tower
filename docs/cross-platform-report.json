@@ -1,0 +1,144 @@
+{
+  "verdict": "PASS",
+  "checks": [
+    {
+      "label": "xorshift32 randf 序列逐位一致",
+      "ok": true,
+      "detail": "n=12 first=0.03114306926727295"
+    },
+    {
+      "label": "run runA 逐层 9 步全一致",
+      "ok": true,
+      "detail": "stages=9"
+    },
+    {
+      "label": "run runA 终局峰值一致",
+      "ok": true,
+      "detail": "3996 vs 3996"
+    },
+    {
+      "label": "run runA 已选卡计数一致",
+      "ok": true,
+      "detail": "unique=8"
+    },
+    {
+      "label": "run runA 守卫/违规/封牌状态一致",
+      "ok": true,
+      "detail": "clamp=0 viol=0"
+    },
+    {
+      "label": "run runW 逐层 9 步全一致",
+      "ok": true,
+      "detail": "stages=9"
+    },
+    {
+      "label": "run runW 终局峰值一致",
+      "ok": true,
+      "detail": "3996 vs 3996"
+    },
+    {
+      "label": "run runW 已选卡计数一致",
+      "ok": true,
+      "detail": "unique=7"
+    },
+    {
+      "label": "run runW 守卫/违规/封牌状态一致",
+      "ok": true,
+      "detail": "clamp=0 viol=0"
+    },
+    {
+      "label": "run runB 逐层 9 步全一致",
+      "ok": true,
+      "detail": "stages=9"
+    },
+    {
+      "label": "run runB 终局峰值一致",
+      "ok": true,
+      "detail": "3996 vs 3996"
+    },
+    {
+      "label": "run runB 已选卡计数一致",
+      "ok": true,
+      "detail": "unique=7"
+    },
+    {
+      "label": "run runB 守卫/违规/封牌状态一致",
+      "ok": true,
+      "detail": "clamp=0 viol=0"
+    },
+    {
+      "label": "run runDemo 逐层 9 步全一致",
+      "ok": true,
+      "detail": "stages=9"
+    },
+    {
+      "label": "run runDemo 终局峰值一致",
+      "ok": true,
+      "detail": "3996 vs 3996"
+    },
+    {
+      "label": "run runDemo 已选卡计数一致",
+      "ok": true,
+      "detail": "unique=8"
+    },
+    {
+      "label": "run runDemo 守卫/违规/封牌状态一致",
+      "ok": true,
+      "detail": "clamp=0 viol=0"
+    },
+    {
+      "label": "run web-demo 逐层 9 步全一致",
+      "ok": true,
+      "detail": "stages=9"
+    },
+    {
+      "label": "run web-demo 终局峰值一致",
+      "ok": true,
+      "detail": "3996 vs 3996"
+    },
+    {
+      "label": "run web-demo 已选卡计数一致",
+      "ok": true,
+      "detail": "unique=5"
+    },
+    {
+      "label": "run web-demo 守卫/违规/封牌状态一致",
+      "ok": true,
+      "detail": "clamp=0 viol=0"
+    },
+    {
+      "label": "72 卡全叠加峰值一致",
+      "ok": true,
+      "detail": "3996 vs 3996"
+    },
+    {
+      "label": "72 卡守卫事件数一致",
+      "ok": true,
+      "detail": "105 vs 105"
+    },
+    {
+      "label": "72 卡违规数一致",
+      "ok": true,
+      "detail": "0 vs 0"
+    },
+    {
+      "label": "共享 offense_pool 用量一致",
+      "ok": true,
+      "detail": "40"
+    }
+  ],
+  "summary": {
+    "total": 25,
+    "passed": 25,
+    "failed": 0
+  },
+  "node": "v22.22.2",
+  "goldenGeneratedAt": "2026-11-08",
+  "note": "Node 复算 Godot 黄金样本；网页 Demo 内嵌同一份 tools/card_rules.js，故结论同样适用于网页。",
+  "generatedAt": "2026-11-08 17:20:34",
+  "generator": "tools/verify_cross_platform.py",
+  "goldenGenerator": "tools/export_card_golden.gd",
+  "algorithm": "FNV-1a 32 位种子 + xorshift32 + 高 24 位定点 randf（R47）",
+  "nodeBinary": "node",
+  "scope": "网页 / Node 复算 Godot 黄金样本（规则与数值），非画面验证"
+}

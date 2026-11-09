@@ -1,0 +1,72 @@
+{
+  "source": "Use_the_reference_image_as_the_2026-11-07T15-09-25.png",
+  "kind": "char",
+  "cells": [
+    1,
+    2,
+    3
+  ],
+  "hollow": false,
+  "append": true,
+  "crop": [
+    39,
+    74,
+    449,
+    473
+  ],
+  "frames": [
+    {
+      "file": "char_player_death_r_00.png",
+      "scale": 0.1463,
+      "colorsBeforeSnap": 1235,
+      "pixelsSnapped": 1331,
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "char_player_death_r_01.png",
+      "scale": 0.1463,
+      "colorsBeforeSnap": 1173,
+      "pixelsSnapped": 1260,
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "char_player_death_r_02.png",
+      "scale": 0.1463,
+      "colorsBeforeSnap": 941,
+      "pixelsSnapped": 1002,
+      "usedColors": 15,
+      "outOfPalette": 0
+    }
+  ],
+  "outputs": {
+    "frames": [
+      "char_player_idle_r_00.png",
+      "char_player_idle_r_01.png",
+      "char_player_idle_r_02.png",
+      "char_player_run_r_00.png",
+      "char_player_run_r_01.png",
+      "char_player_run_r_02.png",
+      "char_player_run_r_03.png",
+      "char_player_cast_r_00.png",
+      "char_player_cast_r_01.png",
+      "char_player_cast_r_02.png",
+      "char_player_cast_r_03.png",
+      "char_player_hit_r_00.png",
+      "char_player_death_r_00.png",
+      "char_player_death_r_01.png",
+      "char_player_death_r_02.png"
+    ],
+    "framesAddedThisBatch": [
+      "char_player_death_r_00.png",
+      "char_player_death_r_01.png",
+      "char_player_death_r_02.png"
+    ],
+    "sheet": "char_player_sheet.png",
+    "gif": "char_player.gif",
+    "preview": "char_player_preview.png",
+    "engineJson": "char_player.json"
+  },
+  "paletteOutOfRangeTotal": 0
+}

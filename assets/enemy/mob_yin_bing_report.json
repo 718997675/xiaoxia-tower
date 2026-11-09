@@ -1,0 +1,72 @@
+{
+  "source": "Use_the_reference_image_as_the_2026-11-07T15-42-45.png",
+  "kind": "mob",
+  "cells": [
+    1,
+    2,
+    3
+  ],
+  "hollow": false,
+  "append": true,
+  "crop": [
+    94,
+    182,
+    489,
+    469
+  ],
+  "frames": [
+    {
+      "file": "mob_yin_bing_death_r_00.png",
+      "scale": 0.1558,
+      "colorsBeforeSnap": 615,
+      "pixelsSnapped": 652,
+      "usedColors": 14,
+      "outOfPalette": 0
+    },
+    {
+      "file": "mob_yin_bing_death_r_01.png",
+      "scale": 0.1558,
+      "colorsBeforeSnap": 636,
+      "pixelsSnapped": 706,
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "mob_yin_bing_death_r_02.png",
+      "scale": 0.1558,
+      "colorsBeforeSnap": 95,
+      "pixelsSnapped": 98,
+      "usedColors": 9,
+      "outOfPalette": 0
+    }
+  ],
+  "outputs": {
+    "frames": [
+      "mob_yin_bing_idle_r_00.png",
+      "mob_yin_bing_idle_r_01.png",
+      "mob_yin_bing_idle_r_02.png",
+      "mob_yin_bing_run_r_00.png",
+      "mob_yin_bing_run_r_01.png",
+      "mob_yin_bing_run_r_02.png",
+      "mob_yin_bing_run_r_03.png",
+      "mob_yin_bing_atk_r_00.png",
+      "mob_yin_bing_atk_r_01.png",
+      "mob_yin_bing_atk_r_02.png",
+      "mob_yin_bing_atk_r_03.png",
+      "mob_yin_bing_hit_r_00.png",
+      "mob_yin_bing_death_r_00.png",
+      "mob_yin_bing_death_r_01.png",
+      "mob_yin_bing_death_r_02.png"
+    ],
+    "framesAddedThisBatch": [
+      "mob_yin_bing_death_r_00.png",
+      "mob_yin_bing_death_r_01.png",
+      "mob_yin_bing_death_r_02.png"
+    ],
+    "sheet": "mob_yin_bing_sheet.png",
+    "gif": "mob_yin_bing.gif",
+    "preview": "mob_yin_bing_preview.png",
+    "engineJson": "mob_yin_bing.json"
+  },
+  "paletteOutOfRangeTotal": 0
+}

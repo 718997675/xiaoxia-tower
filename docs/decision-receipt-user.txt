@@ -1,0 +1,24 @@
+# 决策卡正式回执 · 第 12 轮
+# 用户原话：「全部按推荐  同时多添加一个 buff选择系统 ...」
+# 15 项有推荐值的决策全部按推荐值确认。
+# 第 13 轮：助手只读探测到本机 Godot 4.7.2.stable.official.ed1daf0bf（标准版非 .NET），
+#   导出模板目录为空（未装）；按「助手不代填环境事实」约定当时保持 Q1 留空。
+# 第 14 轮：用户亲口确认「没错是 4.7.2」，补齐 Q1。
+#   值中的数字 4.7.2 来自用户答复，.stable 来自本机探测的发布通道，非助手臆测。
+#   至此 16/16 项已答、硬门禁 4/4 齐备；但「策划案整体确认」仍待用户，故不冻结、不建工程。
+C01=accept_convergence
+Q3=stage_battle
+Q5=accept_roguelite
+Q8=autoload_json
+Q24=procedural_plus_pixelfx
+Q21=128
+Q25=proposal_v1
+Q26=proposal_b
+Q27=proposal_3slots_8types
+Q28=proposal_local_only
+Q2_4_6_9=keep_assumptions
+Q15=defer
+Q19=default
+Q22=confirm_4
+Q23=auto
+Q1=4.7.2.stable

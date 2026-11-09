@@ -1,0 +1,1488 @@
+{
+  "version": 3,
+  "title": "《九重天梯》素材生产工单（技能 / 怪物 / Boss）",
+  "status": "生产工单，不是完成清单。status 字段用于脚本核对完成度。",
+  "inherits": [
+    "docs/04-像素国风规格修订.md",
+    "docs/asset-manifest-pixel.json (v2 生效规格，保留不覆盖)",
+    "docs/02-耐玩性设计增补.md (技能池 8 / 流派 4 / 词缀 12 / 9 层塔)"
+  ],
+  "supersedes": {
+    "field": "人物角色数 / 人物总帧数",
+    "v2Baseline": "5 角色 × 15 帧 = 75 帧",
+    "v3Active": "1 职业 × 15 帧 = 15 帧（4 流派 = 同职业不同 build，共用一套帧）",
+    "note": "v2 数值保留为基线，工程核对以本文件为准"
+  },
+  "decisions": {
+    "Q16": "像素国风（已定）",
+    "oneProfessionOnly": true,
+    "fourSchoolsAreBuilds": true,
+    "Q18": "已确认：程序化为主 + pixelfx(MIT) 补 overlay/命中（Q24=procedural_plus_pixelfx，第 12 轮回执）",
+    "Q20": "已确认：人物 1 职业（用户第 7 轮明示）；第 8 轮据此完成 B1，15 帧帧表已满",
+    "Q21": "已确认：Boss 单帧 128×128（2 的幂，与 64×64 同族；需过 M4 贴图预算）",
+    "hardGates": [
+      "Q1",
+      "Q3",
+      "Q5",
+      "Q8"
+    ],
+    "Q24_note": "Q24 已按推荐值定为「程序化为主 + pixelfx 补 overlay/命中」；主 8 技能仍守 06 §4 的 8 形状语言避免 R16；pixelfx 只补通用状态层。积分档 B 85–200（量级估算，待实测）",
+    "externalAssets": {
+      "pixelfx": "MIT，可商用；导出透明 spritesheet + Aseprite JSON 给 Godot；palette 可换色。但西式奇幻 house style 会撞 06 §4 的 8 形状语言，gallery 字体不在 MIT 内；建议只用于 overlay / 命中特效，作 Q24 第三选项",
+      "freeLibraries": "Kenney(CC0) / OpenGameArt 勾选 CC0 / itch.io 逐包 / Game-icons.net(CC BY 3.0 须署名) / LPC(CC-BY-SA+GPL 不宜) / Spriters Resource 仅学习禁入库",
+      "fontR9": "凤凰点阵体 CC0 1.0 为最干净候选（12/16px，7543 字符含 6763 汉字）；Zpix 商用收费且所有层级禁止修改/转换，不得默认可用；最终核验仍未完成",
+      "iconPipeline": "图标/挂件改走 tools/build_icons.py 程序化几何绘制，0 积分、可复现；有机形态仍走 AI 出图链路"
+    },
+    "round10_sizeContract": "图标尺寸双档：词缀 16x16、境界/装备/灵韵 32x32；单件 ID 先定契约再生成（07 §7，R23/R24）",
+    "C01": "已确认：采纳收敛（4 组序列帧仅形状样板，实现形态由 Q24 决定）",
+    "traceability": "08 + design-freeze-draft.json（frozen=false）+ check_traceability.py；18 条已确认编号 / 15 项决策欠债；覆盖率 0 为阶段一预期",
+    "round11Proposal": "docs/09-内容命名提案.md（PROPOSAL，未确认）：12 词缀 / 6 灵韵 / 3 槽+8 品类 / M6 13 类字段；用户回执前不生成 18 件图标、不改 01 正文",
+    "decisionCard": "docs/decision-card.json + assets/_preview/decision-card.html（16 项 / 4 组）；默认预选推荐值不等于用户确认",
+    "receiptPipeline": "tools/apply_decisions.py 默认 dry-run 不落盘；--apply 只写 decision-receipt.json / decision-plan.json，硬断言 frozen=false、写入白名单、不改基线、不建工程",
+    "R28Correction": "Q27 更正：01 §8 只有 3 个装备槽位（slot_1/2/3），8 件 icon_gear_* 是品类而非槽位，ID 无需改名",
+    "Q25": "已确认：12 条天劫词缀按 09 §2.2 定稿，奖励倍率累加并 clamp 1.60",
+    "Q26": "已确认：6 条传承灵韵按 09 §3 + 方案 B（新增 legacy_effects）",
+    "Q27": "已确认：3 个 slot_* + 8 个 gear_type_*（R28：8 件是品类非槽位）",
+    "Q28": "已确认：M6 本地日志（user://telemetry/runs.jsonl，不联网不上传、可关闭可清空）",
+    "round12Receipt": "docs/decision-receipt.json：15/16 项按推荐值确认，Q1 仍空（硬门禁 3/4）；v0.2 合并清单见 docs/10",
+    "Q1": "已确认：Godot 4.7.2.stable（用户第 14 轮「没错是 4.7.2」；本机探测 4.7.2.stable.official.ed1daf0bf，标准版非 .NET，导出模板未装）",
+    "round14Receipt": "docs/decision-receipt.json 已重跑：16/16 项、硬门禁 4/4、错误 0、告警 1（R29/R30）；仍未整体确认策划案、frozen=false、未建工程"
+  },
+  "palette": {
+    "name": "xianxia-24",
+    "locked": true,
+    "maxColors": 24,
+    "rule": "9 境 / 12 词缀 / 4 流派 / 8 技能靠形状与纹样区分，不得靠新增颜色"
+  },
+  "render": {
+    "logicalResolution": [
+      480,
+      270
+    ],
+    "integerScale": 4,
+    "characterAnchor": "脚底，同组落在同一整数像素行",
+    "facing": "只出朝右一套，scale.x 镜像只作用于 Sprite2D 与特效节点"
+  },
+  "namingRules": [
+    {
+      "type": "char",
+      "dir": "assets/char/",
+      "regex": "^char_[a-z0-9_]+_(idle|run|cast|hit|death)_r_[0-9]{2}$",
+      "size": [
+        64,
+        64
+      ],
+      "changed": false,
+      "note": "ID 段允许下划线（R19：工单 ID 普遍含 _，旧正则会误判 20 帧非法）"
+    },
+    {
+      "type": "mob",
+      "dir": "assets/enemy/",
+      "regex": "^mob_[a-z0-9_]+_(idle|run|atk|hit|death)_r_[0-9]{2}$",
+      "size": [
+        64,
+        64
+      ],
+      "changed": true,
+      "reason": "旧正则无 atk，怪物攻击帧无法入库",
+      "note": "ID 段允许下划线（R19：工单 ID 普遍含 _，旧正则会误判 20 帧非法）"
+    },
+    {
+      "type": "boss",
+      "dir": "assets/boss/",
+      "regex": "^boss_[a-z0-9_]+_(idle|run|atk|skill|hit|death)_r_[0-9]{2}$",
+      "size": [
+        96,
+        96
+      ],
+      "changed": true,
+      "reason": "新增 skill；96 不是 2 的幂，见 Q21",
+      "note": "ID 段允许下划线（R19：工单 ID 普遍含 _，旧正则会误判 20 帧非法）"
+    },
+    {
+      "type": "vfx",
+      "dir": "assets/vfx/frames/",
+      "regex": "^vfx_[a-z0-9_]+_[0-9]{2}$",
+      "size": [
+        64,
+        64
+      ],
+      "changed": false,
+      "note": "ID 段允许下划线（R19：工单 ID 普遍含 _，旧正则会误判 20 帧非法）"
+    },
+    {
+      "type": "overlay",
+      "dir": "assets/vfx/overlay/",
+      "regex": "^ovl_[a-z0-9_]+_[0-9]{2}$",
+      "size": [
+        64,
+        64
+      ],
+      "changed": true,
+      "note": "ID 段允许下划线（R19：工单 ID 普遍含 _，旧正则会误判 20 帧非法）"
+    },
+    {
+      "type": "icon",
+      "dir": "assets/ui/icons/",
+      "regex": "^icon_[a-z0-9_]+$",
+      "size": [
+        16,
+        32
+      ],
+      "changed": false
+    },
+    {
+      "type": "accessory",
+      "dir": "assets/char/acc/",
+      "regex": "^acc_[a-z0-9_]+$",
+      "size": [
+        16,
+        16
+      ],
+      "changed": true,
+      "reason": "4 流派武器挂件，避免画 4 套角色",
+      "note": "ID 段允许下划线（R19：工单 ID 普遍含 _，旧正则会误判 20 帧非法）"
+    }
+  ],
+  "frameTables": {
+    "char": {
+      "idle": 3,
+      "run": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 3,
+      "total": 15
+    },
+    "mob": {
+      "idle": 3,
+      "run": 4,
+      "atk": 4,
+      "hit": 1,
+      "death": 3,
+      "total": 15
+    },
+    "boss": {
+      "idle": 3,
+      "run": 3,
+      "atk": 4,
+      "skill": 4,
+      "hit": 1,
+      "death": 3,
+      "total": 18
+    },
+    "bossFinal": {
+      "total": 24,
+      "note": "18 + 大招 skill 4 + 起手 2（复用 hit/death）"
+    },
+    "vfx": {
+      "total": 4,
+      "stages": [
+        "起手",
+        "成长",
+        "峰值",
+        "消散"
+      ]
+    },
+    "overlay": {
+      "total": 2
+    }
+  },
+  "shared": [
+    {
+      "id": "char_player_cast",
+      "note": "8 个技能共用同一套角色 cast 4 帧，不按技能分别绘制"
+    },
+    {
+      "id": "vfx_hit",
+      "frames": 4,
+      "note": "通用命中特效，8 技能共用"
+    },
+    {
+      "id": "vfx_cast_start",
+      "frames": 2,
+      "note": "通用起手光"
+    }
+  ],
+  "items": [
+    {
+      "id": "char_player",
+      "type": "char",
+      "name": "散修（唯一职业）",
+      "dir": "assets/char/",
+      "size": [
+        64,
+        64
+      ],
+      "frames": 15,
+      "status": "complete",
+      "doneFrames": 15,
+      "remainingFrames": 0,
+      "batch": "B1-done",
+      "priority": "P0",
+      "depends": [],
+      "note": "idle3/run4/cast4/hit1/death3 全部完成；3 批图生图 + --append 合并"
+    },
+    {
+      "id": "acc_sword",
+      "type": "accessory",
+      "name": "剑·武器挂件",
+      "frames": 1,
+      "status": "complete",
+      "batch": "B4-round9-procedural",
+      "priority": "P1",
+      "doneFrames": 1,
+      "remainingFrames": 0,
+      "note": "16x16 程序化几何绘制，0 积分；见 docs/07 与 tools/build_icons.py"
+    },
+    {
+      "id": "acc_talisman",
+      "type": "accessory",
+      "name": "符·武器挂件",
+      "frames": 1,
+      "status": "complete",
+      "batch": "B4-round9-procedural",
+      "priority": "P1",
+      "doneFrames": 1,
+      "remainingFrames": 0,
+      "note": "16x16 程序化几何绘制，0 积分；见 docs/07 与 tools/build_icons.py"
+    },
+    {
+      "id": "acc_pill",
+      "type": "accessory",
+      "name": "丹炉·武器挂件",
+      "frames": 1,
+      "status": "complete",
+      "batch": "B4-round9-procedural",
+      "priority": "P1",
+      "doneFrames": 1,
+      "remainingFrames": 0,
+      "note": "16x16 程序化几何绘制，0 积分；见 docs/07 与 tools/build_icons.py"
+    },
+    {
+      "id": "acc_fist",
+      "type": "accessory",
+      "name": "拳套·武器挂件",
+      "frames": 1,
+      "status": "complete",
+      "batch": "B4-round9-procedural",
+      "priority": "P1",
+      "doneFrames": 1,
+      "remainingFrames": 0,
+      "note": "16x16 程序化几何绘制，0 积分；见 docs/07 与 tools/build_icons.py"
+    },
+    {
+      "id": "sword_qi",
+      "type": "vfx",
+      "name": "剑气斩",
+      "school": "剑",
+      "shape": "横向青玉弯月弧",
+      "direction": "horizontal",
+      "palette": [
+        "qingyu",
+        "zhusha",
+        "jin"
+      ],
+      "frames": 4,
+      "status": "sample",
+      "batch": "B0-done",
+      "priority": "P0",
+      "layers": [
+        1,
+        2,
+        4,
+        7,
+        9
+      ],
+      "outputs": [
+        "vfx_sword_qi_00..03.png",
+        "icon_sword_qi.png"
+      ]
+    },
+    {
+      "id": "flying_sword",
+      "type": "vfx",
+      "name": "御剑诀",
+      "school": "剑",
+      "shape": "斜向三道细长飞剑",
+      "direction": "diagonal",
+      "palette": [
+        "qingyu",
+        "xuanzhi"
+      ],
+      "frames": 4,
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P0",
+      "depends": [
+        "Q18"
+      ],
+      "note": "质变 4 件 → 分裂 3 把，用参数不改帧"
+    },
+    {
+      "id": "thunder_talisman",
+      "type": "vfx",
+      "name": "引雷符",
+      "school": "符",
+      "shape": "纵向落雷 + 末端方符炸开",
+      "direction": "vertical",
+      "palette": [
+        "zi",
+        "jin",
+        "xuanzhi"
+      ],
+      "frames": 4,
+      "status": "sample",
+      "batch": "B8-shapeStudy",
+      "priority": "P0",
+      "depends": [
+        "Q18"
+      ],
+      "layers": [
+        9
+      ],
+      "note": "形状语言验证样板；Q24 定程序化则不入库、改作参数模板参考",
+      "outputs": [
+        "vfx_thunder_talisman_00..03.png"
+      ]
+    },
+    {
+      "id": "paper_puppet",
+      "type": "vfx",
+      "name": "纸傀术",
+      "school": "符",
+      "shape": "方形符纸旋转展开成傀儡剪影",
+      "direction": "square",
+      "palette": [
+        "xuanzhi",
+        "zhusha"
+      ],
+      "frames": 4,
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P1",
+      "depends": [
+        "Q18"
+      ]
+    },
+    {
+      "id": "dan_fire",
+      "type": "vfx",
+      "name": "三昧丹火",
+      "school": "丹",
+      "shape": "圆形火团由小到大 + 爆散",
+      "direction": "radial",
+      "palette": [
+        "zhusha",
+        "jin"
+      ],
+      "frames": 4,
+      "status": "sample",
+      "batch": "B0",
+      "priority": "P0",
+      "outputs": [
+        "vfx_dan_fire_00..03.png",
+        "icon_dan_fire.png"
+      ]
+    },
+    {
+      "id": "rejuvenation",
+      "type": "vfx",
+      "name": "回春诀",
+      "school": "丹",
+      "shape": "环形青玉光晕由内向外扩",
+      "direction": "ring",
+      "palette": [
+        "qingyu",
+        "xuanzhi"
+      ],
+      "frames": 4,
+      "status": "sample",
+      "batch": "B8-shapeStudy",
+      "priority": "P1",
+      "depends": [
+        "Q18"
+      ],
+      "outputs": [
+        "vfx_rejuvenation_00..03.png"
+      ],
+      "note": "形状语言验证样板；Q24 定程序化则不入库、改作参数模板参考"
+    },
+    {
+      "id": "fist_force",
+      "type": "vfx",
+      "name": "破山拳罡",
+      "school": "体",
+      "shape": "短距扇形冲击波贴地推进",
+      "direction": "fan",
+      "palette": [
+        "mo",
+        "jin"
+      ],
+      "frames": 4,
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P1",
+      "depends": [
+        "Q18"
+      ]
+    },
+    {
+      "id": "vajra_body",
+      "type": "vfx",
+      "name": "金刚不坏",
+      "school": "体",
+      "shape": "六边形金罩包裹角色轮廓",
+      "direction": "hexagon",
+      "palette": [
+        "jin",
+        "xuanzhi"
+      ],
+      "frames": 4,
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P1",
+      "depends": [
+        "Q18"
+      ]
+    },
+    {
+      "id": "mob_shanxiao",
+      "type": "mob",
+      "name": "山魈",
+      "behavior": "近战扑击，慢前摇",
+      "palette": [
+        "mo",
+        "xuanzhi"
+      ],
+      "frames": 15,
+      "status": "complete",
+      "doneFrames": 15,
+      "batch": "B2-round9",
+      "priority": "P0",
+      "layers": [
+        1,
+        2,
+        7
+      ],
+      "remainingFrames": 0,
+      "note": "idle3/run4/atk4/hit1/death3 = 15 帧，第 9 轮补满；脚底锚点 y=62"
+    },
+    {
+      "id": "mob_zhi_kui",
+      "type": "mob",
+      "name": "纸傀",
+      "behavior": "远程投符，保持距离",
+      "palette": [
+        "xuanzhi",
+        "zhusha"
+      ],
+      "frames": 15,
+      "status": "complete",
+      "batch": "B2-round9",
+      "priority": "P0",
+      "layers": [
+        2,
+        7
+      ],
+      "doneFrames": 15,
+      "remainingFrames": 0,
+      "note": "idle3/run4/atk4/hit1/death3 = 15 帧，第 9 轮补满；脚底锚点 y=62"
+    },
+    {
+      "id": "mob_yin_bing",
+      "type": "mob",
+      "name": "阴兵",
+      "behavior": "持戈近战；挂 ovl_shield 即第 4 层护盾敌人",
+      "palette": [
+        "mo",
+        "qingyu"
+      ],
+      "frames": 15,
+      "status": "complete",
+      "batch": "B2-round9",
+      "priority": "P0",
+      "layers": [
+        4,
+        7
+      ],
+      "doneFrames": 15,
+      "remainingFrames": 0,
+      "note": "idle3/run4/atk4/hit1/death3 = 15 帧，第 9 轮补满；脚底锚点 y=62"
+    },
+    {
+      "id": "mob_jian_hun",
+      "type": "mob",
+      "name": "剑魂",
+      "behavior": "高速突进，第 7 层复合敌群",
+      "palette": [
+        "qingyu",
+        "zi"
+      ],
+      "frames": 15,
+      "status": "complete",
+      "batch": "B2-round10",
+      "priority": "P1",
+      "layers": [
+        7
+      ],
+      "depends": [
+        "Q22"
+      ],
+      "doneFrames": 15,
+      "remainingFrames": 0,
+      "note": "idle3/run4/atk4/hit1/death3 = 15 帧；中心锚点 y=32（--anchor center）；idle 与 run 首帧轮廓接近，需 8fps 试播"
+    },
+    {
+      "id": "boss_judge",
+      "type": "boss",
+      "name": "锁血判官",
+      "layer": 5,
+      "size": [
+        96,
+        96
+      ],
+      "frames": 18,
+      "status": "todo",
+      "batch": "B3",
+      "priority": "P0",
+      "depends": [
+        "Q21"
+      ],
+      "phaseVariant": "锁血触发切 ovl_elite + 朱砂印文，不重画"
+    },
+    {
+      "id": "boss_tower_lord",
+      "type": "boss",
+      "name": "天梯之主",
+      "layer": 9,
+      "size": [
+        96,
+        96
+      ],
+      "frames": 24,
+      "status": "todo",
+      "batch": "B3",
+      "priority": "P0",
+      "depends": [
+        "Q21"
+      ],
+      "phaseVariant": "三阶段靠 3 段色（青玉→紫→金）+ 纹样 5/7/9 道，轮廓不变",
+      "reuseVfx": "vfx_thunder_talisman"
+    },
+    {
+      "id": "boss_endless",
+      "type": "boss",
+      "name": "无尽天梯守关",
+      "status": "deferred",
+      "batch": "phase2",
+      "note": "依赖 M(n) 机制质变设计（R6），做不到就不开"
+    },
+    {
+      "id": "ovl_shield",
+      "type": "overlay",
+      "name": "护盾光罩",
+      "frames": 2,
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P0",
+      "layers": [
+        4
+      ]
+    },
+    {
+      "id": "ovl_elite",
+      "type": "overlay",
+      "name": "霸体描边",
+      "frames": 2,
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P1",
+      "layers": [
+        5
+      ]
+    },
+    {
+      "id": "ovl_burn",
+      "type": "overlay",
+      "name": "灼烧",
+      "frames": 2,
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P2"
+    },
+    {
+      "id": "ovl_chill",
+      "type": "overlay",
+      "name": "迟缓",
+      "frames": 2,
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P2"
+    },
+    {
+      "id": "ovl_affix",
+      "type": "overlay",
+      "name": "词缀印文标记",
+      "frames": 2,
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P0"
+    },
+    {
+      "id": "icons_skill",
+      "type": "icon",
+      "name": "8 技能图标",
+      "count": 8,
+      "size": [
+        32,
+        32
+      ],
+      "status": "complete",
+      "batch": "B4-round9-procedural",
+      "priority": "P0",
+      "doneFrames": 8,
+      "remainingFrames": 0,
+      "note": "8 个技能图标 = 06 §4 的 8 个特效形状；八角切角框"
+    },
+    {
+      "id": "icons_school",
+      "type": "icon",
+      "name": "4 流派图标",
+      "count": 4,
+      "size": [
+        32,
+        32
+      ],
+      "status": "complete",
+      "batch": "B4-round9-procedural",
+      "priority": "P0",
+      "doneFrames": 4,
+      "remainingFrames": 0,
+      "note": "4 流派圆框图标；与 4 件挂件同形（缓解 R17）"
+    },
+    {
+      "id": "icons_affix",
+      "type": "icon",
+      "name": "12 天劫词缀图标",
+      "count": 12,
+      "size": [
+        16,
+        16
+      ],
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P0",
+      "note": "R24 尺寸校正：[32, 32] → [16, 16]（以 07 §2.1 为准）；仍卡 Q25"
+    },
+    {
+      "id": "icons_realm",
+      "type": "icon",
+      "name": "9 境界图标",
+      "count": 9,
+      "size": [
+        32,
+        32
+      ],
+      "status": "complete",
+      "batch": "B4-round10-procedural",
+      "priority": "P1",
+      "doneFrames": 9,
+      "remainingFrames": 0,
+      "note": "9 境界卷轴框 + 4 段色 + 1-9 道刻痕；单件 ID 契约见 07 §7.2；0 积分"
+    },
+    {
+      "id": "icons_gear",
+      "type": "icon",
+      "name": "8 装备图标",
+      "count": 8,
+      "size": [
+        32,
+        32
+      ],
+      "status": "complete",
+      "batch": "B4-round10-procedural",
+      "priority": "P1",
+      "doneFrames": 8,
+      "remainingFrames": 0,
+      "note": "8 装备盾形框；仅形状样板，槽位 ID 卡 Q27；单件 ID 契约见 07 §7.2；0 积分"
+    },
+    {
+      "id": "icons_legacy",
+      "type": "icon",
+      "name": "6 灵韵图标",
+      "count": 6,
+      "size": [
+        32,
+        32
+      ],
+      "status": "todo",
+      "batch": "B4",
+      "priority": "P2",
+      "note": "R24 尺寸校正：[16, 16] → [32, 32]（以 07 §2.1 为准）；仍卡 Q26"
+    },
+    {
+      "id": "card_ui",
+      "type": "ui",
+      "name": "塔层三选一卡牌 UI",
+      "dir": "assets/ui/cards/",
+      "size": [
+        96,
+        144
+      ],
+      "frames": 10,
+      "status": "complete",
+      "doneFrames": 10,
+      "remainingFrames": 0,
+      "batch": "B5-round12",
+      "priority": "P0",
+      "depends": [
+        "Q24"
+      ],
+      "note": "4 张卡框 + 6 张类别纹样，程序化生成 0 积分；卡面不含文字（R9 字体未核验）；自检见 docs/buff-card-report.json"
+    }
+  ],
+  "layerMap": [
+    {
+      "layer": 1,
+      "type": "常规",
+      "assets": [
+        "mob_shanxiao"
+      ]
+    },
+    {
+      "layer": 2,
+      "type": "引入远程",
+      "assets": [
+        "mob_shanxiao",
+        "mob_zhi_kui"
+      ]
+    },
+    {
+      "layer": 3,
+      "type": "喘息",
+      "assets": []
+    },
+    {
+      "layer": 4,
+      "type": "护盾机制",
+      "assets": [
+        "mob_yin_bing",
+        "ovl_shield"
+      ]
+    },
+    {
+      "layer": 5,
+      "type": "小 Boss",
+      "assets": [
+        "boss_judge",
+        "ovl_elite"
+      ]
+    },
+    {
+      "layer": 6,
+      "type": "喘息",
+      "assets": []
+    },
+    {
+      "layer": 7,
+      "type": "复合敌群",
+      "assets": [
+        "mob_shanxiao",
+        "mob_zhi_kui",
+        "mob_yin_bing",
+        "mob_jian_hun"
+      ]
+    },
+    {
+      "layer": 8,
+      "type": "喘息",
+      "assets": []
+    },
+    {
+      "layer": 9,
+      "type": "塔主 Boss",
+      "assets": [
+        "boss_tower_lord",
+        "vfx_thunder_talisman"
+      ]
+    }
+  ],
+  "reuseMatrix": [
+    {
+      "dimension": "4 段境界色",
+      "mechanism": "同帧换色段 + 边框纹样 1-9 道",
+      "newFrames": 0
+    },
+    {
+      "dimension": "护盾敌人",
+      "mechanism": "mob_yin_bing + ovl_shield",
+      "newFrames": 0
+    },
+    {
+      "dimension": "12 词缀强化",
+      "mechanism": "ovl_affix + 参数",
+      "newFrames": 0
+    },
+    {
+      "dimension": "Boss 三阶段",
+      "mechanism": "3 段色 + 纹样，轮廓不变",
+      "newFrames": 0
+    },
+    {
+      "dimension": "4 流派",
+      "mechanism": "武器挂件 + 特效形状 + 图标，共用角色帧",
+      "newFrames": 0
+    }
+  ],
+  "estimates": {
+    "basis": "每张 2×2 动作条出 4 帧；5-10 积分/张；内存 = 宽×高×4×1.33，含 UI 图集预留 1MB",
+    "spriteVfx": {
+      "totalFrames": 163,
+      "icons": 47,
+      "accessories": 4,
+      "sourceImages": 53,
+      "creditsRange": [
+        265,
+        530
+      ],
+      "textureMB": 5.72
+    },
+    "proceduralVfx": {
+      "totalFrames": 127,
+      "icons": 47,
+      "accessories": 4,
+      "particleTextures": 2,
+      "sourceImages": 44,
+      "creditsRange": [
+        220,
+        440
+      ],
+      "textureMB": 4.97
+    },
+    "status": "全部为量级估算，非显存实测、非积分报价",
+    "remainingCredits": {
+      "basis": "06 §9 全量 53 张源图；截至第 9 轮已生成 26 张（含 4 张弃用），有效约 22 张；剩 31-35 张；5-10 积分/张 + 20-30% 返工率（本轮实测 3/13=23%）",
+      "A_allSpriteSheets": {
+        "sourceImages": "31-35",
+        "credits": [
+          155,
+          350
+        ],
+        "withRework": [
+          190,
+          450
+        ]
+      },
+      "B_proceduralRecommended": {
+        "sourceImages": "14-16",
+        "credits": [
+          70,
+          160
+        ],
+        "withRework": [
+          85,
+          200
+        ]
+      },
+      "C_minimumViable": {
+        "sourceImages": "6-9",
+        "credits": [
+          30,
+          90
+        ],
+        "withRework": [
+          40,
+          115
+        ]
+      },
+      "note": "图标/挂件程序化后约 13 张源图直接归零；Q21 只影响显存不影响张数。量级估算，非报价",
+      "round10Note": "第 10 轮只花 3 张剑魂源图（约 15-30 积分量级估算待实测）；17 件图标程序化 0 积分，不消耗源图预算；A/B/C 三档沿用第 9 轮口径未改变"
+    }
+  },
+  "batches": [
+    {
+      "id": "B0",
+      "content": "怪物 1 种 4 帧 + 技能 1 个 4 帧",
+      "sourceImages": 2,
+      "depends": [],
+      "status": "completed"
+    },
+    {
+      "id": "B1",
+      "content": "角色补 11 帧",
+      "sourceImages": 3,
+      "depends": [
+        "Q20"
+      ],
+      "status": "completed",
+      "actualSourceImages": 3,
+      "actualFrames": 11,
+      "note": "图生图 + --append；15 帧帧表已满"
+    },
+    {
+      "id": "B2",
+      "content": "4 种怪物各 15 帧",
+      "sourceImages": 15,
+      "depends": [
+        "B0"
+      ],
+      "status": "complete",
+      "note": "第 10 轮：剑魂补满 15 帧，四种怪各 15 帧完整帧表 → B2 全部收口（剑魂中心锚点 y=32）",
+      "actualFrames": 60,
+      "actualSourceImages": 16
+    },
+    {
+      "id": "B3",
+      "content": "2 个 Boss，需先改脚本 --size",
+      "sourceImages": 11,
+      "depends": [
+        "Q21"
+      ],
+      "status": "todo"
+    },
+    {
+      "id": "B4",
+      "content": "7 技能特效 + 命中 + overlay + 图标",
+      "sourceImages": 22,
+      "depends": [
+        "Q18"
+      ],
+      "status": "todo",
+      "note": "第 10 轮：图标累计 29 / 47 由程序化链路产出（0 积分）；剩 18 件（12 词缀 + 6 灵韵）卡 Q25/Q26；4 技能 / 命中 / 5 组 overlay 卡 Q24"
+    }
+  ],
+  "engineeringTodo": [
+    "tools/regularize_sprites.py 增加 --size 与 --kind mob/boss",
+    "导入核对脚本同步 §3.1 新正则，不得把 atk 塞进 cast",
+    "docs/SkillCaster.gd 的 hitbox_offset_x 64.0 → 16.0，并与 16px 重叠问题一起在 Godot 实测",
+    "Boss 96 非 2 的幂 → Q21 决定验收条款或改 128"
+  ],
+  "acceptance": {
+    "M8_skillPeakShapesDistinct": "8 帧峰值并排目检，形状/方向两两可区分",
+    "M8_paletteOutOfRange": 0,
+    "M8_anchorConsistency": "同组同一整数像素行",
+    "M8_namingCompliance": "100% 匹配 namingRules",
+    "M8_transparentHardEdge": "100%，无半透明像素",
+    "M8_layerCoverage": "9 层所需素材 100% 有对应 ID"
+  },
+  "risks": {
+    "R14": "atk 不在旧正则，导入核对会全报失败",
+    "R15": "Boss 96 非 2 的幂，与 M7 冲突",
+    "R16": "8 特效在 24 色板下撞色，须靠形状方向区分",
+    "R17": "1 职业后流派差异不足，须挂件+图标+特效三重提示",
+    "R18": "换色复用被识破成换皮，高层必须加新行为",
+    "R19": "命名正则 ID 段含下划线 → 旧正则误判 20 帧非法；已改 [a-z0-9_]+，每批次后跑全量命名复核",
+    "R20": "图生图跨批次服饰/大小漂移 → 固定参考图 + input_fidelity=high + 站位帧 bbox 复验（58-62px）",
+    "R21": "第 8 轮 4 帧 85-90 分属 silhouette_fill coverage≈0.30 的边界误判：生长/消散型特效与碎屑死亡帧天然低覆盖。qc_sprites.py 已放宽到 [0.015,0.92]，且 icon/acc 跳过孤立点检查（1px 装饰点是设计意图）",
+    "R22": "阴兵主色墨+深青，在深色塔内场景对比度不足：墨底目检几乎糊掉、宣纸底清晰。对策：1px 宣纸/金描边、提亮甲片高光，或保证场景背景浅于角色；待引擎实测",
+    "R23": "命名契约：生成器初版按内部短名产出 acc_jian/acc_fu/acc_dan/acc_ti，与 v0.3 工单 4 个 ID 全部对不上，换账号核对会判未做；已改名清理。新增素材先查工单 ID 再命名（与 R19 同类）",
+    "R24": "规格冲突：v0.3 工单把词缀 32 / 境界 16 / 灵韵 16 标反，与 07 §2.1 不一致；已按后续增量规范校正为 16/32/32，qc_sprites.py loose 扫描允许 {16,32}；改前/改后对照见 07 §7.1",
+    "R25": "build_icons.py v0.4 色板子集只收 16 色，缺墨三阶与 #8A8268；已补齐到完整 20 色，否则境界第 1 段色 #4A5568 会被生成器自检误判越界",
+    "R26": "台账内部矛盾 C01：00 §2「Q7 第二问＝序列帧」与未决 Q18/Q24 冲突；收敛为「序列帧仅作形状样板」待用户确认，见 08 §3",
+    "R27": "6 条灵韵提案无一条是 extra_pool 点数，与 01 M3「塔内 50% 计入 extra_pool」口径断裂；方案 A 全数值化撞 02 R8，方案 B 新增 legacy_effects 需先解除 Q5 存档结构。见 09 §3，未处置",
+    "R28": "08 §4.2 把 Q27 写成「8 个装备槽位 ID」，但 01 §8 只有第 2/3 槽 = 3 槽；8 件是装备品类。更正为 3 slot_* + 8 gear_type_*，已产 8 件图标 ID 无需改名。见 09 §4，待用户确认",
+    "R29": "M6 本地埋点日志与 01 §4「无数据收集」表面冲突；提案限定 user://telemetry/runs.jsonl 本地追加、不联网不上传、可导出可清空，需用户确认修订这句已明确假设。见 09 §5",
+    "R30": "08 引用「02 §M6」章节名不存在（M6 在 02 §5 新增验收段）；且 01 §15 验收表只有 M1–M5，M6 从未并入，冻结前 v0.2 必须补，否则冻结清单漏验收门禁。见 09 §5，未处置"
+  },
+  "openQuestions": [
+    "Q21",
+    "Q22",
+    "Q23",
+    "Q24(Q18)"
+  ],
+  "notDone": [
+    "【本轮唯一待办】用户决策卡回执（16 项，最省事一句「全部按推荐」）",
+    "18 件图标（12 词缀卡 Q25 / 6 灵韵卡 Q26）：名称与符号已在 09 提案，回执后由 build_icons.py 程序化补齐，0 积分",
+    "3 个 slot_* 契约（Q27，R28 更正后）；已产 8 件装备图标仅为形状样板",
+    "M6 埋点字段落库 + 把 M6 并入 01 §15（Q28 / R30）；01 §4 假设修订（R29）待确认",
+    "Q26 方案 B 需先解除 Q5 才能新增 legacy_effects（R27）",
+    "C01 台账矛盾待用户确认（序列帧是否已定）",
+    "R27–R30 四条诊断均只记录未处置",
+    "B3 两个 Boss（卡 Q21）",
+    "B4 其余 4 个技能 / 命中特效 / 5 组 overlay（卡 Q18/Q24，现三选项）",
+    "hitboxOffsetX=16px 重叠、阴兵与深色场景对比度（R22）待 Godot 实测",
+    "剑魂 idle/run 首帧轮廓接近，需 8fps 试播确认节奏",
+    "简中像素字体最终核验（R9，凤凰点阵体 CC0 为候选）",
+    "4 个硬门禁 Q1/Q3/Q5/Q8 未解除；策划案未整体确认",
+    "未产出 docs/design-freeze.json（当前仅 draft，frozen=false）；未建工程",
+    "未在编辑器跑过、未过导入核对",
+    "全部数值、内存、帧率、积分待实测"
+  ],
+  "round8": {
+    "sourceImages": 7,
+    "creditsRange": [
+      35,
+      70
+    ],
+    "newFrames": 27,
+    "totalFrames": 43,
+    "groups": 8,
+    "gifs": 8,
+    "qc": "23×100 + 4×85-90，verdict 全部 SHIP",
+    "scriptAdditions": [
+      "--cells",
+      "--hollow",
+      "--append",
+      "report.json 去绝对路径"
+    ],
+    "specFix": "R19 命名正则改 [a-z0-9_]+",
+    "status": "量级估算待实测；未在 Godot 编辑器跑过"
+  },
+  "round9": {
+    "scope": "B2 三种怪补满 15 帧帧表 + 剑魂 4 帧样板 + 图标/挂件形状规范与程序化首批",
+    "sourceImagesGenerated": 13,
+    "sourceImagesAdopted": 10,
+    "reworks": 3,
+    "newFrames": 37,
+    "totalSequenceFrames": 80,
+    "totalAssets": 96,
+    "icons": 12,
+    "accessories": 4,
+    "iconsPending": 35,
+    "qc": "11 组 / 96 项全部 SHIP；越界色 0、半透明 0、尺寸一致、3 组帧表完整",
+    "preview": "vfx-preview.html 576 KB / 9 组 / 9 GIF",
+    "newDocs": [
+      "docs/07-图标与挂件形状规范.md",
+      "docs/icon-catalog.json",
+      "docs/qc-report.json"
+    ],
+    "newTools": [
+      "tools/qc_sprites.py",
+      "tools/build_icons.py"
+    ],
+    "scriptUpgrades": [
+      "--anchor center（漂浮物）",
+      "Pillow 12.3 get_flattened_data 兼容",
+      "F() 坐标钳制防贴边"
+    ],
+    "credits": "约 65-130（13 张 × 5-10），量级估算待实测",
+    "notDone": [
+      "B2 仅剩 mob_jian_hun 补 11 帧（Q22 可后置）",
+      "B3 两个 Boss（卡 Q21）",
+      "B4 其余 4 个技能 / 命中特效 / 5 组 overlay（卡 Q24）/ 35 件图标（12 词缀卡机制定稿）",
+      "hitboxOffsetX=16px 重叠待 Godot 实测",
+      "阴兵与深色场景对比度（R22）待引擎实测",
+      "30 局组合不重复率等 M6 埋点字段未定",
+      "未在编辑器跑过、未过导入核对",
+      "未建工程、未冻结设计、未产出 design-freeze.json",
+      "简中像素字体：凤凰点阵体 CC0 为候选，最终核验未完成（R9）",
+      "全部数值、内存、帧率、积分待实测"
+    ]
+  },
+  "decisionDebt": {
+    "spec": "docs/08-决策收敛与需求追溯台账.md",
+    "confirmed": 18,
+    "hardGate": 4,
+    "contentBlocker": 6,
+    "deferred": 5,
+    "total": 15,
+    "newQuestions": [
+      "Q25 12 词缀名称",
+      "Q26 6 灵韵词条",
+      "Q27 8 装备槽位 ID",
+      "Q28 M6 埋点字段"
+    ],
+    "traceabilityCoverage": 0,
+    "note": "阶段一未建工程，产物侧无 DF-xx 回指；0 为预期非缺陷",
+    "decisionCardRef": "docs/decision-card.json（16 项 = 15 欠债 + C01）",
+    "proposalRef": "docs/09-内容命名提案.md（PROPOSAL，未确认，不改变 15 项欠债计数）",
+    "receiptReceived": false
+  },
+  "round10": {
+    "scope": "B2 收口（剑魂补 11 帧）+ 程序化补齐 17 件图标 + 决策收敛与需求追溯台账（draft）",
+    "sourceImagesGenerated": 3,
+    "sourceImagesAdopted": 3,
+    "reworks": 0,
+    "newFrames": 11,
+    "totalSequenceFrames": 91,
+    "totalAssets": 124,
+    "mobFullFrametables": 4,
+    "icons": 29,
+    "accessories": 4,
+    "iconsPending": 18,
+    "qc": "11 组 / 124 项全部 SHIP；越界色 0、半透明 0、尺寸不符 0；4 组怪物帧表完整",
+    "preview": "vfx-preview.html 612 KB / 9 组 / 9 GIF / 110 内嵌资源",
+    "newDocs": [
+      "docs/08-决策收敛与需求追溯台账.md",
+      "docs/design-freeze-draft.json",
+      "docs/traceability-report.json"
+    ],
+    "newTools": [
+      "tools/check_traceability.py"
+    ],
+    "scriptUpgrades": [
+      "build_icons.py v0.5：20 色板、realm/gear 符号、绘制回调、双拼图、ID 契约",
+      "qc_sprites.py：icon 允许 {16,32} 双档、新增 sizeOk 字段"
+    ],
+    "diagnostics": [
+      "R24 工单图标尺寸冲突",
+      "R25 生成器色板缺 4 色",
+      "R26/C01 台账内部矛盾",
+      "icon_gear_boots 目检返修"
+    ],
+    "traceability": "PASS：18 条编号合法 / 22 个来源全存在 / 15 项欠债全写明 / 4 硬门禁交叉引用一致 / 覆盖率 0（预期）",
+    "credits": "约 15-30（3 张 × 5-10），量级估算待实测；图标 0 积分",
+    "notDone": [
+      "18 件图标（12 词缀卡 Q25 / 6 灵韵卡 Q26）",
+      "8 个装备槽位 ID 定稿（Q27）；已产 8 件装备图标仅为形状样板",
+      "B3 两个 Boss（卡 Q21）",
+      "B4 其余 4 个技能 / 命中特效 / 5 组 overlay（卡 Q18/Q24，现三选项）",
+      "C01 台账矛盾待用户确认（序列帧是否已定）",
+      "M6 埋点字段（Q28）",
+      "hitboxOffsetX=16px 重叠、阴兵与深色场景对比度（R22）待 Godot 实测",
+      "剑魂 idle/run 首帧轮廓接近，需 8fps 试播确认节奏",
+      "简中像素字体最终核验（R9，凤凰点阵体 CC0 为候选）",
+      "4 个硬门禁 Q1/Q3/Q5/Q8 未解除；策划案未整体确认",
+      "未产出 docs/design-freeze.json（当前仅 draft，frozen=false）；未建工程",
+      "未在编辑器跑过、未过导入核对",
+      "全部数值、内存、帧率、积分待实测"
+    ]
+  },
+  "round11": {
+    "scope": "Q25–Q28 内容命名提案 + 一页式交互决策卡 + 回执校验/dry-run 链路（不越权、不返工）",
+    "sourceImagesGenerated": 0,
+    "creditsSpent": 0,
+    "newFrames": 0,
+    "newIcons": 0,
+    "totalSequenceFrames": 91,
+    "totalAssets": 124,
+    "newDocs": [
+      "docs/09-内容命名提案.md",
+      "docs/decision-card.json"
+    ],
+    "newTools": [
+      "tools/build_decision_card.py",
+      "tools/apply_decisions.py"
+    ],
+    "newPreview": "assets/_preview/decision-card.html（18966 字符，4 组 / 16 项，自包含）",
+    "proposal": {
+      "affixes": "12 条（沿用 02 P0-2 六条名称与类型 + 补六条），纯数值 2/12=16.7%，成对克制矩阵，奖励倍率改累加 clamp 1.60，12 个 16x16 菱形符号",
+      "legacy": "6 条传承灵韵 + R27 extra_pool 口径断裂（方案 A/B）",
+      "gear": "R28 更正：3 slot_* + 8 gear_type_*，已产 8 件图标 ID 无需改名",
+      "m6": "13 类埋点字段 + combo_hash 派生口径；R29 本地日志；R30 需并入 01 §15",
+      "recommendations": "C01 采纳收敛 / Q3 爬塔闯关 / Q5 接受 / Q8 Autoload+JSON / Q21 128 / Q24 程序化+pixelfx / Q1 由用户填本机版本"
+    },
+    "decisionCard": {
+      "groups": 4,
+      "items": 16,
+      "defaultPreset": "recommended",
+      "defaultMeansConfirmed": false
+    },
+    "receiptPipeline": {
+      "default": "dry-run，只打印校验摘要，不写文件",
+      "apply": "只写 docs/decision-receipt.json 与 docs/decision-plan.json",
+      "hardAssertions": [
+        "design-freeze-draft.json frozen=false",
+        "design-freeze.json 不存在",
+        "写入路径白名单",
+        "不改 01–08 正文",
+        "不建工程"
+      ],
+      "tests": [
+        "demo 全推荐",
+        "非法取值+未知编号（退出码 1）",
+        "互斥/依赖告警 4 条",
+        "--apply 分支"
+      ],
+      "demoArtifactsCleaned": true,
+      "officialReceiptReceived": false
+    },
+    "newRisks": [
+      "R27",
+      "R28",
+      "R29",
+      "R30"
+    ],
+    "rejectedDesign": "初稿「禁用符系技能 CD」词缀会封死一个流派、撞 02 R7，改为 affix_wuxu 无序（技能槽每 3 层重排）",
+    "qc": "素材侧零变化，沿用第 10 轮 11 组 / 124 项全 SHIP；本轮未重跑逐帧质检",
+    "estimatesNote": "A 190-450 / B 85-200 / C 40-115 三档不变（B3/B4 主体未动）",
+    "notDone": [
+      "【本轮唯一待办】用户决策卡回执（16 项，最省事一句「全部按推荐」）",
+      "18 件图标（12 词缀卡 Q25 / 6 灵韵卡 Q26）：名称与符号已在 09 提案，回执后由 build_icons.py 程序化补齐，0 积分",
+      "3 个 slot_* 契约（Q27，R28 更正后）；已产 8 件装备图标仅为形状样板",
+      "M6 埋点字段落库 + 把 M6 并入 01 §15（Q28 / R30）；01 §4 假设修订（R29）待确认",
+      "Q26 方案 B 需先解除 Q5 才能新增 legacy_effects（R27）",
+      "C01 台账矛盾待用户确认（序列帧是否已定）",
+      "R27–R30 四条诊断均只记录未处置",
+      "B3 两个 Boss（卡 Q21）",
+      "B4 其余 4 个技能 / 命中特效 / 5 组 overlay（卡 Q18/Q24，现三选项）",
+      "hitboxOffsetX=16px 重叠、阴兵与深色场景对比度（R22）待 Godot 实测",
+      "剑魂 idle/run 首帧轮廓接近，需 8fps 试播确认节奏",
+      "简中像素字体最终核验（R9，凤凰点阵体 CC0 为候选）",
+      "4 个硬门禁 Q1/Q3/Q5/Q8 未解除；策划案未整体确认",
+      "未产出 docs/design-freeze.json（当前仅 draft，frozen=false）；未建工程",
+      "未在编辑器跑过、未过导入核对",
+      "全部数值、内存、帧率、积分待实测"
+    ]
+  },
+  "round12": {
+    "trigger": "用户第 12 轮「全部按推荐 + 添加 buff 选择系统」",
+    "receipt": "docs/decision-receipt.json",
+    "plan": "docs/decision-plan.json",
+    "mergeList": "docs/10-决策回执落地与v0.2合并清单.md",
+    "cardSystem": {
+      "spec": "docs/11-塔层三选一卡牌系统.md",
+      "uiSpec": "docs/12-卡牌UI规格.md",
+      "library": "docs/buff-card-library.json",
+      "csv": "docs/卡牌库.csv",
+      "report": "docs/buff-card-report.json",
+      "preview": "assets/_preview/buff-card-preview.html",
+      "cards": 72,
+      "categories": 6,
+      "rarities": 4,
+      "numericRatio": 0.2361,
+      "status": "PROPOSAL · 数值待实测",
+      "credits": 0,
+      "sourceImages": 0
+    },
+    "iconCompletion": "47/47 图标（+18）+ 4 挂件；pending 归零；docs/icon-catalog.json v0.7",
+    "cardUIAssets": "assets/ui/cards/ 下 4 张 96x144 卡框 + 6 张 24x24 纹样，共 10 件，程序化 0 积分",
+    "qc": "docs/qc-report.json 11 组 / 142 项全部 SHIP（卡面资源单独由 buff-card-report.json 自检）",
+    "newRisks": [
+      "R31 16x16 图标糊（已返修）",
+      "R32 卡牌倍率撞数值红线（规则已立，极值待实测）",
+      "R33 6s 层间窗口读不完 72 张卡",
+      "R34 combo_hash 失去区分度",
+      "R35 夺主改 k 需重算 B",
+      "R36 追溯覆盖率把预览页说明文字误当工程回指（已修脚本）"
+    ],
+    "frozen": false,
+    "builtProject": false
+  },
+  "round14": {
+    "trigger": "用户确认 Q1=4.7.2",
+    "environment": "Godot 4.7.2.stable / 标准版 / 导出模板未装 / 用户零引擎经验",
+    "deliverable": null,
+    "cost": {
+      "credits": 0,
+      "sourceImages": 0,
+      "newAssets": 0
+    },
+    "changed": [
+      "docs/decision-receipt-user.txt",
+      "docs/decision-receipt.json",
+      "docs/decision-plan.json",
+      "docs/design-freeze-draft.json",
+      "docs/00-项目交接与进度.md",
+      "docs/13-Godot导入与本机配置指南.md",
+      "docs/数值框架.csv",
+      "docs/asset-content-manifest.json"
+    ],
+    "unchanged": [
+      "01/02/04/06 正文",
+      "frozen=false",
+      "design-freeze.json 不存在",
+      "未建工程",
+      "全部素材与卡牌设计"
+    ],
+    "next": "等用户整体确认策划案 → 按 docs/10 §3 合并 01 v0.2 → design-freeze.json 置 frozen → 才建工程"
+  },
+  "round15": {
+    "trigger": "用户第 15 轮「策划案整体确认」",
+    "gdd": {
+      "v02": "docs/01-策划案.md",
+      "v01Archive": "docs/01-策划案-v0.1-baseline.md",
+      "diff": "docs/14-v0.2合并差异记录.md",
+      "generator": "tools/build_gdd_v02.py",
+      "replacements": 21,
+      "lines": 460,
+      "extraFound": "第 19 行：8.1/8.2 的 realm_ratio 4.00 与 DF-07 的 1.60 冲突"
+    },
+    "freeze": {
+      "file": "docs/design-freeze.json",
+      "status": "frozen",
+      "version": 1,
+      "items": 22,
+      "newIds": [
+        "DF-19",
+        "DF-20",
+        "DF-21",
+        "DF-22"
+      ]
+    },
+    "r32": {
+      "file": "docs/damage-ceiling-report.json",
+      "tool": "tools/verify_damage_ceiling.py",
+      "found": "四上界铁律漏了第五变量 base；3 张卡无 pool/cap 声明；最坏 4399（余量 1 点）/ 4529（击穿）",
+      "fixed": [
+        "card_jianfeng",
+        "card_danbao",
+        "card_shuangren"
+      ],
+      "result": "3996 < 4400 / 违规 0 / PASS",
+      "numericStill": "PROPOSAL 待实测"
+    },
+    "minimalProject": {
+      "godot": "4.7.2.stable",
+      "configBy": "引擎自己 ProjectSettings.save()",
+      "importsGeneratedByEditor": 229,
+      "headlessVerify": "PASS",
+      "structureCheck": "PASS 错误0 警告2",
+      "coverage": "4/22 = 18%",
+      "guiF5": "未做，需用户目检",
+      "files": [
+        "project.godot",
+        ".gitignore",
+        "scenes/MinimalRun.tscn",
+        "scripts/PlayerProbe.gd",
+        "tools/bootstrap_project.gd",
+        "tools/verify_minimal_run.gd",
+        "docs/project-spec.json",
+        "docs/asset-manifest-godot.json",
+        "docs/godot-project-check.json"
+      ]
+    },
+    "newRisk": "R38 自检误读 v1 归档基线（已修：新建 v2 生效规格并显式指定）",
+    "cost": {
+      "credits": 0,
+      "sourceImages": 0
+    },
+    "frozen": true,
+    "builtProject": true,
+    "guiVerified": false
+  },
+  "round15Final": {
+    "trigger": "第 15 轮收口：全量回填、自检与交接文档更新",
+    "finalSelfCheck": "tools/final_selfcheck.py → docs/final-selfcheck.json",
+    "handoverFixed": "docs/00 §0 过期门禁改历史快照 / §6 收口小节 / §8 R27–R30 状态 / §9 重复编号 / 验收段，共 12 处",
+    "riskR39": "Godot 把 docs 下 CSV 误判为翻译表 → 新建空 docs/.gdignore、清理 24 个生成物、.gitignore 兜底",
+    "riskR40": "结构自检复跑报 1 错误：design-freeze-draft.json 两处占位符编号被当未知需求编号；改为描述性文字，错误 1→0，未删条目、未改列表结构",
+    "dynamicRecheck": "verify_damage_ceiling PASS / check_traceability PASS / check_godot_project 错误0警告2通过 / Godot 4.7.2 headless VERIFY|PASS",
+    "selfCheckVerdict": "20/20 PASS",
+    "guideAppendix": "docs/13 §12.6",
+    "credits": 0,
+    "sourceImages": 0,
+    "guiF5": "未做；仍需用户按 docs/13 §12 目检",
+    "verdict": "静态/离线全量自检 PASS；GUI 画面未验证"
+  },
+  "round16Final": {
+    "trigger": "第 16 轮：用户首次在 GUI 打开工程并反馈编辑器状态",
+    "riskR41": "Player(CharacterBody2D) 缺 CollisionShape2D → 编辑器黄色警告 + 无碰撞；已补 Body(32x56) 与 GroundBody(StaticBody2D, 480x54, 顶 216) + Feet(Marker2D)",
+    "riskR42": "三个 miora 预览画板落在工程根目录被引擎扫描 → 移入 previews/ 并加 .gdignore；assets/_preview/ 加 .gdignore 并清理 31 个拼图 .import",
+    "feetAlign": "headless 断言 player_bottom=216.0 == ground_top=216.0（数值对齐；画面贴合仍待目检）",
+    "importsNow": 196,
+    "importsHistory": "第 15 轮导入 229 项为历史值；第 16 轮清理 assets/_preview 与 previews/ 后现 196 项",
+    "riskR43": "AnimatedSprite2D 的 SpriteFrames 原由脚本动态构造 → 编辑器报「必须先设置 SpriteFrames 资源」黄色警告且预览不到帧；已新增 tools/build_sprite_frames.gd 由引擎 ResourceSaver.save 写出 assets/char/player_frames.tres（idle3/run4，6/8fps，7 帧引用）并挂到场景，脚本保留兜底分支",
+    "guideSteps": "docs/13 §12.4 由 3 步改 4 步（新增「切 2D 视图」）；§12.1 文件表补 previews/；§12.2 VERIFY 输出更新",
+    "dynamicRecheck": "Godot 4.7.2 headless VERIFY|PASS / check_godot_project 错误0警告2通过 / check_traceability PASS / verify_damage_ceiling PASS",
+    "selfCheckVerdict": "20/20 PASS",
+    "credits": 0,
+    "sourceImages": 0,
+    "guiF5": "仍需用户按 F5 目检；助手未跑过 GUI",
+    "verdict": "离线/headless 全绿；画面未验证"
+  },
+  "round17Migration": {
+    "workspaceRoot": "~/Documents/ai-game",
+    "previousLocation": "~/WorkBuddy/2026-11-07-20-33-57",
+    "reason": "会话目录名带时间戳，换账号后不好找；改用固定名稳定目录",
+    "filesMoved": 1103,
+    "sha256Verify": "PASS 零缺失；19 处差异均为预期内追加（记录回填/缓存字节码/报告路径串）",
+    "legacySymlinksKept": true,
+    "godotCacheNeedsReimport": false,
+    "guideFile": "xianxia-tower/README-从这里开始.md",
+    "selfCheckItems": 24,
+    "creditsTotal": 0,
+    "misplacedIntermediateRemoved": "~/WorkBuddy/ai-game（曾误建，已清理空目录）",
+    "coLocatedProjectsUntouched": "同目录另有 11 个用户项目（jiuxiao-* / shanhaice / skills 等），均未改动"
+  },
+  "round29B3B4Background": {
+    "trigger": "用户「这三块都做」（B3 Boss 帧表 / B4 剩余特效与 overlay / 背景四深度层）",
+    "pipeline": "程序化像素几何重绘，0 出图积分 / 0 张 AI 源图；AI 参考稿只作构图依据（R55）",
+    "delivered": {
+      "bossFrames": 42,
+      "bossIds": ["boss_judge", "boss_tower_lord"],
+      "bossFrameSize": [128, 128],
+      "bossFrameTables": {"boss_judge": 18, "boss_tower_lord": 24},
+      "vfxFramesAdded": 20,
+      "overlayFrames": 10,
+      "backgroundLayers": 16,
+      "backgroundScenes": ["bg_normal", "bg_rest", "bg_high", "bg_boss"],
+      "backgroundLayerSize": [480, 270]
+    },
+    "tools": ["tools/build_b3b4_assets.py", "tools/build_bg_layers.py"],
+    "reports": ["docs/b3b4-build-report.json", "docs/bg-layers-report.json", "docs/qc-report.json"],
+    "qc": "23 组 / 214 帧全 SHIP；越界色 0 / 半透明 0 / 尺寸不符 0",
+    "selfcheck": "31/31 PASS",
+    "status": "静态可导入资源；待目检与合规确认，不得直接入库",
+    "boundaries": "Q17 未拍板 / GUI F5 未跑 / 未接任何 Godot 场景；Q24 运行时仍走程序化 shader，PNG 仅形状样板；视差系数 PROPOSAL 待实测",
+    "detailDoc": "docs/22-B3B4与背景分层程序化落地.md"
+  },
+  "round30OverviewAndSelfcheck": {
+    "trigger": "用户「继续」→ 自主推进不依赖拍板的可复算工程欠债（Q17/F5 门禁保持不动）",
+    "reason": "第 29 轮 92 张资源未进入自检机器清单；待人工目检项缺可见载体",
+    "delivered": {
+      "overviewPage": "previews/asset-overview.html",
+      "overviewTool": "tools/build_asset_overview.py",
+      "embeddedImages": 108,
+      "bytes": 126993,
+      "selfcheckItem": "assets_r29",
+      "selfcheckTotal": 32
+    },
+    "bugFixed": "背景层底色矩形下边界多占下一层 1 行（Pillow rectangle 含下边界）；修后 bandStrayTotal=0，四层真正独立可切",
+    "bandContract": {"L1": [0, 68], "L2": [68, 202], "L3": [202, 270], "L4": "前景覆盖层，可跨带，只受 l4AreaRatio < 10% 约束"},
+    "selfcheck": "32/32 PASS；qc 仍 23 组 / 214 帧全 SHIP",
+    "boundaries": "验证层画板，非 UI 设计稿 / 非游戏本体；未接 Godot、未做 Parallax2D；6 条待人工目检保持标红；docs/22 的 31/31 为第 29 轮快照，不原位改写",
+    "detailDoc": "docs/23-素材目检页与自检第32项.md"
+  },
+  "round31ReferenceTranscription": {
+    "trigger": "用户指出第 29/30 轮一张 gpt-image2 回稿都没用、质量不如原稿，并补充 00~08 九张 UI 稿也是其本人生成、务必利用",
+    "correction": "第 29 轮把 R55『AI 直出整图不算入库』误扩大成『全部丢掉几何重绘』；改为以回稿为真实像素源做裁格 / 边界洪水去白底 / 最大连通域剔标注 / 等比缩放 / 24 色复核 / 分带切层",
+    "sourceCoverage": {"palette24Total": 17, "used": 16, "unused": ["previews/ui/A2-bgrest-gpt-image2_palette24.png"], "unusedReason": "方图旧版，已被用户重出的 16:9 版 A2R-bgrest 取代；原稿保留未删"},
+    "tools": ["tools/build_from_reference_art.py", "tools/build_ui_reference_assets.py"],
+    "rewrittenAssets": {"bossFrames": 42, "vfxFramesFromC1": 16, "overlayFrames": 10, "backgroundLayers": 16, "uiReferenceFiles": 116, "uiOverviewPage": "previews/ui-reference-overview.html"},
+    "watermark": ["A2R-bgrest 右下 gptimage.dev：青玉水印像素 1764 -> 0", "08-icons 右下 gptimage.dev：条带回填 8668 像素", "其余 15 张放大右下角核对无水印"],
+    "userOriginalsUntouched": true,
+    "tonePolicy": "默认原稿保真不调色；--tuned 为可选 24 色阶梯调和；R22 亮度代理超 30% 的 bg_normal / bg_high / bg_boss 如实登记 knownExceptions，不伪造 PASS",
+    "selfcheck": "33/33 PASS（新增 ui_reference_r31 源覆盖率断言；assets_r29 的 R22 断言改为如实披露口径）",
+    "qc": "23 组 / 214 帧全 SHIP；越界色 0 / 半透明 0",
+    "status": "静态可导入资源；待目检与合规确认，不得直接入库",
+    "boundaries": "Q17 未拍板 / GUI F5 未跑 / 未接任何 Godot 场景；不替换 47 个 R23 冻结图标与 10 张卡面；UI 组件裁切框为相对比例估算需人工微调；docs/22 与 docs/23 正文为历史快照不原位改写",
+    "detailDoc": "docs/24-参考稿转录更正与UI稿资产化.md"
+  },
+  "round32WebReferenceArt": {
+    "round": 32,
+    "reason": "第 31 轮换好的回稿转录资源只躺在 assets/ 与静态目检页，网页验证层仍用第 20 轮 CSS 山影 + 剑魂帧占位；本轮让原稿在实际可交互战斗画面里可见",
+    "page": "previews/web-demo.html",
+    "embeddedImages": 235,
+    "newImages": {"boss": 42, "overlay": 10, "backgroundComposite": 4},
+    "defaultMode": "原稿转录（Boss 真帧 128×128 / 四场景原稿背景 480×270 1:1）",
+    "placeholderMode": "?art=placeholder 或右上按钮，切回 CSS 山影 + mob_jian_hun 放大 96px",
+    "comparisonImage": "assets/_preview/web_demo_art_compare.png",
+    "staleWordingCleared": [
+      "build_web_demo.py docstring 的 Boss 素材缺失",
+      "战斗视图 note 的第 5/9 层 Boss 素材未产",
+      "风险表 R50 的 assets/boss/ 为空",
+      "battle_sim.js 头注释（只改注释，规则逻辑与冻结数值未动）",
+      "战斗日志按 refArt 分别如实表述",
+      "浏览器内实时自检写死 vfx===16 改为动态下界"
+    ],
+    "selfcheck": "34/34 PASS（新增 web_reference_art_r32 逐字节核对内嵌资源与 R50 解除）",
+    "browserLiveSelfcheck": "无头 Chrome 实跑：原稿模式 20/20、占位模式 20/20，均 0 FAIL",
+    "qc": "23 组 / 214 帧全 SHIP；越界色 0 / 半透明 0",
+    "status": "网页验证层可见；待目检与合规确认，不得直接入库",
+    "boundaries": "Q17 未拍板 / GUI F5 未跑 / 未接任何 Godot 场景；CSS pixelated ≠ 实机 Nearest；BOSS_PLACEHOLDER 规则层保留；HUD 底衬仅为验证层可读性兜底；hit 全白剪影是闪白帧非破图；R22 knownExceptions 未改写；docs/22/23/24 为历史快照不原位改写",
+    "detailDoc": "docs/25-原稿素材接入网页验证层.md"
+  },
+  "round33UiSkinLinkedViews": {
+    "round": 33,
+    "goal": "让第 31 轮资产化的 9 张 gpt-image2 UI 设计稿在网页验证层里按视图联动可见",
+    "input": "assets/ui/reference/ui_*_panel.png（manifest kind=panel16x9，9 张 960x540）",
+    "output": "previews/web-demo.html nav 下的 UI 设计稿对照层（9 张逐字节内嵌 + 六视图联动 + 下拉 + 开关）",
+    "viewMap": {
+      "menu": "ui_01-mainmenu_panel",
+      "battle": "ui_02-towerhud_panel",
+      "draft": "ui_03-draft_panel",
+      "sprite": "ui_00-anchor_panel",
+      "codex": "ui_07-codex_panel",
+      "status": "ui_08-icons_panel"
+    },
+    "dropdownOnly": ["ui_04-result_panel", "ui_05-pause_panel", "ui_06-affix_panel"],
+    "embeddedImages": 244,
+    "liveSelfcheckItems": 22,
+    "finalSelfcheckItems": 35,
+    "decision": "整屏稿含示例文字与写死数值（血条 276/300、结算 +180、完整卡文案、成品按钮），切出的组件也多自带文案；贴进可交互界面会出现显示值与 battle_sim.js 规则值不一致的假数值，故只作并排对照，不铺进任何 section、不替换交互组件、不参与规则复算",
+    "status": "待人工目检与合规确认；不得直接入库",
+    "boundaries": "R55 参考稿不算入库 / Q17 未拍板 / 坐标 PROPOSAL / 44 组件与 48 图标仍是候选资产（未替换 47 冻结图标与 10 卡面）/ GUI F5 未跑 / 未接 Godot 场景 / 未改冻结数值 / docs/22-25 为历史快照不原位改写",
+    "detailDoc": "docs/26-UI设计稿按视图联动对照层.md"
+  }
+}

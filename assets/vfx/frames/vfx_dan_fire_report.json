@@ -1,0 +1,71 @@
+{
+  "source": "8_bit_pixel_art_game_VFX_anima_2026-11-07T14-38-07.png",
+  "kind": "vfx",
+  "cells": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "hollow": false,
+  "append": false,
+  "crop": [
+    64,
+    64,
+    448,
+    448
+  ],
+  "frames": [
+    {
+      "file": "vfx_dan_fire_00.png",
+      "scale": 0.1458,
+      "colorsBeforeSnap": 188,
+      "pixelsSnapped": 193,
+      "usedColors": 5,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_dan_fire_01.png",
+      "scale": 0.1458,
+      "colorsBeforeSnap": 573,
+      "pixelsSnapped": 687,
+      "usedColors": 6,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_dan_fire_02.png",
+      "scale": 0.1458,
+      "colorsBeforeSnap": 1195,
+      "pixelsSnapped": 1750,
+      "usedColors": 7,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_dan_fire_03.png",
+      "scale": 0.1458,
+      "colorsBeforeSnap": 653,
+      "pixelsSnapped": 760,
+      "usedColors": 4,
+      "outOfPalette": 0
+    }
+  ],
+  "outputs": {
+    "frames": [
+      "vfx_dan_fire_00.png",
+      "vfx_dan_fire_01.png",
+      "vfx_dan_fire_02.png",
+      "vfx_dan_fire_03.png"
+    ],
+    "framesAddedThisBatch": [
+      "vfx_dan_fire_00.png",
+      "vfx_dan_fire_01.png",
+      "vfx_dan_fire_02.png",
+      "vfx_dan_fire_03.png"
+    ],
+    "sheet": "vfx_dan_fire_sheet.png",
+    "gif": "vfx_dan_fire.gif",
+    "preview": "vfx_dan_fire_preview.png",
+    "engineJson": "vfx_dan_fire.json"
+  },
+  "paletteOutOfRangeTotal": 0
+}

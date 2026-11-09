@@ -1,0 +1,161 @@
+{
+  "round": 31,
+  "tool": "tools/build_from_reference_art.py",
+  "scope": "更正第 29 轮：把 gpt-image2 回稿作为真实像素源，重做 B3 / B4 / 背景三块",
+  "reason": "第 29 轮误把「AI 直出整图不算入库」扩大成「全部丢掉几何重绘」，用户指出回稿质量更高",
+  "sourceArtRoot": "previews/ui/",
+  "sourceFiles": [
+    "previews/ui/A1-bgnormal-gpt-image2_palette24.png",
+    "previews/ui/A2R-bgrest-gpt-image2_palette24.png",
+    "previews/ui/A3-bghigh-gpt-image2_palette24.png",
+    "previews/ui/A4-bgboss-gpt-image2_palette24.png",
+    "previews/ui/B-boss-gpt-image2_palette24.png",
+    "previews/ui/C1-vfx-gpt-image2_palette24.png",
+    "previews/ui/C2-overlay-gpt-image2_palette24.png"
+  ],
+  "watermark": {
+    "box": [
+      1300,
+      840,
+      1650,
+      915
+    ],
+    "pixelsReplaced": 4029,
+    "watermarkCyanBefore": 1764,
+    "watermarkCyanAfter": 0,
+    "sourceArtUntouched": true
+  },
+  "userOriginalsUntouched": true,
+  "boss": [
+    {
+      "id": "boss_judge",
+      "source": "previews/ui/B-boss-gpt-image2_palette24.png",
+      "gridCell": [
+        0,
+        0
+      ],
+      "frameCount": 18
+    },
+    {
+      "id": "boss_tower_lord",
+      "source": "previews/ui/B-boss-gpt-image2_palette24.png",
+      "gridCell": [
+        0,
+        1
+      ],
+      "frameCount": 24
+    }
+  ],
+  "vfx": [
+    {
+      "id": "vfx_flying_sword",
+      "source": "previews/ui/C1-vfx-gpt-image2_palette24.png",
+      "gridCell": [
+        0,
+        0
+      ],
+      "frameCount": 4
+    },
+    {
+      "id": "vfx_paper_puppet",
+      "source": "previews/ui/C1-vfx-gpt-image2_palette24.png",
+      "gridCell": [
+        0,
+        1
+      ],
+      "frameCount": 4
+    },
+    {
+      "id": "vfx_fist_force",
+      "source": "previews/ui/C1-vfx-gpt-image2_palette24.png",
+      "gridCell": [
+        1,
+        0
+      ],
+      "frameCount": 4
+    },
+    {
+      "id": "vfx_vajra_body",
+      "source": "previews/ui/C1-vfx-gpt-image2_palette24.png",
+      "gridCell": [
+        1,
+        1
+      ],
+      "frameCount": 4
+    }
+  ],
+  "overlay": [
+    {
+      "id": "ovl_shield",
+      "gridRow": 0,
+      "frameCount": 2,
+      "pulsePixelDeltaRatio": 0.0084
+    },
+    {
+      "id": "ovl_elite",
+      "gridRow": 1,
+      "frameCount": 2,
+      "pulsePixelDeltaRatio": 0.0024
+    },
+    {
+      "id": "ovl_burn",
+      "gridRow": 2,
+      "frameCount": 2,
+      "pulsePixelDeltaRatio": 0.0485
+    },
+    {
+      "id": "ovl_chill",
+      "gridRow": 3,
+      "frameCount": 2,
+      "pulsePixelDeltaRatio": 0.0171
+    },
+    {
+      "id": "ovl_affix",
+      "gridRow": 4,
+      "frameCount": 2,
+      "pulsePixelDeltaRatio": 0.0356
+    }
+  ],
+  "background": [
+    {
+      "scene": "bg_normal",
+      "reference": "A1-bgnormal",
+      "shippedMode": "faithful",
+      "combatDarkRatioFaithful": 0.5318,
+      "combatDarkRatioShipped": 0.5318,
+      "l4AreaRatio": 0.0916
+    },
+    {
+      "scene": "bg_rest",
+      "reference": "A2R-bgrest",
+      "shippedMode": "faithful",
+      "combatDarkRatioFaithful": 0.0818,
+      "combatDarkRatioShipped": 0.0818,
+      "l4AreaRatio": 0.0259
+    },
+    {
+      "scene": "bg_high",
+      "reference": "A3-bghigh",
+      "shippedMode": "faithful",
+      "combatDarkRatioFaithful": 0.8583,
+      "combatDarkRatioShipped": 0.8583,
+      "l4AreaRatio": 0.0449
+    },
+    {
+      "scene": "bg_boss",
+      "reference": "A4-bgboss",
+      "shippedMode": "faithful",
+      "combatDarkRatioFaithful": 0.739,
+      "combatDarkRatioShipped": 0.739,
+      "l4AreaRatio": 0.0685
+    }
+  ],
+  "exceptions": [
+    "vfx_hit 没有对应回稿（C1 只有 4 格），保留第 29 轮程序化 4 帧",
+    "A1 / A3 / B / C1 / C2 是方图或排版稿，已按目标画幅裁格；方图背景居中裁 16:9 会损失上下内容",
+    "默认入库不调色；原稿战斗区暗像素比超 30% 的场景已在 bg-layers-report.json 的 r22Disclosure 如实登记",
+    "B 组概念稿的标注文字 / 格线已用最大连通域剔除，立绘主体完整保留",
+    "status 一律沿用「待目检与合规确认；不得直接入库」；Q17 / GUI F5 未过"
+  ],
+  "status": "HEADLESS 静态指标自检；画面未验证"
+}

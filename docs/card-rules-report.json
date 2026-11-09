@@ -1,0 +1,134 @@
+{
+	"checks": [
+		{
+			"detail": "count=72 err=",
+			"label": "卡库加载 72 张",
+			"ok": true
+		},
+		{
+			"detail": "bytes 31962/31962",
+			"label": "docs 设计源与 data 运行时副本语义一致",
+			"ok": true
+		},
+		{
+			"detail": "导出后该目录不进包，故运行时只读 data/",
+			"label": ".gdignore 只挡编辑器扫描，工程内 docs/ 仍可读",
+			"ok": true
+		},
+		{
+			"detail": "ids=72",
+			"label": "运行时卡库 ID 数 = 72",
+			"ok": true
+		},
+		{
+			"detail": "seed=4264777024",
+			"label": "FNV-1a(runA:1) 跨实现可复算",
+			"ok": true
+		},
+		{
+			"detail": "offered=[\"card_leizhuan\", \"card_kongzhan\", \"card_jianxin\"]",
+			"label": "同 (run_id, stage) 候选确定性一致",
+			"ok": true
+		},
+		{
+			"detail": "8 层逐一比对",
+			"label": "不同 run_id 的抽卡序列确实不同",
+			"ok": true
+		},
+		{
+			"detail": "s1:3 s2:3 s3:3 s4:3 s5:3 s6:3 s7:3 s8:3 s9:0",
+			"label": "1–8 层各弹一次 / 第 9 层不弹 / 同类最多 1 张",
+			"ok": true
+		},
+		{
+			"detail": "total=8 unique=8",
+			"label": "本样例局 8 次选择（堆叠可重复；封牌卡未触发，8 次是上限）",
+			"ok": true
+		},
+		{
+			"detail": "count=2",
+			"label": "无相词缀把 3 选 1 压成 2 选 1",
+			"ok": true
+		},
+		{
+			"detail": "count=3",
+			"label": "无相破把候选恢复为 3 张",
+			"ok": true
+		},
+		{
+			"detail": "nianzhuan→juling",
+			"label": "excl 正向：已选 A 则 B 不进池",
+			"ok": true
+		},
+		{
+			"detail": "juling→nianzhuan",
+			"label": "excl 反向同样生效",
+			"ok": true
+		},
+		{
+			"detail": "picked=3",
+			"label": "堆满 stack=3 后移出池",
+			"ok": true
+		},
+		{
+			"detail": "picked=1",
+			"label": "未堆满仍可再选（堆叠语义）",
+			"ok": true
+		},
+		{
+			"detail": "unlock",
+			"label": "realm=1 时 realm:6 解锁卡不进池",
+			"ok": true
+		},
+		{
+			"detail": "req",
+			"label": "stage=1 不满足 stage>=5 前置",
+			"ok": true
+		},
+		{
+			"detail": "req+unlock",
+			"label": "realm>=6 且 stage>=5 才进池",
+			"ok": true
+		},
+		{
+			"detail": "card_sheli / card_wuxin",
+			"label": "封牌后本局不再弹卡",
+			"ok": true
+		},
+		{
+			"detail": "guard_hits=3",
+			"label": "72 张卡逐张生效都不破五上界 / 无 pool+cap 声明违规",
+			"ok": true
+		},
+		{
+			"detail": "peak=3996",
+			"label": "72 卡全生效峰值仍 3996 < Boss 4400",
+			"ok": true
+		},
+		{
+			"detail": "events=105",
+			"label": "上界守卫确实拦下过卡牌增量（非空跑）",
+			"ok": true
+		},
+		{
+			"detail": "keys=9",
+			"label": "pick_event 含 11 §5 增补字段",
+			"ok": true
+		}
+	],
+	"engine": "Godot 4.7.2.stable（headless）",
+	"generatedAt": "2026-11-08",
+	"generator": "tools/verify_card_rules.gd",
+	"note": "权重/概率/层数曲线均为 PROPOSAL / 待实测；本报告只证明规则与上界守卫可复算，不证明平衡性或画面。",
+	"scope": "层间三选一卡牌规则层 · 离线断言（非 GUI 目检）",
+	"summary": {
+		"cards": 72,
+		"failed": 0,
+		"guardEvents": 105,
+		"passed": 23,
+		"peakDamage": 3996.0,
+		"total": 23
+	},
+	"verdict": "PASS",
+	"version": 1
+}

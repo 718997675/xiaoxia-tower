@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "id": "mob_zhi_kui",
+  "kind": "mob",
+  "frameSize": [
+    64,
+    64
+  ],
+  "logicalResolution": [
+    480,
+    270
+  ],
+  "integerScale": 4,
+  "palette": [
+    "#12161F",
+    "#2A3140",
+    "#4A5568",
+    "#8A8268",
+    "#C9BFA3",
+    "#E8DFC8",
+    "#2F6E6A",
+    "#5FA8A0",
+    "#9BD4CC",
+    "#7A2420",
+    "#C8453B",
+    "#E8806F",
+    "#8A6520",
+    "#D9A441",
+    "#F2D089",
+    "#4A3A6B",
+    "#8A6FC4",
+    "#C0A8E0",
+    "#000000",
+    "#FFFFFF"
+  ],
+  "paletteReservedSlots": 4,
+  "fps": 8.0,
+  "frameCount": 15,
+  "frames": [
+    "mob_zhi_kui_idle_r_00.png",
+    "mob_zhi_kui_idle_r_01.png",
+    "mob_zhi_kui_idle_r_02.png",
+    "mob_zhi_kui_run_r_00.png",
+    "mob_zhi_kui_run_r_01.png",
+    "mob_zhi_kui_run_r_02.png",
+    "mob_zhi_kui_run_r_03.png",
+    "mob_zhi_kui_atk_r_00.png",
+    "mob_zhi_kui_atk_r_01.png",
+    "mob_zhi_kui_atk_r_02.png",
+    "mob_zhi_kui_atk_r_03.png",
+    "mob_zhi_kui_hit_r_00.png",
+    "mob_zhi_kui_death_r_00.png",
+    "mob_zhi_kui_death_r_01.png",
+    "mob_zhi_kui_death_r_02.png"
+  ],
+  "appendedFromPreviousBatches": true,
+  "anchor": {
+    "x": 32,
+    "y": 62,
+    "note": "脚底锚点，全组统一且落在同一整数像素行"
+  },
+  "hitbox": [
+    24,
+    32
+  ],
+  "hitboxOffsetX": 16,
+  "loop": true,
+  "status": "待目检与合规确认；不得直接入库"
+}

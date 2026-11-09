@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-08",
+  "generator": "tools/build_card_runtime_data.py",
+  "reason": "docs/ 的 .gdignore 使该目录导出后不可用；运行时只读 data/ 副本（R45）",
+  "source": "docs/buff-card-library.json",
+  "target": "data/buff-card-library.json",
+  "canonicalSha256": "b4fb46d7b680f4d3f565c22b7968ccd1b12dfbc93e0847374019b340720bde1d",
+  "cards": 72,
+  "categories": 6,
+  "rarities": 4,
+  "verdict": "PASS",
+  "note": "数值、权重、概率一律为 PROPOSAL / 待实测；本脚本只搬运数据，不改任何卡面或规则。"
+}

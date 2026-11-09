@@ -1,0 +1,58 @@
+{
+  "id": "vfx_paper_puppet",
+  "kind": "vfx",
+  "pipeline": "tools/build_b3b4_assets.py（程序化，0 积分）",
+  "frameCount": 4,
+  "frames": {
+    "vfx_paper_puppet_00.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.1028,
+      "usedColors": 4,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 421
+    },
+    "vfx_paper_puppet_01.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.2473,
+      "usedColors": 4,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 1013
+    },
+    "vfx_paper_puppet_02.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.2917,
+      "usedColors": 5,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 1195
+    },
+    "vfx_paper_puppet_03.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.2917,
+      "usedColors": 6,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 1195
+    }
+  },
+  "outOfPaletteTotal": 0,
+  "semiAlphaTotal": 0,
+  "status": "静态资源已产出；GUI F5 目检 / 实机对比度 / 帧率一律待实测",
+  "note": "报告内不含机器绝对路径",
+  "shapeLanguage": "方形符纸展成傀儡",
+  "q24Note": "PNG 为形状样板；运行时按 Q24=procedural_plus_pixelfx 走程序化 shader"
+}

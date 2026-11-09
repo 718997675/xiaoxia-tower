@@ -1,0 +1,165 @@
+{
+  "projectDir": "/Users/niekai/Documents/ai-game/xianxia-tower",
+  "errorCount": 0,
+  "warningCount": 2,
+  "items": [
+    {
+      "level": "info",
+      "check": "spec",
+      "message": "已加载规格文件: project-spec.json",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "layout",
+      "message": "必需目录与文件齐全（5 个必需目录 / 3 个必需文件）",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "projectConfig",
+      "message": "工程配置合法（配置版本 5，应用名 九重天梯 · 最小验证工程，主场景 res://scenes/MinimalRun.tscn）",
+      "path": "project.godot",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "projectConfig",
+      "message": "工程声明的引擎特性: PackedStringArray(\"4.7\", \"GL Compatibility\")",
+      "path": "project.godot",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "gitignore",
+      "message": "已忽略引擎缓存目录 .godot/",
+      "path": ".gitignore",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "importPairing",
+      "message": "按规格设置跳过导入元数据配对检查",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "sceneRefs",
+      "message": "10 个被引用的资源路径全部存在",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "extResourceIds",
+      "message": "2 个场景/资源的资源 id 定义与引用闭合",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "autoload",
+      "message": "工程没有自动加载项",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "inputMap",
+      "message": "2 个被代码引用的动作全部已在输入映射中定义",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "gdscript",
+      "message": "检查了 5 个脚本",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "warn",
+      "check": "traceability",
+      "message": "有 18 个已确认条目在工程中未被任何文件引用（覆盖缺口）: DF-01, DF-02, DF-03, DF-05, DF-06, DF-07, DF-08, DF-09, DF-10, DF-11",
+      "path": "",
+      "hint": "在对应脚本或资源里加一行标记，如 # @trace MECH-001",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "traceability",
+      "message": "冻结条目 22 个（已确认 22），工程引用覆盖率 4/22 = 18%",
+      "path": "/Users/niekai/Documents/ai-game/xianxia-tower/docs/design-freeze.json",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "warn",
+      "check": "absolutePaths",
+      "message": "以下文件疑似含机器绝对路径（换机后会失效）: docs/final-selfcheck.json, docs/godot-project-check.json",
+      "path": "",
+      "hint": "改为工程内相对引用；绝对路径在别人机器上一定失效",
+      "files": [
+        "docs/final-selfcheck.json",
+        "docs/godot-project-check.json"
+      ],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "checkLog",
+      "message": "未提供日志，跳过（加 --check-log 可校验脚本检查或构建结果）",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "assetSpec",
+      "message": "有 75 个资源未纳入任何清单规则（未做规格核对）: assets/_preview/buff_cards_contact_sheet.png, assets/_preview/char_player_preview.png, assets/_preview/char_player_sheet.png, assets/_preview/icons_contact_sheet.png, assets/_preview/icons_extended_contact_sheet.png, assets/_preview/icons_final_contact_sheet.png, assets/_preview/mob_jian_hun_preview.png, assets/_preview/mob_jian_hun_sheet.png",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    },
+    {
+      "level": "info",
+      "check": "assetSpec",
+      "message": "贴图内存估算 2.4 MB / 预算 128.0 MB（口径：仅统计 6 条声明了尺寸字段的规则命中的 152 个资源；按未压缩字节数 × 多级渐远 1.33 估算，仅作量级参考）",
+      "path": "",
+      "hint": "",
+      "files": [],
+      "isNew": false
+    }
+  ],
+  "scriptVersion": "1.0.0",
+  "ignored": {}
+}

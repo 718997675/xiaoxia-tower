@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "id": "vfx_hit",
+  "kind": "vfx",
+  "frameSize": [
+    64,
+    64
+  ],
+  "logicalResolution": [
+    480,
+    270
+  ],
+  "integerScale": 4,
+  "palette": [
+    "#12161F",
+    "#2A3140",
+    "#4A5568",
+    "#8A8268",
+    "#C9BFA3",
+    "#E8DFC8",
+    "#2F6E6A",
+    "#5FA8A0",
+    "#9BD4CC",
+    "#7A2420",
+    "#C8453B",
+    "#E8806F",
+    "#8A6520",
+    "#D9A441",
+    "#F2D089",
+    "#4A3A6B",
+    "#8A6FC4",
+    "#C0A8E0",
+    "#000000",
+    "#FFFFFF"
+  ],
+  "paletteReservedSlots": 4,
+  "fps": 12.0,
+  "frameCount": 4,
+  "frames": [
+    "vfx_hit_00.png",
+    "vfx_hit_01.png",
+    "vfx_hit_02.png",
+    "vfx_hit_03.png"
+  ],
+  "appendedFromPreviousBatches": false,
+  "anchor": {
+    "x": 32,
+    "y": 32,
+    "note": "特效中心，与判定框对齐"
+  },
+  "hitbox": [
+    24,
+    32
+  ],
+  "hitboxOffsetX": 16,
+  "loop": true,
+  "status": "待目检与合规确认；不得直接入库",
+  "pipeline": "程序化像素（Pillow 几何绘制，0 出图积分）",
+  "implementationForm": "形状样板 / 运行时按 Q24 走程序化 shader，不作运行时绑定"
+}

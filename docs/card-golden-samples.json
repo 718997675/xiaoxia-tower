@@ -1,0 +1,1384 @@
+{
+	"algorithm": "FNV-1a 32 位种子 + xorshift32 + 高 24 位定点 randf（R47）",
+	"cases": [
+		{
+			"clampEvents": 0,
+			"context": {},
+			"peak": 3996.0,
+			"pickIndex": 0,
+			"pickedCounts": {
+				"card_chongzhu": 1,
+				"card_danbao": 1,
+				"card_huanling": 1,
+				"card_jianfeng": 1,
+				"card_ningdan": 1,
+				"card_poyu": 1,
+				"card_poyun": 1,
+				"card_tiepi": 1
+			},
+			"runId": "runA",
+			"sealed": false,
+			"stages": [
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 54,
+					"event": {
+						"card_category": "dmg",
+						"card_id": "card_poyun",
+						"card_rarity": "common",
+						"offered": [
+							"card_poyun",
+							"card_tiepi",
+							"card_huanling"
+						],
+						"picked": "card_poyun",
+						"run_id": "runA",
+						"seed": 4264777024,
+						"seen_before": false,
+						"stage": 1
+					},
+					"offered": [
+						"card_poyun",
+						"card_tiepi",
+						"card_huanling"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_poyun",
+					"seed": 4264777024,
+					"stage": 1,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 53,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_ningdan",
+						"card_rarity": "common",
+						"offered": [
+							"card_ningdan",
+							"card_huichun",
+							"card_lianhuan"
+						],
+						"picked": "card_ningdan",
+						"run_id": "runA",
+						"seed": 20142585,
+						"seen_before": false,
+						"stage": 2
+					},
+					"offered": [
+						"card_ningdan",
+						"card_huichun",
+						"card_lianhuan"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_ningdan",
+					"seed": 20142585,
+					"stage": 2,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 53,
+					"event": {
+						"card_category": "dmg",
+						"card_id": "card_danbao",
+						"card_rarity": "common",
+						"offered": [
+							"card_danbao",
+							"card_kongzhan",
+							"card_jianxin"
+						],
+						"picked": "card_danbao",
+						"run_id": "runA",
+						"seed": 3364966,
+						"seen_before": false,
+						"stage": 3
+					},
+					"offered": [
+						"card_danbao",
+						"card_kongzhan",
+						"card_jianxin"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_danbao",
+					"seed": 3364966,
+					"stage": 3,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 53,
+					"event": {
+						"card_category": "mech",
+						"card_id": "card_chongzhu",
+						"card_rarity": "common",
+						"offered": [
+							"card_chongzhu",
+							"card_jieqi",
+							"card_quanfeng"
+						],
+						"picked": "card_chongzhu",
+						"run_id": "runA",
+						"seed": 53697823,
+						"seen_before": false,
+						"stage": 4
+					},
+					"offered": [
+						"card_chongzhu",
+						"card_jieqi",
+						"card_quanfeng"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_chongzhu",
+					"seed": 53697823,
+					"stage": 4,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 52,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_tiepi",
+						"card_rarity": "common",
+						"offered": [
+							"card_tiepi",
+							"card_huichun",
+							"card_danbao"
+						],
+						"picked": "card_tiepi",
+						"run_id": "runA",
+						"seed": 36920204,
+						"seen_before": false,
+						"stage": 5
+					},
+					"offered": [
+						"card_tiepi",
+						"card_huichun",
+						"card_danbao"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_tiepi",
+					"seed": 36920204,
+					"stage": 5,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 52,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_poyu",
+						"card_rarity": "common",
+						"offered": [
+							"card_poyu",
+							"card_zhulian",
+							"card_jianxin"
+						],
+						"picked": "card_poyu",
+						"run_id": "runA",
+						"seed": 87253061,
+						"seen_before": false,
+						"stage": 6
+					},
+					"offered": [
+						"card_poyu",
+						"card_zhulian",
+						"card_jianxin"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_poyu",
+					"seed": 87253061,
+					"stage": 6,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 52,
+					"event": {
+						"card_category": "res",
+						"card_id": "card_huanling",
+						"card_rarity": "rare",
+						"offered": [
+							"card_huanling",
+							"card_yiyu",
+							"card_ningdan"
+						],
+						"picked": "card_huanling",
+						"run_id": "runA",
+						"seed": 70475442,
+						"seen_before": false,
+						"stage": 7
+					},
+					"offered": [
+						"card_huanling",
+						"card_yiyu",
+						"card_ningdan"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_huanling",
+					"seed": 70475442,
+					"stage": 7,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 52,
+					"event": {
+						"card_category": "dmg",
+						"card_id": "card_jianfeng",
+						"card_rarity": "common",
+						"offered": [
+							"card_jianfeng",
+							"card_huti",
+							"card_tiepi"
+						],
+						"picked": "card_jianfeng",
+						"run_id": "runA",
+						"seed": 120808299,
+						"seen_before": false,
+						"stage": 8
+					},
+					"offered": [
+						"card_jianfeng",
+						"card_huti",
+						"card_tiepi"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_jianfeng",
+					"seed": 120808299,
+					"stage": 8,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 52,
+					"offered": [],
+					"peakAfter": 3996.0,
+					"seed": 104030680,
+					"stage": 9,
+					"violations": 0
+				}
+			],
+			"violations": 0
+		},
+		{
+			"clampEvents": 0,
+			"context": {
+				"affix": [
+					"affix_wuxiang"
+				],
+				"realm": 9
+			},
+			"peak": 3996.0,
+			"pickIndex": 1,
+			"pickedCounts": {
+				"card_huti": 1,
+				"card_jieqi": 2,
+				"card_juxi": 1,
+				"card_leizhuan": 1,
+				"card_poyun": 1,
+				"card_shouyuan": 1,
+				"card_tiepi": 1
+			},
+			"runId": "runW",
+			"sealed": false,
+			"stages": [
+				{
+					"choiceCount": 2,
+					"clampEvents": 0,
+					"eligibleCount": 62,
+					"event": {
+						"card_category": "dmg",
+						"card_id": "card_leizhuan",
+						"card_rarity": "rare",
+						"offered": [
+							"card_huanling",
+							"card_leizhuan"
+						],
+						"picked": "card_leizhuan",
+						"run_id": "runW",
+						"seed": 840100898,
+						"seen_before": false,
+						"stage": 1
+					},
+					"offered": [
+						"card_huanling",
+						"card_leizhuan"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_leizhuan",
+					"seed": 840100898,
+					"stage": 1,
+					"violations": 0
+				},
+				{
+					"choiceCount": 2,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_tiepi",
+						"card_rarity": "common",
+						"offered": [
+							"card_qinglu",
+							"card_tiepi"
+						],
+						"picked": "card_tiepi",
+						"run_id": "runW",
+						"seed": 823323279,
+						"seen_before": false,
+						"stage": 2
+					},
+					"offered": [
+						"card_qinglu",
+						"card_tiepi"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_tiepi",
+					"seed": 823323279,
+					"stage": 2,
+					"violations": 0
+				},
+				{
+					"choiceCount": 2,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "res",
+						"card_id": "card_jieqi",
+						"card_rarity": "common",
+						"offered": [
+							"card_duanxu",
+							"card_jieqi"
+						],
+						"picked": "card_jieqi",
+						"run_id": "runW",
+						"seed": 806545660,
+						"seen_before": false,
+						"stage": 3
+					},
+					"offered": [
+						"card_duanxu",
+						"card_jieqi"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_jieqi",
+					"seed": 806545660,
+					"stage": 3,
+					"violations": 0
+				},
+				{
+					"choiceCount": 2,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_juxi",
+						"card_rarity": "common",
+						"offered": [
+							"card_danbao",
+							"card_juxi"
+						],
+						"picked": "card_juxi",
+						"run_id": "runW",
+						"seed": 789768041,
+						"seen_before": false,
+						"stage": 4
+					},
+					"offered": [
+						"card_danbao",
+						"card_juxi"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_juxi",
+					"seed": 789768041,
+					"stage": 4,
+					"violations": 0
+				},
+				{
+					"choiceCount": 2,
+					"clampEvents": 0,
+					"eligibleCount": 62,
+					"event": {
+						"card_category": "res",
+						"card_id": "card_jieqi",
+						"card_rarity": "common",
+						"offered": [
+							"card_cuijing",
+							"card_jieqi"
+						],
+						"picked": "card_jieqi",
+						"run_id": "runW",
+						"seed": 772990422,
+						"seen_before": false,
+						"stage": 5
+					},
+					"offered": [
+						"card_cuijing",
+						"card_jieqi"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_jieqi",
+					"seed": 772990422,
+					"stage": 5,
+					"violations": 0
+				},
+				{
+					"choiceCount": 2,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "dmg",
+						"card_id": "card_poyun",
+						"card_rarity": "common",
+						"offered": [
+							"card_tiepi",
+							"card_poyun"
+						],
+						"picked": "card_poyun",
+						"run_id": "runW",
+						"seed": 756212803,
+						"seen_before": false,
+						"stage": 6
+					},
+					"offered": [
+						"card_tiepi",
+						"card_poyun"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_poyun",
+					"seed": 756212803,
+					"stage": 6,
+					"violations": 0
+				},
+				{
+					"choiceCount": 2,
+					"clampEvents": 0,
+					"eligibleCount": 60,
+					"event": {
+						"card_category": "surv",
+						"card_id": "card_huti",
+						"card_rarity": "common",
+						"offered": [
+							"card_wuxiangpo",
+							"card_huti"
+						],
+						"picked": "card_huti",
+						"run_id": "runW",
+						"seed": 739435184,
+						"seen_before": false,
+						"stage": 7
+					},
+					"offered": [
+						"card_wuxiangpo",
+						"card_huti"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_huti",
+					"seed": 739435184,
+					"stage": 7,
+					"violations": 0
+				},
+				{
+					"choiceCount": 2,
+					"clampEvents": 0,
+					"eligibleCount": 60,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_shouyuan",
+						"card_rarity": "rare",
+						"offered": [
+							"card_shuangren",
+							"card_shouyuan"
+						],
+						"picked": "card_shouyuan",
+						"run_id": "runW",
+						"seed": 991099469,
+						"seen_before": false,
+						"stage": 8
+					},
+					"offered": [
+						"card_shuangren",
+						"card_shouyuan"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_shouyuan",
+					"seed": 991099469,
+					"stage": 8,
+					"violations": 0
+				},
+				{
+					"choiceCount": 2,
+					"clampEvents": 0,
+					"eligibleCount": 59,
+					"offered": [],
+					"peakAfter": 3996.0,
+					"seed": 974321850,
+					"stage": 9,
+					"violations": 0
+				}
+			],
+			"violations": 0
+		},
+		{
+			"clampEvents": 0,
+			"context": {
+				"realm": 9,
+				"school": "jian",
+				"slots": 3
+			},
+			"peak": 3996.0,
+			"pickIndex": 2,
+			"pickedCounts": {
+				"card_jianfeng": 1,
+				"card_jieqi": 1,
+				"card_lingmai": 2,
+				"card_ningdan": 1,
+				"card_tiegu": 1,
+				"card_tiepi": 1,
+				"card_yiyu": 1
+			},
+			"runId": "runB",
+			"sealed": false,
+			"stages": [
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_lingmai",
+						"card_rarity": "common",
+						"offered": [
+							"card_juling",
+							"card_qinglu",
+							"card_lingmai"
+						],
+						"picked": "card_lingmai",
+						"run_id": "runB",
+						"seed": 1129852693,
+						"seen_before": false,
+						"stage": 1
+					},
+					"offered": [
+						"card_juling",
+						"card_qinglu",
+						"card_lingmai"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_lingmai",
+					"seed": 1129852693,
+					"stage": 1,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "syn",
+						"card_id": "card_yiyu",
+						"card_rarity": "common",
+						"offered": [
+							"card_sheshi",
+							"card_leizhuan",
+							"card_yiyu"
+						],
+						"picked": "card_yiyu",
+						"run_id": "runB",
+						"seed": 1079519836,
+						"seen_before": false,
+						"stage": 2
+					},
+					"offered": [
+						"card_sheshi",
+						"card_leizhuan",
+						"card_yiyu"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_yiyu",
+					"seed": 1079519836,
+					"stage": 2,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 60,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_ningdan",
+						"card_rarity": "common",
+						"offered": [
+							"card_huichun",
+							"card_daoyin",
+							"card_ningdan"
+						],
+						"picked": "card_ningdan",
+						"run_id": "runB",
+						"seed": 1096297455,
+						"seen_before": false,
+						"stage": 3
+					},
+					"offered": [
+						"card_huichun",
+						"card_daoyin",
+						"card_ningdan"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_ningdan",
+					"seed": 1096297455,
+					"stage": 3,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 60,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_tiepi",
+						"card_rarity": "common",
+						"offered": [
+							"card_huanshi",
+							"card_wuxing",
+							"card_tiepi"
+						],
+						"picked": "card_tiepi",
+						"run_id": "runB",
+						"seed": 1045964598,
+						"seen_before": false,
+						"stage": 4
+					},
+					"offered": [
+						"card_huanshi",
+						"card_wuxing",
+						"card_tiepi"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_tiepi",
+					"seed": 1045964598,
+					"stage": 4,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "dmg",
+						"card_id": "card_jianfeng",
+						"card_rarity": "common",
+						"offered": [
+							"card_yuqi",
+							"card_sheshi",
+							"card_jianfeng"
+						],
+						"picked": "card_jianfeng",
+						"run_id": "runB",
+						"seed": 1062742217,
+						"seen_before": false,
+						"stage": 5
+					},
+					"offered": [
+						"card_yuqi",
+						"card_sheshi",
+						"card_jianfeng"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_jianfeng",
+					"seed": 1062742217,
+					"stage": 5,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "res",
+						"card_id": "card_jieqi",
+						"card_rarity": "common",
+						"offered": [
+							"card_lianhuan",
+							"card_poyu",
+							"card_jieqi"
+						],
+						"picked": "card_jieqi",
+						"run_id": "runB",
+						"seed": 1012409360,
+						"seen_before": false,
+						"stage": 6
+					},
+					"offered": [
+						"card_lianhuan",
+						"card_poyu",
+						"card_jieqi"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_jieqi",
+					"seed": 1012409360,
+					"stage": 6,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "surv",
+						"card_id": "card_tiegu",
+						"card_rarity": "common",
+						"offered": [
+							"card_jianfeng",
+							"card_zhulian",
+							"card_tiegu"
+						],
+						"picked": "card_tiegu",
+						"run_id": "runB",
+						"seed": 1029186979,
+						"seen_before": false,
+						"stage": 7
+					},
+					"offered": [
+						"card_jianfeng",
+						"card_zhulian",
+						"card_tiegu"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_tiegu",
+					"seed": 1029186979,
+					"stage": 7,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_lingmai",
+						"card_rarity": "common",
+						"offered": [
+							"card_jianxin",
+							"card_jianfeng",
+							"card_lingmai"
+						],
+						"picked": "card_lingmai",
+						"run_id": "runB",
+						"seed": 1247296026,
+						"seen_before": false,
+						"stage": 8
+					},
+					"offered": [
+						"card_jianxin",
+						"card_jianfeng",
+						"card_lingmai"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_lingmai",
+					"seed": 1247296026,
+					"stage": 8,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"offered": [],
+					"peakAfter": 3996.0,
+					"seed": 1264073645,
+					"stage": 9,
+					"violations": 0
+				}
+			],
+			"violations": 0
+		},
+		{
+			"clampEvents": 0,
+			"context": {
+				"realm": 9
+			},
+			"peak": 3996.0,
+			"pickIndex": 1,
+			"pickedCounts": {
+				"card_bishui": 1,
+				"card_duozhu": 1,
+				"card_jiezeng": 1,
+				"card_juxi": 1,
+				"card_nianzhuan": 1,
+				"card_quanfeng": 1,
+				"card_yiyu": 1,
+				"card_zhongshi": 1
+			},
+			"runId": "runDemo",
+			"sealed": false,
+			"stages": [
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "surv",
+						"card_id": "card_bishui",
+						"card_rarity": "rare",
+						"offered": [
+							"card_daoyin",
+							"card_bishui",
+							"card_leizhuan"
+						],
+						"picked": "card_bishui",
+						"run_id": "runDemo",
+						"seed": 3444824684,
+						"seen_before": false,
+						"stage": 1
+					},
+					"offered": [
+						"card_daoyin",
+						"card_bishui",
+						"card_leizhuan"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_bishui",
+					"seed": 3444824684,
+					"stage": 1,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 60,
+					"event": {
+						"card_category": "syn",
+						"card_id": "card_jiezeng",
+						"card_rarity": "curse",
+						"offered": [
+							"card_yinbi",
+							"card_jiezeng",
+							"card_yuqi"
+						],
+						"picked": "card_jiezeng",
+						"run_id": "runDemo",
+						"seed": 3495157541,
+						"seen_before": false,
+						"stage": 2
+					},
+					"offered": [
+						"card_yinbi",
+						"card_jiezeng",
+						"card_yuqi"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_jiezeng",
+					"seed": 3495157541,
+					"stage": 2,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 59,
+					"event": {
+						"card_category": "syn",
+						"card_id": "card_yiyu",
+						"card_rarity": "common",
+						"offered": [
+							"card_lianhuan",
+							"card_yiyu",
+							"card_poyu"
+						],
+						"picked": "card_yiyu",
+						"run_id": "runDemo",
+						"seed": 3478379922,
+						"seen_before": false,
+						"stage": 3
+					},
+					"offered": [
+						"card_lianhuan",
+						"card_yiyu",
+						"card_poyu"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_yiyu",
+					"seed": 3478379922,
+					"stage": 3,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 58,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_juxi",
+						"card_rarity": "common",
+						"offered": [
+							"card_lingchao",
+							"card_juxi",
+							"card_shouzhuo"
+						],
+						"picked": "card_juxi",
+						"run_id": "runDemo",
+						"seed": 3394491827,
+						"seen_before": false,
+						"stage": 4
+					},
+					"offered": [
+						"card_lingchao",
+						"card_juxi",
+						"card_shouzhuo"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_juxi",
+					"seed": 3394491827,
+					"stage": 4,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 59,
+					"event": {
+						"card_category": "syn",
+						"card_id": "card_zhongshi",
+						"card_rarity": "rare",
+						"offered": [
+							"card_huti",
+							"card_zhongshi",
+							"card_leizhuan"
+						],
+						"picked": "card_zhongshi",
+						"run_id": "runDemo",
+						"seed": 3377714208,
+						"seen_before": false,
+						"stage": 5
+					},
+					"offered": [
+						"card_huti",
+						"card_zhongshi",
+						"card_leizhuan"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_zhongshi",
+					"seed": 3377714208,
+					"stage": 5,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 57,
+					"event": {
+						"card_category": "mech",
+						"card_id": "card_nianzhuan",
+						"card_rarity": "common",
+						"offered": [
+							"card_qingling",
+							"card_nianzhuan",
+							"card_huichun"
+						],
+						"picked": "card_nianzhuan",
+						"run_id": "runDemo",
+						"seed": 3428047065,
+						"seen_before": false,
+						"stage": 6
+					},
+					"offered": [
+						"card_qingling",
+						"card_nianzhuan",
+						"card_huichun"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_nianzhuan",
+					"seed": 3428047065,
+					"stage": 6,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 55,
+					"event": {
+						"card_category": "syn",
+						"card_id": "card_duozhu",
+						"card_rarity": "legend",
+						"offered": [
+							"card_tianren",
+							"card_duozhu",
+							"card_juxi"
+						],
+						"picked": "card_duozhu",
+						"run_id": "runDemo",
+						"seed": 3411269446,
+						"seen_before": false,
+						"stage": 7
+					},
+					"offered": [
+						"card_tianren",
+						"card_duozhu",
+						"card_juxi"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_duozhu",
+					"seed": 3411269446,
+					"stage": 7,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 54,
+					"event": {
+						"card_category": "dmg",
+						"card_id": "card_quanfeng",
+						"card_rarity": "common",
+						"offered": [
+							"card_huichun",
+							"card_quanfeng",
+							"card_huixin"
+						],
+						"picked": "card_quanfeng",
+						"run_id": "runDemo",
+						"seed": 3595823255,
+						"seen_before": false,
+						"stage": 8
+					},
+					"offered": [
+						"card_huichun",
+						"card_quanfeng",
+						"card_huixin"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_quanfeng",
+					"seed": 3595823255,
+					"stage": 8,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 54,
+					"offered": [],
+					"peakAfter": 3996.0,
+					"seed": 3579045636,
+					"stage": 9,
+					"violations": 0
+				}
+			],
+			"violations": 0
+		},
+		{
+			"clampEvents": 0,
+			"context": {
+				"realm": 9
+			},
+			"peak": 3996.0,
+			"pickIndex": 0,
+			"pickedCounts": {
+				"card_jianfeng": 1,
+				"card_ningdan": 2,
+				"card_poyun": 1,
+				"card_tongyuan": 1,
+				"card_wuxin": 1
+			},
+			"runId": "web-demo",
+			"sealed": true,
+			"stages": [
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 61,
+					"event": {
+						"card_category": "syn",
+						"card_id": "card_tongyuan",
+						"card_rarity": "rare",
+						"offered": [
+							"card_tongyuan",
+							"card_kongzhan",
+							"card_duanxu"
+						],
+						"picked": "card_tongyuan",
+						"run_id": "web-demo",
+						"seed": 404909846,
+						"seen_before": false,
+						"stage": 1
+					},
+					"offered": [
+						"card_tongyuan",
+						"card_kongzhan",
+						"card_duanxu"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_tongyuan",
+					"seed": 404909846,
+					"stage": 1,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 60,
+					"event": {
+						"card_category": "dmg",
+						"card_id": "card_poyun",
+						"card_rarity": "common",
+						"offered": [
+							"card_poyun",
+							"card_qingling",
+							"card_zhulian"
+						],
+						"picked": "card_poyun",
+						"run_id": "web-demo",
+						"seed": 388132227,
+						"seen_before": false,
+						"stage": 2
+					},
+					"offered": [
+						"card_poyun",
+						"card_qingling",
+						"card_zhulian"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_poyun",
+					"seed": 388132227,
+					"stage": 2,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 59,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_ningdan",
+						"card_rarity": "common",
+						"offered": [
+							"card_ningdan",
+							"card_jieqi",
+							"card_nianzhuan"
+						],
+						"picked": "card_ningdan",
+						"run_id": "web-demo",
+						"seed": 371354608,
+						"seen_before": false,
+						"stage": 3
+					},
+					"offered": [
+						"card_ningdan",
+						"card_jieqi",
+						"card_nianzhuan"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_ningdan",
+					"seed": 371354608,
+					"stage": 3,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 59,
+					"event": {
+						"card_category": "attr",
+						"card_id": "card_ningdan",
+						"card_rarity": "common",
+						"offered": [
+							"card_ningdan",
+							"card_bishui",
+							"card_jiezeng"
+						],
+						"picked": "card_ningdan",
+						"run_id": "web-demo",
+						"seed": 488797941,
+						"seen_before": false,
+						"stage": 4
+					},
+					"offered": [
+						"card_ningdan",
+						"card_bishui",
+						"card_jiezeng"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_ningdan",
+					"seed": 488797941,
+					"stage": 4,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 60,
+					"event": {
+						"card_category": "dmg",
+						"card_id": "card_jianfeng",
+						"card_rarity": "common",
+						"offered": [
+							"card_jianfeng",
+							"card_huti",
+							"card_shouyuan"
+						],
+						"picked": "card_jianfeng",
+						"run_id": "web-demo",
+						"seed": 472020322,
+						"seen_before": false,
+						"stage": 5
+					},
+					"offered": [
+						"card_jianfeng",
+						"card_huti",
+						"card_shouyuan"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_jianfeng",
+					"seed": 472020322,
+					"stage": 5,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 60,
+					"event": {
+						"card_category": "syn",
+						"card_id": "card_wuxin",
+						"card_rarity": "legend",
+						"offered": [
+							"card_wuxin",
+							"card_qinglu",
+							"card_lingchao"
+						],
+						"picked": "card_wuxin",
+						"run_id": "web-demo",
+						"seed": 455242703,
+						"seen_before": false,
+						"stage": 6
+					},
+					"offered": [
+						"card_wuxin",
+						"card_qinglu",
+						"card_lingchao"
+					],
+					"peakAfter": 3996.0,
+					"pickOk": true,
+					"picked": "card_wuxin",
+					"seed": 455242703,
+					"stage": 6,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 57,
+					"offered": [],
+					"peakAfter": 3996.0,
+					"seed": 438465084,
+					"stage": 7,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 57,
+					"offered": [],
+					"peakAfter": 3996.0,
+					"seed": 555908417,
+					"stage": 8,
+					"violations": 0
+				},
+				{
+					"choiceCount": 3,
+					"clampEvents": 0,
+					"eligibleCount": 57,
+					"offered": [],
+					"peakAfter": 3996.0,
+					"seed": 539130798,
+					"stage": 9,
+					"violations": 0
+				}
+			],
+			"violations": 0
+		}
+	],
+	"engine": "Godot 4.7.2.stable（headless）",
+	"generatedAt": "2026-11-08",
+	"generator": "tools/export_card_golden.gd",
+	"libPath": "res://data/buff-card-library.json",
+	"mega": {
+		"clampEvents": 105,
+		"offense": {
+			"base_damage": 0.0,
+			"combo_multiplier": 0.0,
+			"crit_multiplier": 0.15,
+			"defense_rate": 0.14,
+			"extra_pool": 30.12,
+			"offense_pool_used": 40.0,
+			"realm_ratio": 0.0
+		},
+		"peak": 3996.0,
+		"violations": 0
+	},
+	"note": "黄金样本由 Godot 侧导出；Node/网页必须逐层复算一致。权重/概率仍为 PROPOSAL / 待实测。",
+	"rngSequence": [
+		0.0311430692672729,
+		0.115341484546661,
+		0.354483783245087,
+		0.174602091312408,
+		0.0383699536323547,
+		0.0844284296035767,
+		0.426745295524597,
+		0.580041825771332,
+		0.832427740097046,
+		0.723510980606079,
+		0.557100415229797,
+		0.0693976879119873
+	],
+	"version": 1
+}

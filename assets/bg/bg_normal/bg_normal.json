@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "id": "bg_normal",
+  "kind": "background",
+  "logicalResolution": [
+    480,
+    270
+  ],
+  "integerScale": 4,
+  "layerSize": [
+    480,
+    270
+  ],
+  "palette": [
+    "#12161F",
+    "#2A3140",
+    "#4A5568",
+    "#8A8268",
+    "#C9BFA3",
+    "#E8DFC8",
+    "#2F6E6A",
+    "#5FA8A0",
+    "#9BD4CC",
+    "#7A2420",
+    "#C8453B",
+    "#E8806F",
+    "#8A6520",
+    "#D9A441",
+    "#F2D089",
+    "#4A3A6B",
+    "#8A6FC4",
+    "#C0A8E0",
+    "#000000",
+    "#FFFFFF"
+  ],
+  "layers": [
+    {
+      "id": "L1",
+      "file": "bg_normal_L1.png",
+      "note": "远景：y 0-68，浅宣纸底 + 远塔 / 云带 / 半环背光",
+      "parallaxFactor": 0.15
+    },
+    {
+      "id": "L2",
+      "file": "bg_normal_L2.png",
+      "note": "中景：y 68-202，立柱 / 栏杆 / 经幡，浅色留缝",
+      "parallaxFactor": 0.45
+    },
+    {
+      "id": "L3",
+      "file": "bg_normal_L3.png",
+      "note": "地面：y 202-270，石阶平台，全场最实最亮",
+      "parallaxFactor": 1.0
+    },
+    {
+      "id": "L4",
+      "file": "bg_normal_L4.png",
+      "note": "前景：最下 10% 条带 + 左右 5% 边缘剪影，面积 <10%",
+      "parallaxFactor": 1.3
+    }
+  ],
+  "composite": "bg_normal_composite.png",
+  "parallaxFactorsStatus": "PROPOSAL 占位，未实测；不得当已验证的平衡结论",
+  "pipeline": "gpt-image2 回稿转录（A1-bgnormal 裁 16:9 -> 480x270 -> 分带切层 + 24 色阶梯调和）",
+  "status": "待目检与合规确认；不得直接入库",
+  "sourceArt": "previews/ui/A1-bgnormal-gpt-image2_palette24.png",
+  "referenceRole": "像素源：构图 / 纹样 / 配色全部继承回稿，非几何重绘"
+}

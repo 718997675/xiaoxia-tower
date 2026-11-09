@@ -1,0 +1,138 @@
+{
+  "round": 31,
+  "tool": "tools/build_b3b4_assets.py",
+  "scope": "B3 两个 Boss 正式帧表 + B4 剩余 4 技能 / 命中 / 5 组 overlay",
+  "pipeline": "gpt-image2 回稿转录（B / C1 / C2 裁格 + 像素级派生）；vfx_hit 无回稿，保留第 29 轮程序化 4 帧",
+  "paletteSource": "docs/asset-manifest-pixel.json（24 色锁定板）",
+  "groups": [
+    {
+      "id": "boss_judge",
+      "frameCount": 18,
+      "source": "previews/ui/B-boss-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.2454,
+      "maxCoverage": 0.4377
+    },
+    {
+      "id": "boss_tower_lord",
+      "frameCount": 24,
+      "source": "previews/ui/B-boss-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.2103,
+      "maxCoverage": 0.3724
+    },
+    {
+      "id": "vfx_flying_sword",
+      "frameCount": 4,
+      "source": "previews/ui/C1-vfx-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.0596,
+      "maxCoverage": 0.1924
+    },
+    {
+      "id": "vfx_paper_puppet",
+      "frameCount": 4,
+      "source": "previews/ui/C1-vfx-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.1279,
+      "maxCoverage": 0.4192
+    },
+    {
+      "id": "vfx_fist_force",
+      "frameCount": 4,
+      "source": "previews/ui/C1-vfx-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.1279,
+      "maxCoverage": 0.4167
+    },
+    {
+      "id": "vfx_vajra_body",
+      "frameCount": 4,
+      "source": "previews/ui/C1-vfx-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.167,
+      "maxCoverage": 0.5371
+    },
+    {
+      "id": "ovl_shield",
+      "frameCount": 2,
+      "source": "previews/ui/C2-overlay-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.344,
+      "maxCoverage": 0.3469
+    },
+    {
+      "id": "ovl_elite",
+      "frameCount": 2,
+      "source": "previews/ui/C2-overlay-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.1018,
+      "maxCoverage": 0.1021
+    },
+    {
+      "id": "ovl_burn",
+      "frameCount": 2,
+      "source": "previews/ui/C2-overlay-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.0911,
+      "maxCoverage": 0.0957
+    },
+    {
+      "id": "ovl_chill",
+      "frameCount": 2,
+      "source": "previews/ui/C2-overlay-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.084,
+      "maxCoverage": 0.0854
+    },
+    {
+      "id": "ovl_affix",
+      "frameCount": 2,
+      "source": "previews/ui/C2-overlay-gpt-image2_palette24.png",
+      "outOfPaletteTotal": 0,
+      "semiAlphaTotal": 0,
+      "minCoverage": 0.0662,
+      "maxCoverage": 0.0686
+    }
+  ],
+  "totals": {
+    "groups": 12,
+    "frames": 72,
+    "bossFrames": 42,
+    "vfxFrames": 20,
+    "overlayFrames": 10,
+    "outOfPaletteTotal": 0,
+    "semiAlphaTotal": 0
+  },
+  "boundaries": [
+    "全部只算静态可导入资源，status 沿用「待目检与合规确认；不得直接入库」",
+    "Q17 未拍板、GUI F5 未跑、正式战斗工程未建；本轮不接任何 Godot 场景",
+    "Q24=procedural_plus_pixelfx：特效 / overlay 的运行时实现形态仍是程序化 shader，PNG 仅作形状样板",
+    "贴图内存、帧率、实机对比度（R22）、hitboxOffsetX=16px、4x 排版一律待实测",
+    "本轮不修改冻结数值、抽卡规则、docs/06 正文、docs/asset-manifest-pixel.json",
+    "轮廓 / 甲胄纹样 / 技能形状 / 状态边框全部继承自 gpt-image2 回稿，非几何重绘",
+    "vfx_hit 无对应回稿，保留第 29 轮程序化 4 帧并在报告中标注",
+    "A2R 的 gptimage.dev 水印在转录时局部修补，用户原稿未改动",
+    "轮廓 / 甲胄纹样 / 技能形状 / 状态边框全部继承自 gpt-image2 回稿，非几何重绘",
+    "vfx_hit 无对应回稿，保留第 29 轮程序化 4 帧并在报告中标注",
+    "Boss 三阶段的紫 / 金仍不重画轮廓，靠运行时换色 + 纹样 5/7/9 道",
+    "A2R 的 gptimage.dev 水印在转录时局部修补，用户原稿未改动"
+  ],
+  "status": "HEADLESS 静态指标自检；画面未验证",
+  "sourceArt": [
+    "previews/ui/B-boss-gpt-image2_palette24.png",
+    "previews/ui/C1-vfx-gpt-image2_palette24.png",
+    "previews/ui/C2-overlay-gpt-image2_palette24.png"
+  ],
+  "supersedes": "第 29 轮几何重绘版（联系表留档为 *_geometric.png）"
+}

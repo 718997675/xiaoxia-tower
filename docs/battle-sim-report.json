@@ -1,0 +1,236 @@
+{
+  "verdict": "PASS",
+  "summary": {
+    "total": 44,
+    "passed": 44,
+    "failed": 0
+  },
+  "algorithm": "固定 tick 1/30s + xorshift32 + FNV-1a；伤害公式照抄 docs/01 §8.1；PROPOSAL 占位值不参与冻结数值",
+  "checks": [
+    {
+      "label": "伤害公式 · 全最小值 = 5",
+      "ok": true,
+      "detail": "got=5"
+    },
+    {
+      "label": "伤害公式 · 期望中期 = 151",
+      "ok": true,
+      "detail": "got=151"
+    },
+    {
+      "label": "伤害公式 · 全最大值 v0.2 = 3996",
+      "ok": true,
+      "detail": "got=3996"
+    },
+    {
+      "label": "伤害公式 · 塔内满传承 = 2646",
+      "ok": true,
+      "detail": "got=2646"
+    },
+    {
+      "label": "伤害公式 · v0.1 废弃口径（不得再出现） = 3996",
+      "ok": true,
+      "detail": "got=3996"
+    },
+    {
+      "label": "负输入钳到下限并显式上报",
+      "ok": true,
+      "detail": "dmg=1 / errs=1"
+    },
+    {
+      "label": "极值输入下 9999 兜底不可达（五上界先钳变量）",
+      "ok": true,
+      "detail": "dmg=3996 / clamp(1,9999) 为公式兜底"
+    },
+    {
+      "label": "五上界常量与 01 §8.1 一致",
+      "ok": true,
+      "detail": "180 / 1.60 / 600 / 2.5 / 1.8 / 0.75"
+    },
+    {
+      "label": "共享池越 600 被钳（不另开池）",
+      "ok": true,
+      "detail": "dmg=3996"
+    },
+    {
+      "label": "combo_mult 越 2.5 被钳",
+      "ok": true,
+      "detail": "dmg=3996"
+    },
+    {
+      "label": "defense_rate 越 0.75 被钳",
+      "ok": true,
+      "detail": "dmg=5"
+    },
+    {
+      "label": "maxHit() 峰值 3996 < Boss 4400",
+      "ok": true,
+      "detail": "3996 < 4400"
+    },
+    {
+      "label": "全最大值 2 次命中清 Boss（余量 404）",
+      "ok": true,
+      "detail": "2×3996=7992 / 余量 3592"
+    },
+    {
+      "label": "恰 9 层且第 9 层是 Boss 4400",
+      "ok": true,
+      "detail": "n=9 / hp=4400"
+    },
+    {
+      "label": "HP_total 合计 10330",
+      "ok": true,
+      "detail": "sum=10330"
+    },
+    {
+      "label": "喘息层为 3 / 6 / 8",
+      "ok": true,
+      "detail": "3/6/8"
+    },
+    {
+      "label": "T(n)=HP/dps×1.3、D(n)=T(n)/T(1) 逐层复算一致",
+      "ok": true,
+      "detail": "9 层全一致（D2=1.15 / D5=1.28 / D9=2.67）"
+    },
+    {
+      "label": "最长连续上升 2 层 / 无连续 3 关以上单调上升",
+      "ok": true,
+      "detail": "maxRun=2"
+    },
+    {
+      "label": "4 技能槽键位 J / K / L / I 与输入映射表一致",
+      "ok": true,
+      "detail": "J/K/L/I"
+    },
+    {
+      "label": "4 技能全部有已产 VFX 样板",
+      "ok": true,
+      "detail": "vfx_sword_qi, vfx_thunder_talisman, vfx_dan_fire, vfx_rejuvenation"
+    },
+    {
+      "label": "技能 CD / cost / base 全部标 PROPOSAL（非冻结值）",
+      "ok": true,
+      "detail": "4/4 proposal=true"
+    },
+    {
+      "label": "回春诀为治疗（06 §4 无攻击性）",
+      "ok": true,
+      "detail": "kind=heal"
+    },
+    {
+      "label": "塔层怪物映射均在 MOBS 行为表内",
+      "ok": true,
+      "detail": "9 层映射全覆盖"
+    },
+    {
+      "label": "Boss 素材缺失 → 占位标记（不伪造素材）",
+      "ok": true,
+      "detail": "第 9 层 placeholder=true"
+    },
+    {
+      "label": "施法进入 CASTING 且扣灵力 / 置 CD",
+      "ok": true,
+      "detail": "state=CASTING cd0=0.8"
+    },
+    {
+      "label": "CD 内重复技能输入直接忽略",
+      "ok": true,
+      "detail": "cast_unavailable / reason=CD"
+    },
+    {
+      "label": "灵力不足不施法且字段不变",
+      "ok": true,
+      "detail": "引雷符 cost=16 / spirit≈0"
+    },
+    {
+      "label": "闪避消耗体力并给无敌帧",
+      "ok": true,
+      "detail": "stamina=75 invuln=0.42"
+    },
+    {
+      "label": "无敌帧内忽略敌人伤害",
+      "ok": true,
+      "detail": "hp 未变"
+    },
+    {
+      "label": "DEAD 状态忽略全部输入",
+      "ok": true,
+      "detail": "快照不变"
+    },
+    {
+      "label": "M5 朝向只能 ±1（0 视为 +1）",
+      "ok": true,
+      "detail": "-1 → +1"
+    },
+    {
+      "label": "skills 全 false 时仍执行 move（不吞输入）",
+      "ok": true,
+      "detail": "x 96.0 → 192.0 / 30 tick"
+    },
+    {
+      "label": "同 (runId, stage, 输入序列) 快照逐字段一致",
+      "ok": true,
+      "detail": "240 tick / 8 s"
+    },
+    {
+      "label": "不同 runId 产生不同战斗轨迹",
+      "ok": true,
+      "detail": "暴击与敌人行为由 seed 驱动"
+    },
+    {
+      "label": "固定 tick 与浏览器帧率无关",
+      "ok": true,
+      "detail": "一次 step(6 tick) == 六次 step(1 tick)"
+    },
+    {
+      "label": "选卡后共享池提高实战伤害",
+      "ok": true,
+      "detail": "60 → 434 / pool=250"
+    },
+    {
+      "label": "联动后仍受五上界钳制（pool≤600 / combo≤2.5）",
+      "ok": true,
+      "detail": "pool=600 / comboBonus=1.5 / dmg=3510"
+    },
+    {
+      "label": "联动不产生数值违规",
+      "ok": true,
+      "detail": "errors=0"
+    },
+    {
+      "label": "敌人清空发 stage_cleared 且给下一层",
+      "ok": true,
+      "detail": "stage 1→2"
+    },
+    {
+      "label": "可推进到第 9 层塔主（HP_total 4400）",
+      "ok": true,
+      "detail": "stage=9 / hp=4400"
+    },
+    {
+      "label": "判定同帧同时发 cast_started / vfx_requested / damage_applied",
+      "ok": true,
+      "detail": "教学, cast_started, vfx_requested, damage_applied"
+    },
+    {
+      "label": "特效只由 vfx_requested 驱动（DF-03）",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "label": "角色与敌人始终在 480 逻辑宽度内",
+      "ok": true,
+      "detail": "player.x=332"
+    },
+    {
+      "label": "逻辑分辨率 480×270 / 地面 y=216 与 01 §9 一致",
+      "ok": true,
+      "detail": "480×270 / y=216"
+    }
+  ],
+  "generatedAt": "2026-11-08 17:20:33",
+  "generator": "tools/verify_battle_sim.py",
+  "nodeBinary": "node",
+  "scope": "横版战斗规则内核（浏览器 / Node 共用 tools/battle_sim.js），非画面、非 Godot、非平衡结论",
+  "proposalNote": "技能 CD / 灵力消耗 / 玩家 HP / 敌人伤害 / 暴击率 / 回复速率等策划案未给值，全部为 PROPOSAL 占位，待设计确认，不改 docs/design-freeze.json 任何冻结数值。"
+}

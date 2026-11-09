@@ -1,0 +1,58 @@
+{
+  "id": "vfx_hit",
+  "kind": "vfx",
+  "pipeline": "tools/build_b3b4_assets.py（程序化，0 积分）",
+  "frameCount": 4,
+  "frames": {
+    "vfx_hit_00.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.0276,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 113
+    },
+    "vfx_hit_01.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.0549,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 225
+    },
+    "vfx_hit_02.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.094,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 385
+    },
+    "vfx_hit_03.png": {
+      "size": [
+        64,
+        64
+      ],
+      "coverage": 0.0452,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 185
+    }
+  },
+  "outOfPaletteTotal": 0,
+  "semiAlphaTotal": 0,
+  "status": "静态资源已产出；GUI F5 目检 / 实机对比度 / 帧率一律待实测",
+  "note": "报告内不含机器绝对路径",
+  "shapeLanguage": "通用四向星芒命中",
+  "q24Note": "PNG 为形状样板；运行时按 Q24=procedural_plus_pixelfx 走程序化 shader"
+}

@@ -1,0 +1,71 @@
+{
+  "source": "8_bit_pixel_art_game_VFX_anima_2026-11-07T15-13-03.png",
+  "kind": "vfx",
+  "cells": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "hollow": true,
+  "append": false,
+  "crop": [
+    48,
+    56,
+    448,
+    456
+  ],
+  "frames": [
+    {
+      "file": "vfx_rejuvenation_00.png",
+      "scale": 0.14,
+      "colorsBeforeSnap": 235,
+      "pixelsSnapped": 378,
+      "usedColors": 3,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_rejuvenation_01.png",
+      "scale": 0.14,
+      "colorsBeforeSnap": 614,
+      "pixelsSnapped": 1525,
+      "usedColors": 5,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_rejuvenation_02.png",
+      "scale": 0.14,
+      "colorsBeforeSnap": 800,
+      "pixelsSnapped": 1559,
+      "usedColors": 7,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_rejuvenation_03.png",
+      "scale": 0.14,
+      "colorsBeforeSnap": 491,
+      "pixelsSnapped": 744,
+      "usedColors": 4,
+      "outOfPalette": 0
+    }
+  ],
+  "outputs": {
+    "frames": [
+      "vfx_rejuvenation_00.png",
+      "vfx_rejuvenation_01.png",
+      "vfx_rejuvenation_02.png",
+      "vfx_rejuvenation_03.png"
+    ],
+    "framesAddedThisBatch": [
+      "vfx_rejuvenation_00.png",
+      "vfx_rejuvenation_01.png",
+      "vfx_rejuvenation_02.png",
+      "vfx_rejuvenation_03.png"
+    ],
+    "sheet": "vfx_rejuvenation_sheet.png",
+    "gif": "vfx_rejuvenation.gif",
+    "preview": "vfx_rejuvenation_preview.png",
+    "engineJson": "vfx_rejuvenation.json"
+  },
+  "paletteOutOfRangeTotal": 0
+}

@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "note": "阶段一规格定义稿。本轮只定义规则、未生成任何素材；运行资源核对会报『必需资源数量不足』，属预期进度缺口。数值与 01-策划案.md 第9章一一对应。",
+  "budget": {
+    "textureMemoryMB": 128,
+    "memoryEstimateBasis": "宽 × 高 × bytesPerPixel(4, RGBA8) × 1.33(多级渐远)；量级参考，非显存实测；真实占用取决于导入压缩设置"
+  },
+  "rules": [
+    {
+      "name": "人物序列帧",
+      "glob": "assets/char/**/*.png",
+      "naming": "^char_[a-z0-9]+_(idle|run|cast|hit|death)_r_[0-9]{2}$",
+      "maxSize": [512, 512],
+      "minSize": [128, 128],
+      "powerOfTwo": true,
+      "bytesPerPixel": 4,
+      "required": true,
+      "minCount": 105,
+      "maxCount": 210,
+      "spec": {
+        "baselineFrame": [256, 256],
+        "format": "PNG RGBA8",
+        "actions": { "idle": 4, "run": 6, "cast": 5, "hit": 2, "death": 4 },
+        "characters": 5,
+        "facing": "只出朝右一套，工程内按 facing 做 scale.x = ±1 镜像，仅作用于角色 Sprite2D，不作用于场景/UI",
+        "anchor": "脚底锚点全角色统一",
+        "needsManualRefinement": [
+          "帧间轮廓与服饰一致性",
+          "朝右素材镜像后的光源方向",
+          "透明边缘溢色与描边",
+          "切片锚点全角色统一",
+          "不复制或换色规避受版权保护的角色与 IP；不模仿在世艺术家个人风格",
+          "合规确认后方可入库"
+        ]
+      }
+    },
+    {
+      "name": "技能特效帧",
+      "glob": "assets/vfx/**/*.png",
+      "naming": "^vfx_[a-z0-9]+_[0-9]{2}$",
+      "maxSize": [256, 256],
+      "minSize": [64, 64],
+      "powerOfTwo": true,
+      "bytesPerPixel": 4,
+      "required": true,
+      "minCount": 36,
+      "maxCount": 72,
+      "spec": {
+        "baselineFrame": [256, 256],
+        "format": "PNG RGBA8",
+        "skills": 4,
+        "framesPerSkill": 8,
+        "sharedHitFrames": 4,
+        "perSkillDistinct": "每个技能一套可辨识效果，满足『每次释放技能要有技能效果』",
+        "architecture": "特效挂在独立 VfxLayer，只监听 vfx_requested 信号；不参与命中判定、不阻塞结算",
+        "hitboxAlignment": "判定矩形 96x128 px，中心在角色身前 64 px × facing；特效首帧需与之对齐",
+        "onscreenCap": 24,
+        "needsManualRefinement": [
+          "帧间连续性与首尾衔接",
+          "镜像后的光向与拖尾方向",
+          "透明边缘溢色",
+          "首帧与判定框对齐",
+          "合规确认后方可入库"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,2239 @@
+{
+  "generatedAt": "2026-11-09 21:49:23",
+  "tool": "tools/check_ui_art.py",
+  "paletteSource": "docs/asset-manifest-pixel.json (24 色锁定板)",
+  "sizeRuleMode": "auto",
+  "thresholds": {
+    "outOfPaletteWarn": 0.02,
+    "outOfPaletteFail": 0.1,
+    "semiTransparentWarn": 0.002,
+    "semiTransparentFail": 0.005,
+    "softEdgeWarn": 0.03,
+    "pureWhiteWarn": 0.25,
+    "paletteDistance": 40.0
+  },
+  "verdict": "FAIL",
+  "files": [
+    {
+      "file": "previews/ui/00-anchor-gpt-image2_original.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.02932,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.72938,
+        "softEdgeSampled": 7834,
+        "pureWhiteRatio": 4e-05,
+        "transparentRatio": 0.0,
+        "distinctColors": 77208
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 673057
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 138758
+        },
+        {
+          "color": "#000000",
+          "pixels": 68094
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 39967
+        },
+        {
+          "color": "#2F6E6A",
+          "pixels": 15022
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 11539
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 10759
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 10709
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 2.93%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 72.94%（抽样 7834 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.00361,
+        "transparentRatio": 0.0,
+        "distinctColors": 20
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 674659
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 138763
+        },
+        {
+          "color": "#000000",
+          "pixels": 68303
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 41126
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 15945
+        },
+        {
+          "color": "#2F6E6A",
+          "pixels": 15288
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 14503
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 13724
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/01-mainmenu-gpt-image2_original.png",
+      "size": [
+        1280,
+        1280
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.08056,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.38961,
+        "softEdgeSampled": 32758,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 59945
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 726178
+        },
+        {
+          "color": "#000000",
+          "pixels": 396019
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 164411
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 122900
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 42976
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 20045
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 11458
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 7345
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 8.06%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 38.96%（抽样 32758 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+      "size": [
+        1280,
+        1280
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.00028,
+        "transparentRatio": 0.0,
+        "distinctColors": 20
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 726998
+        },
+        {
+          "color": "#000000",
+          "pixels": 396022
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 164415
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 125139
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 115798
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 45507
+        },
+        {
+          "color": "#8A6520",
+          "pixels": 23515
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 16300
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/02-towerhud-gpt-image2_original.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.01875,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.63724,
+        "softEdgeSampled": 5006,
+        "pureWhiteRatio": 0.07378,
+        "transparentRatio": 0.0,
+        "distinctColors": 39728
+      },
+      "topPaletteHits": [
+        {
+          "color": "#FFFFFF",
+          "pixels": 893414
+        },
+        {
+          "color": "#12161F",
+          "pixels": 40663
+        },
+        {
+          "color": "#000000",
+          "pixels": 27975
+        },
+        {
+          "color": "#C8453B",
+          "pixels": 18547
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 12622
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 12280
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 8392
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 5964
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 63.72%（抽样 5006 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.85203,
+        "transparentRatio": 0.0,
+        "distinctColors": 20
+      },
+      "topPaletteHits": [
+        {
+          "color": "#FFFFFF",
+          "pixels": 893415
+        },
+        {
+          "color": "#12161F",
+          "pixels": 41610
+        },
+        {
+          "color": "#000000",
+          "pixels": 27989
+        },
+        {
+          "color": "#C8453B",
+          "pixels": 18959
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 15111
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 14982
+        },
+        {
+          "color": "#5FA8A0",
+          "pixels": 8798
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 8399
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "too_much_white",
+          "level": "WARN",
+          "detail": "纯白像素 85.20%（#FFFFFF 只用于闪白）"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/03-draft-gpt-image2_original.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.04508,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.77806,
+        "softEdgeSampled": 12688,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 60492
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 544286
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 338107
+        },
+        {
+          "color": "#000000",
+          "pixels": 40456
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 15614
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 12950
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 12032
+        },
+        {
+          "color": "#8A6520",
+          "pixels": 10035
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 8523
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 4.51%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 77.81%（抽样 12688 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/03-draft-gpt-image2_palette24.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 5e-05,
+        "transparentRatio": 0.0,
+        "distinctColors": 18
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 547952
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 342350
+        },
+        {
+          "color": "#000000",
+          "pixels": 40463
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 21340
+        },
+        {
+          "color": "#F2D089",
+          "pixels": 19799
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 15823
+        },
+        {
+          "color": "#8A6520",
+          "pixels": 12807
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 12033
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/04-result-gpt-image2_original.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0522,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.44289,
+        "softEdgeSampled": 13841,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 50937
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 444292
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 307769
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 52866
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 39835
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 36935
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 34835
+        },
+        {
+          "color": "#000000",
+          "pixels": 29789
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 24595
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 5.22%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 44.29%（抽样 13841 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/04-result-gpt-image2_palette24.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 7e-05,
+        "transparentRatio": 0.0,
+        "distinctColors": 20
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 445099
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 307772
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 55028
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 50074
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 41034
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 37944
+        },
+        {
+          "color": "#000000",
+          "pixels": 29789
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 28470
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/05-pause-gpt-image2_original.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.00569,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.99922,
+        "softEdgeSampled": 1276,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 26074
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 562913
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 340416
+        },
+        {
+          "color": "#000000",
+          "pixels": 97579
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 26384
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 4453
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 2972
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 2683
+        },
+        {
+          "color": "#C8453B",
+          "pixels": 1718
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 99.92%（抽样 1276 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/05-pause-gpt-image2_palette24.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 1e-05,
+        "transparentRatio": 0.0,
+        "distinctColors": 18
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 563883
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 340828
+        },
+        {
+          "color": "#000000",
+          "pixels": 97636
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 26715
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 4888
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 3520
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 3272
+        },
+        {
+          "color": "#7A2420",
+          "pixels": 2118
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/06-affix-gpt-image2_original.png",
+      "size": [
+        1280,
+        1280
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.03494,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.78822,
+        "softEdgeSampled": 14199,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 63285
+      },
+      "topPaletteHits": [
+        {
+          "color": "#000000",
+          "pixels": 1369124
+        },
+        {
+          "color": "#12161F",
+          "pixels": 56602
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 55506
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 27924
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 20228
+        },
+        {
+          "color": "#F2D089",
+          "pixels": 20011
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 10349
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 7899
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 3.49%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 78.82%（抽样 14199 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/06-affix-gpt-image2_palette24.png",
+      "size": [
+        1280,
+        1280
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 5e-05,
+        "transparentRatio": 0.0,
+        "distinctColors": 19
+      },
+      "topPaletteHits": [
+        {
+          "color": "#000000",
+          "pixels": 1369140
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 60638
+        },
+        {
+          "color": "#12161F",
+          "pixels": 59986
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 40160
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 38956
+        },
+        {
+          "color": "#F2D089",
+          "pixels": 23156
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 11166
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 7931
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/07-codex-gpt-image2_original.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.08767,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.93784,
+        "softEdgeSampled": 22540,
+        "pureWhiteRatio": 0.00019,
+        "transparentRatio": 0.0,
+        "distinctColors": 166671
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 628038
+        },
+        {
+          "color": "#000000",
+          "pixels": 79030
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 75753
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 22964
+        },
+        {
+          "color": "#5FA8A0",
+          "pixels": 19337
+        },
+        {
+          "color": "#2F6E6A",
+          "pixels": 18221
+        },
+        {
+          "color": "#FFFFFF",
+          "pixels": 15786
+        },
+        {
+          "color": "#7A2420",
+          "pixels": 13612
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 8.77%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 93.78%（抽样 22540 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/07-codex-gpt-image2_palette24.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.01618,
+        "transparentRatio": 0.0,
+        "distinctColors": 20
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 637684
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 84582
+        },
+        {
+          "color": "#000000",
+          "pixels": 79630
+        },
+        {
+          "color": "#5FA8A0",
+          "pixels": 30781
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 24002
+        },
+        {
+          "color": "#2F6E6A",
+          "pixels": 23245
+        },
+        {
+          "color": "#7A2420",
+          "pixels": 22401
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 17962
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/08-icons-gpt-image2_original.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1254x1254 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.03403,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.82259,
+        "softEdgeSampled": 12897,
+        "pureWhiteRatio": 2e-05,
+        "transparentRatio": 0.0,
+        "distinctColors": 130403
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 1090731
+        },
+        {
+          "color": "#000000",
+          "pixels": 101428
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 61620
+        },
+        {
+          "color": "#9BD4CC",
+          "pixels": 58770
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 47321
+        },
+        {
+          "color": "#F2D089",
+          "pixels": 38348
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 31549
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 19997
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1254x1254 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 3.40%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 82.26%（抽样 12897 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1254x1254 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.01053,
+        "transparentRatio": 0.0,
+        "distinctColors": 20
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 1092034
+        },
+        {
+          "color": "#000000",
+          "pixels": 101453
+        },
+        {
+          "color": "#9BD4CC",
+          "pixels": 66548
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 62564
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 49653
+        },
+        {
+          "color": "#F2D089",
+          "pixels": 39388
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 36190
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 28500
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1254x1254 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/A1-bgnormal-gpt-image2_original.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.06793,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.76234,
+        "softEdgeSampled": 17950,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 65485
+      },
+      "topPaletteHits": [
+        {
+          "color": "#2A3140",
+          "pixels": 196876
+        },
+        {
+          "color": "#000000",
+          "pixels": 193690
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 181502
+        },
+        {
+          "color": "#12161F",
+          "pixels": 146353
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 114383
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 77024
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 34495
+        },
+        {
+          "color": "#F2D089",
+          "pixels": 28471
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 6.79%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 76.23%（抽样 17950 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/A1-bgnormal-gpt-image2_palette24.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.00023,
+        "transparentRatio": 0.0,
+        "distinctColors": 19
+      },
+      "topPaletteHits": [
+        {
+          "color": "#4A5568",
+          "pixels": 213870
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 206121
+        },
+        {
+          "color": "#000000",
+          "pixels": 193690
+        },
+        {
+          "color": "#12161F",
+          "pixels": 146879
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 114389
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 91185
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 40279
+        },
+        {
+          "color": "#F2D089",
+          "pixels": 28558
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/A2-bgrest-gpt-image2_original.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.04439,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.8423,
+        "softEdgeSampled": 11452,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 77386
+      },
+      "topPaletteHits": [
+        {
+          "color": "#E8DFC8",
+          "pixels": 518061
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 203600
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 112218
+        },
+        {
+          "color": "#12161F",
+          "pixels": 52510
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 48395
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 32410
+        },
+        {
+          "color": "#FFFFFF",
+          "pixels": 16619
+        },
+        {
+          "color": "#000000",
+          "pixels": 7307
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 4.44%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 84.23%（抽样 11452 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/A2-bgrest-gpt-image2_palette24.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.01585,
+        "transparentRatio": 0.0,
+        "distinctColors": 19
+      },
+      "topPaletteHits": [
+        {
+          "color": "#E8DFC8",
+          "pixels": 518065
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 217373
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 126793
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 53267
+        },
+        {
+          "color": "#12161F",
+          "pixels": 52847
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 34662
+        },
+        {
+          "color": "#FFFFFF",
+          "pixels": 16619
+        },
+        {
+          "color": "#8A6520",
+          "pixels": 8896
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/A2R-bgrest-gpt-image2_original.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1672x941 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.06516,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.41887,
+        "softEdgeSampled": 25392,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 72447
+      },
+      "topPaletteHits": [
+        {
+          "color": "#E8DFC8",
+          "pixels": 840933
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 343509
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 70667
+        },
+        {
+          "color": "#000000",
+          "pixels": 61423
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 44056
+        },
+        {
+          "color": "#12161F",
+          "pixels": 34430
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 29543
+        },
+        {
+          "color": "#5FA8A0",
+          "pixels": 15601
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1672x941 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 6.52%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 41.89%（抽样 25392 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/A2R-bgrest-gpt-image2_palette24.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1672x941 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.00414,
+        "transparentRatio": 0.0,
+        "distinctColors": 20
+      },
+      "topPaletteHits": [
+        {
+          "color": "#E8DFC8",
+          "pixels": 840935
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 361440
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 86758
+        },
+        {
+          "color": "#5FA8A0",
+          "pixels": 62050
+        },
+        {
+          "color": "#000000",
+          "pixels": 61458
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 50505
+        },
+        {
+          "color": "#12161F",
+          "pixels": 35660
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 33368
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1672x941 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/A3-bghigh-gpt-image2_original.png",
+      "size": [
+        1280,
+        1280
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.1236,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.36986,
+        "softEdgeSampled": 50154,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 74840
+      },
+      "topPaletteHits": [
+        {
+          "color": "#2A3140",
+          "pixels": 856768
+        },
+        {
+          "color": "#12161F",
+          "pixels": 264456
+        },
+        {
+          "color": "#000000",
+          "pixels": 165865
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 73804
+        },
+        {
+          "color": "#4A3A6B",
+          "pixels": 35136
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 25187
+        },
+        {
+          "color": "#8A6FC4",
+          "pixels": 6735
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 5186
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "FAIL",
+          "detail": "调色板越界像素 12.36%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 36.99%（抽样 50154 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/A3-bghigh-gpt-image2_palette24.png",
+      "size": [
+        1280,
+        1280
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 14
+      },
+      "topPaletteHits": [
+        {
+          "color": "#2A3140",
+          "pixels": 860991
+        },
+        {
+          "color": "#12161F",
+          "pixels": 265271
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 223180
+        },
+        {
+          "color": "#000000",
+          "pixels": 165906
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 40989
+        },
+        {
+          "color": "#4A3A6B",
+          "pixels": 37827
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 20416
+        },
+        {
+          "color": "#8A6FC4",
+          "pixels": 14410
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/A4-bgboss-gpt-image2_original.png",
+      "size": [
+        1536,
+        864
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1536x864 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.21613,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.56796,
+        "softEdgeSampled": 72380,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 85321
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 336915
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 314115
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 116327
+        },
+        {
+          "color": "#000000",
+          "pixels": 116154
+        },
+        {
+          "color": "#8A6520",
+          "pixels": 50782
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 45957
+        },
+        {
+          "color": "#7A2420",
+          "pixels": 38521
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 19349
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1536x864 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "FAIL",
+          "detail": "调色板越界像素 21.61%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 56.80%（抽样 72380 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/A4-bgboss-gpt-image2_palette24.png",
+      "size": [
+        1536,
+        864
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1536x864 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.0,
+        "transparentRatio": 0.0,
+        "distinctColors": 17
+      },
+      "topPaletteHits": [
+        {
+          "color": "#12161F",
+          "pixels": 343416
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 334726
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 223716
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 127972
+        },
+        {
+          "color": "#000000",
+          "pixels": 116222
+        },
+        {
+          "color": "#8A6520",
+          "pixels": 81123
+        },
+        {
+          "color": "#7A2420",
+          "pixels": 51286
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 42517
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1536x864 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/B-boss-gpt-image2_original.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.05162,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.84065,
+        "softEdgeSampled": 13699,
+        "pureWhiteRatio": 0.02416,
+        "transparentRatio": 0.0,
+        "distinctColors": 85029
+      },
+      "topPaletteHits": [
+        {
+          "color": "#FFFFFF",
+          "pixels": 586564
+        },
+        {
+          "color": "#12161F",
+          "pixels": 128064
+        },
+        {
+          "color": "#000000",
+          "pixels": 93342
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 76441
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 40631
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 29224
+        },
+        {
+          "color": "#7A2420",
+          "pixels": 15519
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 6119
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 5.16%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 84.06%（抽样 13699 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/B-boss-gpt-image2_palette24.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.55939,
+        "transparentRatio": 0.0,
+        "distinctColors": 20
+      },
+      "topPaletteHits": [
+        {
+          "color": "#FFFFFF",
+          "pixels": 586564
+        },
+        {
+          "color": "#12161F",
+          "pixels": 129608
+        },
+        {
+          "color": "#000000",
+          "pixels": 93353
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 81271
+        },
+        {
+          "color": "#8A8268",
+          "pixels": 55397
+        },
+        {
+          "color": "#4A5568",
+          "pixels": 36552
+        },
+        {
+          "color": "#7A2420",
+          "pixels": 20871
+        },
+        {
+          "color": "#8A6520",
+          "pixels": 11773
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "too_much_white",
+          "level": "WARN",
+          "detail": "纯白像素 55.94%（#FFFFFF 只用于闪白）"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/C1-vfx-gpt-image2_original.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.03637,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.78399,
+        "softEdgeSampled": 9481,
+        "pureWhiteRatio": 0.07347,
+        "transparentRatio": 0.0,
+        "distinctColors": 88371
+      },
+      "topPaletteHits": [
+        {
+          "color": "#FFFFFF",
+          "pixels": 823554
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 37794
+        },
+        {
+          "color": "#F2D089",
+          "pixels": 32178
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 26847
+        },
+        {
+          "color": "#000000",
+          "pixels": 20360
+        },
+        {
+          "color": "#5FA8A0",
+          "pixels": 12133
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 10468
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 10398
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 3.64%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 78.40%（抽样 9481 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/C1-vfx-gpt-image2_palette24.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.78541,
+        "transparentRatio": 0.0,
+        "distinctColors": 20
+      },
+      "topPaletteHits": [
+        {
+          "color": "#FFFFFF",
+          "pixels": 823562
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 49270
+        },
+        {
+          "color": "#F2D089",
+          "pixels": 34538
+        },
+        {
+          "color": "#2A3140",
+          "pixels": 27890
+        },
+        {
+          "color": "#000000",
+          "pixels": 20368
+        },
+        {
+          "color": "#5FA8A0",
+          "pixels": 15325
+        },
+        {
+          "color": "#7A2420",
+          "pixels": 14022
+        },
+        {
+          "color": "#C9BFA3",
+          "pixels": 12515
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1024x1024 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "too_much_white",
+          "level": "WARN",
+          "detail": "纯白像素 78.54%（#FFFFFF 只用于闪白）"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/C2-overlay-gpt-image2_original.png",
+      "size": [
+        1280,
+        1280
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.03122,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.80634,
+        "softEdgeSampled": 12987,
+        "pureWhiteRatio": 0.00249,
+        "transparentRatio": 0.0,
+        "distinctColors": 112337
+      },
+      "topPaletteHits": [
+        {
+          "color": "#FFFFFF",
+          "pixels": 1460816
+        },
+        {
+          "color": "#000000",
+          "pixels": 26412
+        },
+        {
+          "color": "#5FA8A0",
+          "pixels": 18859
+        },
+        {
+          "color": "#9BD4CC",
+          "pixels": 10678
+        },
+        {
+          "color": "#E8DFC8",
+          "pixels": 8649
+        },
+        {
+          "color": "#C8453B",
+          "pixels": 8536
+        },
+        {
+          "color": "#12161F",
+          "pixels": 8279
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 7564
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "out_of_palette",
+          "level": "WARN",
+          "detail": "调色板越界像素 3.12%（WARN > 2% / FAIL > 10%）"
+        },
+        {
+          "id": "soft_edges",
+          "level": "WARN",
+          "detail": "边缘过渡色 80.63%（抽样 12987 像素），疑似抗锯齿/柔边，要求硬边"
+        }
+      ]
+    },
+    {
+      "file": "previews/ui/C2-overlay-gpt-image2_palette24.png",
+      "size": [
+        1280,
+        1280
+      ],
+      "sizeRule": "auto",
+      "sizeNote": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸",
+      "verdict": "FAIL",
+      "metrics": {
+        "outOfPaletteRatio": 0.0,
+        "semiTransparentRatio": 0.0,
+        "softEdgeRatio": 0.0,
+        "softEdgeSampled": 0,
+        "pureWhiteRatio": 0.89291,
+        "transparentRatio": 0.0,
+        "distinctColors": 20
+      },
+      "topPaletteHits": [
+        {
+          "color": "#FFFFFF",
+          "pixels": 1462946
+        },
+        {
+          "color": "#000000",
+          "pixels": 27635
+        },
+        {
+          "color": "#5FA8A0",
+          "pixels": 23308
+        },
+        {
+          "color": "#C8453B",
+          "pixels": 16603
+        },
+        {
+          "color": "#7A2420",
+          "pixels": 13942
+        },
+        {
+          "color": "#D9A441",
+          "pixels": 13689
+        },
+        {
+          "color": "#9BD4CC",
+          "pixels": 13403
+        },
+        {
+          "color": "#12161F",
+          "pixels": 12793
+        }
+      ],
+      "findings": [
+        {
+          "id": "size_rule",
+          "level": "FAIL",
+          "detail": "1280x1280 既不是 480x270 整数倍，也不是 2 的幂图标尺寸"
+        },
+        {
+          "id": "too_much_white",
+          "level": "WARN",
+          "detail": "纯白像素 89.29%（#FFFFFF 只用于闪白）"
+        }
+      ]
+    }
+  ],
+  "note": "AI 生成图按 03 §4 只算参考稿，本报告是返工依据而非入库闸门；入库走程序化像素链路。"
+}

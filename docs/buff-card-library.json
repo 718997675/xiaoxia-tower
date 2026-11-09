@@ -1,0 +1,1482 @@
+{
+  "version": "v0.1",
+  "status": "PROPOSAL · 用户第 12 轮确认「要做这套系统」；第 15 轮策划案整体确认后，结构红线（五上界 + 共享池）已机器核对，但全部卡牌数值/概率/权重/阈值仍为设计建议，待实测；不是已调好的数值规格",
+  "round": 12,
+  "spec": "docs/11-塔层三选一卡牌系统.md",
+  "uiSpec": "docs/12-卡牌UI规格.md",
+  "generator": "tools/build_buff_cards.py（只读本文件，0 积分）",
+  "palette": "24 色锁定，见 docs/04 §4；类别靠形状、稀有度靠色段+边框层次",
+  "offenseCeiling": {
+    "rule": "卡牌不得提高 compute_damage 五个上界：realm_ratio<=1.60、extra_pool<=600、combo_multiplier<=2.5、crit_multiplier<=1.8、base<=180",
+    "why": "02 §4 P0-3 已把全最大伤害从 5940 压到 3996（第 9 层 Boss 4400），余量仅 404 点；再叠卡牌倍率会一击清层，红线复燃",
+    "implementation": "伤害类卡只改「达到上界的路径」（命中数/落点/贯穿/命中条件/CD），或把数值增益并入 offense_pool 且与 extra_pool 共享 600 点上限；凡 hook=SkillCaster.* 且 params 触碰上界变量的卡，必须显式带 pool 或 cap 声明，由 tools/verify_damage_ceiling.py 机器核对",
+    "recompute": "第 15 轮已复算：修复前 3 张卡无边界声明，最坏 base=236 -> 4399（距 4400 仅 1 点）、若 pool 声明被忽略 base=254 -> 4529（击穿）；修复后守五上界 = 3996 < 4400。见 docs/damage-ceiling-report.json（R32 已处置）",
+    "fixedAt": "第 15 轮（策划案整体确认后、设计冻结前的极值复算）",
+    "fixedCards": [
+      "card_jianfeng",
+      "card_danbao",
+      "card_shuangren"
+    ]
+  },
+  "categories": [
+    {
+      "key": "dmg",
+      "name": "技能伤害",
+      "sigil": "arc",
+      "frame": "octagon",
+      "color": "#C8453B"
+    },
+    {
+      "key": "attr",
+      "name": "属性提升",
+      "sigil": "column",
+      "frame": "scroll",
+      "color": "#5FA8A0"
+    },
+    {
+      "key": "mech",
+      "name": "机制改变",
+      "sigil": "gear",
+      "frame": "hexagon",
+      "color": "#8A6FC4"
+    },
+    {
+      "key": "res",
+      "name": "资源灵力",
+      "sigil": "drop",
+      "frame": "circle",
+      "color": "#D9A441"
+    },
+    {
+      "key": "surv",
+      "name": "生存回复",
+      "sigil": "shield",
+      "frame": "shield",
+      "color": "#9BD4CC"
+    },
+    {
+      "key": "syn",
+      "name": "构筑风险",
+      "sigil": "knot",
+      "frame": "diamond",
+      "color": "#7A2420"
+    }
+  ],
+  "rarities": [
+    {
+      "key": "common",
+      "name": "凡品",
+      "band": "ink",
+      "frameLines": 1,
+      "pips": 1,
+      "weight": 10
+    },
+    {
+      "key": "rare",
+      "name": "灵品",
+      "band": "jade",
+      "frameLines": 2,
+      "pips": 2,
+      "weight": 5
+    },
+    {
+      "key": "legend",
+      "name": "仙品",
+      "band": "gold",
+      "frameLines": 3,
+      "pips": 3,
+      "weight": 2
+    },
+    {
+      "key": "curse",
+      "name": "劫品",
+      "band": "cinnabar",
+      "frameLines": 0,
+      "pips": 4,
+      "weight": 3
+    }
+  ],
+  "drawRule": {
+    "trigger": "每通过 1 层（stage_cleared）后弹出；9 层塔共 8 次，第 9 层 Boss 后不弹，改为传承结算",
+    "offered": 3,
+    "pick": 1,
+    "seed": "hash(run_id, stage) 确定性种子，便于 M6 埋点复现与存档回放",
+    "noDuplicate": "本局已选卡不再进入候选；同类同层最多 1 张（异遇卡可放宽）",
+    "affixLink": "affix_wuxiang 无相词缀把 3 选 1 压成 2 选 1；card_wuxiangpo 可恢复为 3 张",
+    "skip": "默认不开放舍牌；card_shouzhuo 是唯一主动放弃抽卡的卡（StS 的 skip 以卡片形式实现）",
+    "telemetry": "复用 02 §5 已有 pick_event{stage,offered[],picked,dps_delta_est}，本系统补 card_id 与 card_rarity 两字段",
+    "window": "Q13 已接受层间选择 10s→6s；72 张陌生卡会读不完，建议新卡首见放宽到 12s（待实测，见 11 §6 R33）"
+  },
+  "effectTypes": {
+    "numeric": "纯数值缩放；沿用 02 P0-2 硬约束，占池比例必须 ≤1/3",
+    "hybrid": "带代价/条件/转化的数值，改变选卡决策",
+    "mechanical": "改变规则、时序、命中条件或信息，不缩放数值"
+  },
+  "hookWhitelist": [
+    "SkillCaster.base_damage",
+    "SkillCaster.extra_pool",
+    "SkillCaster.combo_multiplier",
+    "SkillCaster.crit_multiplier",
+    "SkillCaster.defense_rate",
+    "VfxLayer.vfx_requested",
+    "signal.damage_applied",
+    "signal.cast_finished",
+    "RunState.hp_max",
+    "RunState.hp_regen",
+    "RunState.spirit_max",
+    "RunState.spirit_cost",
+    "RunState.spirit_regen_on_kill",
+    "RunState.skill_slots",
+    "RunState.skill_cd",
+    "RunState.move_speed",
+    "RunState.choice_count",
+    "RunState.affix_cap",
+    "RunState.shield_max",
+    "RunState.invuln_window",
+    "RunState.auto_cast",
+    "RunState.economy",
+    "RunState.visual_rule",
+    "MetaSave.legacy_effects",
+    "UI.pick_event"
+  ],
+  "cards": [
+    {
+      "id": "card_jianfeng",
+      "name": "剑锋淬砺",
+      "cat": "dmg",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "剑气斩基础伤害 +12",
+      "params": {
+        "skill": "sword_qi",
+        "base_damage": 12,
+        "pool": "offense_pool",
+        "cap": 600
+      },
+      "stack": 3,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.base_damage",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_poyun",
+      "name": "破云式",
+      "cat": "dmg",
+      "rarity": "common",
+      "type": "hybrid",
+      "text": "飞剑分裂为 2 道，单道 ×0.6，总伤不变",
+      "params": {
+        "skill": "flying_sword",
+        "split": 2,
+        "per_hit": 0.6
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "VfxLayer.vfx_requested",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_leizhuan",
+      "name": "雷篆重描",
+      "cat": "dmg",
+      "rarity": "rare",
+      "type": "hybrid",
+      "text": "引雷符落点 +1，总伤在落点间均分",
+      "params": {
+        "skill": "thunder_talisman",
+        "hits": 2,
+        "split_total": true
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "VfxLayer.vfx_requested",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_danbao",
+      "name": "丹火爆燃",
+      "cat": "dmg",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "丹火基础伤害 +10，施法后自伤 2 点",
+      "params": {
+        "skill": "dan_fire",
+        "base_damage": 10,
+        "self_damage": 2,
+        "pool": "offense_pool",
+        "cap": 600
+      },
+      "stack": 2,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.base_damage",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_fuzhen",
+      "name": "符阵叠印",
+      "cat": "dmg",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "每在场 1 张符纸，引雷符 +4 伤害（上限 +16）",
+      "params": {
+        "per_puppet": 4,
+        "cap": 16
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "skill:paper_puppet"
+      ],
+      "hook": "signal.damage_applied",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_quanfeng",
+      "name": "拳风连震",
+      "cat": "dmg",
+      "rarity": "common",
+      "type": "hybrid",
+      "text": "崩拳波追加 1 段 30% 伤害（单次峰值不变）",
+      "params": {
+        "skill": "fist_force",
+        "extra_hit": 0.3
+      },
+      "stack": 2,
+      "excl": [],
+      "req": [],
+      "hook": "VfxLayer.vfx_requested",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_huiling",
+      "name": "回春化刃",
+      "cat": "dmg",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "回春诀治疗量的 50% 转为下一次技能伤害",
+      "params": {
+        "convert": 0.5,
+        "cap": 120
+      },
+      "stack": 1,
+      "excl": [
+        "card_huichun",
+        "card_danxiang"
+      ],
+      "req": [],
+      "hook": "signal.damage_applied",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_jingang",
+      "name": "金刚怒目",
+      "cat": "dmg",
+      "rarity": "rare",
+      "type": "hybrid",
+      "text": "金刚罩结束释放扇形冲击，伤害=已吸收量 30%（上限 120）",
+      "params": {
+        "convert": 0.3,
+        "cap": 120
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "skill:vajra_body"
+      ],
+      "hook": "VfxLayer.vfx_requested",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_jianyi",
+      "name": "剑意凝形",
+      "cat": "dmg",
+      "rarity": "legend",
+      "type": "mechanical",
+      "text": "剑修标签 ≥2 时，剑气斩改为贯穿路径上所有敌人",
+      "params": {
+        "pierce": true,
+        "school": "jian",
+        "tags": 2
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "school:jian"
+      ],
+      "hook": "VfxLayer.vfx_requested",
+      "weight": 2,
+      "unlock": "realm:3"
+    },
+    {
+      "id": "card_wuxing",
+      "name": "五行逆克",
+      "cat": "dmg",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "对带「铁壁」词缀的敌人无视 50% 减伤",
+      "params": {
+        "affix": "affix_tiebi",
+        "pierce_defense": 0.5
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.defense_rate",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_lianhuan",
+      "name": "连环符",
+      "cat": "dmg",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "连放同一技能第 2 次起 +8% 伤害，换技能重置（combo 上界不变）",
+      "params": {
+        "per_stack": 0.08,
+        "cap": 2
+      },
+      "stack": 2,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.combo_multiplier",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_zhanxing",
+      "name": "斩星",
+      "cat": "dmg",
+      "rarity": "legend",
+      "type": "hybrid",
+      "text": "首次击败精英后，本局全技能 base_damage +18（计入 offense_pool）",
+      "params": {
+        "base_damage": 18,
+        "pool": "offense_pool"
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.base_damage",
+      "weight": 2,
+      "unlock": "realm:6"
+    },
+    {
+      "id": "card_cuijing",
+      "name": "淬精",
+      "cat": "attr",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "暴击率 +3%",
+      "params": {
+        "crit_rate": 0.03
+      },
+      "stack": 4,
+      "excl": [],
+      "req": [],
+      "hook": "signal.damage_applied",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_ningdan",
+      "name": "凝丹",
+      "cat": "attr",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "最大生命 +24",
+      "params": {
+        "hp_max": 24
+      },
+      "stack": 4,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.hp_max",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_lingmai",
+      "name": "灵脉拓宽",
+      "cat": "attr",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "灵力上限 +16",
+      "params": {
+        "spirit_max": 16
+      },
+      "stack": 4,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.spirit_max",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_buyao",
+      "name": "步摇",
+      "cat": "attr",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "移速 +5%",
+      "params": {
+        "move_speed": 0.05
+      },
+      "stack": 3,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.move_speed",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_tiepi",
+      "name": "铁皮",
+      "cat": "attr",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "减伤 +2%（受 0.75 硬钳制）",
+      "params": {
+        "defense_rate": 0.02,
+        "cap": 0.75
+      },
+      "stack": 3,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.defense_rate",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_huixin",
+      "name": "会心",
+      "cat": "attr",
+      "rarity": "rare",
+      "type": "numeric",
+      "text": "暴击倍率 +0.15（不改 1.8 上界）",
+      "params": {
+        "crit_multiplier": 0.15,
+        "cap": 1.8
+      },
+      "stack": 2,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.crit_multiplier",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_poyu",
+      "name": "破域",
+      "cat": "attr",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "无视敌人 5% 减伤",
+      "params": {
+        "pierce_defense": 0.05
+      },
+      "stack": 3,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.defense_rate",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_shouyuan",
+      "name": "寿元",
+      "cat": "attr",
+      "rarity": "rare",
+      "type": "numeric",
+      "text": "最大生命 +60，本局道行 −10%",
+      "params": {
+        "hp_max": 60,
+        "dao_xing": -0.1
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.hp_max",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_qingling",
+      "name": "轻灵",
+      "cat": "attr",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "技能 CD −4%",
+      "params": {
+        "skill_cd": -0.04
+      },
+      "stack": 3,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.skill_cd",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_juxi",
+      "name": "聚息",
+      "cat": "attr",
+      "rarity": "common",
+      "type": "hybrid",
+      "text": "脱战 3 s 后每秒回灵 +2（战斗中不生效）",
+      "params": {
+        "out_combat": 3,
+        "regen": 2
+      },
+      "stack": 2,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.spirit_regen_on_kill",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_zhongzhu",
+      "name": "重铸",
+      "cat": "attr",
+      "rarity": "rare",
+      "type": "hybrid",
+      "text": "1 件已装备品类的数值转 +30 extra_pool（受 600 上限）",
+      "params": {
+        "extra_pool": 30,
+        "cap": 600
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "gear:any"
+      ],
+      "hook": "SkillCaster.extra_pool",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_jingpo",
+      "name": "精魄",
+      "cat": "attr",
+      "rarity": "legend",
+      "type": "numeric",
+      "text": "全属性 +5%，每次受击失去 1 层（初始 3 层）",
+      "params": {
+        "all_stats": 0.05,
+        "layers": 3
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.hp_max",
+      "weight": 2,
+      "unlock": "realm:6"
+    },
+    {
+      "id": "card_nianzhuan",
+      "name": "逆转回灵",
+      "cat": "mech",
+      "rarity": "common",
+      "type": "mechanical",
+      "text": "击杀回灵改为命中回灵（每次命中 +2）",
+      "params": {
+        "mode": "on_hit",
+        "per_hit": 2
+      },
+      "stack": 1,
+      "excl": [
+        "card_juling"
+      ],
+      "req": [],
+      "hook": "RunState.spirit_regen_on_kill",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_huanshi",
+      "name": "换势",
+      "cat": "mech",
+      "rarity": "common",
+      "type": "mechanical",
+      "text": "层间可额外更换 1 个技能（1→2）",
+      "params": {
+        "swap_per_stage": 2
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.skill_slots",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_shuangxiu",
+      "name": "双修",
+      "cat": "mech",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "可同时携带 2 个流派标签，质变按主标签计",
+      "params": {
+        "school_tags": 2
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.skill_slots",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_yuqi",
+      "name": "御气",
+      "cat": "mech",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "施法不再锁定移动，但施法伤害 −10%",
+      "params": {
+        "cast_lock": 0,
+        "damage": -0.1
+      },
+      "stack": 1,
+      "excl": [
+        "card_zhongshi"
+      ],
+      "req": [],
+      "hook": "signal.cast_finished",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_daoyin",
+      "name": "导引",
+      "cat": "mech",
+      "rarity": "common",
+      "type": "mechanical",
+      "text": "技能释放顺序可自定义（映射在 UI 明示）",
+      "params": {
+        "remap": true
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.skill_slots",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_jieyin",
+      "name": "借印",
+      "cat": "mech",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "每 3 层封印 1 张已选卡，腾出抽卡位并重抽一次",
+      "params": {
+        "seal_every": 3,
+        "redraw": 1
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "UI.pick_event",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_wuxiangpo",
+      "name": "无相破",
+      "cat": "mech",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "「无相」词缀下仍按 3 张候选（原压成 2 张）",
+      "params": {
+        "choice_count": 3
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "affix:affix_wuxiang"
+      ],
+      "hook": "RunState.choice_count",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_chongzhu",
+      "name": "重铸令",
+      "cat": "mech",
+      "rarity": "common",
+      "type": "mechanical",
+      "text": "层间铸器免费 1 次/层",
+      "params": {
+        "free_forge": 1
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.economy",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_tianren",
+      "name": "天人感应",
+      "cat": "mech",
+      "rarity": "common",
+      "type": "mechanical",
+      "text": "进层前显示本层敌人构成与词缀",
+      "params": {
+        "reveal": true
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.visual_rule",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_sheli",
+      "name": "舍利",
+      "cat": "mech",
+      "rarity": "legend",
+      "type": "mechanical",
+      "text": "死亡时以 30% 生命复活一次，此后本局不再获得卡牌",
+      "params": {
+        "revive_hp": 0.3,
+        "stop_draw": true
+      },
+      "stack": 1,
+      "excl": [
+        "card_zhuansheng",
+        "card_jiaren"
+      ],
+      "req": [],
+      "hook": "RunState.hp_max",
+      "weight": 2,
+      "unlock": "realm:6"
+    },
+    {
+      "id": "card_lunhui",
+      "name": "轮回",
+      "cat": "mech",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "失败时从 2 条候选灵韵中选 1 条固化（固化数量仍为 1）",
+      "params": {
+        "legacy_choices": 2,
+        "legacy_count": 1
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "MetaSave.legacy_effects",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_pojing",
+      "name": "破境",
+      "cat": "mech",
+      "rarity": "legend",
+      "type": "mechanical",
+      "text": "本局可选 2 个道途目标，奖励累加并 clamp 1.60",
+      "params": {
+        "goals": 2,
+        "reward_clamp": 1.6
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.economy",
+      "weight": 2,
+      "unlock": "realm:6"
+    },
+    {
+      "id": "card_juling",
+      "name": "聚灵阵",
+      "cat": "res",
+      "rarity": "common",
+      "type": "hybrid",
+      "text": "击杀回灵 +3",
+      "params": {
+        "on_kill": 3
+      },
+      "stack": 3,
+      "excl": [
+        "card_nianzhuan"
+      ],
+      "req": [],
+      "hook": "RunState.spirit_regen_on_kill",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_shengxi",
+      "name": "省息",
+      "cat": "res",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "技能灵耗 −8%",
+      "params": {
+        "spirit_cost": -0.08
+      },
+      "stack": 3,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.spirit_cost",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_huanling",
+      "name": "还灵",
+      "cat": "res",
+      "rarity": "rare",
+      "type": "hybrid",
+      "text": "每通过 1 层回复 25% 灵力",
+      "params": {
+        "per_stage": 0.25
+      },
+      "stack": 2,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.spirit_max",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_danxiang",
+      "name": "丹香",
+      "cat": "res",
+      "rarity": "common",
+      "type": "hybrid",
+      "text": "回春诀灵耗减半，治疗量 −20%",
+      "params": {
+        "spirit_cost": -0.5,
+        "heal": -0.2
+      },
+      "stack": 1,
+      "excl": [
+        "card_huiling"
+      ],
+      "req": [],
+      "hook": "RunState.spirit_cost",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_lingchao",
+      "name": "灵潮",
+      "cat": "res",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "灵力满时下一技能不耗灵且 +15% 伤害（不改上界）",
+      "params": {
+        "free_cast": true,
+        "damage": 0.15
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.spirit_cost",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_jieqi",
+      "name": "截取",
+      "cat": "res",
+      "rarity": "common",
+      "type": "hybrid",
+      "text": "受击回 4 灵力，冷却 2 s",
+      "params": {
+        "on_hit": 4,
+        "cd": 2
+      },
+      "stack": 2,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.spirit_regen_on_kill",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_kongzhan",
+      "name": "空盏",
+      "cat": "res",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "灵力 <20% 时技能伤害 +20%（combo 上界 2.5 不变）",
+      "params": {
+        "threshold": 0.2,
+        "damage": 0.2,
+        "cap": 2.5
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.combo_multiplier",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_fanyong",
+      "name": "反涌",
+      "cat": "res",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "灵力溢出部分转护盾（上限 40）",
+      "params": {
+        "shield_cap": 40
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.shield_max",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_zhulian",
+      "name": "珠链",
+      "cat": "res",
+      "rarity": "common",
+      "type": "hybrid",
+      "text": "连续 3 次命中回灵 6",
+      "params": {
+        "streak": 3,
+        "regen": 6
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.spirit_regen_on_kill",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_wugen",
+      "name": "无根",
+      "cat": "res",
+      "rarity": "curse",
+      "type": "hybrid",
+      "text": "灵力上限 −20%，但技能 CD −12%",
+      "params": {
+        "spirit_max": -0.2,
+        "skill_cd": -0.12
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.spirit_max",
+      "weight": 3,
+      "unlock": "none"
+    },
+    {
+      "id": "card_tianlu",
+      "name": "天禄",
+      "cat": "res",
+      "rarity": "rare",
+      "type": "hybrid",
+      "text": "每层首杀额外 +6 灵石",
+      "params": {
+        "stone": 6
+      },
+      "stack": 2,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.economy",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_shouyin",
+      "name": "收印",
+      "cat": "res",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "符系命中叠「印」，3 层引爆（伤害=3 次均值，不新增峰值）",
+      "params": {
+        "stack": 3,
+        "no_new_peak": true
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "school:fu"
+      ],
+      "hook": "signal.damage_applied",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_huichun",
+      "name": "回春",
+      "cat": "surv",
+      "rarity": "common",
+      "type": "hybrid",
+      "text": "回春诀治疗量 +18%",
+      "params": {
+        "heal": 0.18
+      },
+      "stack": 3,
+      "excl": [
+        "card_huiling"
+      ],
+      "req": [],
+      "hook": "RunState.hp_regen",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_huti",
+      "name": "护体",
+      "cat": "surv",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "最大护盾 +20（护盾不超 60）",
+      "params": {
+        "shield_max": 20,
+        "cap": 60
+      },
+      "stack": 3,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.shield_max",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_bishui",
+      "name": "避水",
+      "cat": "surv",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "受击后无敌窗口 0.2 s → 0.5 s",
+      "params": {
+        "invuln": 0.5
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.invuln_window",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_duanxu",
+      "name": "断续",
+      "cat": "surv",
+      "rarity": "common",
+      "type": "hybrid",
+      "text": "每通过 1 层回复 12% 生命",
+      "params": {
+        "per_stage": 0.12
+      },
+      "stack": 2,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.hp_regen",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_jiaren",
+      "name": "假人",
+      "cat": "surv",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "纸傀儡替身抵挡一次致命伤",
+      "params": {
+        "proxy": 1
+      },
+      "stack": 1,
+      "excl": [
+        "card_sheli",
+        "card_zhuansheng"
+      ],
+      "req": [
+        "skill:paper_puppet"
+      ],
+      "hook": "RunState.hp_max",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_tiegu",
+      "name": "铁骨",
+      "cat": "surv",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "受击伤害 −6 固定减免",
+      "params": {
+        "flat_reduce": 6
+      },
+      "stack": 3,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.defense_rate",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_guisuo",
+      "name": "归所",
+      "cat": "surv",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "生命 <25% 时回春诀自动释放（每局 2 次）",
+      "params": {
+        "threshold": 0.25,
+        "uses": 2
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.auto_cast",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_yinbi",
+      "name": "隐避",
+      "cat": "surv",
+      "rarity": "common",
+      "type": "hybrid",
+      "text": "静止 1 s 进入潜行，敌人丢失目标 1 s",
+      "params": {
+        "idle": 1,
+        "stealth": 1
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.visual_rule",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_zhuansheng",
+      "name": "转生",
+      "cat": "surv",
+      "rarity": "legend",
+      "type": "mechanical",
+      "text": "Boss 战死亡后以 20% 生命复活并重置技能 CD（每局 1 次）",
+      "params": {
+        "revive_hp": 0.2,
+        "reset_cd": true
+      },
+      "stack": 1,
+      "excl": [
+        "card_sheli",
+        "card_jiaren"
+      ],
+      "req": [],
+      "hook": "RunState.hp_max",
+      "weight": 2,
+      "unlock": "realm:6"
+    },
+    {
+      "id": "card_qinglu",
+      "name": "清露",
+      "cat": "surv",
+      "rarity": "common",
+      "type": "numeric",
+      "text": "脱战每秒回血 +1",
+      "params": {
+        "regen": 1
+      },
+      "stack": 3,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.hp_regen",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_hunyuan",
+      "name": "混元",
+      "cat": "surv",
+      "rarity": "rare",
+      "type": "hybrid",
+      "text": "金刚罩期间减伤 +8%（0.75 钳制不变）",
+      "params": {
+        "defense_rate": 0.08,
+        "cap": 0.75
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "skill:vajra_body"
+      ],
+      "hook": "SkillCaster.defense_rate",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_sheshi",
+      "name": "舍身",
+      "cat": "surv",
+      "rarity": "curse",
+      "type": "hybrid",
+      "text": "最大生命 −15%，但全技能 CD −10%",
+      "params": {
+        "hp_max": -0.15,
+        "skill_cd": -0.1
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.hp_max",
+      "weight": 3,
+      "unlock": "none"
+    },
+    {
+      "id": "card_jianxin",
+      "name": "剑心",
+      "cat": "syn",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "剑修质变阈值 −1 件（4→3），仅本局",
+      "params": {
+        "threshold_delta": -1
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "school:jian"
+      ],
+      "hook": "RunState.skill_slots",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_fuhun",
+      "name": "符魂",
+      "cat": "syn",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "符修技能命中后 10% 概率重置符纸 CD",
+      "params": {
+        "proc": 0.1
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "school:fu"
+      ],
+      "hook": "RunState.skill_cd",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_danxin",
+      "name": "丹心",
+      "cat": "syn",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "丹火灼伤可叠 3 层（原本刷新不叠）",
+      "params": {
+        "dot_stack": 3
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "school:dan"
+      ],
+      "hook": "signal.damage_applied",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_tipo",
+      "name": "体魄",
+      "cat": "syn",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "近身 32 px 内伤害 +12%（只改命中条件，不改上界）",
+      "params": {
+        "range": 32,
+        "damage": 0.12
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "school:ti"
+      ],
+      "hook": "signal.damage_applied",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_tongyuan",
+      "name": "同源",
+      "cat": "syn",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "3 槽装满时三选一可见第 4 张（仍只选 1）",
+      "params": {
+        "visible": 4,
+        "pick": 1
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "gear:3slots"
+      ],
+      "hook": "UI.pick_event",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_jiezeng",
+      "name": "劫增",
+      "cat": "syn",
+      "rarity": "curse",
+      "type": "mechanical",
+      "text": "天劫词缀上限 +1（0–3→0–4），奖励按 09 §2.3 clamp 1.60",
+      "params": {
+        "affix_cap": 4,
+        "reward_clamp": 1.6
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "RunState.affix_cap",
+      "weight": 3,
+      "unlock": "none"
+    },
+    {
+      "id": "card_shuangren",
+      "name": "双刃",
+      "cat": "syn",
+      "rarity": "curse",
+      "type": "hybrid",
+      "text": "伤害 +12%（计入池上限），受击伤害 +15%",
+      "params": {
+        "extra_pool": 0.12,
+        "taken": 0.15,
+        "pool": "offense_pool",
+        "cap": 600
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "SkillCaster.extra_pool",
+      "weight": 3,
+      "unlock": "none"
+    },
+    {
+      "id": "card_duozhu",
+      "name": "夺主",
+      "cat": "syn",
+      "rarity": "legend",
+      "type": "mechanical",
+      "text": "本局可携带第 5 个技能槽（k:4→5，需重算 B，待确认）",
+      "params": {
+        "skill_slots": 5,
+        "recompute_B": true
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [
+        "stage>=5"
+      ],
+      "hook": "RunState.skill_slots",
+      "weight": 2,
+      "unlock": "realm:6"
+    },
+    {
+      "id": "card_zhongshi",
+      "name": "终誓",
+      "cat": "syn",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "第 9 层 Boss 战禁用回春诀，道行 ×1.25（clamp 1.60）",
+      "params": {
+        "no_heal": true,
+        "dao_xing": 1.25
+      },
+      "stack": 1,
+      "excl": [
+        "card_yuqi"
+      ],
+      "req": [],
+      "hook": "RunState.auto_cast",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_shouzhuo",
+      "name": "守拙",
+      "cat": "syn",
+      "rarity": "rare",
+      "type": "mechanical",
+      "text": "放弃本层三选一，此后每层 +4% 减伤（0.75 钳制不变）",
+      "params": {
+        "skip_draw": true,
+        "defense_rate": 0.04,
+        "cap": 0.75
+      },
+      "stack": 1,
+      "excl": [
+        "card_wuxin"
+      ],
+      "req": [],
+      "hook": "UI.pick_event",
+      "weight": 5,
+      "unlock": "none"
+    },
+    {
+      "id": "card_yiyu",
+      "name": "异遇",
+      "cat": "syn",
+      "rarity": "common",
+      "type": "mechanical",
+      "text": "三选一中至少 1 张来自本局未选过的类别",
+      "params": {
+        "fresh_category": 1
+      },
+      "stack": 1,
+      "excl": [],
+      "req": [],
+      "hook": "UI.pick_event",
+      "weight": 10,
+      "unlock": "none"
+    },
+    {
+      "id": "card_wuxin",
+      "name": "无心",
+      "cat": "syn",
+      "rarity": "legend",
+      "type": "mechanical",
+      "text": "本局不再获得卡牌，已选卡效果 ×1.5（不超各自 stack 上限）",
+      "params": {
+        "stop_draw": true,
+        "amplify": 1.5
+      },
+      "stack": 1,
+      "excl": [
+        "card_shouzhuo",
+        "card_sheli"
+      ],
+      "req": [],
+      "hook": "UI.pick_event",
+      "weight": 2,
+      "unlock": "realm:6"
+    }
+  ]
+}

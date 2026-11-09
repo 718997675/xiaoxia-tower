@@ -1,0 +1,2330 @@
+{
+  "version": 1,
+  "scope": "previews/ui/00-anchor ~ 08-icons 九张 gpt-image2 回稿的 UI 资产化",
+  "status": "待目检与合规确认；不得直接入库",
+  "note": "本目录为新增候选资产，不替换 assets/ui/icons 的 47 个 R23 冻结 ID，也不替换 assets/ui/cards；组件裁切框为相对比例估算，需人工目检微调",
+  "watermark": {
+    "boxRel": [
+      0.5,
+      0.925,
+      0.99,
+      0.985
+    ],
+    "pixelsReplaced": 8748,
+    "method": "保留深色底 / 金框 / 青玉描边，条带内其余像素一律回填深色底",
+    "sourceArtUntouched": true
+  },
+  "files": [
+    {
+      "file": "ui_00-anchor_full.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "full",
+      "cropRel": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "use": "原尺寸整屏参考底板",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1024,
+        1024
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_panel.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "panel16x9",
+      "cropRel": "居中裁 16:9 -> 960x540",
+      "use": "16:9 整屏 UI 底板候选",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        960,
+        540
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_palette_strip.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.02,
+        0.02,
+        0.24,
+        0.95
+      ],
+      "use": "24 色阶梯色板条",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        953
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_sigil_01.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.26,
+        0.09,
+        0.48,
+        0.23
+      ],
+      "use": "技能伤害纹样",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        144
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_sigil_02.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.26,
+        0.24,
+        0.48,
+        0.38
+      ],
+      "use": "属性提升纹样",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        143
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_sigil_03.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.26,
+        0.38,
+        0.48,
+        0.52
+      ],
+      "use": "机制改变纹样",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        143
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_sigil_04.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.26,
+        0.52,
+        0.48,
+        0.65
+      ],
+      "use": "资源灵力纹样",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        134
+      ],
+      "usedColors": 19,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_sigil_05.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.26,
+        0.65,
+        0.48,
+        0.78
+      ],
+      "use": "生存回复纹样",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        133
+      ],
+      "usedColors": 18,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_sigil_06.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.26,
+        0.78,
+        0.48,
+        0.93
+      ],
+      "use": "构筑风险纹样",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        153
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_frame_01.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.5,
+        0.1,
+        0.73,
+        0.31
+      ],
+      "use": "边框层次一（素描细框）",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        236,
+        215
+      ],
+      "usedColors": 8,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_frame_02.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.5,
+        0.33,
+        0.73,
+        0.52
+      ],
+      "use": "边框层次二（青玉角饰）",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        236,
+        194
+      ],
+      "usedColors": 14,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_frame_03.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.5,
+        0.53,
+        0.73,
+        0.72
+      ],
+      "use": "边框层次三（金角框）",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        236,
+        194
+      ],
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_frame_04.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.5,
+        0.74,
+        0.73,
+        0.92
+      ],
+      "use": "边框层次四（朱砂切角）",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        236,
+        184
+      ],
+      "usedColors": 12,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_vocab_01.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.76,
+        0.1,
+        0.98,
+        0.32
+      ],
+      "use": "界面语汇：壹~玖数字格",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        226
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_vocab_02.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.76,
+        0.37,
+        0.98,
+        0.47
+      ],
+      "use": "界面语汇：朱砂警示条",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        102
+      ],
+      "usedColors": 8,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_vocab_03.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.76,
+        0.52,
+        0.98,
+        0.7
+      ],
+      "use": "界面语汇：圆形徽记框",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        185
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_00-anchor_vocab_04.png",
+      "source": "previews/ui/00-anchor-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.76,
+        0.73,
+        0.98,
+        0.88
+      ],
+      "use": "界面语汇：菱形朱印",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        226,
+        153
+      ],
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_01-mainmenu_full.png",
+      "source": "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+      "kind": "full",
+      "cropRel": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "use": "原尺寸整屏参考底板",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1280,
+        1280
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_01-mainmenu_panel.png",
+      "source": "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+      "kind": "panel16x9",
+      "cropRel": "居中裁 16:9 -> 960x540",
+      "use": "16:9 整屏 UI 底板候选",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        960,
+        540
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_01-mainmenu_title_scroll.png",
+      "source": "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.03,
+        0.04,
+        0.33,
+        0.6
+      ],
+      "use": "卷轴标题框",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        384,
+        717
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_01-mainmenu_realm_bar.png",
+      "source": "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.02,
+        0.62,
+        0.42,
+        0.75
+      ],
+      "use": "境界 / 金丹进度条",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        512,
+        166
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_01-mainmenu_button_01.png",
+      "source": "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.72,
+        0.12,
+        0.98,
+        0.23
+      ],
+      "use": "开始入塔按钮",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        332,
+        140
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_01-mainmenu_button_02.png",
+      "source": "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.72,
+        0.25,
+        0.98,
+        0.35
+      ],
+      "use": "境界总览按钮",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        332,
+        128
+      ],
+      "usedColors": 12,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_01-mainmenu_button_03.png",
+      "source": "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.72,
+        0.36,
+        0.98,
+        0.46
+      ],
+      "use": "传承灵韵按钮",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        332,
+        128
+      ],
+      "usedColors": 14,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_01-mainmenu_button_04.png",
+      "source": "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.72,
+        0.47,
+        0.98,
+        0.57
+      ],
+      "use": "设置按钮",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        332,
+        128
+      ],
+      "usedColors": 10,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_01-mainmenu_legacy_slots.png",
+      "source": "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.5,
+        0.78,
+        0.99,
+        0.91
+      ],
+      "use": "六边灵韵槽 x6",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        627,
+        167
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_full.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "full",
+      "cropRel": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "use": "原尺寸整屏参考底板",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1024,
+        1024
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_panel.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "panel16x9",
+      "cropRel": "居中裁 16:9 -> 960x540",
+      "use": "16:9 整屏 UI 底板候选",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        960,
+        540
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_bar_hp.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.01,
+        0.05,
+        0.45,
+        0.1
+      ],
+      "use": "生命条",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        451,
+        51
+      ],
+      "usedColors": 12,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_bar_qi.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.01,
+        0.1,
+        0.41,
+        0.15
+      ],
+      "use": "灵力条",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        410,
+        52
+      ],
+      "usedColors": 12,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_bar_shield.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.01,
+        0.15,
+        0.36,
+        0.21
+      ],
+      "use": "护盾 / 护体条",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        359,
+        61
+      ],
+      "usedColors": 11,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_floor_marker.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.81,
+        0.04,
+        0.99,
+        0.15
+      ],
+      "use": "第 N 层 / 9 层数标记",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        185,
+        113
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_realm_plate.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.73,
+        0.15,
+        0.99,
+        0.24
+      ],
+      "use": "金丹境界牌",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        266,
+        92
+      ],
+      "usedColors": 14,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_boss_bar.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.19,
+        0.33,
+        0.81,
+        0.4
+      ],
+      "use": "Boss 血条 + 名字",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        634,
+        72
+      ],
+      "usedColors": 14,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_skill_01.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.25,
+        0.66,
+        0.37,
+        0.79
+      ],
+      "use": "技能八角框 J",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        123,
+        133
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_skill_02.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.37,
+        0.66,
+        0.5,
+        0.79
+      ],
+      "use": "技能八角框 K",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        133,
+        133
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_skill_03.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.5,
+        0.66,
+        0.63,
+        0.79
+      ],
+      "use": "技能八角框 L",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        133,
+        133
+      ],
+      "usedColors": 18,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_02-towerhud_skill_04.png",
+      "source": "previews/ui/02-towerhud-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.62,
+        0.66,
+        0.75,
+        0.79
+      ],
+      "use": "技能八角框 I",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        133,
+        133
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_03-draft_full.png",
+      "source": "previews/ui/03-draft-gpt-image2_palette24.png",
+      "kind": "full",
+      "cropRel": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "use": "原尺寸整屏参考底板",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1024,
+        1024
+      ],
+      "usedColors": 18,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_03-draft_panel.png",
+      "source": "previews/ui/03-draft-gpt-image2_palette24.png",
+      "kind": "panel16x9",
+      "cropRel": "居中裁 16:9 -> 960x540",
+      "use": "16:9 整屏 UI 底板候选",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        960,
+        540
+      ],
+      "usedColors": 19,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_03-draft_status_bar.png",
+      "source": "previews/ui/03-draft-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.04,
+        0.04,
+        0.96,
+        0.14
+      ],
+      "use": "顶部层数和道行状态栏",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        942,
+        102
+      ],
+      "usedColors": 12,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_03-draft_card_01.png",
+      "source": "previews/ui/03-draft-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.05,
+        0.22,
+        0.33,
+        0.76
+      ],
+      "use": "伤害类卡框",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        287,
+        553
+      ],
+      "usedColors": 14,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_03-draft_card_02.png",
+      "source": "previews/ui/03-draft-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.35,
+        0.22,
+        0.63,
+        0.76
+      ],
+      "use": "属性类卡框（青玉角饰）",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        287,
+        553
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_03-draft_card_03.png",
+      "source": "previews/ui/03-draft-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.64,
+        0.2,
+        0.97,
+        0.78
+      ],
+      "use": "机制类卡框（金框选中态）",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        338,
+        594
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_03-draft_confirm.png",
+      "source": "previews/ui/03-draft-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.34,
+        0.83,
+        0.66,
+        0.93
+      ],
+      "use": "确认（Enter）按钮",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        328,
+        102
+      ],
+      "usedColors": 12,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_04-result_full.png",
+      "source": "previews/ui/04-result-gpt-image2_palette24.png",
+      "kind": "full",
+      "cropRel": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "use": "原尺寸整屏参考底板",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1024,
+        1024
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_04-result_panel.png",
+      "source": "previews/ui/04-result-gpt-image2_palette24.png",
+      "kind": "panel16x9",
+      "cropRel": "居中裁 16:9 -> 960x540",
+      "use": "16:9 整屏 UI 底板候选",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        960,
+        540
+      ],
+      "usedColors": 19,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_04-result_result_panel.png",
+      "source": "previews/ui/04-result-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.08,
+        0.1,
+        0.92,
+        0.8
+      ],
+      "use": "结算主面板",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        860,
+        717
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_04-result_result_button.png",
+      "source": "previews/ui/04-result-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.3,
+        0.82,
+        0.7,
+        0.94
+      ],
+      "use": "结算确认按钮",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        410,
+        123
+      ],
+      "usedColors": 9,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_05-pause_full.png",
+      "source": "previews/ui/05-pause-gpt-image2_palette24.png",
+      "kind": "full",
+      "cropRel": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "use": "原尺寸整屏参考底板",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1024,
+        1024
+      ],
+      "usedColors": 18,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_05-pause_panel.png",
+      "source": "previews/ui/05-pause-gpt-image2_palette24.png",
+      "kind": "panel16x9",
+      "cropRel": "居中裁 16:9 -> 960x540",
+      "use": "16:9 整屏 UI 底板候选",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        960,
+        540
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_05-pause_pause_panel.png",
+      "source": "previews/ui/05-pause-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.2,
+        0.12,
+        0.8,
+        0.88
+      ],
+      "use": "暂停主面板",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        614,
+        778
+      ],
+      "usedColors": 18,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_06-affix_full.png",
+      "source": "previews/ui/06-affix-gpt-image2_palette24.png",
+      "kind": "full",
+      "cropRel": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "use": "原尺寸整屏参考底板",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1280,
+        1280
+      ],
+      "usedColors": 19,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_06-affix_panel.png",
+      "source": "previews/ui/06-affix-gpt-image2_palette24.png",
+      "kind": "panel16x9",
+      "cropRel": "居中裁 16:9 -> 960x540",
+      "use": "16:9 整屏 UI 底板候选",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        960,
+        540
+      ],
+      "usedColors": 19,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_06-affix_affix_panel.png",
+      "source": "previews/ui/06-affix-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.06,
+        0.08,
+        0.94,
+        0.9
+      ],
+      "use": "词缀主面板",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1126,
+        1050
+      ],
+      "usedColors": 19,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_07-codex_full.png",
+      "source": "previews/ui/07-codex-gpt-image2_palette24.png",
+      "kind": "full",
+      "cropRel": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "use": "原尺寸整屏参考底板",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1024,
+        1024
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_07-codex_panel.png",
+      "source": "previews/ui/07-codex-gpt-image2_palette24.png",
+      "kind": "panel16x9",
+      "cropRel": "居中裁 16:9 -> 960x540",
+      "use": "16:9 整屏 UI 底板候选",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        960,
+        540
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_07-codex_filter_bar.png",
+      "source": "previews/ui/07-codex-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.01,
+        0.01,
+        0.99,
+        0.1
+      ],
+      "use": "顶部筛选 / 稀有度标签",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1004,
+        92
+      ],
+      "usedColors": 19,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_07-codex_card_grid.png",
+      "source": "previews/ui/07-codex-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.01,
+        0.11,
+        0.72,
+        0.97
+      ],
+      "use": "4x4 卡牌网格",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        727,
+        880
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_07-codex_detail_panel.png",
+      "source": "previews/ui/07-codex-gpt-image2_palette24.png",
+      "kind": "component",
+      "cropRel": [
+        0.73,
+        0.11,
+        0.99,
+        0.97
+      ],
+      "use": "右侧效果描述 / 基础信息面板",
+      "cropAccuracy": "相对比例估算，需人工目检微调",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        266,
+        880
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_08-icons_full.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "full",
+      "cropRel": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "use": "原尺寸整屏参考底板",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1254,
+        1254
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_08-icons_panel.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "panel16x9",
+      "cropRel": "居中裁 16:9 -> 960x540",
+      "use": "16:9 整屏 UI 底板候选",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        960,
+        540
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_row_01_skill.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconRow",
+      "cropRel": [
+        0.02,
+        0.13,
+        0.99,
+        0.24
+      ],
+      "row": "skill",
+      "expectedIcons": 9,
+      "use": "skill 类整行图标带（含左侧分类标签）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1216,
+        138
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_01_skill_01.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "skill",
+      "col": 1,
+      "cropRel": [
+        0.1898,
+        0.13,
+        0.2783,
+        0.24
+      ],
+      "use": "skill 类第 1 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        105,
+        121
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_01_skill_02.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "skill",
+      "col": 2,
+      "cropRel": [
+        0.2783,
+        0.13,
+        0.3668,
+        0.24
+      ],
+      "use": "skill 类第 2 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        111,
+        121
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_01_skill_03.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "skill",
+      "col": 3,
+      "cropRel": [
+        0.3668,
+        0.13,
+        0.4545,
+        0.24
+      ],
+      "use": "skill 类第 3 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        110,
+        120
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_01_skill_04.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "skill",
+      "col": 4,
+      "cropRel": [
+        0.4545,
+        0.13,
+        0.5431,
+        0.24
+      ],
+      "use": "skill 类第 4 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        111,
+        121
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_01_skill_05.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "skill",
+      "col": 5,
+      "cropRel": [
+        0.5431,
+        0.13,
+        0.6316,
+        0.24
+      ],
+      "use": "skill 类第 5 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        111,
+        121
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_01_skill_06.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "skill",
+      "col": 6,
+      "cropRel": [
+        0.6316,
+        0.13,
+        0.7201,
+        0.24
+      ],
+      "use": "skill 类第 6 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        111,
+        122
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_01_skill_07.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "skill",
+      "col": 7,
+      "cropRel": [
+        0.7201,
+        0.13,
+        0.8078,
+        0.24
+      ],
+      "use": "skill 类第 7 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        110,
+        122
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_01_skill_08.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "skill",
+      "col": 8,
+      "cropRel": [
+        0.8078,
+        0.13,
+        0.8963,
+        0.24
+      ],
+      "use": "skill 类第 8 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        111,
+        122
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_01_skill_09.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "skill",
+      "col": 9,
+      "cropRel": [
+        0.8963,
+        0.13,
+        0.9848,
+        0.24
+      ],
+      "use": "skill 类第 9 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        102,
+        121
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_row_02_school.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconRow",
+      "cropRel": [
+        0.02,
+        0.26,
+        0.99,
+        0.39
+      ],
+      "row": "school",
+      "expectedIcons": 4,
+      "use": "school 类整行图标带（含左侧分类标签）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1216,
+        163
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_02_school_01.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "school",
+      "col": 1,
+      "cropRel": [
+        0.1898,
+        0.26,
+        0.3884,
+        0.39
+      ],
+      "use": "school 类第 1 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        247,
+        142
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_02_school_02.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "school",
+      "col": 2,
+      "cropRel": [
+        0.3884,
+        0.26,
+        0.5869,
+        0.39
+      ],
+      "use": "school 类第 2 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        249,
+        142
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_02_school_03.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "school",
+      "col": 3,
+      "cropRel": [
+        0.5869,
+        0.26,
+        0.7863,
+        0.39
+      ],
+      "use": "school 类第 3 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        82,
+        143
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_02_school_04.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "school",
+      "col": 4,
+      "cropRel": [
+        0.7863,
+        0.26,
+        0.9848,
+        0.39
+      ],
+      "use": "school 类第 4 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        249,
+        163
+      ],
+      "usedColors": 1,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_row_03_affix.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconRow",
+      "cropRel": [
+        0.02,
+        0.42,
+        0.99,
+        0.51
+      ],
+      "row": "affix",
+      "expectedIcons": 12,
+      "use": "affix 类整行图标带（含左侧分类标签）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1216,
+        113
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_01.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 1,
+      "cropRel": [
+        0.1898,
+        0.42,
+        0.256,
+        0.51
+      ],
+      "use": "affix 类第 1 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        83,
+        91
+      ],
+      "usedColors": 14,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_02.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 2,
+      "cropRel": [
+        0.256,
+        0.42,
+        0.3222,
+        0.51
+      ],
+      "use": "affix 类第 2 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        83,
+        91
+      ],
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_03.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 3,
+      "cropRel": [
+        0.3222,
+        0.42,
+        0.3884,
+        0.51
+      ],
+      "use": "affix 类第 3 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        83,
+        91
+      ],
+      "usedColors": 11,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_04.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 4,
+      "cropRel": [
+        0.3884,
+        0.42,
+        0.4545,
+        0.51
+      ],
+      "use": "affix 类第 4 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        83,
+        90
+      ],
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_05.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 5,
+      "cropRel": [
+        0.4545,
+        0.42,
+        0.5207,
+        0.51
+      ],
+      "use": "affix 类第 5 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        83,
+        91
+      ],
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_06.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 6,
+      "cropRel": [
+        0.5207,
+        0.42,
+        0.5869,
+        0.51
+      ],
+      "use": "affix 类第 6 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        83,
+        91
+      ],
+      "usedColors": 11,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_07.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 7,
+      "cropRel": [
+        0.5869,
+        0.42,
+        0.6539,
+        0.51
+      ],
+      "use": "affix 类第 7 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        84,
+        91
+      ],
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_08.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 8,
+      "cropRel": [
+        0.6539,
+        0.42,
+        0.7201,
+        0.51
+      ],
+      "use": "affix 类第 8 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        83,
+        91
+      ],
+      "usedColors": 11,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_09.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 9,
+      "cropRel": [
+        0.7201,
+        0.42,
+        0.7863,
+        0.51
+      ],
+      "use": "affix 类第 9 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        83,
+        91
+      ],
+      "usedColors": 14,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_10.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 10,
+      "cropRel": [
+        0.7863,
+        0.42,
+        0.8525,
+        0.51
+      ],
+      "use": "affix 类第 10 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        83,
+        91
+      ],
+      "usedColors": 11,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_11.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 11,
+      "cropRel": [
+        0.8525,
+        0.42,
+        0.9187,
+        0.51
+      ],
+      "use": "affix 类第 11 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        83,
+        90
+      ],
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_03_affix_12.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "affix",
+      "col": 12,
+      "cropRel": [
+        0.9187,
+        0.42,
+        0.9848,
+        0.51
+      ],
+      "use": "affix 类第 12 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        75,
+        91
+      ],
+      "usedColors": 11,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_row_04_realm.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconRow",
+      "cropRel": [
+        0.02,
+        0.54,
+        0.99,
+        0.65
+      ],
+      "row": "realm",
+      "expectedIcons": 9,
+      "use": "realm 类整行图标带（含左侧分类标签）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1216,
+        138
+      ],
+      "usedColors": 19,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_04_realm_01.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "realm",
+      "col": 1,
+      "cropRel": [
+        0.1898,
+        0.54,
+        0.2783,
+        0.65
+      ],
+      "use": "realm 类第 1 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        102,
+        126
+      ],
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_04_realm_02.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "realm",
+      "col": 2,
+      "cropRel": [
+        0.2783,
+        0.54,
+        0.3668,
+        0.65
+      ],
+      "use": "realm 类第 2 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        111,
+        125
+      ],
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_04_realm_03.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "realm",
+      "col": 3,
+      "cropRel": [
+        0.3668,
+        0.54,
+        0.4545,
+        0.65
+      ],
+      "use": "realm 类第 3 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        110,
+        125
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_04_realm_04.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "realm",
+      "col": 4,
+      "cropRel": [
+        0.4545,
+        0.54,
+        0.5431,
+        0.65
+      ],
+      "use": "realm 类第 4 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        111,
+        125
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_04_realm_05.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "realm",
+      "col": 5,
+      "cropRel": [
+        0.5431,
+        0.54,
+        0.6316,
+        0.65
+      ],
+      "use": "realm 类第 5 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        106,
+        127
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_04_realm_06.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "realm",
+      "col": 6,
+      "cropRel": [
+        0.6316,
+        0.54,
+        0.7201,
+        0.65
+      ],
+      "use": "realm 类第 6 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        106,
+        125
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_04_realm_07.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "realm",
+      "col": 7,
+      "cropRel": [
+        0.7201,
+        0.54,
+        0.8078,
+        0.65
+      ],
+      "use": "realm 类第 7 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        108,
+        127
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_04_realm_08.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "realm",
+      "col": 8,
+      "cropRel": [
+        0.8078,
+        0.54,
+        0.8963,
+        0.65
+      ],
+      "use": "realm 类第 8 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        106,
+        125
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_04_realm_09.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "realm",
+      "col": 9,
+      "cropRel": [
+        0.8963,
+        0.54,
+        0.9848,
+        0.65
+      ],
+      "use": "realm 类第 9 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        109,
+        127
+      ],
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_row_05_equipment.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconRow",
+      "cropRel": [
+        0.02,
+        0.67,
+        0.99,
+        0.79
+      ],
+      "row": "equipment",
+      "expectedIcons": 8,
+      "use": "equipment 类整行图标带（含左侧分类标签）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1216,
+        151
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_05_equipment_01.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "equipment",
+      "col": 1,
+      "cropRel": [
+        0.1898,
+        0.67,
+        0.2895,
+        0.79
+      ],
+      "use": "equipment 类第 1 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        121,
+        134
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_05_equipment_02.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "equipment",
+      "col": 2,
+      "cropRel": [
+        0.2895,
+        0.67,
+        0.3884,
+        0.79
+      ],
+      "use": "equipment 类第 2 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        113,
+        135
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_05_equipment_03.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "equipment",
+      "col": 3,
+      "cropRel": [
+        0.3884,
+        0.67,
+        0.488,
+        0.79
+      ],
+      "use": "equipment 类第 3 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        115,
+        135
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_05_equipment_04.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "equipment",
+      "col": 4,
+      "cropRel": [
+        0.488,
+        0.67,
+        0.5869,
+        0.79
+      ],
+      "use": "equipment 类第 4 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        113,
+        135
+      ],
+      "usedColors": 18,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_05_equipment_05.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "equipment",
+      "col": 5,
+      "cropRel": [
+        0.5869,
+        0.67,
+        0.6866,
+        0.79
+      ],
+      "use": "equipment 类第 5 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        125,
+        135
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_05_equipment_06.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "equipment",
+      "col": 6,
+      "cropRel": [
+        0.6866,
+        0.67,
+        0.7863,
+        0.79
+      ],
+      "use": "equipment 类第 6 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        125,
+        135
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_05_equipment_07.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "equipment",
+      "col": 7,
+      "cropRel": [
+        0.7863,
+        0.67,
+        0.8852,
+        0.79
+      ],
+      "use": "equipment 类第 7 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        124,
+        135
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_05_equipment_08.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "equipment",
+      "col": 8,
+      "cropRel": [
+        0.8852,
+        0.67,
+        0.9848,
+        0.79
+      ],
+      "use": "equipment 类第 8 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        108,
+        135
+      ],
+      "usedColors": 18,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_row_06_legacy.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconRow",
+      "cropRel": [
+        0.02,
+        0.81,
+        0.99,
+        0.93
+      ],
+      "row": "legacy",
+      "expectedIcons": 6,
+      "use": "legacy 类整行图标带（含左侧分类标签）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        1216,
+        150
+      ],
+      "usedColors": 20,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_06_legacy_01.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "legacy",
+      "col": 1,
+      "cropRel": [
+        0.1898,
+        0.81,
+        0.3222,
+        0.93
+      ],
+      "use": "legacy 类第 1 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        132,
+        147
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_06_legacy_02.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "legacy",
+      "col": 2,
+      "cropRel": [
+        0.3222,
+        0.81,
+        0.4545,
+        0.93
+      ],
+      "use": "legacy 类第 2 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        158,
+        148
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_06_legacy_03.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "legacy",
+      "col": 3,
+      "cropRel": [
+        0.4545,
+        0.81,
+        0.5869,
+        0.93
+      ],
+      "use": "legacy 类第 3 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        166,
+        148
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_06_legacy_04.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "legacy",
+      "col": 4,
+      "cropRel": [
+        0.5869,
+        0.81,
+        0.7201,
+        0.93
+      ],
+      "use": "legacy 类第 4 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        167,
+        150
+      ],
+      "usedColors": 16,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_06_legacy_05.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "legacy",
+      "col": 5,
+      "cropRel": [
+        0.7201,
+        0.81,
+        0.8525,
+        0.93
+      ],
+      "use": "legacy 类第 5 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        166,
+        150
+      ],
+      "usedColors": 17,
+      "outOfPalette": 0
+    },
+    {
+      "file": "ui_icons_06_legacy_06.png",
+      "source": "previews/ui/08-icons-gpt-image2_palette24.png",
+      "kind": "iconCell",
+      "row": "legacy",
+      "col": 6,
+      "cropRel": [
+        0.8525,
+        0.81,
+        0.9848,
+        0.93
+      ],
+      "use": "legacy 类第 6 个图标（待与 icon-catalog.json 的 ID 人工对位）",
+      "status": "待目检与合规确认；不得直接入库",
+      "size": [
+        100,
+        148
+      ],
+      "usedColors": 15,
+      "outOfPalette": 0
+    }
+  ]
+}

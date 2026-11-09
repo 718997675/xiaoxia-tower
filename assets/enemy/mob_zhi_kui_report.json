@@ -1,0 +1,72 @@
+{
+  "source": "Use_the_reference_image_as_the_2026-11-07T15-42-31.png",
+  "kind": "mob",
+  "cells": [
+    1,
+    2,
+    3
+  ],
+  "hollow": false,
+  "append": true,
+  "crop": [
+    101,
+    153,
+    412,
+    431
+  ],
+  "frames": [
+    {
+      "file": "mob_zhi_kui_death_r_00.png",
+      "scale": 0.2069,
+      "colorsBeforeSnap": 1456,
+      "pixelsSnapped": 1638,
+      "usedColors": 12,
+      "outOfPalette": 0
+    },
+    {
+      "file": "mob_zhi_kui_death_r_01.png",
+      "scale": 0.2069,
+      "colorsBeforeSnap": 919,
+      "pixelsSnapped": 1154,
+      "usedColors": 10,
+      "outOfPalette": 0
+    },
+    {
+      "file": "mob_zhi_kui_death_r_02.png",
+      "scale": 0.2069,
+      "colorsBeforeSnap": 638,
+      "pixelsSnapped": 667,
+      "usedColors": 12,
+      "outOfPalette": 0
+    }
+  ],
+  "outputs": {
+    "frames": [
+      "mob_zhi_kui_idle_r_00.png",
+      "mob_zhi_kui_idle_r_01.png",
+      "mob_zhi_kui_idle_r_02.png",
+      "mob_zhi_kui_run_r_00.png",
+      "mob_zhi_kui_run_r_01.png",
+      "mob_zhi_kui_run_r_02.png",
+      "mob_zhi_kui_run_r_03.png",
+      "mob_zhi_kui_atk_r_00.png",
+      "mob_zhi_kui_atk_r_01.png",
+      "mob_zhi_kui_atk_r_02.png",
+      "mob_zhi_kui_atk_r_03.png",
+      "mob_zhi_kui_hit_r_00.png",
+      "mob_zhi_kui_death_r_00.png",
+      "mob_zhi_kui_death_r_01.png",
+      "mob_zhi_kui_death_r_02.png"
+    ],
+    "framesAddedThisBatch": [
+      "mob_zhi_kui_death_r_00.png",
+      "mob_zhi_kui_death_r_01.png",
+      "mob_zhi_kui_death_r_02.png"
+    ],
+    "sheet": "mob_zhi_kui_sheet.png",
+    "gif": "mob_zhi_kui.gif",
+    "preview": "mob_zhi_kui_preview.png",
+    "engineJson": "mob_zhi_kui.json"
+  },
+  "paletteOutOfRangeTotal": 0
+}

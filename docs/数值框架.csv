@@ -1,0 +1,279 @@
+category,key,value,unit,min,max,source,validated,note
+formula,base,60,point,20,180,伤害公式,no,局内可成长;全最小取20/全最大取180
+formula,realm_ratio,1.60,ratio,1.00,4.00,8.2分段线性,no,局外永久;全最小1.00/全最大4.00
+formula,extra_pool,120,point,0,600,装备+灵韵附加池,no,传承灵韵在塔内按50%计入
+formula,combo_mult,1.00,mult,1.0,2.5,连击/流派倍率,no,全最大2.5
+formula,crit_mult,1.00,mult,1.0,1.8,暴击倍率,no,暴击时1.8否则1.0
+formula,crit_rate,0.15,rate,0.0,1.0,假设,no,待实测
+formula,defense_rate,0.30,rate,0.0,0.75,敌人减伤,no,clamp到0..0.75
+formula,min_damage,1,point,1,1,钳制下限,yes,负值/零一律钳到1
+formula,max_damage,9999,point,9999,9999,钳制上限,yes,超出钳到9999
+formula,walk_loss,1.30,mult,1.0,2.0,走位损耗系数,no,T(n)=HP/P_dps*1.30
+realm,realm_01_lianqi,1.00,ratio,1.00,4.00,8.2分段线性,no,炼气;解锁基础2技能
+realm,realm_02_zhuji,1.30,ratio,1.00,4.00,8.2分段线性,no,筑基;第3技能
+realm,realm_03_jindan,1.60,ratio,1.00,4.00,8.2分段线性,no,金丹;装备第2槽
+realm,realm_04_yuanying,1.90,ratio,1.00,4.00,8.2分段线性,no,元婴;第4技能+传承槽+1
+realm,realm_05_huashen,2.32,ratio,1.00,4.00,8.2分段线性,no,化神;稀有词条入池
+realm,realm_06_lianxu,2.74,ratio,1.00,4.00,8.2分段线性,no,炼虚;装备第3槽
+realm,realm_07_heti,3.16,ratio,1.00,4.00,8.2分段线性,no,合体;塔内起始层可选
+realm,realm_08_dacheng,3.58,ratio,1.00,4.00,8.2分段线性,no,大乘;第5技能(P1)
+realm,realm_09_dujie,4.00,ratio,1.00,4.00,8.2分段线性,no,渡劫;终局
+tower,layer_01_hp_total,300,point,0,99999,8.3公式,no,教学;P_dps=10;T=39s;D=1.00
+tower,layer_02_hp_total,480,point,0,99999,8.3公式,no,常规;P_dps=14;T=45s;D=1.15
+tower,layer_03_hp_total,440,point,0,99999,8.3公式,no,喘息;P_dps=16;T=36s;D=0.92
+tower,layer_04_hp_total,700,point,0,99999,8.3公式,no,常规+护盾敌;P_dps=20;T=46s;D=1.18
+tower,layer_05_hp_total,920,point,0,99999,8.3公式,no,挑战小Boss;P_dps=24;T=50s;D=1.28
+tower,layer_06_hp_total,780,point,0,99999,8.3公式,no,喘息;P_dps=28;T=36s;D=0.92
+tower,layer_07_hp_total,1150,point,0,99999,8.3公式,no,常规;P_dps=34;T=44s;D=1.13
+tower,layer_08_hp_total,1160,point,0,99999,8.3公式,no,喘息+铸器;P_dps=42;T=36s;D=0.92
+tower,layer_09_hp_total,4400,point,0,99999,8.3公式,no,塔主Boss;P_dps=55;T=104s;D=2.67
+tower,combat_total_seconds,436,second,0,9999,T列求和,yes,9层战斗合计
+tower,choice_total_seconds,80,second,0,9999,8次*10s,yes,层间三选一
+tower,run_total_seconds,516,second,0,9999,436+80,yes,约8.8分钟
+economy,stone_per_layer_base,8,point,0,999,8.4产出,no,每层清层=8+2*层数
+economy,stone_per_layer_step,2,point,0,999,8.4产出,no,层数系数
+economy,stone_boss_bonus,30,point,0,999,8.4产出,no,Boss额外
+economy,stone_run_total,192,point,0,9999,8.4产出,yes,162+30
+economy,cost_legacy_seal,100,point,0,9999,8.4消耗,no,传承固化1条/局
+economy,cost_forge,25,point,0,9999,8.4消耗,no,层间铸器;每局约2次
+economy,cost_run_total,150,point,0,9999,8.4消耗,yes,100+2*25
+economy,produce_consume_ratio,1.28,ratio,1.10,1.40,192/150,yes,落在目标区间
+economy,stone_cap,9999,point,0,99999,8.4存量,no,溢出1:1转修为
+economy,legacy_slot_cap,6,count,0,99,第6章M3,no,超出按最旧优先替换
+economy,legacy_in_tower_ratio,0.50,rate,0.0,1.0,第6章M3,no,灵韵塔内按50%计入extra_pool
+drop,common_equip_rate,0.45,rate,0.0,1.0,8.5,no,凡品装备;期望2.22次
+drop,rare_equip_rate,0.08,rate,0.0,1.0,8.5,no,灵品装备;12次保底;期望约8.3次
+drop,legend_affix_rate,0.015,rate,0.0,1.0,8.5,no,仙品词条;60次保底;期望约38次
+asset,char_frame_count_min,105,count,105,210,第9章,yes,5角色*21帧;仅朝右一套
+asset,vfx_frame_count_min,36,count,36,72,第9章,yes,4技能*8帧+命中4帧
+asset,texture_memory_budget_mb,128,MB,0,9999,第9章,no,量级参考非显存实测;估算约49.3MB
+longevity,skill_pool_size,8,count,4,16,02-P0-1,no,技能池;每局选4
+longevity,skill_slots_per_run,4,count,2,6,02-P0-1,no,每局开局选4
+longevity,school_count,4,count,2,8,02-P0-1,no,剑修/符修/丹修/体修
+longevity,synergy_tiers,3,count,1,5,02-P0-1,no,同标签2/4/6件触发质变
+longevity,build_space_v01,1,count,1,9999,02公式B,yes,1×C44×1=1;每局技能组合完全一样
+longevity,build_space_v02,840,count,1,99999,02公式B,yes,4×70×3=840;数学上界
+longevity,goal_pool_size,8,count,1,32,02-P1-4,no,道途目标池
+longevity,affix_pool_size,12,count,0,64,02-P0-2,no,天劫词缀;纯数值占比不得超1/3
+longevity,affix_max_per_run,3,count,0,5,02-P0-2,no,每局自选0-3条
+longevity,affix_config_count,299,count,1,9999,02公式A,yes,1+12+66+220
+longevity,variety_discount_eta,0.10,rate,0.0,1.0,02公式V,no,可行且体验显著不同的比例;待实测
+longevity,run_variant_v01,1,count,1,99999,02公式V,yes,eta×B×O×A取上限1
+longevity,run_variant_v02,200928,count,1,99999999,02公式V,yes,0.10×840×8×299;数学上界非可感知局数
+longevity,unlock_hooks_v01,9,count,0,999,01-8.2,yes,纯数值境界
+longevity,unlock_hooks_v02,27,count,0,999,02-P0-3,yes,9境×3新池项
+longevity,realm_ratio_cap_v02,1.60,ratio,1.00,4.00,02-P0-3,no,压缩境界数值;解锁链为主
+longevity,dmg_max_v02_raw,3996,point,0,9999,02-8.1重算,yes,(180×1.60+600)×2.5×1.8;未计塔内折扣
+longevity,dmg_max_v02_in_tower,2646,point,0,9999,02-8.1重算,yes,满传承塔内50%计入:(288+300)×4.5
+longevity,boss_hp_layer09,4400,point,0,99999,01-8.3,no,对照:3996与2646均小于4400;红线消解
+longevity,run_seconds_v02_fast,360,second,0,9999,02-P1-4,no,速通道途5层约6分钟
+longevity,reroll_per_run,2,count,0,9,02-P1-6,no,卜卦重掷次数
+longevity,merit_bar_capacity,10,count,1,99,02-P2-7,no,道行条满10格必给1解锁
+longevity,merit_per_win,2,point,0,9,02-P2-7,no,胜+2格
+longevity,merit_per_loss,1,point,0,9,02-P2-7,no,败+1格;保底不靠概率
+longevity,est_runs_v01_min,8,count,0,99999,02估算,no,按钩子供给推算;待实测
+longevity,est_runs_v01_max,15,count,0,99999,02估算,no,按钩子供给推算;待实测
+longevity,est_runs_v02_min,60,count,0,99999,02估算,no,按钩子供给推算;待实测
+longevity,est_runs_v02_max,120,count,0,99999,02估算,no,按钩子供给推算;待实测
+longevity,est_hours_v01_min,1.2,hour,0,9999,02估算,no,8局×8.8min;待实测
+longevity,est_hours_v01_max,2.2,hour,0,9999,02估算,no,15局×8.8min;待实测
+longevity,est_hours_v02_min,6.0,hour,0,9999,02估算,no,60局×6min;待实测
+longevity,est_hours_v02_max,12.0,hour,0,9999,02估算,no,120局×6min;待实测
+endless,difficulty_growth,1.12,ratio,1.0,2.0,02-P1-5,no,D(n)=1.12^(n-1)
+endless,difficulty_soft_cap,12.0,ratio,1.0,99.0,02-P1-5,no,超出部分转机制复杂度不转数值
+endless,mechanic_every_n_layers,5,count,1,20,02-P1-5,no,每5层引入1条新敌人行为或环境机制
+endless,mechanic_cap,8,count,0,20,02-P1-5,no,M(n)=floor((n-1)/5)上限8
+endless,D_layer01,1.00,ratio,0,99,02极值验算,yes,1.12^0
+endless,D_layer10,2.77,ratio,0,99,02极值验算,yes,1.12^9
+endless,D_layer20,8.61,ratio,0,99,02极值验算,yes,1.12^19
+endless,D_layer30_capped,12.00,ratio,0,99,02极值验算,yes,1.12^29约26.75超出软上限;封顶12.0
+endless,D_layer50_capped,12.00,ratio,0,99,02极值验算,yes,1.12^49约258远超软上限;不转数值
+endless,M_layer30,5,count,0,8,02极值验算,yes,floor(29/5)=5条质变机制
+endless,M_layer50_capped,8,count,0,8,02极值验算,yes,达机制数上限
+decision,decision_q10_target_hours,30,h,10,100,用户拍板 2026-11-07,yes,目标有效时长;与Q14冲突;见03文档§2
+decision,decision_q11_realm_cap,1.60,ratio,1.00,4.00,用户拍板 2026-11-07,yes,已采纳;v0.1 realm_01..09(1.00-4.00)降级为基线不再生效
+decision,decision_q12_affix_mode,self_select,enum,0,0,用户拍板 2026-11-07,yes,天劫词缀玩家自选0-3条;新增AffixPicker界面
+decision,decision_q13_run_minutes,6,min,5,9,用户拍板 2026-11-07,yes,速通道途;完整塔仍8.8min
+decision,decision_q14_endless_phase,2,phase,1,2,用户拍板 2026-11-07,yes,无尽天梯移二期;一期剔除;endless_*行一期不启用
+decision,decision_q10_phase1_hours_max,17.6,h,6,17.6,离线复算 2026-11-07,no,120局x8.8min;速通口径12.0h;距30h缺12.4-18.0h;待实测
+decision,decision_q10_runs_needed_fast,300,局,205,300,离线复算 2026-11-07,no,1800min/6min;需N放大约2.5倍;待实测
+pixel,pixel_logical_width,480,px,320,640,04规格修订 2026-11-07,no,逻辑分辨率480x270;整数4倍=1920x1080;待实测
+pixel,pixel_logical_height,270,px,180,360,04规格修订 2026-11-07,no,与4倍放大配套;异形分辨率用letterbox
+pixel,pixel_integer_scale,4,x,3,4,04规格修订 2026-11-07,no,只允许整数倍;禁止非整数拉伸
+pixel,pixel_char_frame_px,64,px,32,128,04规格修订 2026-11-07,no,单帧64x64;2的幂;96px为备选口径
+pixel,pixel_char_screen_height,256,px,192,288,04规格修订 2026-11-07,no,64x4=256px;屏高23.7%;对齐v0.1的约24%
+pixel,pixel_hitbox_w,24,px,16,32,04规格修订 2026-11-07,no,v0.1的96px按1/4换算
+pixel,pixel_hitbox_h,32,px,24,40,04规格修订 2026-11-07,no,v0.1的128px按1/4换算
+pixel,pixel_hitbox_offset_x,16,px,8,24,04规格修订 2026-11-07,no,v0.1的64px按1/4换算;SkillCaster.gd阶段二改
+pixel,pixel_actions_per_char,15,帧,12,21,04规格修订 2026-11-07,no,idle3/run4/cast4/hit1/death3
+pixel,pixel_char_frames_total,75,帧,60,120,04规格修订 2026-11-07,no,5角色x15帧;v0.1为105帧
+pixel,pixel_vfx_frames_seq,28,帧,24,36,04规格修订 2026-11-07,no,Q18备选案;4技能x6帧+命中4帧
+pixel,pixel_vfx_textures_procedural,2,张,2,4,04规格修订 2026-11-07,no,Q18推荐案;16x16方粒+32x32光斑
+pixel,pixel_palette_colors,24,色,16,32,04规格修订 2026-11-07,no,锁定调色板;20核心+4扩展位;越界色须为0
+pixel,pixel_realm_tiers,4,段,4,9,04规格修订 2026-11-07,no,9境降级为4色段;段内靠纹样与数字区分
+pixel,pixel_texture_mb_procedural,2.57,MB,0,128,04规格修订 2026-11-07,no,含UI图集预留1MB;量级参考;待实测
+pixel,pixel_texture_mb_sprite,3.14,MB,0,128,04规格修订 2026-11-07,no,Q18序列帧案;含UI图集预留1MB;待实测
+pixel,pixel_memory_reduction_pct,94,%,0,100,04规格修订 2026-11-07,no,对比v0.1的46.9MB;量级参考
+pixel,pixel_icon_count_min,40,件,40,60,04规格修订 2026-11-07,no,16x16或32x32;靠形状区分不靠加色
+decision,decision_q16_style,pixel_guofeng,enum,0,0,用户拍板 2026-11-07,yes,路线A像素国风;难回退;工程以asset-manifest-pixel.json为准
+decision,decision_q7_asset_form,sprite_sequence,enum,0,0,随Q16定 2026-11-07,yes,序列帧;像素下骨骼切图收益低
+decision,decision_one_profession,1,profession,1,4,用户拍板 2026-11-07,yes,人物先一个职业;4流派为同职业不同build;v2的5角色降级为基线
+content,content_char_frames_total,15,帧,15,75,06工单 2026-11-07,no,1职业x15帧;已做4帧缺11;v2的75帧保留为基线
+content,content_mob_kinds,4,种,3,4,06工单 2026-11-07,no,山魈/纸傀/阴兵/剑魂;剑魂可后置见Q22
+content,content_mob_frames_total,60,帧,45,60,06工单 2026-11-07,no,4种x15帧(idle3/run4/atk4/hit1/death3)
+content,content_boss_count,2,个,2,2,06工单 2026-11-07,no,第5层锁血判官+第9层塔主;无尽塔守关二期
+content,content_boss_frames_total,42,帧,42,42,06工单 2026-11-07,no,18+24;三阶段靠色段不重画
+content,content_boss_frame_px,96,px,64,128,06工单 2026-11-07,no,非2的幂;与M7冲突见Q21
+content,content_skill_pool,8,个,8,8,06工单 2026-11-07,no,4流派x2;8选4;形状方向两两不重复
+content,content_vfx_frames_sprite,36,帧,0,36,06工单 2026-11-07,no,序列帧案:8技能x4+命中4;Q18定
+content,content_vfx_textures_procedural,2,张,2,2,06工单 2026-11-07,no,程序化案(推荐);8组参数替代36帧
+content,content_overlay_frames,10,帧,0,10,06工单 2026-11-07,no,5状态x2帧;程序化案可降为0
+content,content_icons_total,47,件,40,60,06工单 2026-11-07,no,8技能+4流派+12词缀+9境界+8装备+6灵韵
+content,content_accessories,4,件,4,4,06工单 2026-11-07,no,4流派武器挂件16x16;避免画4套角色
+content,content_total_frames_sprite,163,帧,0,300,06工单 2026-11-07,no,序列帧案;量级参考
+content,content_total_frames_procedural,127,帧,0,300,06工单 2026-11-07,no,程序化案;量级参考
+content,content_source_images_sprite,53,张,0,100,06工单 2026-11-07,no,每张2x2出4帧向上取整;量级估算
+content,content_source_images_procedural,44,张,0,100,06工单 2026-11-07,no,程序化案;量级估算
+content,content_credits_sprite_max,530,积分,0,1000,06工单 2026-11-07,no,53张x10;量级估算非报价
+content,content_credits_procedural_max,440,积分,0,1000,06工单 2026-11-07,no,44张x10;量级估算非报价
+content,content_texture_mb_sprite,5.72,MB,0,128,06工单 2026-11-07,no,含UI图集1MB;非显存实测
+content,content_texture_mb_procedural,4.97,MB,0,128,06工单 2026-11-07,no,含UI图集1MB;非显存实测
+content,content_layer_count,9,层,9,9,06工单 2026-11-07,yes,喘息层3/6/8;Boss第5与第9层
+round8,round8_source_images,7,张,0,20,08批次 2026-11-07,yes,3张角色图生图+2怪物+2特效;无返工
+round8,round8_credits_min,35,积分,0,200,08批次 2026-11-07,no,7张x5;量级估算非报价
+round8,round8_credits_max,70,积分,0,200,08批次 2026-11-07,no,7张x10;量级估算非报价
+round8,round8_frames_new,27,帧,0,60,08批次 2026-11-07,yes,角色11+怪物8+特效8
+round8,round8_frames_total,43,帧,0,300,08批次 2026-11-07,yes,角色15+怪物12+特效16
+round8,round8_groups,8,组,0,20,08批次 2026-11-07,yes,引擎JSON自动发现
+round8,round8_gif_count,8,个,0,20,08批次 2026-11-07,yes,预览页内嵌
+round8,round8_char_frames,15,帧,15,15,08批次 2026-11-07,yes,1职业帧表已满:idle3/run4/cast4/hit1/death3
+round8,round8_palette_oob,0,色,0,0,08批次 2026-11-07,yes,43帧程序化校验
+round8,round8_naming_fail,0,帧,0,0,08批次 2026-11-07,yes,R19修正则后全量43帧合规
+round8,round8_min_qc_score,85,分,80,100,08批次 2026-11-07,yes,4帧85-90均SHIP;silhouette_fill的0.30边界判定
+round8,round8_preview_html_kb,361,KB,0,1000,08批次 2026-11-07,yes,369653字符;自包含单文件
+round8,round8_standing_bbox_height,58,px,58,62,08批次 2026-11-07,no,跨批次站位帧高度区间;待实测
+decision,decision_q20_one_profession,confirmed,enum,0,0,用户第7轮明示 2026-11-07,yes,人物1职业;4流派为build;B1据此开工并已做完
+content,content_naming_regex_underscore,1,flag,0,1,08批次 2026-11-07,yes,R19:ID段允许下划线;6条正则已改
+round9,round9_source_images_generated,13,张,0,30,09批次 2026-11-07,yes,含3张返工弃用;约65-130积分量级估算待实测
+round9,round9_source_images_adopted,10,张,0,30,09批次 2026-11-07,yes,3张run条动作递进太弱已弃用保留作过程证据
+round9,round9_new_frames,37,帧,0,80,09批次 2026-11-07,yes,3怪各补11帧+mob_jian_hun 4帧
+round9,round9_total_sequence_frames,80,帧,0,200,09批次 2026-11-07,yes,累计序列帧;不含图标挂件
+round9,round9_total_assets,96,项,0,300,09批次 2026-11-07,yes,80序列帧+12图标+4挂件
+round9,round9_mob_full_frametables,3,组,0,4,09批次 2026-11-07,yes,shanxiao/zhi_kui/yin_bing各15帧完整
+round9,round9_icons_procedural,12,件,0,47,09批次 2026-11-07,yes,8技能+4流派;0积分
+round9,round9_accessories_procedural,4,件,0,4,09批次 2026-11-07,yes,工单ID acc_sword/talisman/pill/fist;0积分
+round9,round9_icons_pending,35,件,0,47,09批次 2026-11-07,yes,12词缀/9境界/8装备/6灵韵;词缀卡机制定稿
+round9,round9_qc_ship,96,项,0,300,09批次 2026-11-07,yes,11组全SHIP;越界色0;半透明0;尺寸一致
+round9,round9_preview_html_kb,576,KB,0,1000,09批次 2026-11-07,yes,587500字符;9组9GIF;自包含
+round9,round9_preview_groups,9,组,0,20,09批次 2026-11-07,yes,新增mob_jian_hun
+round9,round9_rework_rate,23,%,0,100,09批次 2026-11-07,no,3/13弃用;用于积分预估返工上浮;样本小待实测
+decision,decision_q9_pixelfx_candidate,pending,enum,0,0,用户第9轮提问 2026-11-07,no,patch-gg/pixelfx MIT;建议作Q24第三选项;未并入未冻结
+decision,decision_q9_font_candidate,pending,enum,0,0,用户第9轮提问 2026-11-07,no,R9:凤凰点阵体CC0为候选;Zpix商用收费禁改;最终核验未完成
+content,content_icon_procedural_pipeline,1,flag,0,1,09批次 2026-11-07,yes,07规范+build_icons.py;与AI出图链路互补;0积分
+content,content_naming_contract_r23,1,flag,0,1,09批次 2026-11-07,yes,挂件按工单ID命名;清理误产物4件
+round10,round10_source_images_generated,3,张,0,10,10批次 2026-11-08,yes,剑魂补帧3张图生图;无返工;约15-30积分量级估算待实测
+round10,round10_source_images_adopted,3,张,0,10,10批次 2026-11-08,yes,四格轮廓可量化差异一次达标;沿用第9轮返工教训
+round10,round10_new_frames,11,帧,0,20,10批次 2026-11-08,yes,剑魂4->15帧;B2四怪全部满帧
+round10,round10_total_sequence_frames,91,帧,0,200,10批次 2026-11-08,yes,char15+enemy60+vfx16;不含图标挂件
+round10,round10_mob_full_frametables,4,组,0,4,10批次 2026-11-08,yes,B2收口;剑魂中心锚点y=32其余y=62
+round10,round10_icons_procedural_new,17,件,0,47,10批次 2026-11-08,yes,9境界卷轴框+8装备盾形框;0积分
+round10,round10_icons_total,29,件,0,47,10批次 2026-11-08,yes,8技能+4流派+9境界+8装备
+round10,round10_icons_pending,18,件,0,47,10批次 2026-11-08,yes,12词缀+6灵韵;均卡机制定稿Q25/Q26
+round10,round10_qc_ship,124,项,0,300,10批次 2026-11-08,yes,11组全SHIP;越界色0;半透明0;尺寸不符0
+round10,round10_preview_html_kb,612,KB,0,1000,10批次 2026-11-08,yes,624710字符;9组9GIF;110内嵌资源;自包含
+round10,round10_decision_debt,15,项,0,30,10批次 2026-11-08,yes,4硬门禁+6内容阻塞+5可后补;见08台账
+round10,round10_confirmed_decisions,18,条,0,40,10批次 2026-11-08,yes,DF-01..DF-18;编号合法率100%;来源22个全存在
+round10,round10_traceability_coverage,0,%,0,100,10批次 2026-11-08,no,阶段一未建工程产物侧无DF回指;0为预期非缺陷;不得手工凑数
+round10,round10_credits_estimate,30,积分,0,100,10批次 2026-11-08,no,3张×5-10的量级上限估算待实测;图标程序化0积分
+round11,round11_proposal_doc,1,份,0,3,11批次 2026-11-08,yes,docs/09 内容命名提案 PROPOSAL;等用户回执
+round11,round11_affix_pool,12,条,0,12,11批次 2026-11-08,no,沿用02 P0-2六条+补六条;名称与规则待用户确认
+round11,round11_affix_numeric_ratio,16.7,%,0,33.3,11批次 2026-11-08,no,纯数值2/12;02 P0-2硬约束≤1/3;待实测
+round11,round11_legacy_entries,6,条,0,6,11批次 2026-11-08,no,6传承灵韵提案;R27 extra_pool口径断裂待处置
+round11,round11_gear_slots,3,个,0,8,11批次 2026-11-08,no,R28更正:01 §8只有3槽;8件是品类非槽位
+round11,round11_gear_types,8,类,0,8,11批次 2026-11-08,yes,与已产8件 icon_gear_* 一一对应;ID无需改名
+round11,round11_m6_fields,13,类,0,30,11批次 2026-11-08,no,M6埋点字段组;R29本地日志;R30需并入01 §15
+round11,round11_decision_card_items,16,项,0,20,11批次 2026-11-08,yes,15项欠债+C01;4组;每项含推荐值与影响面
+round11,round11_decision_card_html_kb,19,KB,0,100,11批次 2026-11-08,yes,18966字符;自包含无外部依赖无绝对路径
+round11,round11_new_risks,4,项,0,10,11批次 2026-11-08,no,R27-R30;均只诊断未处置
+round11,round11_source_images_generated,0,张,0,10,11批次 2026-11-08,yes,本轮无出图;素材计数不变124项
+round11,round11_credits_spent,0,积分,0,50,11批次 2026-11-08,yes,提案/决策卡/脚本均0积分;A-B-C三档估算不变
+round11,round11_receipt_received,0,flag,0,1,11批次 2026-11-08,yes,正式回执尚未产生;demo落盘产物已清理
+round11,round11_qc_ship,124,项,0,300,11批次 2026-11-08,yes,沿用第10轮;本轮无新素材无需重跑全量逐帧
+round12,round12_receipt_items,15,项,0,16,12批次 2026-11-08,yes,决策卡16项中15项按推荐值确认;Q1留空
+round12,round12_hard_gates_resolved,3,个,0,4,12批次 2026-11-08,yes,Q3/Q5/Q8已解除;Q1本机Godot小版本待用户填
+round12,round12_icons_produced,18,件,0,18,12批次 2026-11-08,yes,12词缀16x16菱形+6灵韵32x32六边;0积分;47/47完成
+round12,round12_buff_cards,72,张,64,120,12批次 2026-11-08,yes,6类x12;用户要求≥64;卡牌系统为PROPOSAL数值待实测
+round12,round12_buff_card_categories,6,类,0,12,12批次 2026-11-08,yes,技能伤害/属性提升/机制改变/资源灵力/生存回复/构筑风险
+round12,round12_buff_card_rarities,4,档,0,8,12批次 2026-11-08,yes,凡品30/灵品30/仙品8/劫品4
+round12,round12_numeric_card_ratio,23.6,%,0,33.3,12批次 2026-11-08,yes,17/72纯数值;沿用02 P0-2硬约束<=1/3
+round12,round12_picks_per_run,8,次,0,9,12批次 2026-11-08,no,9层塔第1-8层各一次;第9层Boss后改传承结算
+round12,round12_naive_sequence_bound,6561,条,0,10000,12批次 2026-11-08,no,3^8仅数学上界;含去重/同类/前置/互斥与eta折扣;不得当耐玩性结论
+round12,round12_offense_headroom,404,点,0,1000,12批次 2026-11-08,no,4400-3996;R32卡牌不得提高四上界;极值验算待重跑
+round12,round12_card_ui_assets,10,件,0,30,12批次 2026-11-08,yes,4卡框96x144+6纹样24x24;程序化0积分;卡面不含文字
+round12,round12_preview_html_kb,41.6,KB,0,200,12批次 2026-11-08,yes,buff-card-preview.html自包含;10张内嵌PNG;node语法检查PASS
+round12,round12_qc_ship,142,项,0,300,12批次 2026-11-08,yes,11组全SHIP;越界色0/半透明0/尺寸不符0
+round12,round12_new_risks,6,项,0,10,12批次 2026-11-08,no,R31已返修;R32规则已立;R33-R36待实测或已修脚本
+round12,round12_source_images_generated,0,张,0,10,12批次 2026-11-08,yes,本轮全部程序化;无出图
+round12,round12_credits_spent,0,积分,0,50,12批次 2026-11-08,yes,回执/18图标/72卡/UI/预览均0积分
+round12,round12_traceability_coverage,0,%,0,100,12批次 2026-11-08,yes,R36排除预览页说明文字与脚本自指示例后回到0;阶段一预期
+round14,round14_q1_godot_version,4.72,版本号,0,5,14批次 2026-11-08,yes,用户确认4.7.2;本机探测4.7.2.stable.official.ed1daf0bf;标准版非.NET
+round14,round14_receipt_items,16,项,0,16,14批次 2026-11-08,yes,决策卡16项全部已答;Q1由用户补齐
+round14,round14_hard_gates_resolved,4,个,0,4,14批次 2026-11-08,yes,Q1/Q3/Q5/Q8全解除;错误0;告警1=R29/R30正文修订
+round14,round14_export_templates_installed,0,个,0,1,14批次 2026-11-08,yes,本机export_templates目录为空;不装也能在编辑器F5运行;导出独立app时才需装
+round14,round14_frozen,0,布尔,0,1,14批次 2026-11-08,yes,0=false;策划案整体确认前不冻结;design-freeze.json不存在
+round15,round15_gdd_v02_lines,460,行,0,1000,15批次 2026-11-08,yes,01 v0.2正式稿;v0.1基线431行归档保留
+round15,round15_merge_replacements,21,处,0,30,15批次 2026-11-08,yes,build_gdd_v02.py锚点21处全部唯一命中;另发现第19行基线欠账
+round15,round15_freeze_items,22,条,18,30,15批次 2026-11-08,yes,DF-01..DF-22;status=frozen;version=1
+round15,round15_r32_base_ceiling,180,点,0,200,15批次 2026-11-08,yes,五上界铁律新增base上界;修复前最坏base=236
+round15,round15_r32_worst_before,4399,点,0,4400,15批次 2026-11-08,no,距Boss4400仅1点;若pool声明被忽略base=254则4529击穿
+round15,round15_r32_after,3996,点,0,4400,15批次 2026-11-08,yes,3张卡补pool与cap后守五上界;违规0;PASS
+round15,round15_r32_cards_fixed,3,张,0,10,15批次 2026-11-08,yes,card_jianfeng/card_danbao/card_shuangren补pool与cap
+round15,round15_godot_imports,229,项,0,300,15批次 2026-11-08,yes,由4.7.2编辑器headless导入生成;非手写
+round15,round15_minimal_frames,7,帧,0,15,15批次 2026-11-08,yes,主角idle3+run4;最小验证工程只加载这7帧
+round15,round15_project_check_errors,0,项,0,5,15批次 2026-11-08,yes,check_godot_project.py PASS;警告2=覆盖缺口18%+报告自指
+round15,round15_trace_coverage,18.18,%,0,100,15批次 2026-11-08,yes,4/22;两套脚本口径统一只认@trace;真实进度不凑数
+round15,round15_card_ui_assets,10,件,0,30,15批次 2026-11-08,yes,4卡框+6纹样;纳入asset-manifest-godot.json规格核对
+round15,round15_credits_spent,0,积分,0,50,15批次 2026-11-08,yes,合并/冻结/验算/工程/自检全程序化;无出图
+round15,round15_final_selfcheck_checks,20,项,0,30,15批次 2026-11-08,yes,final_selfcheck.py静态断言;全PASS
+round15,round15_r39_gdignore,1,个,0,1,15批次 2026-11-08,yes,docs/.gdignore让引擎跳过docs扫描;设计CSV不再被当翻译表
+round15,round15_r39_junk_removed,24,个,0,30,15批次 2026-11-08,yes,24个.translation/.csv.import引擎生成物已清理;可再生非设计资产
+round15,round15_stale_handover_fixed,12,处,0,20,15批次 2026-11-08,yes,00交接文档过期门禁/重复编号/R27-R30状态/R39/验收段共12处修正
+round15,round15_credits_total,0,积分,0,50,15批次 2026-11-08,yes,第15轮含收口全程0积分;无出图
+round15,round15_r40_placeholders_fixed,2,处,0,5,15批次 2026-11-08,yes,draft两处占位符编号改描述性文字;结构自检错误1→0
+round15,round15_final_selfcheck_passed,20,项,0,20,15批次 2026-11-08,yes,静态自检20/20 PASS;动态四路复验全PASS
+round16,round16_r41_collision_shapes,2,个,0,5,16批次 2026-11-08,yes,Player/Body CollisionShape2D 32x56 + GroundBody/Shape 480x54;消除编辑器黄色警告;并新增真实地面
+round16,round16_r41_feet_align,216,px,0,270,16批次 2026-11-08,yes,headless断言 player_bottom=216.0 == ground_top=216.0;脚底与地面顶严格对齐
+round16,round16_r42_previews_moved,6,个,0,10,16批次 2026-11-08,yes,3个miora画板+3个_assets目录移入previews/并加.gdignore;引擎不再扫描
+round16,round16_preview_imports_removed,31,个,0,40,16批次 2026-11-08,yes,assets/_preview加.gdignore后清理31个拼图.import;游戏资源181项导入不受影响
+round16,round16_credits_total,0,积分,0,50,16批次 2026-11-08,yes,第16轮全程0积分;无出图
+round16,round16_godot_imports_now,196,项,0,300,16批次 2026-11-08,yes,R42清理预览目录与画板后当前实际导入数;round15的229项为历史值保留
+round16,round16_r43_frames_tres,7,帧,0,15,16批次 2026-11-08,yes,player_frames.tres由引擎生成含idle3+run4共7帧;场景直接挂资源;编辑器可预览无黄色警告
+round17,round17_workspace_moved_ai_game,1103,文件,0,1103,17批次 2026-11-08,yes,工作空间迁至WorkBuddy/ai-game;SHA256逐文件比对零缺失零改动;旧路径留符号链接
+round18,round17_guide_path_correction,1,处,0,1,18批次 2026-11-08,yes,更正说明:上一行note里的WorkBuddy/ai-game为误建中间路径;最终位置以00 §0的Documents/ai-game/xianxia-tower为准;按只追加不覆盖纪律另起一行
+round18,round18_r44_guide_location,1,处,0,3,18批次 2026-11-08,yes,R44接手指南只放xianxia-tower工程根;ai-game根目录不放副本;错的是三处引用路径而非文件位置
+round18,round18_selfcheck_before,23,项,0,26,18批次 2026-11-08,yes,迁移后首跑全量自检23/24;唯一FAIL为workspace_moved_r17
+round18,round18_selfcheck_after,26,项,0,26,18批次 2026-11-08,yes,修复R44+R45+卡牌规则层后全量自检26/26 PASS
+round18,round18_r45_runtime_copy,72,张,0,72,18批次 2026-11-08,yes,docs/.gdignore使导出后不进包;新增data/运行时卡库副本与规范化JSON指纹一致性闸门
+round18,round18_carddeck_checks,23,项,0,23,18批次 2026-11-08,yes,Godot4.7.2 headless编译CardDeck.gd并跑23项断言全PASS;非GUI目检
+round18,round18_card_peak_damage,3996,点,0,4400,18批次 2026-11-08,yes,72卡逐张+全卡叠加经五上界钳制后峰值3996 < Boss4400;余量404点;权重与概率仍待实测
+round18,round18_guard_events,105,条,0,200,18批次 2026-11-08,yes,上界守卫事件数;证明非空跑恒等式;数值待实测
+round18,round18_cards_with_upper_params,9,张,0,72,18批次 2026-11-08,yes,触碰五上界变量的卡全部带pool或cap声明;规则层只实现这9张卡的数值部分
+round18,round18_trace_coverage,6,条,0,22,18批次 2026-11-08,yes,新增@trace DF-19/DF-21真实回指;覆盖率4/22=18.18%升到6/22=27.27%;不得塞标记凑数
+round18,round18_fnv1a_seed,4264777024,hash,0,4294967295,18批次 2026-11-08,yes,FNV-1a32(runA:1)跨实现可复算;不依赖引擎内置hash
+round18,round18_credits_total,0,积分,0,50,18批次 2026-11-08,yes,第18轮全程0积分;无出图;无新素材;未跑GUI F5
+round19,round19_web_demo_html,104527,字节,0,200000,19批次 2026-11-08,yes,单文件自包含网页Demo;file://直开;内嵌72卡库+规则JS+17张PNG
+round19,round19_cross_platform_checks,25,项,0,25,19批次 2026-11-08,yes,网页/Node复算Godot黄金样本逐层一致;xorshift32跨端口径R47
+round19,round19_browser_selfcheck,7,项,0,7,19批次 2026-11-08,yes,无头Chrome实际加载页面实时自检7/7PASS;自动演示跑满8层
+round19,round19_credits_total,0,积分,0,50,19批次 2026-11-08,yes,第19轮全程0积分;无出图;未跑GUI F5;未改project.godot与MinimalRun.tscn
+round20,round20_web_demo_html,334751,字节,0,400000,20批次 2026-11-08,yes,六视图网页Demo;主菜单+横版战斗;内嵌159张PNG;file://直开
+round20,round20_battle_sim_checks,44,项,0,44,20批次 2026-11-08,yes,战斗内核Node断言44/44;伤害公式/五上界/M1状态机/确定性/卡牌联动/层波形
+round20,round20_browser_selfcheck,14,项,0,14,20批次 2026-11-08,yes,无头Chrome六视图实时自检14/14PASS;自动演示第1层清层;联动闭环0→10→22
+round20,round20_credits_total,0,积分,0,50,20批次 2026-11-08,yes,第20轮全程0积分;无出图;未跑GUI F5;未改project.godot与MinimalRun.tscn;未改冻结数值
+round21,round21_web_demo_html,374616,字节,0,400000,21批次 2026-11-08,yes,六视图+本局生效卡牌效果面板;内嵌159张PNG与3份同源JS;file://直开
+round21,round21_card_effects_checks,40,项,0,40,21批次 2026-11-08,yes,72卡129参数三层分列28/42/59;26/72张战斗生效;R54已记录;默认空效果不扰动第20轮基线
+round21,round21_browser_selfcheck,17,项,0,17,21批次 2026-11-08,yes,无头Chrome实时自检17/17PASS;多段命中/护盾吸收/复活实跑通过
+round21,round21_credits_total,0,积分,0,50,21批次 2026-11-08,yes,第21轮全程0积分;无出图;未跑GUI F5;未改project.godot与MinimalRun.tscn;未改冻结数值与抽卡规则
+round22,round22_ui_prompt_blocks,18,段,0,18,22批次 2026-11-08,yes,docs/19 中英双语提示词:风格锚点板+6界面+图鉴+图标系统;冻结坐标与提案坐标分标
+round22,round22_battle_cross_checks,8,项,0,8,22批次 2026-11-08,yes,战斗公式层Godot↔网页跨端;52条黄金样本逐条一致;maxHit 3996<Boss 4400;不含逐tick状态机(R56)
+round22,round22_browser_selfcheck,19,项,0,19,22批次 2026-11-08,yes,无头Chrome实时自检19/19 PASS;新增伤害公式边界用例与五上界两项断言
+round22,round22_credits_total,0,积分,0,50,22批次 2026-11-08,yes,第22轮全程0积分;无出图;未跑GUI F5;未改project.godot与MinimalRun.tscn;未改冻结数值与抽卡规则

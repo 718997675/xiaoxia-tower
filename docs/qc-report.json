@@ -1,0 +1,3773 @@
+{
+  "summary": {
+    "groups": 23,
+    "frames": 214,
+    "verdicts": {
+      "SHIP": 214
+    },
+    "outOfPaletteTotal": 0,
+    "semiAlphaFrames": 0,
+    "sizeMismatchFrames": 0,
+    "groupVerdicts": {
+      "SHIP": 23
+    },
+    "scope": "全项目"
+  },
+  "groups": [
+    {
+      "engineJson": "assets/char/char_player.json",
+      "id": "char_player",
+      "kind": "char",
+      "frameCount": 15,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 62,
+        "note": "脚底锚点，全组统一且落在同一整数像素行"
+      },
+      "actionCounts": {
+        "idle": 3,
+        "run": 4,
+        "cast": 4,
+        "hit": 1,
+        "death": 3
+      },
+      "frameTableComplete": true,
+      "groupIssues": [],
+      "ship": 15,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/char/char_player_idle_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.334,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_idle_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3318,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_idle_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3228,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_run_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.344,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_run_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2937,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_run_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3303,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_run_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3308,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_cast_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3928,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_cast_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.4143,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_cast_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3789,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_cast_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3547,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_hit_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3132,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_death_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3269,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_death_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3086,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/char_player_death_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2451,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/enemy/mob_jian_hun.json",
+      "id": "mob_jian_hun",
+      "kind": "mob",
+      "frameCount": 15,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "中心锚点（漂浮物），全组统一整数像素行"
+      },
+      "actionCounts": {
+        "idle": 3,
+        "run": 4,
+        "atk": 4,
+        "hit": 1,
+        "death": 3
+      },
+      "frameTableComplete": true,
+      "groupIssues": [],
+      "ship": 15,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/enemy/mob_jian_hun_idle_r_00.png",
+          "score": 90,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 2 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1008,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 2
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_idle_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1018,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_idle_r_02.png",
+          "score": 80,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 4 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0754,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 4
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_run_r_00.png",
+          "score": 85,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 3 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0969,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 3
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_run_r_01.png",
+          "score": 80,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 8 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1052,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 8
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_run_r_02.png",
+          "score": 85,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 3 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1104,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 3
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_run_r_03.png",
+          "score": 80,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 17 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1116,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 17
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_atk_r_00.png",
+          "score": 90,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 2 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0979,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 2
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_atk_r_01.png",
+          "score": 80,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 4 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0764,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 4
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_atk_r_02.png",
+          "score": 80,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 10 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1096,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 10
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_atk_r_03.png",
+          "score": 90,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 2 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0754,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 2
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_hit_r_00.png",
+          "score": 80,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 11 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0669,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 11
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_death_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1946,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_death_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1047,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_jian_hun_death_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0203,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/enemy/mob_shanxiao.json",
+      "id": "mob_shanxiao",
+      "kind": "mob",
+      "frameCount": 15,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 62,
+        "note": "脚底锚点，全组统一且落在同一整数像素行"
+      },
+      "actionCounts": {
+        "idle": 3,
+        "run": 4,
+        "atk": 4,
+        "hit": 1,
+        "death": 3
+      },
+      "frameTableComplete": true,
+      "groupIssues": [],
+      "ship": 15,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/enemy/mob_shanxiao_idle_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3137,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_idle_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3296,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_idle_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.405,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_run_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3137,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_run_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.325,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_run_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2524,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_run_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3005,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_atk_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2703,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_atk_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3005,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_atk_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.4529,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_atk_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.4585,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_hit_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.4414,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_death_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3293,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_death_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2375,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_shanxiao_death_r_02.png",
+          "score": 80,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 9 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0408,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 9
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/enemy/mob_yin_bing.json",
+      "id": "mob_yin_bing",
+      "kind": "mob",
+      "frameCount": 15,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 62,
+        "note": "脚底锚点，全组统一且落在同一整数像素行"
+      },
+      "actionCounts": {
+        "idle": 3,
+        "run": 4,
+        "atk": 4,
+        "hit": 1,
+        "death": 3
+      },
+      "frameTableComplete": true,
+      "groupIssues": [],
+      "ship": 15,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/enemy/mob_yin_bing_idle_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1641,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_idle_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1628,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_idle_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1838,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_run_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1968,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_run_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1892,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_run_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1772,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_run_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1624,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_atk_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1501,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_atk_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1614,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_atk_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.166,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_atk_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1724,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_hit_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1702,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_death_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1858,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_death_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2061,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_yin_bing_death_r_02.png",
+          "score": 80,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 4 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0288,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 4
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/enemy/mob_zhi_kui.json",
+      "id": "mob_zhi_kui",
+      "kind": "mob",
+      "frameCount": 15,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 62,
+        "note": "脚底锚点，全组统一且落在同一整数像素行"
+      },
+      "actionCounts": {
+        "idle": 3,
+        "run": 4,
+        "atk": 4,
+        "hit": 1,
+        "death": 3
+      },
+      "frameTableComplete": true,
+      "groupIssues": [],
+      "ship": 15,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/enemy/mob_zhi_kui_idle_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2485,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_idle_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2788,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_idle_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.283,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_run_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3154,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_run_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.333,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_run_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2798,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_run_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2847,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_atk_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2881,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_atk_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2625,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_atk_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3372,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_atk_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2788,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_hit_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3096,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_death_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.4043,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_death_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2834,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/enemy/mob_zhi_kui_death_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1655,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/boss/boss_judge.json",
+      "id": "boss_judge",
+      "kind": "boss",
+      "frameCount": 18,
+      "frameSize": 128,
+      "anchor": {
+        "x": 64,
+        "y": 126,
+        "note": "脚底锚点，全组统一且落在同一整数像素行"
+      },
+      "actionCounts": {
+        "idle": 3,
+        "run": 3,
+        "atk": 4,
+        "skill": 4,
+        "hit": 1,
+        "death": 3
+      },
+      "frameTableComplete": true,
+      "groupIssues": [],
+      "ship": 18,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/boss/boss_judge_idle_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_idle_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_idle_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_run_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_run_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_run_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_atk_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_atk_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_atk_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_atk_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_skill_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_skill_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_skill_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.4377,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_skill_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.4377,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_hit_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.399,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_death_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.3914,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_death_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.3289,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_judge_death_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.2454,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/boss/boss_tower_lord.json",
+      "id": "boss_tower_lord",
+      "kind": "boss",
+      "frameCount": 24,
+      "frameSize": 128,
+      "anchor": {
+        "x": 64,
+        "y": 126,
+        "note": "脚底锚点，全组统一且落在同一整数像素行"
+      },
+      "actionCounts": {
+        "idle": 3,
+        "run": 3,
+        "atk": 4,
+        "skill": 10,
+        "hit": 1,
+        "death": 3
+      },
+      "frameTableComplete": true,
+      "groupIssues": [],
+      "ship": 24,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/boss/boss_tower_lord_idle_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_idle_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_idle_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_run_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_run_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_run_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_atk_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_atk_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_atk_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_atk_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_skill_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_skill_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_skill_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_skill_r_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_skill_r_04.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_skill_r_05.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_skill_r_06.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_skill_r_07.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_skill_r_08.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.3724,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_skill_r_09.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.3724,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_hit_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.336,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_death_r_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.3288,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_death_r_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.2679,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/boss/boss_tower_lord_death_r_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            128,
+            128
+          ],
+          "sizeOk": true,
+          "coverage": 0.2103,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/frames/vfx_dan_fire.json",
+      "id": "vfx_dan_fire",
+      "kind": "vfx",
+      "frameCount": 4,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "特效中心，与判定框对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 4,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/frames/vfx_dan_fire_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0471,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_dan_fire_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1677,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_dan_fire_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.4275,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_dan_fire_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1855,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/frames/vfx_fist_force.json",
+      "id": "vfx_fist_force",
+      "kind": "vfx",
+      "frameCount": 4,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "特效中心，与判定框对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 4,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/frames/vfx_fist_force_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1279,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_fist_force_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2522,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_fist_force_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.4167,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_fist_force_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3093,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/frames/vfx_flying_sword.json",
+      "id": "vfx_flying_sword",
+      "kind": "vfx",
+      "frameCount": 4,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "特效中心，与判定框对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 4,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/frames/vfx_flying_sword_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0596,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_flying_sword_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.115,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_flying_sword_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1924,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_flying_sword_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1436,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/frames/vfx_hit.json",
+      "id": "vfx_hit",
+      "kind": "vfx",
+      "frameCount": 4,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "特效中心，与判定框对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 4,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/frames/vfx_hit_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0276,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_hit_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0549,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_hit_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.094,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_hit_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0452,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/frames/vfx_paper_puppet.json",
+      "id": "vfx_paper_puppet",
+      "kind": "vfx",
+      "frameCount": 4,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "特效中心，与判定框对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 4,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/frames/vfx_paper_puppet_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1279,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_paper_puppet_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2554,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_paper_puppet_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.4192,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_paper_puppet_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3093,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/frames/vfx_rejuvenation.json",
+      "id": "vfx_rejuvenation",
+      "kind": "vfx",
+      "frameCount": 4,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "特效中心，与判定框对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 4,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/frames/vfx_rejuvenation_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0923,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_rejuvenation_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3723,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_rejuvenation_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3806,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_rejuvenation_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1816,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/frames/vfx_sword_qi.json",
+      "id": "vfx_sword_qi",
+      "kind": "vfx",
+      "frameCount": 4,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "特效中心，与判定框对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 4,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/frames/vfx_sword_qi_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0215,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_sword_qi_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0986,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_sword_qi_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1885,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_sword_qi_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.2393,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/frames/vfx_thunder_talisman.json",
+      "id": "vfx_thunder_talisman",
+      "kind": "vfx",
+      "frameCount": 4,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "特效中心，与判定框对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 4,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/frames/vfx_thunder_talisman_00.png",
+          "score": 85,
+          "verdict": "SHIP",
+          "issues": [
+            "coverage=0.015 偏离合理区间"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0149,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_thunder_talisman_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0798,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_thunder_talisman_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1211,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_thunder_talisman_03.png",
+          "score": 95,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 1 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.123,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 1
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/frames/vfx_vajra_body.json",
+      "id": "vfx_vajra_body",
+      "kind": "vfx",
+      "frameCount": 4,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "特效中心，与判定框对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 4,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/frames/vfx_vajra_body_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.167,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_vajra_body_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.324,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_vajra_body_02.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.5371,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/frames/vfx_vajra_body_03.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3979,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/overlay/ovl_affix.json",
+      "id": "ovl_affix",
+      "kind": "ovl",
+      "frameCount": 2,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "状态层中心，与角色 Sprite2D 对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 2,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/overlay/ovl_affix_00.png",
+          "score": 85,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 3 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0686,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 3
+        },
+        {
+          "file": "assets/vfx/overlay/ovl_affix_01.png",
+          "score": 80,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 4 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0662,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 4
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/overlay/ovl_burn.json",
+      "id": "ovl_burn",
+      "kind": "ovl",
+      "frameCount": 2,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "状态层中心，与角色 Sprite2D 对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 2,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/overlay/ovl_burn_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0957,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/overlay/ovl_burn_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0911,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/overlay/ovl_chill.json",
+      "id": "ovl_chill",
+      "kind": "ovl",
+      "frameCount": 2,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "状态层中心，与角色 Sprite2D 对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 2,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/overlay/ovl_chill_00.png",
+          "score": 95,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 1 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.0854,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 1
+        },
+        {
+          "file": "assets/vfx/overlay/ovl_chill_01.png",
+          "score": 90,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 2 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.084,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 2
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/overlay/ovl_elite.json",
+      "id": "ovl_elite",
+      "kind": "ovl",
+      "frameCount": 2,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "状态层中心，与角色 Sprite2D 对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 2,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/overlay/ovl_elite_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1021,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/overlay/ovl_elite_01.png",
+          "score": 95,
+          "verdict": "SHIP",
+          "issues": [
+            "孤立噪点连通域 1 个"
+          ],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.1018,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 1
+        }
+      ]
+    },
+    {
+      "engineJson": "assets/vfx/overlay/ovl_shield.json",
+      "id": "ovl_shield",
+      "kind": "ovl",
+      "frameCount": 2,
+      "frameSize": 64,
+      "anchor": {
+        "x": 32,
+        "y": 32,
+        "note": "状态层中心，与角色 Sprite2D 对齐"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 2,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/vfx/overlay/ovl_shield_00.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.344,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/vfx/overlay/ovl_shield_01.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            64,
+            64
+          ],
+          "sizeOk": true,
+          "coverage": 0.3469,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ]
+    },
+    {
+      "engineJson": null,
+      "id": "assets/ui/icons",
+      "kind": "icon",
+      "frameCount": 47,
+      "frameSize": [
+        16,
+        32
+      ],
+      "anchor": {
+        "note": "单帧图标 / 挂件，无脚底锚点"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 47,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/ui/icons/icon_affix_fengyin.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.4258,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_gongjie.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.4258,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_jifeng.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.4062,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_jingfan.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.4648,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_leijie.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.418,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_nifeng.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.3867,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_shiling.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.3906,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_tiebi.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.4141,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_wuxiang.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.418,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_wuxu.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.4883,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_wuyin.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.3945,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_affix_xinmo.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.418,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_dan.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6797,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_dan_fire.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.8203,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_fist_force.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.8203,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_flying_sword.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.8203,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_fu.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6797,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_gear_armor.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6514,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_gear_boots.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6514,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_gear_crown.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6611,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_gear_pendant.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6514,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_gear_pouch.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6631,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_gear_ring.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6514,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_gear_seal.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6514,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_gear_sword.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6514,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_jian.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6797,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_legacy_danxi.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6484,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_legacy_fuyin.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6484,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_legacy_jianhen.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6484,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_legacy_jiying.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6484,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_legacy_lingquan.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6484,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_legacy_tiegu.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6484,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_paper_puppet.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.8203,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_realm_dacheng.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.5254,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_realm_dujie.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.5254,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_realm_heti.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.5254,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_realm_huashen.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.5254,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_realm_jindan.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.5254,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_realm_lianqi.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.5254,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_realm_lianxu.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.5254,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_realm_yuanying.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.5254,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_realm_zhuji.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.5254,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_rejuvenation.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.8203,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_sword_qi.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.8203,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_thunder_talisman.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.8203,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_ti.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.6797,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/ui/icons/icon_vajra_body.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            32,
+            32
+          ],
+          "sizeOk": true,
+          "coverage": 0.8203,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ],
+      "loose": true
+    },
+    {
+      "engineJson": null,
+      "id": "assets/char/acc",
+      "kind": "acc",
+      "frameCount": 4,
+      "frameSize": 16,
+      "anchor": {
+        "note": "单帧图标 / 挂件，无脚底锚点"
+      },
+      "actionCounts": {},
+      "frameTableComplete": null,
+      "groupIssues": [],
+      "ship": 4,
+      "notShip": 0,
+      "verdict": "SHIP",
+      "frames": [
+        {
+          "file": "assets/char/acc/acc_fist.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.4414,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/acc/acc_pill.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.3008,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/acc/acc_sword.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.1641,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        },
+        {
+          "file": "assets/char/acc/acc_talisman.png",
+          "score": 100,
+          "verdict": "SHIP",
+          "issues": [],
+          "size": [
+            16,
+            16
+          ],
+          "sizeOk": true,
+          "coverage": 0.2539,
+          "semiAlphaLevels": 0,
+          "outOfPaletteColors": 0,
+          "isolatedSpecks": 0
+        }
+      ],
+      "loose": true
+    }
+  ]
+}

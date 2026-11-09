@@ -1,0 +1,28 @@
+# Godot 4 引擎缓存与导入结果：不入库，首次打开编辑器会按资源自动重建
+.godot/
+
+# 构建 / 导出产物
+build/
+export/
+*.app.zip
+
+# 内测本地埋点日志（Q28：只写 user://，不上传；误落在工程根时也不入库）
+telemetry/
+
+# Python 工具链缓存
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# docs/ 下的 CSV 是设计数值源，不是 Godot 翻译表：docs/.gdignore 已让编辑器跳过整目录。
+# 兜底：万一换账号后 .gdignore 丢失，也不把引擎误生成的翻译产物入库（R39）。
+docs/*.translation
+docs/*.csv.import
+
+# 注：export_presets.cfg 含签名口令/密钥路径时不入库；本项目尚未配置导出预设。
+
+# 本地 Agent / 助手工作数据（会话记忆与工作日志）：只在本机保留，不入库
+.workbuddy/
+.workbuddy-ai/

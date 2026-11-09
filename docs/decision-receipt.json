@@ -1,0 +1,48 @@
+{
+  "version": "0.1",
+  "status": "received-not-applied",
+  "receivedAt": "2026-11-08T01:30:59",
+  "source": "tools/apply_decisions.py",
+  "raw": "# 决策卡正式回执 · 第 12 轮\n# 用户原话：「全部按推荐  同时多添加一个 buff选择系统 ...」\n# 15 项有推荐值的决策全部按推荐值确认。\n# 第 13 轮：助手只读探测到本机 Godot 4.7.2.stable.official.ed1daf0bf（标准版非 .NET），\n#   导出模板目录为空（未装）；按「助手不代填环境事实」约定当时保持 Q1 留空。\n# 第 14 轮：用户亲口确认「没错是 4.7.2」，补齐 Q1。\n#   值中的数字 4.7.2 来自用户答复，.stable 来自本机探测的发布通道，非助手臆测。\n#   至此 16/16 项已答、硬门禁 4/4 齐备；但「策划案整体确认」仍待用户，故不冻结、不建工程。\nC01=accept_convergence\nQ3=stage_battle\nQ5=accept_roguelite\nQ8=autoload_json\nQ24=procedural_plus_pixelfx\nQ21=128\nQ25=proposal_v1\nQ26=proposal_b\nQ27=proposal_3slots_8types\nQ28=proposal_local_only\nQ2_4_6_9=keep_assumptions\nQ15=defer\nQ19=default\nQ22=confirm_4\nQ23=auto\nQ1=4.7.2.stable",
+  "answers": {
+    "C01": "accept_convergence",
+    "Q3": "stage_battle",
+    "Q5": "accept_roguelite",
+    "Q8": "autoload_json",
+    "Q24": "procedural_plus_pixelfx",
+    "Q21": "128",
+    "Q25": "proposal_v1",
+    "Q26": "proposal_b",
+    "Q27": "proposal_3slots_8types",
+    "Q28": "proposal_local_only",
+    "Q2_4_6_9": "keep_assumptions",
+    "Q15": "defer",
+    "Q19": "default",
+    "Q22": "confirm_4",
+    "Q23": "auto",
+    "Q1": "4.7.2.stable"
+  },
+  "validation": {
+    "errors": [],
+    "warnings": [
+      "Q28 本地埋点需把 01 §4「无数据收集」改为「不联网不上传、本地可关闭」，属已明确假设修订（R29）；另需把 M6 并入 01 §15（R30）"
+    ],
+    "stats": {
+      "knownItems": 16,
+      "answered": 16,
+      "unanswered": [],
+      "hardGates": {
+        "Q1": "4.7.2.stable",
+        "Q3": "stage_battle",
+        "Q5": "accept_roguelite",
+        "Q8": "autoload_json"
+      },
+      "hardGatesUnresolved": [],
+      "hardGatesResolved": 4,
+      "allGatesCleared": true
+    }
+  },
+  "note": "这是用户答复的证据，不是已执行结果；落地按 docs/decision-plan.json 由助手逐条执行。",
+  "frozenTouched": false,
+  "baselineDocsTouched": false
+}

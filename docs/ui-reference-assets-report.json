@@ -1,0 +1,60 @@
+{
+  "round": 31,
+  "tool": "tools/build_ui_reference_assets.py",
+  "scope": "previews/ui/00-anchor ~ 08-icons 九张 gpt-image2 回稿资产化",
+  "reason": "第 29/30 轮误判 00~08 九张为『本轮用不到』；用户指出全部是其本人生成的可用素材",
+  "sourceArtRoot": "previews/ui/",
+  "sourceFiles": [
+    "previews/ui/00-anchor-gpt-image2_palette24.png",
+    "previews/ui/01-mainmenu-gpt-image2_palette24.png",
+    "previews/ui/02-towerhud-gpt-image2_palette24.png",
+    "previews/ui/03-draft-gpt-image2_palette24.png",
+    "previews/ui/04-result-gpt-image2_palette24.png",
+    "previews/ui/05-pause-gpt-image2_palette24.png",
+    "previews/ui/06-affix-gpt-image2_palette24.png",
+    "previews/ui/07-codex-gpt-image2_palette24.png",
+    "previews/ui/08-icons-gpt-image2_palette24.png"
+  ],
+  "watermark": {
+    "boxRel": [
+      0.5,
+      0.925,
+      0.99,
+      0.985
+    ],
+    "pixelsReplaced": 8748,
+    "method": "保留深色底 / 金框 / 青玉描边，条带内其余像素一律回填深色底",
+    "sourceArtUntouched": true
+  },
+  "userOriginalsUntouched": true,
+  "sourceCoverage": {
+    "palette24Total": 17,
+    "usedByRound31": 16,
+    "unusedSources": [
+      "previews/ui/A2-bgrest-gpt-image2_palette24.png"
+    ],
+    "unusedReason": "A2-bgrest 是方图旧版，已被用户重出的 16:9 版 A2R-bgrest 取代；原稿保留未删，其余 16 张全部在本轮两个转录脚本中被实际读取"
+  },
+  "outputDir": "assets/ui/reference/",
+  "overviewPage": "previews/ui-reference-overview.html",
+  "counts": {
+    "sources": 9,
+    "files": 116,
+    "byKind": {
+      "full": 9,
+      "panel16x9": 9,
+      "component": 44,
+      "iconRow": 6,
+      "iconCell": 48
+    },
+    "outOfPaletteTotal": 0
+  },
+  "contractBoundary": [
+    "不替换 assets/ui/icons 的 47 个 R23 冻结 ID，也不替换 assets/ui/cards",
+    "08-icons 的逐格图标只给候选裁片，与 docs/icon-catalog.json 的 ID 对位需人工确认",
+    "组件裁切框为相对比例估算，需人工目检微调；本轮不冒充精确对位",
+    "方图 16:9 归一为居中裁切，会损失上下内容",
+    "status 沿用「待目检与合规确认；不得直接入库」；Q17 / GUI F5 未过"
+  ],
+  "status": "HEADLESS 静态指标自检；画面未验证"
+}

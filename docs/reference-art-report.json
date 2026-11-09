@@ -1,0 +1,1026 @@
+{
+  "generatedAt": "2026-11-09 00:50:06",
+  "tool": "tools/check_reference_art.py",
+  "round": 28,
+  "paletteSource": "docs/asset-manifest-pixel.json（24 色锁定板）",
+  "scope": "A 组塔层背景 + B/C 组 sprite 形状板参考稿",
+  "definitions": {
+    "nearestPaletteColor": "每个像素按欧氏距离归到 docs/asset-manifest-pixel.json 的 24 色锁定板最近色，再按色组计数",
+    "darkSet": "24 色板中 0.299R+0.587G+0.114B < 60 的色，实为 ['#000000', '#12161F', '#2A3140']",
+    "inkGroup": "墨三阶 #12161F #2A3140 #4A5568 + 描边 #000000",
+    "paperGroup": "宣纸三阶 #8A8268 #C9BFA3 #E8DFC8",
+    "combatZone": "x 20%-80% / y 35%-75%（docs/20 §4.1 中央战斗区）",
+    "bands": "上 1/4 远景 / 中 1/2 中景 / 下 1/4 地面，按 docs/20 §2.3",
+    "r22ProxyLevel": "战斗区暗像素 >= 60% 记 HIGH、>= 30% 记 MEDIUM，否则 LOW；只是回稿文件的亮度代理，不是实机对比度实测",
+    "sheetGrid": "B- = 1x2（两 Boss）；C1- = 2x2（4 技能形状）；C2- = 5x2（5 组 overlay 各 2 帧）",
+    "sheetCenter": "每格中央 60%x60% 区域内，非白内容像素占比 <= 30% 视为留白 >= 70%（仅 overlay）",
+    "sheetPulse": "只对 C2 overlay 生效：同一行两帧内容像素数相对差 <= 25% 为 PASS、<= 50% 为 WARN、> 50% 为 FAIL；B 组两格是两个不同 Boss、C1 每行是两种不同技能，差异大是设计意图，记为 kind=distinct 不判等级",
+    "baseMetrics": "越界色 / 半透明 / 柔边 / 纯白复用 tools/check_ui_art.py 的冻结阈值，不另起口径",
+    "patchCompliance": "docs/20 §4.1 通用补充句的 9 条可机器核验硬指标；只对该补充句重出的版本（文件名含 R-）做验收，旧 A 组标 EXEMPT",
+    "l4_area_under_10": "最下 10% 条带 + 左右边缘 5%（y 75%-90%）内暗像素数 / 全图像素数，作为『L4 前景剪影占画面 < 10%』的代理",
+    "patchManualOnly": "四层能否沿水平线独立切图、有无跨层连续深色块、有无文字水印，机器不判，只能人工目检，不伪造 PASS"
+  },
+  "scene": {
+    "files": [
+      {
+        "file": "previews/ui/A1-bgnormal-gpt-image2_palette24.png",
+        "variant": "original",
+        "size": [
+          1024,
+          1024
+        ],
+        "inkGroupRatio": 0.72533,
+        "paperGroupRatio": 0.23446,
+        "otherGroupRatio": 0.04021,
+        "bandDarkRatio": {
+          "topQuarter": 0.56269,
+          "middleHalf": 0.36889,
+          "bottomQuarter": 0.785
+        },
+        "bandMetrics": {
+          "topQuarter": {
+            "ink": 0.64862,
+            "paper": 0.30754,
+            "dark": 0.56269
+          },
+          "middleHalf": {
+            "ink": 0.6321,
+            "paper": 0.31083,
+            "dark": 0.36889
+          },
+          "bottomQuarter": {
+            "ink": 0.98849,
+            "paper": 0.00864,
+            "dark": 0.785
+          }
+        },
+        "combatZoneDarkRatio": 0.35044,
+        "combatZoneMetrics": {
+          "ink": 0.70591,
+          "paper": 0.25389,
+          "dark": 0.35044
+        },
+        "r22ProxyLevel": "MEDIUM",
+        "patchCompliance": {
+          "applicable": false,
+          "verdict": "EXEMPT",
+          "failed": [
+            "aspect_16x9",
+            "l1_dark_under_20",
+            "combat_paper_over_50",
+            "combat_ink_under_30",
+            "l3_paper_over_40",
+            "l3_not_dark",
+            "ink_under_55",
+            "paper_over_30"
+          ],
+          "checks": [
+            {
+              "id": "aspect_16x9",
+              "rule": "画幅 16:9（|w/h - 16/9| <= 0.02）",
+              "value": 0.77778,
+              "threshold": 0.02,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "l1_dark_under_20",
+              "rule": "L1 上 1/4 深色像素 <= 20%",
+              "value": 0.64862,
+              "threshold": 0.2,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "combat_paper_over_50",
+              "rule": "中央战斗区浅宣纸色块 >= 50%",
+              "value": 0.25389,
+              "threshold": 0.5,
+              "operator": "ge",
+              "pass": false
+            },
+            {
+              "id": "combat_ink_under_30",
+              "rule": "中央战斗区深色像素 <= 30%",
+              "value": 0.70591,
+              "threshold": 0.3,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "l3_paper_over_40",
+              "rule": "L3 下 1/4 浅宣纸铺底 >= 40%",
+              "value": 0.00864,
+              "threshold": 0.4,
+              "operator": "ge",
+              "pass": false
+            },
+            {
+              "id": "l3_not_dark",
+              "rule": "L3 下 1/4 深色像素 <= 30%（禁止整片压暗）",
+              "value": 0.98849,
+              "threshold": 0.3,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "l4_area_under_10",
+              "rule": "L4 前景剪影占全画面 < 10%",
+              "value": 0.09622,
+              "threshold": 0.1,
+              "operator": "lt",
+              "pass": true
+            },
+            {
+              "id": "ink_under_55",
+              "rule": "全图深墨系 <= 55%",
+              "value": 0.72533,
+              "threshold": 0.55,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "paper_over_30",
+              "rule": "全图浅宣纸系 >= 30%",
+              "value": 0.23446,
+              "threshold": 0.3,
+              "operator": "ge",
+              "pass": false
+            }
+          ],
+          "manualOnly": [
+            "四深度层之间是否有清晰水平色阶分界、能沿水平线各自独立切图",
+            "是否存在跨层的连续深色块 / 巨大对称深色塔影 / 上下深色夹击中部",
+            "是否混入文字、水印、logo、UI 元素或人物角色"
+          ],
+          "note": "EXEMPT = 第 27 轮用户已拍板旧 A 组不重出、不追 16:9 与四层切分；此处仍列出数值供对照，不作为返工单"
+        },
+        "distinctColors": 19
+      },
+      {
+        "file": "previews/ui/A2-bgrest-gpt-image2_palette24.png",
+        "variant": "original",
+        "size": [
+          1024,
+          1024
+        ],
+        "inkGroupRatio": 0.14122,
+        "paperGroupRatio": 0.82229,
+        "otherGroupRatio": 0.03649,
+        "bandDarkRatio": {
+          "topQuarter": 0.00124,
+          "middleHalf": 0.04715,
+          "bottomQuarter": 0.26616
+        },
+        "bandMetrics": {
+          "topQuarter": {
+            "ink": 0.00215,
+            "paper": 0.97863,
+            "dark": 0.00124
+          },
+          "middleHalf": {
+            "ink": 0.09215,
+            "paper": 0.85877,
+            "dark": 0.04715
+          },
+          "bottomQuarter": {
+            "ink": 0.37843,
+            "paper": 0.59298,
+            "dark": 0.26616
+          }
+        },
+        "combatZoneDarkRatio": 0.0672,
+        "combatZoneMetrics": {
+          "ink": 0.11551,
+          "paper": 0.82934,
+          "dark": 0.0672
+        },
+        "r22ProxyLevel": "LOW",
+        "patchCompliance": {
+          "applicable": false,
+          "verdict": "EXEMPT",
+          "failed": [
+            "aspect_16x9",
+            "l3_not_dark"
+          ],
+          "checks": [
+            {
+              "id": "aspect_16x9",
+              "rule": "画幅 16:9（|w/h - 16/9| <= 0.02）",
+              "value": 0.77778,
+              "threshold": 0.02,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "l1_dark_under_20",
+              "rule": "L1 上 1/4 深色像素 <= 20%",
+              "value": 0.00215,
+              "threshold": 0.2,
+              "operator": "le",
+              "pass": true
+            },
+            {
+              "id": "combat_paper_over_50",
+              "rule": "中央战斗区浅宣纸色块 >= 50%",
+              "value": 0.82934,
+              "threshold": 0.5,
+              "operator": "ge",
+              "pass": true
+            },
+            {
+              "id": "combat_ink_under_30",
+              "rule": "中央战斗区深色像素 <= 30%",
+              "value": 0.11551,
+              "threshold": 0.3,
+              "operator": "le",
+              "pass": true
+            },
+            {
+              "id": "l3_paper_over_40",
+              "rule": "L3 下 1/4 浅宣纸铺底 >= 40%",
+              "value": 0.59298,
+              "threshold": 0.4,
+              "operator": "ge",
+              "pass": true
+            },
+            {
+              "id": "l3_not_dark",
+              "rule": "L3 下 1/4 深色像素 <= 30%（禁止整片压暗）",
+              "value": 0.37843,
+              "threshold": 0.3,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "l4_area_under_10",
+              "rule": "L4 前景剪影占全画面 < 10%",
+              "value": 0.05312,
+              "threshold": 0.1,
+              "operator": "lt",
+              "pass": true
+            },
+            {
+              "id": "ink_under_55",
+              "rule": "全图深墨系 <= 55%",
+              "value": 0.14122,
+              "threshold": 0.55,
+              "operator": "le",
+              "pass": true
+            },
+            {
+              "id": "paper_over_30",
+              "rule": "全图浅宣纸系 >= 30%",
+              "value": 0.82229,
+              "threshold": 0.3,
+              "operator": "ge",
+              "pass": true
+            }
+          ],
+          "manualOnly": [
+            "四深度层之间是否有清晰水平色阶分界、能沿水平线各自独立切图",
+            "是否存在跨层的连续深色块 / 巨大对称深色塔影 / 上下深色夹击中部",
+            "是否混入文字、水印、logo、UI 元素或人物角色"
+          ],
+          "note": "EXEMPT = 第 27 轮用户已拍板旧 A 组不重出、不追 16:9 与四层切分；此处仍列出数值供对照，不作为返工单"
+        },
+        "distinctColors": 19
+      },
+      {
+        "file": "previews/ui/A3-bghigh-gpt-image2_palette24.png",
+        "variant": "original",
+        "size": [
+          1280,
+          1280
+        ],
+        "inkGroupRatio": 0.81369,
+        "paperGroupRatio": 0.1487,
+        "otherGroupRatio": 0.0376,
+        "bandDarkRatio": {
+          "topQuarter": 0.95836,
+          "middleHalf": 0.83778,
+          "bottomQuarter": 0.52079
+        },
+        "bandMetrics": {
+          "topQuarter": {
+            "ink": 0.95925,
+            "paper": 1e-05,
+            "dark": 0.95836
+          },
+          "middleHalf": {
+            "ink": 0.86712,
+            "paper": 0.08735,
+            "dark": 0.83778
+          },
+          "bottomQuarter": {
+            "ink": 0.56129,
+            "paper": 0.4201,
+            "dark": 0.52079
+          }
+        },
+        "combatZoneDarkRatio": 0.7581,
+        "combatZoneMetrics": {
+          "ink": 0.79828,
+          "paper": 0.14042,
+          "dark": 0.7581
+        },
+        "r22ProxyLevel": "HIGH",
+        "patchCompliance": {
+          "applicable": false,
+          "verdict": "EXEMPT",
+          "failed": [
+            "aspect_16x9",
+            "l1_dark_under_20",
+            "combat_paper_over_50",
+            "combat_ink_under_30",
+            "l3_not_dark",
+            "ink_under_55",
+            "paper_over_30"
+          ],
+          "checks": [
+            {
+              "id": "aspect_16x9",
+              "rule": "画幅 16:9（|w/h - 16/9| <= 0.02）",
+              "value": 0.77778,
+              "threshold": 0.02,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "l1_dark_under_20",
+              "rule": "L1 上 1/4 深色像素 <= 20%",
+              "value": 0.95925,
+              "threshold": 0.2,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "combat_paper_over_50",
+              "rule": "中央战斗区浅宣纸色块 >= 50%",
+              "value": 0.14042,
+              "threshold": 0.5,
+              "operator": "ge",
+              "pass": false
+            },
+            {
+              "id": "combat_ink_under_30",
+              "rule": "中央战斗区深色像素 <= 30%",
+              "value": 0.79828,
+              "threshold": 0.3,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "l3_paper_over_40",
+              "rule": "L3 下 1/4 浅宣纸铺底 >= 40%",
+              "value": 0.4201,
+              "threshold": 0.4,
+              "operator": "ge",
+              "pass": true
+            },
+            {
+              "id": "l3_not_dark",
+              "rule": "L3 下 1/4 深色像素 <= 30%（禁止整片压暗）",
+              "value": 0.56129,
+              "threshold": 0.3,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "l4_area_under_10",
+              "rule": "L4 前景剪影占全画面 < 10%",
+              "value": 0.0793,
+              "threshold": 0.1,
+              "operator": "lt",
+              "pass": true
+            },
+            {
+              "id": "ink_under_55",
+              "rule": "全图深墨系 <= 55%",
+              "value": 0.81369,
+              "threshold": 0.55,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "paper_over_30",
+              "rule": "全图浅宣纸系 >= 30%",
+              "value": 0.1487,
+              "threshold": 0.3,
+              "operator": "ge",
+              "pass": false
+            }
+          ],
+          "manualOnly": [
+            "四深度层之间是否有清晰水平色阶分界、能沿水平线各自独立切图",
+            "是否存在跨层的连续深色块 / 巨大对称深色塔影 / 上下深色夹击中部",
+            "是否混入文字、水印、logo、UI 元素或人物角色"
+          ],
+          "note": "EXEMPT = 第 27 轮用户已拍板旧 A 组不重出、不追 16:9 与四层切分；此处仍列出数值供对照，不作为返工单"
+        },
+        "distinctColors": 14
+      },
+      {
+        "file": "previews/ui/A4-bgboss-gpt-image2_palette24.png",
+        "variant": "original",
+        "size": [
+          1536,
+          864
+        ],
+        "inkGroupRatio": 0.63061,
+        "paperGroupRatio": 0.26555,
+        "otherGroupRatio": 0.10384,
+        "bandDarkRatio": {
+          "topQuarter": 0.5789,
+          "middleHalf": 0.7418,
+          "bottomQuarter": 0.33179
+        },
+        "bandMetrics": {
+          "topQuarter": {
+            "ink": 0.61514,
+            "paper": 0.21057,
+            "dark": 0.5789
+          },
+          "middleHalf": {
+            "ink": 0.78557,
+            "paper": 0.13491,
+            "dark": 0.7418
+          },
+          "bottomQuarter": {
+            "ink": 0.33614,
+            "paper": 0.58183,
+            "dark": 0.33179
+          }
+        },
+        "combatZoneDarkRatio": 0.73022,
+        "combatZoneMetrics": {
+          "ink": 0.78942,
+          "paper": 0.16321,
+          "dark": 0.73022
+        },
+        "r22ProxyLevel": "HIGH",
+        "patchCompliance": {
+          "applicable": false,
+          "verdict": "EXEMPT",
+          "failed": [
+            "l1_dark_under_20",
+            "combat_paper_over_50",
+            "combat_ink_under_30",
+            "l3_not_dark",
+            "ink_under_55",
+            "paper_over_30"
+          ],
+          "checks": [
+            {
+              "id": "aspect_16x9",
+              "rule": "画幅 16:9（|w/h - 16/9| <= 0.02）",
+              "value": 0.0,
+              "threshold": 0.02,
+              "operator": "le",
+              "pass": true
+            },
+            {
+              "id": "l1_dark_under_20",
+              "rule": "L1 上 1/4 深色像素 <= 20%",
+              "value": 0.61514,
+              "threshold": 0.2,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "combat_paper_over_50",
+              "rule": "中央战斗区浅宣纸色块 >= 50%",
+              "value": 0.16321,
+              "threshold": 0.5,
+              "operator": "ge",
+              "pass": false
+            },
+            {
+              "id": "combat_ink_under_30",
+              "rule": "中央战斗区深色像素 <= 30%",
+              "value": 0.78942,
+              "threshold": 0.3,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "l3_paper_over_40",
+              "rule": "L3 下 1/4 浅宣纸铺底 >= 40%",
+              "value": 0.58183,
+              "threshold": 0.4,
+              "operator": "ge",
+              "pass": true
+            },
+            {
+              "id": "l3_not_dark",
+              "rule": "L3 下 1/4 深色像素 <= 30%（禁止整片压暗）",
+              "value": 0.33614,
+              "threshold": 0.3,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "l4_area_under_10",
+              "rule": "L4 前景剪影占全画面 < 10%",
+              "value": 0.07507,
+              "threshold": 0.1,
+              "operator": "lt",
+              "pass": true
+            },
+            {
+              "id": "ink_under_55",
+              "rule": "全图深墨系 <= 55%",
+              "value": 0.63061,
+              "threshold": 0.55,
+              "operator": "le",
+              "pass": false
+            },
+            {
+              "id": "paper_over_30",
+              "rule": "全图浅宣纸系 >= 30%",
+              "value": 0.26555,
+              "threshold": 0.3,
+              "operator": "ge",
+              "pass": false
+            }
+          ],
+          "manualOnly": [
+            "四深度层之间是否有清晰水平色阶分界、能沿水平线各自独立切图",
+            "是否存在跨层的连续深色块 / 巨大对称深色塔影 / 上下深色夹击中部",
+            "是否混入文字、水印、logo、UI 元素或人物角色"
+          ],
+          "note": "EXEMPT = 第 27 轮用户已拍板旧 A 组不重出、不追 16:9 与四层切分；此处仍列出数值供对照，不作为返工单"
+        },
+        "distinctColors": 17
+      },
+      {
+        "file": "previews/ui/A2R-bgrest-gpt-image2_palette24.png",
+        "variant": "repaint",
+        "size": [
+          1672,
+          941
+        ],
+        "inkGroupRatio": 0.11504,
+        "paperGroupRatio": 0.81935,
+        "otherGroupRatio": 0.06561,
+        "bandDarkRatio": {
+          "topQuarter": 0.04229,
+          "middleHalf": 0.07565,
+          "bottomQuarter": 0.13791
+        },
+        "bandMetrics": {
+          "topQuarter": {
+            "ink": 0.05862,
+            "paper": 0.80171,
+            "dark": 0.04229
+          },
+          "middleHalf": {
+            "ink": 0.12815,
+            "paper": 0.81468,
+            "dark": 0.07565
+          },
+          "bottomQuarter": {
+            "ink": 0.1451,
+            "paper": 0.84623,
+            "dark": 0.13791
+          }
+        },
+        "combatZoneDarkRatio": 0.08257,
+        "combatZoneMetrics": {
+          "ink": 0.1481,
+          "paper": 0.78638,
+          "dark": 0.08257
+        },
+        "r22ProxyLevel": "LOW",
+        "patchCompliance": {
+          "applicable": true,
+          "verdict": "PASS",
+          "failed": [],
+          "checks": [
+            {
+              "id": "aspect_16x9",
+              "rule": "画幅 16:9（|w/h - 16/9| <= 0.02）",
+              "value": 0.00094,
+              "threshold": 0.02,
+              "operator": "le",
+              "pass": true
+            },
+            {
+              "id": "l1_dark_under_20",
+              "rule": "L1 上 1/4 深色像素 <= 20%",
+              "value": 0.05862,
+              "threshold": 0.2,
+              "operator": "le",
+              "pass": true
+            },
+            {
+              "id": "combat_paper_over_50",
+              "rule": "中央战斗区浅宣纸色块 >= 50%",
+              "value": 0.78638,
+              "threshold": 0.5,
+              "operator": "ge",
+              "pass": true
+            },
+            {
+              "id": "combat_ink_under_30",
+              "rule": "中央战斗区深色像素 <= 30%",
+              "value": 0.1481,
+              "threshold": 0.3,
+              "operator": "le",
+              "pass": true
+            },
+            {
+              "id": "l3_paper_over_40",
+              "rule": "L3 下 1/4 浅宣纸铺底 >= 40%",
+              "value": 0.84623,
+              "threshold": 0.4,
+              "operator": "ge",
+              "pass": true
+            },
+            {
+              "id": "l3_not_dark",
+              "rule": "L3 下 1/4 深色像素 <= 30%（禁止整片压暗）",
+              "value": 0.1451,
+              "threshold": 0.3,
+              "operator": "le",
+              "pass": true
+            },
+            {
+              "id": "l4_area_under_10",
+              "rule": "L4 前景剪影占全画面 < 10%",
+              "value": 0.02566,
+              "threshold": 0.1,
+              "operator": "lt",
+              "pass": true
+            },
+            {
+              "id": "ink_under_55",
+              "rule": "全图深墨系 <= 55%",
+              "value": 0.11504,
+              "threshold": 0.55,
+              "operator": "le",
+              "pass": true
+            },
+            {
+              "id": "paper_over_30",
+              "rule": "全图浅宣纸系 >= 30%",
+              "value": 0.81935,
+              "threshold": 0.3,
+              "operator": "ge",
+              "pass": true
+            }
+          ],
+          "manualOnly": [
+            "四深度层之间是否有清晰水平色阶分界、能沿水平线各自独立切图",
+            "是否存在跨层的连续深色块 / 巨大对称深色塔影 / 上下深色夹击中部",
+            "是否混入文字、水印、logo、UI 元素或人物角色"
+          ],
+          "note": "EXEMPT = 第 27 轮用户已拍板旧 A 组不重出、不追 16:9 与四层切分；此处仍列出数值供对照，不作为返工单"
+        },
+        "distinctColors": 20
+      }
+    ],
+    "summary": {
+      "brightest": "A2",
+      "darkest": "A3",
+      "r22ProxyHigh": [
+        "A3",
+        "A4"
+      ],
+      "repaintVariants": [
+        "A2R-bgrest-gpt-image2_palette24.png"
+      ],
+      "patchVerdicts": {
+        "A2R-bgrest-gpt-image2_palette24.png": "PASS"
+      },
+      "note": "按 r22ProxyLevel 排序，仅为回稿文件代理指标；R22 仍待实机实测"
+    }
+  },
+  "sheet": {
+    "verdict": "PASS",
+    "files": [
+      {
+        "file": "previews/ui/B-boss-gpt-image2_palette24.png",
+        "size": [
+          1024,
+          1024
+        ],
+        "grid": [
+          1,
+          2
+        ],
+        "verdict": "PASS",
+        "metrics": {
+          "outOfPaletteRatio": 0.0,
+          "semiTransparentRatio": 0.0,
+          "softEdgeRatio": 0.0,
+          "pureWhiteRatio": 0.55939,
+          "blackOutlineRatio": 0.08903
+        },
+        "cells": [
+          {
+            "row": 0,
+            "col": 0,
+            "contentRatio": 0.35866,
+            "centerContentRatio": 0.58962
+          },
+          {
+            "row": 0,
+            "col": 1,
+            "contentRatio": 0.66117,
+            "centerContentRatio": 0.90491
+          }
+        ],
+        "rowPairs": [
+          {
+            "row": 0,
+            "relativeDiff": 0.45754,
+            "kind": "distinct"
+          }
+        ],
+        "pairKind": "distinct",
+        "findings": []
+      },
+      {
+        "file": "previews/ui/C1-vfx-gpt-image2_palette24.png",
+        "size": [
+          1024,
+          1024
+        ],
+        "grid": [
+          2,
+          2
+        ],
+        "verdict": "PASS",
+        "metrics": {
+          "outOfPaletteRatio": 0.0,
+          "semiTransparentRatio": 0.0,
+          "softEdgeRatio": 0.0,
+          "pureWhiteRatio": 0.78541,
+          "blackOutlineRatio": 0.01942
+        },
+        "cells": [
+          {
+            "row": 0,
+            "col": 0,
+            "contentRatio": 0.1505,
+            "centerContentRatio": 0.32002
+          },
+          {
+            "row": 0,
+            "col": 1,
+            "contentRatio": 0.33428,
+            "centerContentRatio": 0.68167
+          },
+          {
+            "row": 1,
+            "col": 0,
+            "contentRatio": 0.30638,
+            "centerContentRatio": 0.72859
+          },
+          {
+            "row": 1,
+            "col": 1,
+            "contentRatio": 0.22315,
+            "centerContentRatio": 0.34014
+          }
+        ],
+        "rowPairs": [
+          {
+            "row": 0,
+            "relativeDiff": 0.54978,
+            "kind": "distinct"
+          },
+          {
+            "row": 1,
+            "relativeDiff": 0.27166,
+            "kind": "distinct"
+          }
+        ],
+        "pairKind": "distinct",
+        "findings": []
+      },
+      {
+        "file": "previews/ui/C2-overlay-gpt-image2_palette24.png",
+        "size": [
+          1280,
+          1280
+        ],
+        "grid": [
+          5,
+          2
+        ],
+        "verdict": "PASS",
+        "metrics": {
+          "outOfPaletteRatio": 0.0,
+          "semiTransparentRatio": 0.0,
+          "softEdgeRatio": 0.0,
+          "pureWhiteRatio": 0.89291,
+          "blackOutlineRatio": 0.01687
+        },
+        "cells": [
+          {
+            "row": 0,
+            "col": 0,
+            "contentRatio": 0.12472,
+            "centerContentRatio": 0.1261
+          },
+          {
+            "row": 0,
+            "col": 1,
+            "contentRatio": 0.12295,
+            "centerContentRatio": 0.12125
+          },
+          {
+            "row": 1,
+            "col": 0,
+            "contentRatio": 0.11003,
+            "centerContentRatio": 0.14711
+          },
+          {
+            "row": 1,
+            "col": 1,
+            "contentRatio": 0.10682,
+            "centerContentRatio": 0.1399
+          },
+          {
+            "row": 2,
+            "col": 0,
+            "contentRatio": 0.12504,
+            "centerContentRatio": 0.05638
+          },
+          {
+            "row": 2,
+            "col": 1,
+            "contentRatio": 0.11836,
+            "centerContentRatio": 0.04045
+          },
+          {
+            "row": 3,
+            "col": 0,
+            "contentRatio": 0.13366,
+            "centerContentRatio": 0.12233
+          },
+          {
+            "row": 3,
+            "col": 1,
+            "contentRatio": 0.132,
+            "centerContentRatio": 0.12327
+          },
+          {
+            "row": 4,
+            "col": 0,
+            "contentRatio": 0.09342,
+            "centerContentRatio": 0.07006
+          },
+          {
+            "row": 4,
+            "col": 1,
+            "contentRatio": 0.09373,
+            "centerContentRatio": 0.0703
+          }
+        ],
+        "rowPairs": [
+          {
+            "row": 0,
+            "relativeDiff": 0.01419,
+            "kind": "pulse"
+          },
+          {
+            "row": 1,
+            "relativeDiff": 0.02917,
+            "kind": "pulse"
+          },
+          {
+            "row": 2,
+            "relativeDiff": 0.05342,
+            "kind": "pulse"
+          },
+          {
+            "row": 3,
+            "relativeDiff": 0.01242,
+            "kind": "pulse"
+          },
+          {
+            "row": 4,
+            "relativeDiff": 0.00331,
+            "kind": "pulse"
+          }
+        ],
+        "pairKind": "pulse",
+        "findings": []
+      }
+    ],
+    "note": "B/C 组回稿到达后重跑 all 即会自动纳入；未到达时 verdict=NO_INPUT 是正常状态"
+  },
+  "selftest": {
+    "verdict": "PASS",
+    "passed": 10,
+    "total": 10,
+    "cases": [
+      {
+        "case": "good_b_1x2",
+        "expected": "PASS",
+        "actual": "PASS",
+        "expectedFinding": null,
+        "findings": [],
+        "ok": true
+      },
+      {
+        "case": "good_c2_5x2",
+        "expected": "PASS",
+        "actual": "PASS",
+        "expectedFinding": null,
+        "findings": [],
+        "ok": true
+      },
+      {
+        "case": "distinct_b_1x2",
+        "expected": "PASS",
+        "actual": "PASS",
+        "expectedFinding": null,
+        "findings": [],
+        "ok": true
+      },
+      {
+        "case": "bad_pulse",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expectedFinding": "pulse_mismatch",
+        "findings": [
+          "pulse_mismatch",
+          "pulse_mismatch",
+          "pulse_mismatch",
+          "pulse_mismatch",
+          "pulse_mismatch"
+        ],
+        "ok": true
+      },
+      {
+        "case": "bad_gradient",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expectedFinding": "out_of_palette",
+        "findings": [
+          "out_of_palette",
+          "soft_edges"
+        ],
+        "ok": true
+      },
+      {
+        "case": "bad_alpha",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expectedFinding": "semi_transparent",
+        "findings": [
+          "semi_transparent"
+        ],
+        "ok": true
+      },
+      {
+        "case": "bad_empty_cells",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expectedFinding": "empty_cells",
+        "findings": [
+          "pulse_mismatch",
+          "empty_cells"
+        ],
+        "ok": true
+      },
+      {
+        "case": "bad_center_fill",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expectedFinding": "center_negative_space",
+        "findings": [
+          "center_negative_space"
+        ],
+        "ok": true
+      },
+      {
+        "case": "patch_good_16x9",
+        "expected": "PASS",
+        "actual": "PASS",
+        "expectedFinding": null,
+        "findings": [],
+        "ok": true
+      },
+      {
+        "case": "patch_bad_dark_lower",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expectedFinding": "l3_not_dark",
+        "findings": [
+          "l3_paper_over_40",
+          "l3_not_dark",
+          "l4_area_under_10"
+        ],
+        "ok": true
+      }
+    ]
+  },
+  "note": "本报告的每一数值都是对 previews/ui/ 下 PNG 文件的事实统计，不是引擎渲染 / 实机对比度结论；R22 阴兵对比度、贴图内存、帧率、积分一律待实测。A/B/C 组图按 R55 只算参考稿，体检结果是返工依据而非入库闸门，不解除任何硬门禁。",
+  "verdictMeaning": "verdict 只表示工具自身健康（合成图自检全绿且 A 组四张齐全），不代表回稿合格；回稿结果看 scene / sheet 各自字段",
+  "verdict": "PASS"
+}

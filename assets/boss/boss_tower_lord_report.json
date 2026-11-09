@@ -1,0 +1,286 @@
+{
+  "id": "boss_tower_lord",
+  "kind": "boss",
+  "pipeline": "tools/build_b3b4_assets.py（程序化，0 积分）",
+  "frameCount": 24,
+  "frames": {
+    "boss_tower_lord_idle_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.483,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7913
+    },
+    "boss_tower_lord_idle_r_01.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.483,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7913
+    },
+    "boss_tower_lord_idle_r_02.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.483,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7913
+    },
+    "boss_tower_lord_run_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.483,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7913
+    },
+    "boss_tower_lord_run_r_01.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.483,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7913
+    },
+    "boss_tower_lord_run_r_02.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.483,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7913
+    },
+    "boss_tower_lord_atk_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.483,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7913
+    },
+    "boss_tower_lord_atk_r_01.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.4959,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8125
+    },
+    "boss_tower_lord_atk_r_02.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.4924,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8068
+    },
+    "boss_tower_lord_atk_r_03.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.4948,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8106
+    },
+    "boss_tower_lord_skill_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.483,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7913
+    },
+    "boss_tower_lord_skill_r_01.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.4844,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7937
+    },
+    "boss_tower_lord_skill_r_02.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.4875,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7987
+    },
+    "boss_tower_lord_skill_r_03.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.489,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8011
+    },
+    "boss_tower_lord_skill_r_04.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.492,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8061
+    },
+    "boss_tower_lord_skill_r_05.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.4935,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8085
+    },
+    "boss_tower_lord_skill_r_06.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.4965,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8135
+    },
+    "boss_tower_lord_skill_r_07.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.498,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8159
+    },
+    "boss_tower_lord_skill_r_08.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.501,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8209
+    },
+    "boss_tower_lord_skill_r_09.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.5025,
+      "usedColors": 9,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 8233
+    },
+    "boss_tower_lord_hit_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.483,
+      "usedColors": 2,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 7913
+    },
+    "boss_tower_lord_death_r_00.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.3336,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 5466
+    },
+    "boss_tower_lord_death_r_01.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.2526,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 4138
+    },
+    "boss_tower_lord_death_r_02.png": {
+      "size": [
+        128,
+        128
+      ],
+      "coverage": 0.1558,
+      "usedColors": 3,
+      "outOfPalette": 0,
+      "semiAlphaLevels": 0,
+      "opaquePixels": 2552
+    }
+  },
+  "outOfPaletteTotal": 0,
+  "semiAlphaTotal": 0,
+  "status": "静态资源已产出；GUI F5 目检 / 实机对比度 / 帧率一律待实测",
+  "note": "报告内不含机器绝对路径",
+  "frameTable": {
+    "idle": 3,
+    "run": 3,
+    "atk": 4,
+    "skill": 10,
+    "hit": 1,
+    "death": 3
+  },
+  "q21SizeReceipt": "128x128（docs/decision-receipt.json Q21）",
+  "phasePolicy": "只出第一阶段青玉/墨/朱砂；紫/金阶段运行时换色 + 纹样 5/7/9 道，不重画"
+}

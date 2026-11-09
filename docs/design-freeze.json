@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "status": "frozen",
+  "frozenAt": "2026-11-08",
+  "project": "九重天梯（中国风仙侠爬塔 Roguelite）",
+  "trigger": "用户第 15 轮「策划案整体确认」，确认范围：01 基线 + 02/04/06/07/08 增量 + docs/10 §3 的 17 行改前/改后对照 + 11/12 卡牌系统结构",
+  "engine": "Godot 4.7.2.stable.official.ed1daf0bf（标准版非 .NET；导出模板未装）",
+  "gates": {
+    "receipt": "docs/decision-receipt.json",
+    "answered": "16/16",
+    "hardGatesResolved": "4/4（Q1 / Q3 / Q5 / Q8）",
+    "errors": 0,
+    "warnings": 1,
+    "warningNote": "Q28 本地埋点需修订 01 §4（R29）并把 M6 并入 01 §15（R30）——已在 v0.2 合并时处置"
+  },
+  "baseline": {
+    "confirmedGdd": "docs/01-策划案.md（v0.2 正式稿，460 行）",
+    "v01Archive": "docs/01-策划案-v0.1-baseline.md（431 行，全文保留，未被覆盖）",
+    "mergeDiff": "docs/14-v0.2合并差异记录.md（19 行改前/改后，含新发现的第 19 行）",
+    "generator": "tools/build_gdd_v02.py（幂等，可从归档基线重跑）",
+    "draftStillDraft": "docs/design-freeze-draft.json 仍为 draft，是阶段一历史快照，不是本清单"
+  },
+  "note": "沿用项目第 8 轮定义的 DF-xx 编号体系（docs/08 §2），不改用技能包示例的 MECH/NUM 前缀，以保持 check_traceability.py 与台账的追溯链一致；DF-19..DF-22 为第 15 轮新增，已在 docs/08 §8 追认。工程侧引用写法：在 GDScript 注释里用追溯标记回指具体编号（两套自检脚本都能识别）。",
+  "traceMarker": "@trace",
+  "items": [
+    { "id": "DF-01", "type": "mechanic", "name": "定名 Roguelite；失败只固化 1 条词条/灵韵（上限 6 条），不继承整件装备", "confirmed": true, "source": "01 §6 M3 / Q5" },
+    { "id": "DF-02", "type": "mechanic", "name": "境界＝局外永久轴、塔层＝局内进度轴，两轴分数据源", "confirmed": true, "source": "01 §6 M2" },
+    { "id": "DF-03", "type": "mechanic", "name": "技能判定层与表现层解耦：伤害同帧结算，VfxLayer 监听 vfx_requested 异步播", "confirmed": true, "source": "docs/SkillCaster.gd" },
+    { "id": "DF-04", "type": "art", "name": "横版只出朝右一套，facing 做 scale.x=±1，仅作用角色 Sprite2D / 特效节点", "confirmed": true, "source": "01 §9 / 04" },
+    { "id": "DF-05", "type": "mechanic", "name": "9 境序列：炼气→筑基→金丹→元婴→化神→炼虚→合体→大乘→渡劫", "confirmed": true, "source": "01 §8.2" },
+    { "id": "DF-06", "type": "numeric", "name": "Q10 目标 30 h，口径为一期+二期合计；一期诚实值 6–17.6 h", "confirmed": true, "source": "02 §3" },
+    { "id": "DF-07", "type": "numeric", "name": "Q11 接受 realm_ratio 上限 4.00→1.60；全最大伤害 5940→3996 < Boss 4400", "confirmed": true, "source": "02 §4 P0-3 / 01 §8.1" },
+    { "id": "DF-08", "type": "numeric", "name": "Q12 天劫词缀玩家自选 0–3 条，池 12 条、每 5 局轮换、纯数值占比 ≤1/3", "confirmed": true, "source": "02 §4 P0-2 / 09 §2.2" },
+    { "id": "DF-09", "type": "level", "name": "Q13 接受单局缩短 6 min + 速通道途；层间选择 10 s→6 s", "confirmed": true, "source": "01 §5 / 02 §4 P1-4" },
+    { "id": "DF-10", "type": "level", "name": "Q14 无尽天梯二期做，一期剔除", "confirmed": true, "source": "02 P1-5 / R6" },
+    { "id": "DF-11", "type": "art", "name": "Q16 风格锚点＝A 像素国风（难回退）", "confirmed": true, "source": "04" },
+    { "id": "DF-12", "type": "art", "name": "Q20 人物只做 1 职业；4 流派＝同职业不同 build，共用 15 帧 + 4 件挂件", "confirmed": true, "source": "06 §3 / 07" },
+    { "id": "DF-13", "type": "platform", "name": "渲染口径 480×270 × 整数 4 倍 = 1920×1080 + letterbox；项目级 Nearest 过滤", "confirmed": true, "source": "04 §2 / 01 §12" },
+    { "id": "DF-14", "type": "art", "name": "24 色锁定板（20 核心 + 4 预留）；9 境压成 4 段色，靠纹样/刻痕区分", "confirmed": true, "source": "04 §4" },
+    { "id": "DF-15", "type": "art", "name": "单帧 64×64、判定框 24×32、hitboxOffsetX=16（待引擎实测）；15 帧/组帧表；Boss 128×128", "confirmed": true, "source": "04 / Q21" },
+    { "id": "DF-16", "type": "art", "name": "图标/挂件改走程序化几何绘制（0 积分、可复现）；有机形态仍走 AI 出图", "confirmed": true, "source": "07 §5" },
+    { "id": "DF-17", "type": "art", "name": "图标三层形状语法；8 技能图标复用 06 §4 的 8 个特效形状", "confirmed": true, "source": "07 §2" },
+    { "id": "DF-18", "type": "art", "name": "图标尺寸双档：词缀 16×16、其余 32×32；单件 ID 先定契约再生成", "confirmed": true, "source": "07 §7 / R23 / R24" },
+    { "id": "DF-19", "type": "mechanic", "name": "塔层三选一卡牌系统（结构）：每通过 1 层弹一次，9 层共 8 次；72 张 / 6 类 ×12 / 4 稀有度；层间永久被动不进战斗手牌", "confirmed": true, "source": "11 §1–§3 / 用户第 12 轮" },
+    { "id": "DF-20", "type": "ui", "name": "卡牌 UI 规格：96×144 卡面 6 区、24×24 类别纹样、类别靠形状/稀有度靠边框层次、卡面 PNG 不含文字", "confirmed": true, "source": "12" },
+    { "id": "DF-21", "type": "numeric", "name": "五上界伤害红线 + offense_pool 共享池：realm≤1.60 / pool≤600 / combo≤2.5 / crit≤1.8 / base≤180；卡牌数值增益并入共享池，由 verify_damage_ceiling.py 机器核对（R32 已处置）", "confirmed": true, "source": "01 §8.1 / 11 §4 / docs/damage-ceiling-report.json" },
+    { "id": "DF-22", "type": "mechanic", "name": "本地埋点与验收：user://telemetry/runs.jsonl 不联网不上传、可关闭可清空；M6 / M6-f / M10 并入 01 §15", "confirmed": true, "source": "Q28 / R29 / R30 / 01 §4 §15" }
+  ],
+  "notFrozen": [
+    "全部数值平衡、掉率期望、P_dps 序列、贴图内存、帧率与内存目标（01 §8 标待实测）",
+    "72 张卡的具体数值 / 权重 / 概率 / 6 s 阅读窗口：11 仍是 PROPOSAL，冻结的只是结构与红线",
+    "R33（首见新卡 12 s）/ R34（combo_hash 区分度）/ R35（夺主改 k 需重算 B）未处置",
+    "R9 字体授权（法律决定，需用户拍板）；卡面 PNG 不含文字，UI 文字层用引擎默认字体",
+    "R22 阴兵深色场景对比度、hitboxOffsetX=16px 重叠、剑魂 8fps 节奏、4× 实机排版",
+    "B3 两个 Boss 素材、B4 剩余 4 技能 / 命中 / 5 组 overlay（Q21 / Q24 已定，尚未投入出图积分）",
+    "Godot 编辑器内 F5 实跑与导出构建（需用户在本机操作；导出模板未装）"
+  ],
+  "changePolicy": "需求变更必须改本清单并递增 version，禁止只改代码不改清单；编号一经使用不得复用、废弃条目保留并标记。",
+  "coveragePolicy": "覆盖率只统计真正实现该条目的工程文件里的追溯标记；最小验证工程只实现少数几条，低覆盖率是真实进度，不得为凑数批量粘贴标记。",
+  "selfCheck": "tools/verify_damage_ceiling.py（R32 PASS）、tools/check_traceability.py、check_godot_project.py --freeze docs/design-freeze.json"
+}

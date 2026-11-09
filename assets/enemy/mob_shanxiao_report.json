@@ -1,0 +1,72 @@
+{
+  "source": "Use_the_reference_image_as_the_2026-11-07T15-42-15.png",
+  "kind": "mob",
+  "cells": [
+    1,
+    2,
+    3
+  ],
+  "hollow": false,
+  "append": true,
+  "crop": [
+    39,
+    136,
+    489,
+    489
+  ],
+  "frames": [
+    {
+      "file": "mob_shanxiao_death_r_00.png",
+      "scale": 0.1333,
+      "colorsBeforeSnap": 986,
+      "pixelsSnapped": 1317,
+      "usedColors": 15,
+      "outOfPalette": 0
+    },
+    {
+      "file": "mob_shanxiao_death_r_01.png",
+      "scale": 0.1333,
+      "colorsBeforeSnap": 700,
+      "pixelsSnapped": 929,
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "mob_shanxiao_death_r_02.png",
+      "scale": 0.1333,
+      "colorsBeforeSnap": 145,
+      "pixelsSnapped": 148,
+      "usedColors": 8,
+      "outOfPalette": 0
+    }
+  ],
+  "outputs": {
+    "frames": [
+      "mob_shanxiao_idle_r_00.png",
+      "mob_shanxiao_idle_r_01.png",
+      "mob_shanxiao_idle_r_02.png",
+      "mob_shanxiao_run_r_00.png",
+      "mob_shanxiao_run_r_01.png",
+      "mob_shanxiao_run_r_02.png",
+      "mob_shanxiao_run_r_03.png",
+      "mob_shanxiao_atk_r_00.png",
+      "mob_shanxiao_atk_r_01.png",
+      "mob_shanxiao_atk_r_02.png",
+      "mob_shanxiao_atk_r_03.png",
+      "mob_shanxiao_hit_r_00.png",
+      "mob_shanxiao_death_r_00.png",
+      "mob_shanxiao_death_r_01.png",
+      "mob_shanxiao_death_r_02.png"
+    ],
+    "framesAddedThisBatch": [
+      "mob_shanxiao_death_r_00.png",
+      "mob_shanxiao_death_r_01.png",
+      "mob_shanxiao_death_r_02.png"
+    ],
+    "sheet": "mob_shanxiao_sheet.png",
+    "gif": "mob_shanxiao.gif",
+    "preview": "mob_shanxiao_preview.png",
+    "engineJson": "mob_shanxiao.json"
+  },
+  "paletteOutOfRangeTotal": 0
+}

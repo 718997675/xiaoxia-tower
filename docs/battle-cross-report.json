@@ -1,0 +1,57 @@
+{
+  "verdict": "PASS",
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0
+  },
+  "scope": "战斗公式层跨端复算（公式 + 五上界 + 9 层波形 + 4 技能冻结字段）；不含逐 tick 状态机",
+  "goldenGeneratedAt": "2026-11-08",
+  "goldenEngine": "Godot 4.7.2.stable（headless）",
+  "checks": [
+    {
+      "ok": true,
+      "label": "伤害公式逐条复算一致（52 条）",
+      "detail": "全部一致"
+    },
+    {
+      "ok": true,
+      "label": "钳制标记与负值标记一致",
+      "detail": "全部一致"
+    },
+    {
+      "ok": true,
+      "label": "五上界最坏伤害一致",
+      "detail": "本地 3996 / battle_sim 3996 / 黄金样本 3996"
+    },
+    {
+      "ok": true,
+      "label": "最坏伤害 < Boss 血量参考 4400",
+      "detail": "3996 < 4400（即最坏口径需 2 次命中）"
+    },
+    {
+      "ok": true,
+      "label": "9 层难度波形（HP/dps/T(n)/D(n)/类型/怪表）镜像一致",
+      "detail": "9 层全部一致"
+    },
+    {
+      "ok": true,
+      "label": "4 技能冻结字段（id/名称/键位/类型/VFX）镜像一致",
+      "detail": "4 项全部一致"
+    },
+    {
+      "ok": true,
+      "label": "钳制路径被覆盖（同时存在越界与未越界输入）",
+      "detail": "越界 10 条 / 未越界 42 条"
+    },
+    {
+      "ok": true,
+      "label": "越界输入伤害 == 钳制后独立复算值（且均标记 clamped）",
+      "detail": "10 条全部一致"
+    }
+  ],
+  "generatedAt": "2026-11-08 17:25:04",
+  "generator": "tools/verify_battle_cross.py",
+  "goldenGenerator": "tools/export_battle_golden.gd",
+  "nodeBinary": "node"
+}

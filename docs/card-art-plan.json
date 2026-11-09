@@ -1,0 +1,5503 @@
+{
+  "version": 2,
+  "generatedBy": "tools/build_card_art_plan.py",
+  "round": "34–35",
+  "status": "PROPOSAL · 第 34 轮「一卡一插画」+ 第 35 轮「6 张拼版 sheet（每张 12 格）出图」；待 Q17 拍板与 GUI F5 目检；不得直接入库",
+  "designPrinciple": "OMPC / 一卡一母题：72 个由效果文案派生的母题两两不同，任取 3 张候选签名必互异，从规格上消除三选一同屏重复感",
+  "generationPrinciple": "用户第 35 轮决策：一张图里画 12 张卡，72 / 12 = 6 次生成（6 张 1536×1024 拼版 sheet），节省 gpt-image2 额度；由 tools/split_card_art_sheets.py 按固定坐标裁成 72 张单卡原稿，画面效果不变",
+  "sourceOfTruth": {
+    "cards": "docs/卡牌库.csv",
+    "library": "docs/buff-card-library.json",
+    "uiSpec": "docs/12-卡牌UI规格.md",
+    "sourceHash": "9bfca5755b21ab49"
+  },
+  "primaryStyleReference": {
+    "file": "previews/ui/07-codex-gpt-image2_original.png",
+    "reason": "用户第 34 轮追加指令「之前按提示词生成的卡片图鉴那个就很符合我的审美，就按照那个为基础」；第 36 轮重新贴出同一张稿并强调「我特别喜欢这版风格，我希望按照这版风格来生成」，逐像素比对确认与 previews/ui/07-codex-gpt-image2_original.png 完全一致",
+    "visualDNA": [
+      "实色墨底 #12161F（深墨蓝），不是纯黑 #000000 也不是亮底",
+      "主体居中且只画一个，占该格 45–60%，四周留 35% 以上空墨底（大面积留白）",
+      "16 张里只有聚灵阵/太虚咒等 2–3 张是圆环法阵，其余无环；只有母题本身是环/阵/太极/旋涡/连锁才画环",
+      "最多 2–4 枚很小的四角星零星点缀；放射线/速度线只在爆发/冲击/飞行/雷击类母题用 3–5 道",
+      "单一高对比剪影或具象符号，棱面分明、实色平涂、1px 纯黑硬描边",
+      "亮阶做硬边高光，靠色阶对比而非渐变/发光滤镜；整体安静克制有重量感，不要华丽",
+      "稀有度靠卡框色段与边框层次，不靠插画更华丽"
+    ],
+    "sampleCount": 16,
+    "samplePolicy": "只取该张示意卡的主体形态与线条密度；描述里出现的圆环/背光/星点/放射线只是那一张的局部特征，按【做减法】规则处理，不是每格通用装饰；绝不沿用示意稿的假卡名与假数值"
+  },
+  "styleAnchors": [
+    "previews/ui/07-codex-gpt-image2_original.png",
+    "previews/ui/07-codex-gpt-image2_palette24.png",
+    "previews/ui/00-anchor-gpt-image2_palette24.png",
+    "previews/ui/08-icons-gpt-image2_palette24.png"
+  ],
+  "sheetSpec": {
+    "sheetCount": 6,
+    "cellsPerSheet": 12,
+    "generations": 6,
+    "sheetSize": [
+      1536,
+      1024
+    ],
+    "grid": [
+      3,
+      4
+    ],
+    "cellSize": [
+      512,
+      256
+    ],
+    "cropSize": [
+      384,
+      256
+    ],
+    "cropPadX": 64,
+    "cellOrder": "行优先：从上到下、每行从左到右；01=第1行第1格，12=第4行第3格",
+    "sheetDir": "previews/card_art_sheets/",
+    "sheetNaming": "sheet-01.png … sheet-06.png",
+    "splitTool": "tools/split_card_art_sheets.py",
+    "cropRule": "每格先按 cellBox 取 512×256，再中心裁 384×256（左右各弃 64px 安全边）；3:2 与 84×56 插画区同比例",
+    "noDrawnGrid": "禁止在图上画格线/编号；裁剪按像素坐标（默认固定，--adaptive 自动探测真实行/列空隙），不依赖视觉检测格线"
+  },
+  "sheets": [
+    {
+      "index": 1,
+      "file": "sheet-01.png",
+      "category": "dmg",
+      "title": "技能伤害（朱砂主调）",
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "row": 1,
+          "col": 1,
+          "cardId": "card_jianfeng",
+          "cardName": "剑锋淬砺",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_jianfeng-cardart-original.png"
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "row": 1,
+          "col": 2,
+          "cardId": "card_poyun",
+          "cardName": "破云式",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_poyun-cardart-original.png"
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "row": 1,
+          "col": 3,
+          "cardId": "card_leizhuan",
+          "cardName": "雷篆重描",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_leizhuan-cardart-original.png"
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "row": 2,
+          "col": 1,
+          "cardId": "card_danbao",
+          "cardName": "丹火爆燃",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_danbao-cardart-original.png"
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "row": 2,
+          "col": 2,
+          "cardId": "card_fuzhen",
+          "cardName": "符阵叠印",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_fuzhen-cardart-original.png"
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "row": 2,
+          "col": 3,
+          "cardId": "card_quanfeng",
+          "cardName": "拳风连震",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_quanfeng-cardart-original.png"
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "row": 3,
+          "col": 1,
+          "cardId": "card_huiling",
+          "cardName": "回春化刃",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_huiling-cardart-original.png"
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "row": 3,
+          "col": 2,
+          "cardId": "card_jingang",
+          "cardName": "金刚怒目",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_jingang-cardart-original.png"
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "row": 3,
+          "col": 3,
+          "cardId": "card_jianyi",
+          "cardName": "剑意凝形",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_jianyi-cardart-original.png"
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "row": 4,
+          "col": 1,
+          "cardId": "card_wuxing",
+          "cardName": "五行逆克",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_wuxing-cardart-original.png"
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "row": 4,
+          "col": 2,
+          "cardId": "card_lianhuan",
+          "cardName": "连环符",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_lianhuan-cardart-original.png"
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "row": 4,
+          "col": 3,
+          "cardId": "card_zhanxing",
+          "cardName": "斩星",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_zhanxing-cardart-original.png"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "file": "sheet-02.png",
+      "category": "attr",
+      "title": "属性提升（青玉主调）",
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "row": 1,
+          "col": 1,
+          "cardId": "card_cuijing",
+          "cardName": "淬精",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_cuijing-cardart-original.png"
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "row": 1,
+          "col": 2,
+          "cardId": "card_ningdan",
+          "cardName": "凝丹",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_ningdan-cardart-original.png"
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "row": 1,
+          "col": 3,
+          "cardId": "card_lingmai",
+          "cardName": "灵脉拓宽",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_lingmai-cardart-original.png"
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "row": 2,
+          "col": 1,
+          "cardId": "card_buyao",
+          "cardName": "步摇",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_buyao-cardart-original.png"
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "row": 2,
+          "col": 2,
+          "cardId": "card_tiepi",
+          "cardName": "铁皮",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_tiepi-cardart-original.png"
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "row": 2,
+          "col": 3,
+          "cardId": "card_huixin",
+          "cardName": "会心",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_huixin-cardart-original.png"
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "row": 3,
+          "col": 1,
+          "cardId": "card_poyu",
+          "cardName": "破域",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_poyu-cardart-original.png"
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "row": 3,
+          "col": 2,
+          "cardId": "card_shouyuan",
+          "cardName": "寿元",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_shouyuan-cardart-original.png"
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "row": 3,
+          "col": 3,
+          "cardId": "card_qingling",
+          "cardName": "轻灵",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_qingling-cardart-original.png"
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "row": 4,
+          "col": 1,
+          "cardId": "card_juxi",
+          "cardName": "聚息",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_juxi-cardart-original.png"
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "row": 4,
+          "col": 2,
+          "cardId": "card_zhongzhu",
+          "cardName": "重铸",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_zhongzhu-cardart-original.png"
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "row": 4,
+          "col": 3,
+          "cardId": "card_jingpo",
+          "cardName": "精魄",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_jingpo-cardart-original.png"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "file": "sheet-03.png",
+      "category": "mech",
+      "title": "机制改变（紫主调）",
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "row": 1,
+          "col": 1,
+          "cardId": "card_nianzhuan",
+          "cardName": "逆转回灵",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_nianzhuan-cardart-original.png"
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "row": 1,
+          "col": 2,
+          "cardId": "card_huanshi",
+          "cardName": "换势",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_huanshi-cardart-original.png"
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "row": 1,
+          "col": 3,
+          "cardId": "card_shuangxiu",
+          "cardName": "双修",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_shuangxiu-cardart-original.png"
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "row": 2,
+          "col": 1,
+          "cardId": "card_yuqi",
+          "cardName": "御气",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_yuqi-cardart-original.png"
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "row": 2,
+          "col": 2,
+          "cardId": "card_daoyin",
+          "cardName": "导引",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_daoyin-cardart-original.png"
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "row": 2,
+          "col": 3,
+          "cardId": "card_jieyin",
+          "cardName": "借印",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_jieyin-cardart-original.png"
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "row": 3,
+          "col": 1,
+          "cardId": "card_wuxiangpo",
+          "cardName": "无相破",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_wuxiangpo-cardart-original.png"
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "row": 3,
+          "col": 2,
+          "cardId": "card_chongzhu",
+          "cardName": "重铸令",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_chongzhu-cardart-original.png"
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "row": 3,
+          "col": 3,
+          "cardId": "card_tianren",
+          "cardName": "天人感应",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_tianren-cardart-original.png"
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "row": 4,
+          "col": 1,
+          "cardId": "card_sheli",
+          "cardName": "舍利",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_sheli-cardart-original.png"
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "row": 4,
+          "col": 2,
+          "cardId": "card_lunhui",
+          "cardName": "轮回",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_lunhui-cardart-original.png"
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "row": 4,
+          "col": 3,
+          "cardId": "card_pojing",
+          "cardName": "破境",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_pojing-cardart-original.png"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "file": "sheet-04.png",
+      "category": "res",
+      "title": "资源灵力（金主调）",
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "row": 1,
+          "col": 1,
+          "cardId": "card_juling",
+          "cardName": "聚灵阵",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_juling-cardart-original.png"
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "row": 1,
+          "col": 2,
+          "cardId": "card_shengxi",
+          "cardName": "省息",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_shengxi-cardart-original.png"
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "row": 1,
+          "col": 3,
+          "cardId": "card_huanling",
+          "cardName": "还灵",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_huanling-cardart-original.png"
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "row": 2,
+          "col": 1,
+          "cardId": "card_danxiang",
+          "cardName": "丹香",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_danxiang-cardart-original.png"
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "row": 2,
+          "col": 2,
+          "cardId": "card_lingchao",
+          "cardName": "灵潮",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_lingchao-cardart-original.png"
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "row": 2,
+          "col": 3,
+          "cardId": "card_jieqi",
+          "cardName": "截取",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_jieqi-cardart-original.png"
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "row": 3,
+          "col": 1,
+          "cardId": "card_kongzhan",
+          "cardName": "空盏",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_kongzhan-cardart-original.png"
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "row": 3,
+          "col": 2,
+          "cardId": "card_fanyong",
+          "cardName": "反涌",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_fanyong-cardart-original.png"
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "row": 3,
+          "col": 3,
+          "cardId": "card_zhulian",
+          "cardName": "珠链",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_zhulian-cardart-original.png"
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "row": 4,
+          "col": 1,
+          "cardId": "card_wugen",
+          "cardName": "无根",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_wugen-cardart-original.png"
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "row": 4,
+          "col": 2,
+          "cardId": "card_tianlu",
+          "cardName": "天禄",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_tianlu-cardart-original.png"
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "row": 4,
+          "col": 3,
+          "cardId": "card_shouyin",
+          "cardName": "收印",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_shouyin-cardart-original.png"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "file": "sheet-05.png",
+      "category": "surv",
+      "title": "生存回复（青玉/淡青主调）",
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "row": 1,
+          "col": 1,
+          "cardId": "card_huichun",
+          "cardName": "回春",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_huichun-cardart-original.png"
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "row": 1,
+          "col": 2,
+          "cardId": "card_huti",
+          "cardName": "护体",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_huti-cardart-original.png"
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "row": 1,
+          "col": 3,
+          "cardId": "card_bishui",
+          "cardName": "避水",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_bishui-cardart-original.png"
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "row": 2,
+          "col": 1,
+          "cardId": "card_duanxu",
+          "cardName": "断续",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_duanxu-cardart-original.png"
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "row": 2,
+          "col": 2,
+          "cardId": "card_jiaren",
+          "cardName": "假人",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_jiaren-cardart-original.png"
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "row": 2,
+          "col": 3,
+          "cardId": "card_tiegu",
+          "cardName": "铁骨",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_tiegu-cardart-original.png"
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "row": 3,
+          "col": 1,
+          "cardId": "card_guisuo",
+          "cardName": "归所",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_guisuo-cardart-original.png"
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "row": 3,
+          "col": 2,
+          "cardId": "card_yinbi",
+          "cardName": "隐避",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_yinbi-cardart-original.png"
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "row": 3,
+          "col": 3,
+          "cardId": "card_zhuansheng",
+          "cardName": "转生",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_zhuansheng-cardart-original.png"
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "row": 4,
+          "col": 1,
+          "cardId": "card_qinglu",
+          "cardName": "清露",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_qinglu-cardart-original.png"
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "row": 4,
+          "col": 2,
+          "cardId": "card_hunyuan",
+          "cardName": "混元",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_hunyuan-cardart-original.png"
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "row": 4,
+          "col": 3,
+          "cardId": "card_sheshi",
+          "cardName": "舍身",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_sheshi-cardart-original.png"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "file": "sheet-06.png",
+      "category": "syn",
+      "title": "构筑风险（朱砂暗主调）",
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "row": 1,
+          "col": 1,
+          "cardId": "card_jianxin",
+          "cardName": "剑心",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_jianxin-cardart-original.png"
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "row": 1,
+          "col": 2,
+          "cardId": "card_fuhun",
+          "cardName": "符魂",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_fuhun-cardart-original.png"
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "row": 1,
+          "col": 3,
+          "cardId": "card_danxin",
+          "cardName": "丹心",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_danxin-cardart-original.png"
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "row": 2,
+          "col": 1,
+          "cardId": "card_tipo",
+          "cardName": "体魄",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_tipo-cardart-original.png"
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "row": 2,
+          "col": 2,
+          "cardId": "card_tongyuan",
+          "cardName": "同源",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_tongyuan-cardart-original.png"
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "row": 2,
+          "col": 3,
+          "cardId": "card_jiezeng",
+          "cardName": "劫增",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_jiezeng-cardart-original.png"
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "row": 3,
+          "col": 1,
+          "cardId": "card_shuangren",
+          "cardName": "双刃",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_shuangren-cardart-original.png"
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "row": 3,
+          "col": 2,
+          "cardId": "card_duozhu",
+          "cardName": "夺主",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_duozhu-cardart-original.png"
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "row": 3,
+          "col": 3,
+          "cardId": "card_zhongshi",
+          "cardName": "终誓",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_zhongshi-cardart-original.png"
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "row": 4,
+          "col": 1,
+          "cardId": "card_shouzhuo",
+          "cardName": "守拙",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_shouzhuo-cardart-original.png"
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "row": 4,
+          "col": 2,
+          "cardId": "card_yiyu",
+          "cardName": "异遇",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_yiyu-cardart-original.png"
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "row": 4,
+          "col": 3,
+          "cardId": "card_wuxin",
+          "cardName": "无心",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_wuxin-cardart-original.png"
+        }
+      ]
+    }
+  ],
+  "outputSpec": {
+    "external": "6 张 1536×1024 拼版 PNG，每张 3 列 × 4 行 = 12 格（512×256/格）；每格一张独立插画，#12161F 墨底、主体占该格 45–60% 且四周留 35%+ 空墨底、安静克制，不含任何文字/边框/角标/格线",
+    "split": "裁 72 张 384×256 单卡原稿 → previews/card_art/<card_id>-cardart-original.png；默认固定坐标，推荐 --adaptive 自动对齐真实格位（第 36 轮实测行边界漂移 +33/+22/+11px）",
+    "transcription": "最近邻降采样 + 24 色吸附 → 84×56 插画区（docs/12 §2 的 x6–89 / y19–75 为 84×57，最终像素对齐待 4× 实机复核）",
+    "framePolicy": "4 张稀有度卡框 + 6 张类别纹样继续复用；只替换插画区，卡框不重出 72 次",
+    "textPolicy": "卡名/描述/数量仍由 UI 文字层绘制，插画不含文字（R9 字体授权未结案）",
+    "naming": "sheet-0N.png → <card_id>-cardart-original.png → <card_id>-cardart_palette24.png → assets/ui/card_art/<card_id>.png"
+  },
+  "constraints": [
+    "72 个 motif / motifEn / signature / silhouette / outputName 两两不同",
+    "每类 12 张且类内 12 个剪影两两不同；一类对应一张 sheet，格位 (sheetIndex, cellLabel) 72 个两两不同",
+    "稀有度只靠卡框色段与边框层次表达，不靠插画华丽程度，避免同档撞脸",
+    "配色严格 24 色锁定板；禁止文字、边框、角标、水印、渐变、半透明、柔边",
+    "07-codex 原稿为第一风格基准；72 张卡各绑定其 16 张示意卡之一的画法样板且 16/16 全覆盖，只取画法不沿用假卡名",
+    "辅助参考 00-anchor（色板/笔触）与 08-icons（纹样密度/硬描边），不得反客为主",
+    "拼版纪律：12 格共画法不共母题；不画格线/编号；主体与光效不得跨格；格位顺序严格对应提示词清单",
+    "第 36 轮 R59 克制风格：#12161F 墨底 / 45–60% 主体 / 35%+ 留白 / 最多 2–4 枚星点 / 只有母题是环或阵才画圆环 / 做减法不要华丽；旧「每格双层圆环 + 四角铺满星点」口径已废弃"
+  ],
+  "cards": [
+    {
+      "id": "card_jianfeng",
+      "name": "剑锋淬砺",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "剑气斩基础伤害 +12",
+      "motif": "磨石上淬出一道笔直火花的剑刃",
+      "motifEn": "a blade quenched on a whetstone throwing one straight spark line",
+      "silhouette": "斜置长剑与一道直线火花",
+      "composition": "diagonal",
+      "focalBand": "cinnabar",
+      "signature": "磨石上淬出一道笔直火花的剑刃|斜置长剑与一道直线火花|diagonal|cinnabar",
+      "codexRef": "r1c4",
+      "codexRefPos": "第 1 行第 4 张",
+      "codexRefSample": "御剑术",
+      "codexRefTechnique": "斜置飞剑居中，青蓝斜向速度线，深墨蓝底，剑身高对比硬边",
+      "codexRefTechniqueEn": "a centered diagonal flying sword with cyan diagonal speed lines on deep ink-blue ground",
+      "promptId": "card_jianfeng",
+      "outputName": "card_jianfeng-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_zhanxing",
+          "motif": "斜剑斩落一颗坠星",
+          "motifEn": "a diagonal sword cutting down a falling star"
+        },
+        {
+          "id": "card_poyun",
+          "motif": "一柄剑裂成两道对称剑光且总光量守恒",
+          "motifEn": "one sword splitting into two symmetric beams with conserved total light"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 1,
+      "cellLabel": "r1c1",
+      "cellRow": 1,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        0,
+        512,
+        256
+      ],
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "id": "card_poyun",
+      "name": "破云式",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "飞剑分裂为 2 道，单道 ×0.6，总伤不变",
+      "motif": "一柄剑裂成两道对称剑光且总光量守恒",
+      "motifEn": "one sword splitting into two symmetric beams with conserved total light",
+      "silhouette": "对称双剑与中间断开的剑柄",
+      "composition": "symmetry",
+      "focalBand": "cinnabar",
+      "signature": "一柄剑裂成两道对称剑光且总光量守恒|对称双剑与中间断开的剑柄|symmetry|cinnabar",
+      "codexRef": "r1c2",
+      "codexRefPos": "第 1 行第 2 张",
+      "codexRefSample": "金光术",
+      "codexRefTechnique": "金色八角星芒居中，硬边细放射线向外，暗棕底，四角星点",
+      "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
+      "promptId": "card_poyun",
+      "outputName": "card_poyun-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_jianfeng",
+          "motif": "磨石上淬出一道笔直火花的剑刃",
+          "motifEn": "a blade quenched on a whetstone throwing one straight spark line"
+        },
+        {
+          "id": "card_leizhuan",
+          "motif": "两道雷柱落在重描过的符篆上",
+          "motifEn": "two thunder columns landing on a redrawn talisman seal"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 2,
+      "cellLabel": "r1c2",
+      "cellRow": 1,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        0,
+        1024,
+        256
+      ],
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "id": "card_leizhuan",
+      "name": "雷篆重描",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "引雷符落点 +1，总伤在落点间均分",
+      "motif": "两道雷柱落在重描过的符篆上",
+      "motifEn": "two thunder columns landing on a redrawn talisman seal",
+      "silhouette": "双雷柱与方形符篆",
+      "composition": "vertical",
+      "focalBand": "violet",
+      "signature": "两道雷柱落在重描过的符篆上|双雷柱与方形符篆|vertical|violet",
+      "codexRef": "r3c1",
+      "codexRefPos": "第 3 行第 1 张",
+      "codexRefSample": "天雷诀",
+      "codexRefTechnique": "紫色分岔雷电居中，放射碎光，深紫黑底，雷枝折线硬边",
+      "codexRefTechniqueEn": "a centered violet forked lightning with hard-edged radial shards on deep violet-black ground",
+      "promptId": "card_leizhuan",
+      "outputName": "card_leizhuan-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_poyun",
+          "motif": "一柄剑裂成两道对称剑光且总光量守恒",
+          "motifEn": "one sword splitting into two symmetric beams with conserved total light"
+        },
+        {
+          "id": "card_danbao",
+          "motif": "丹炉爆燃后火舌回卷自噬炉身",
+          "motifEn": "a pill furnace erupting with fire tongues curling back onto itself"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 3,
+      "cellLabel": "r1c3",
+      "cellRow": 1,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        0,
+        1536,
+        256
+      ],
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "id": "card_danbao",
+      "name": "丹火爆燃",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "丹火基础伤害 +10，施法后自伤 2 点",
+      "motif": "丹炉爆燃后火舌回卷自噬炉身",
+      "motifEn": "a pill furnace erupting with fire tongues curling back onto itself",
+      "silhouette": "圆腹丹炉与回卷火舌",
+      "composition": "radial",
+      "focalBand": "cinnabar",
+      "signature": "丹炉爆燃后火舌回卷自噬炉身|圆腹丹炉与回卷火舌|radial|cinnabar",
+      "codexRef": "r4c1",
+      "codexRefPos": "第 4 行第 1 张",
+      "codexRefSample": "万劫灭",
+      "codexRefTechnique": "朱红火焰包裹人形剪影居中，朱砂暗底，火舌硬边分叉",
+      "codexRefTechniqueEn": "a cinnabar flame wrapping a centered human silhouette on dark cinnabar ground",
+      "promptId": "card_danbao",
+      "outputName": "card_danbao-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_leizhuan",
+          "motif": "两道雷柱落在重描过的符篆上",
+          "motifEn": "two thunder columns landing on a redrawn talisman seal"
+        },
+        {
+          "id": "card_fuzhen",
+          "motif": "符纸层层叠印成一座方阵",
+          "motifEn": "talisman papers overprinted into a square formation"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 4,
+      "cellLabel": "r2c1",
+      "cellRow": 2,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        256,
+        512,
+        512
+      ],
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "id": "card_fuzhen",
+      "name": "符阵叠印",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "每在场 1 张符纸，引雷符 +4 伤害（上限 +16）",
+      "motif": "符纸层层叠印成一座方阵",
+      "motifEn": "talisman papers overprinted into a square formation",
+      "silhouette": "四张错叠符纸组成的方阵",
+      "composition": "grid",
+      "focalBand": "gold",
+      "signature": "符纸层层叠印成一座方阵|四张错叠符纸组成的方阵|grid|gold",
+      "codexRef": "r3c4",
+      "codexRefPos": "第 3 行第 4 张",
+      "codexRefSample": "太虚咒",
+      "codexRefTechnique": "紫色同心螺旋法阵居中，多层环带，深紫底，环带硬边",
+      "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
+      "promptId": "card_fuzhen",
+      "outputName": "card_fuzhen-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_danbao",
+          "motif": "丹炉爆燃后火舌回卷自噬炉身",
+          "motifEn": "a pill furnace erupting with fire tongues curling back onto itself"
+        },
+        {
+          "id": "card_quanfeng",
+          "motif": "三段递进的拳风同心弧",
+          "motifEn": "three ascending concentric arcs of a fist shockwave"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 5,
+      "cellLabel": "r2c2",
+      "cellRow": 2,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        256,
+        1024,
+        512
+      ],
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "id": "card_quanfeng",
+      "name": "拳风连震",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "崩拳波追加 1 段 30% 伤害（单次峰值不变）",
+      "motif": "三段递进的拳风同心弧",
+      "motifEn": "three ascending concentric arcs of a fist shockwave",
+      "silhouette": "三道由小到大的同心弧",
+      "composition": "arc",
+      "focalBand": "cinnabar",
+      "signature": "三段递进的拳风同心弧|三道由小到大的同心弧|arc|cinnabar",
+      "codexRef": "r1c1",
+      "codexRefPos": "第 1 行第 1 张",
+      "codexRefSample": "清风诀",
+      "codexRefTechnique": "青白螺旋气旋居中，四周散布菱形小星点，深墨蓝底，细放射线",
+      "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
+      "promptId": "card_quanfeng",
+      "outputName": "card_quanfeng-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_fuzhen",
+          "motif": "符纸层层叠印成一座方阵",
+          "motifEn": "talisman papers overprinted into a square formation"
+        },
+        {
+          "id": "card_huiling",
+          "motif": "一片叶子的左半化为刀刃",
+          "motifEn": "a leaf whose left half turns into a blade"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 6,
+      "cellLabel": "r2c3",
+      "cellRow": 2,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        256,
+        1536,
+        512
+      ],
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "id": "card_huiling",
+      "name": "回春化刃",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "回春诀治疗量的 50% 转为下一次技能伤害",
+      "motif": "一片叶子的左半化为刀刃",
+      "motifEn": "a leaf whose left half turns into a blade",
+      "silhouette": "半叶半刃的同体剪影",
+      "composition": "split",
+      "focalBand": "jade",
+      "signature": "一片叶子的左半化为刀刃|半叶半刃的同体剪影|split|jade",
+      "codexRef": "r1c3",
+      "codexRefPos": "第 1 行第 3 张",
+      "codexRefSample": "回春术",
+      "codexRefTechnique": "青绿双叶新芽居中，四周菱形星点，深墨绿底，柔和但不模糊的圆形背光",
+      "codexRefTechniqueEn": "a centered jade two-leaf sprout with diamond star points on deep ink-green ground",
+      "promptId": "card_huiling",
+      "outputName": "card_huiling-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_quanfeng",
+          "motif": "三段递进的拳风同心弧",
+          "motifEn": "three ascending concentric arcs of a fist shockwave"
+        },
+        {
+          "id": "card_jingang",
+          "motif": "金刚罩碎裂后向外释放扇形冲击",
+          "motifEn": "a vajra barrier shattering into a fan-shaped shockwave"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 7,
+      "cellLabel": "r3c1",
+      "cellRow": 3,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        512,
+        512,
+        768
+      ],
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "id": "card_jingang",
+      "name": "金刚怒目",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "金刚罩结束释放扇形冲击，伤害=已吸收量 30%（上限 120）",
+      "motif": "金刚罩碎裂后向外释放扇形冲击",
+      "motifEn": "a vajra barrier shattering into a fan-shaped shockwave",
+      "silhouette": "破裂钟罩与扇形碎片",
+      "composition": "fan",
+      "focalBand": "gold",
+      "signature": "金刚罩碎裂后向外释放扇形冲击|破裂钟罩与扇形碎片|fan|gold",
+      "codexRef": "r1c2",
+      "codexRefPos": "第 1 行第 2 张",
+      "codexRefSample": "金光术",
+      "codexRefTechnique": "金色八角星芒居中，硬边细放射线向外，暗棕底，四角星点",
+      "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
+      "promptId": "card_jingang",
+      "outputName": "card_jingang-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_huiling",
+          "motif": "一片叶子的左半化为刀刃",
+          "motifEn": "a leaf whose left half turns into a blade"
+        },
+        {
+          "id": "card_jianyi",
+          "motif": "一剑水平贯穿整列敌人剪影",
+          "motifEn": "one sword piercing horizontally through a row of enemy silhouettes"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 8,
+      "cellLabel": "r3c2",
+      "cellRow": 3,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        512,
+        1024,
+        768
+      ],
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "id": "card_jianyi",
+      "name": "剑意凝形",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "legend",
+      "rarityName": "仙品",
+      "effect": "剑修标签 ≥2 时，剑气斩改为贯穿路径上所有敌人",
+      "motif": "一剑水平贯穿整列敌人剪影",
+      "motifEn": "one sword piercing horizontally through a row of enemy silhouettes",
+      "silhouette": "长直剑与三个被贯穿的剪影",
+      "composition": "pierce",
+      "focalBand": "cinnabar",
+      "signature": "一剑水平贯穿整列敌人剪影|长直剑与三个被贯穿的剪影|pierce|cinnabar",
+      "codexRef": "r1c4",
+      "codexRefPos": "第 1 行第 4 张",
+      "codexRefSample": "御剑术",
+      "codexRefTechnique": "斜置飞剑居中，青蓝斜向速度线，深墨蓝底，剑身高对比硬边",
+      "codexRefTechniqueEn": "a centered diagonal flying sword with cyan diagonal speed lines on deep ink-blue ground",
+      "promptId": "card_jianyi",
+      "outputName": "card_jianyi-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_jingang",
+          "motif": "金刚罩碎裂后向外释放扇形冲击",
+          "motifEn": "a vajra barrier shattering into a fan-shaped shockwave"
+        },
+        {
+          "id": "card_wuxing",
+          "motif": "五行环破开一面铁壁盾",
+          "motifEn": "a five-element ring cracking an iron-wall shield"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 9,
+      "cellLabel": "r3c3",
+      "cellRow": 3,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        512,
+        1536,
+        768
+      ],
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "id": "card_wuxing",
+      "name": "五行逆克",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "对带「铁壁」词缀的敌人无视 50% 减伤",
+      "motif": "五行环破开一面铁壁盾",
+      "motifEn": "a five-element ring cracking an iron-wall shield",
+      "silhouette": "五段色环与裂开的方盾",
+      "composition": "ring",
+      "focalBand": "gold",
+      "signature": "五行环破开一面铁壁盾|五段色环与裂开的方盾|ring|gold",
+      "codexRef": "r2c1",
+      "codexRefPos": "第 2 行第 1 张",
+      "codexRefSample": "聚灵阵",
+      "codexRefTechnique": "青玉双层圆环法阵居中，环上八个光点，中心阴阳，深墨青底",
+      "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
+      "promptId": "card_wuxing",
+      "outputName": "card_wuxing-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_jianyi",
+          "motif": "一剑水平贯穿整列敌人剪影",
+          "motifEn": "one sword piercing horizontally through a row of enemy silhouettes"
+        },
+        {
+          "id": "card_lianhuan",
+          "motif": "三枚符环相扣成链且末端重接",
+          "motifEn": "three talisman rings chained together with the end re-linking"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 10,
+      "cellLabel": "r4c1",
+      "cellRow": 4,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        768,
+        512,
+        1024
+      ],
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "id": "card_lianhuan",
+      "name": "连环符",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "连放同一技能第 2 次起 +8% 伤害，换技能重置（combo 上界不变）",
+      "motif": "三枚符环相扣成链且末端重接",
+      "motifEn": "three talisman rings chained together with the end re-linking",
+      "silhouette": "三环相扣的闭合符链",
+      "composition": "chain",
+      "focalBand": "violet",
+      "signature": "三枚符环相扣成链且末端重接|三环相扣的闭合符链|chain|violet",
+      "codexRef": "r3c4",
+      "codexRefPos": "第 3 行第 4 张",
+      "codexRefSample": "太虚咒",
+      "codexRefTechnique": "紫色同心螺旋法阵居中，多层环带，深紫底，环带硬边",
+      "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
+      "promptId": "card_lianhuan",
+      "outputName": "card_lianhuan-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_wuxing",
+          "motif": "五行环破开一面铁壁盾",
+          "motifEn": "a five-element ring cracking an iron-wall shield"
+        },
+        {
+          "id": "card_zhanxing",
+          "motif": "斜剑斩落一颗坠星",
+          "motifEn": "a diagonal sword cutting down a falling star"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 11,
+      "cellLabel": "r4c2",
+      "cellRow": 4,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        768,
+        1024,
+        1024
+      ],
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "id": "card_zhanxing",
+      "name": "斩星",
+      "category": "dmg",
+      "categoryName": "技能伤害",
+      "rarity": "legend",
+      "rarityName": "仙品",
+      "effect": "首次击败精英后，本局全技能 base_damage +18（计入 offense_pool）",
+      "motif": "斜剑斩落一颗坠星",
+      "motifEn": "a diagonal sword cutting down a falling star",
+      "silhouette": "斜剑与带尾迹的坠星",
+      "composition": "diagonal",
+      "focalBand": "gold",
+      "signature": "斜剑斩落一颗坠星|斜剑与带尾迹的坠星|diagonal|gold",
+      "codexRef": "r3c3",
+      "codexRefPos": "第 3 行第 3 张",
+      "codexRefSample": "星晨变",
+      "codexRefTechnique": "金色行星环居中，中心亮星，四周菱形星点，深棕金底",
+      "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
+      "promptId": "card_zhanxing",
+      "outputName": "card_zhanxing-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_lianhuan",
+          "motif": "三枚符环相扣成链且末端重接",
+          "motifEn": "three talisman rings chained together with the end re-linking"
+        },
+        {
+          "id": "card_jianfeng",
+          "motif": "磨石上淬出一道笔直火花的剑刃",
+          "motifEn": "a blade quenched on a whetstone throwing one straight spark line"
+        }
+      ],
+      "sheetIndex": 1,
+      "sheetFile": "sheet-01.png",
+      "cell": 12,
+      "cellLabel": "r4c3",
+      "cellRow": 4,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        768,
+        1536,
+        1024
+      ],
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    },
+    {
+      "id": "card_cuijing",
+      "name": "淬精",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "暴击率 +3%",
+      "motif": "一点精光在晶体内向内收束",
+      "motifEn": "a single glint converging inward inside a crystal",
+      "silhouette": "尖顶晶体与中心一点",
+      "composition": "point",
+      "focalBand": "jade",
+      "signature": "一点精光在晶体内向内收束|尖顶晶体与中心一点|point|jade",
+      "codexRef": "r3c2",
+      "codexRefPos": "第 3 行第 2 张",
+      "codexRefSample": "玄冰诀",
+      "codexRefTechnique": "青蓝冰晶簇居中，冷光碎点，深蓝底，晶体棱面分明",
+      "codexRefTechniqueEn": "a centered cyan ice crystal cluster with cold glints on deep blue ground",
+      "promptId": "card_cuijing",
+      "outputName": "card_cuijing-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_jingpo",
+          "motif": "三枚魂魄层叠且最外层正在剥落",
+          "motifEn": "three soul layers stacked with the outermost peeling away"
+        },
+        {
+          "id": "card_ningdan",
+          "motif": "一粒丹丸在掌心凝成实圆",
+          "motifEn": "a pill pellet condensing into a solid circle above a palm"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 1,
+      "cellLabel": "r1c1",
+      "cellRow": 1,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        0,
+        512,
+        256
+      ],
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "id": "card_ningdan",
+      "name": "凝丹",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "最大生命 +24",
+      "motif": "一粒丹丸在掌心凝成实圆",
+      "motifEn": "a pill pellet condensing into a solid circle above a palm",
+      "silhouette": "正圆丹丸与托起的掌心",
+      "composition": "circle",
+      "focalBand": "jade",
+      "signature": "一粒丹丸在掌心凝成实圆|正圆丹丸与托起的掌心|circle|jade",
+      "codexRef": "r2c2",
+      "codexRefPos": "第 2 行第 2 张",
+      "codexRefSample": "炼丹术",
+      "codexRefTechnique": "青玉丹瓶居中，上浮气泡光点，深墨青底，瓶口一圈亮边",
+      "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
+      "promptId": "card_ningdan",
+      "outputName": "card_ningdan-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_cuijing",
+          "motif": "一点精光在晶体内向内收束",
+          "motifEn": "a single glint converging inward inside a crystal"
+        },
+        {
+          "id": "card_lingmai",
+          "motif": "灵脉河道由一分为三地拓宽",
+          "motifEn": "a spirit-vein river widening from one channel into three"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 2,
+      "cellLabel": "r1c2",
+      "cellRow": 1,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        0,
+        1024,
+        256
+      ],
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "id": "card_lingmai",
+      "name": "灵脉拓宽",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "灵力上限 +16",
+      "motif": "灵脉河道由一分为三地拓宽",
+      "motifEn": "a spirit-vein river widening from one channel into three",
+      "silhouette": "分岔成三股的河道",
+      "composition": "branch",
+      "focalBand": "jade",
+      "signature": "灵脉河道由一分为三地拓宽|分岔成三股的河道|branch|jade",
+      "codexRef": "r1c1",
+      "codexRefPos": "第 1 行第 1 张",
+      "codexRefSample": "清风诀",
+      "codexRefTechnique": "青白螺旋气旋居中，四周散布菱形小星点，深墨蓝底，细放射线",
+      "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
+      "promptId": "card_lingmai",
+      "outputName": "card_lingmai-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_ningdan",
+          "motif": "一粒丹丸在掌心凝成实圆",
+          "motifEn": "a pill pellet condensing into a solid circle above a palm"
+        },
+        {
+          "id": "card_buyao",
+          "motif": "步摇坠饰摆出的一道垂弧轨迹",
+          "motifEn": "a hanging hairpin pendant tracing one swaying arc"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 3,
+      "cellLabel": "r1c3",
+      "cellRow": 1,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        0,
+        1536,
+        256
+      ],
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "id": "card_buyao",
+      "name": "步摇",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "移速 +5%",
+      "motif": "步摇坠饰摆出的一道垂弧轨迹",
+      "motifEn": "a hanging hairpin pendant tracing one swaying arc",
+      "silhouette": "细链垂坠与弧形残影",
+      "composition": "swing",
+      "focalBand": "jade",
+      "signature": "步摇坠饰摆出的一道垂弧轨迹|细链垂坠与弧形残影|swing|jade",
+      "codexRef": "r2c2",
+      "codexRefPos": "第 2 行第 2 张",
+      "codexRefSample": "炼丹术",
+      "codexRefTechnique": "青玉丹瓶居中，上浮气泡光点，深墨青底，瓶口一圈亮边",
+      "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
+      "promptId": "card_buyao",
+      "outputName": "card_buyao-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_lingmai",
+          "motif": "灵脉河道由一分为三地拓宽",
+          "motifEn": "a spirit-vein river widening from one channel into three"
+        },
+        {
+          "id": "card_tiepi",
+          "motif": "四片铁甲错位叠成硬边方块",
+          "motifEn": "four iron plates offset-stacked into a hard-edged square"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 4,
+      "cellLabel": "r2c1",
+      "cellRow": 2,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        256,
+        512,
+        512
+      ],
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "id": "card_tiepi",
+      "name": "铁皮",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "减伤 +2%（受 0.75 硬钳制）",
+      "motif": "四片铁甲错位叠成硬边方块",
+      "motifEn": "four iron plates offset-stacked into a hard-edged square",
+      "silhouette": "四层错位叠甲方片",
+      "composition": "stack",
+      "focalBand": "ink",
+      "signature": "四片铁甲错位叠成硬边方块|四层错位叠甲方片|stack|ink",
+      "codexRef": "r3c2",
+      "codexRefPos": "第 3 行第 2 张",
+      "codexRefSample": "玄冰诀",
+      "codexRefTechnique": "青蓝冰晶簇居中，冷光碎点，深蓝底，晶体棱面分明",
+      "codexRefTechniqueEn": "a centered cyan ice crystal cluster with cold glints on deep blue ground",
+      "promptId": "card_tiepi",
+      "outputName": "card_tiepi-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_buyao",
+          "motif": "步摇坠饰摆出的一道垂弧轨迹",
+          "motifEn": "a hanging hairpin pendant tracing one swaying arc"
+        },
+        {
+          "id": "card_huixin",
+          "motif": "靶心正中一点被放大命中",
+          "motifEn": "a bullseye center point enlarged on impact"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 5,
+      "cellLabel": "r2c2",
+      "cellRow": 2,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        256,
+        1024,
+        512
+      ],
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "id": "card_huixin",
+      "name": "会心",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "暴击倍率 +0.15（不改 1.8 上界）",
+      "motif": "靶心正中一点被放大命中",
+      "motifEn": "a bullseye center point enlarged on impact",
+      "silhouette": "同心靶环与放大的中心点",
+      "composition": "target",
+      "focalBand": "gold",
+      "signature": "靶心正中一点被放大命中|同心靶环与放大的中心点|target|gold",
+      "codexRef": "r1c2",
+      "codexRefPos": "第 1 行第 2 张",
+      "codexRefSample": "金光术",
+      "codexRefTechnique": "金色八角星芒居中，硬边细放射线向外，暗棕底，四角星点",
+      "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
+      "promptId": "card_huixin",
+      "outputName": "card_huixin-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_tiepi",
+          "motif": "四片铁甲错位叠成硬边方块",
+          "motifEn": "four iron plates offset-stacked into a hard-edged square"
+        },
+        {
+          "id": "card_poyu",
+          "motif": "一道直线劈开封闭的边界方框",
+          "motifEn": "one straight line splitting a closed boundary frame"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 6,
+      "cellLabel": "r2c3",
+      "cellRow": 2,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        256,
+        1536,
+        512
+      ],
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "id": "card_poyu",
+      "name": "破域",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "无视敌人 5% 减伤",
+      "motif": "一道直线劈开封闭的边界方框",
+      "motifEn": "one straight line splitting a closed boundary frame",
+      "silhouette": "断开的方框与一道直线",
+      "composition": "split",
+      "focalBand": "jade",
+      "signature": "一道直线劈开封闭的边界方框|断开的方框与一道直线|split|jade",
+      "codexRef": "r1c4",
+      "codexRefPos": "第 1 行第 4 张",
+      "codexRefSample": "御剑术",
+      "codexRefTechnique": "斜置飞剑居中，青蓝斜向速度线，深墨蓝底，剑身高对比硬边",
+      "codexRefTechniqueEn": "a centered diagonal flying sword with cyan diagonal speed lines on deep ink-blue ground",
+      "promptId": "card_poyu",
+      "outputName": "card_poyu-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_huixin",
+          "motif": "靶心正中一点被放大命中",
+          "motifEn": "a bullseye center point enlarged on impact"
+        },
+        {
+          "id": "card_shouyuan",
+          "motif": "寿桃上多出一道减损刻痕",
+          "motifEn": "a longevity peach marked with one subtractive notch"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 7,
+      "cellLabel": "r3c1",
+      "cellRow": 3,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        512,
+        512,
+        768
+      ],
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "id": "card_shouyuan",
+      "name": "寿元",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "最大生命 +60，本局道行 −10%",
+      "motif": "寿桃上多出一道减损刻痕",
+      "motifEn": "a longevity peach marked with one subtractive notch",
+      "silhouette": "桃形静物与斜刻痕",
+      "composition": "still",
+      "focalBand": "jade",
+      "signature": "寿桃上多出一道减损刻痕|桃形静物与斜刻痕|still|jade",
+      "codexRef": "r2c2",
+      "codexRefPos": "第 2 行第 2 张",
+      "codexRefSample": "炼丹术",
+      "codexRefTechnique": "青玉丹瓶居中，上浮气泡光点，深墨青底，瓶口一圈亮边",
+      "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
+      "promptId": "card_shouyuan",
+      "outputName": "card_shouyuan-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_poyu",
+          "motif": "一道直线劈开封闭的边界方框",
+          "motifEn": "one straight line splitting a closed boundary frame"
+        },
+        {
+          "id": "card_qingling",
+          "motif": "一根羽毛逆风上扬",
+          "motifEn": "a single feather lifting against the wind"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 8,
+      "cellLabel": "r3c2",
+      "cellRow": 3,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        512,
+        1024,
+        768
+      ],
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "id": "card_qingling",
+      "name": "轻灵",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "技能 CD −4%",
+      "motif": "一根羽毛逆风上扬",
+      "motifEn": "a single feather lifting against the wind",
+      "silhouette": "上扬羽片与三道风线",
+      "composition": "lift",
+      "focalBand": "jade",
+      "signature": "一根羽毛逆风上扬|上扬羽片与三道风线|lift|jade",
+      "codexRef": "r1c3",
+      "codexRefPos": "第 1 行第 3 张",
+      "codexRefSample": "回春术",
+      "codexRefTechnique": "青绿双叶新芽居中，四周菱形星点，深墨绿底，柔和但不模糊的圆形背光",
+      "codexRefTechniqueEn": "a centered jade two-leaf sprout with diamond star points on deep ink-green ground",
+      "promptId": "card_qingling",
+      "outputName": "card_qingling-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_shouyuan",
+          "motif": "寿桃上多出一道减损刻痕",
+          "motifEn": "a longevity peach marked with one subtractive notch"
+        },
+        {
+          "id": "card_juxi",
+          "motif": "脱战后气息汇成一圈静环",
+          "motifEn": "breath gathering into one still ring after combat"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 9,
+      "cellLabel": "r3c3",
+      "cellRow": 3,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        512,
+        1536,
+        768
+      ],
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "id": "card_juxi",
+      "name": "聚息",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "脱战 3 s 后每秒回灵 +2（战斗中不生效）",
+      "motif": "脱战后气息汇成一圈静环",
+      "motifEn": "breath gathering into one still ring after combat",
+      "silhouette": "闭合气息环与静止符号",
+      "composition": "ring",
+      "focalBand": "jade",
+      "signature": "脱战后气息汇成一圈静环|闭合气息环与静止符号|ring|jade",
+      "codexRef": "r2c1",
+      "codexRefPos": "第 2 行第 1 张",
+      "codexRefSample": "聚灵阵",
+      "codexRefTechnique": "青玉双层圆环法阵居中，环上八个光点，中心阴阳，深墨青底",
+      "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
+      "promptId": "card_juxi",
+      "outputName": "card_juxi-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_qingling",
+          "motif": "一根羽毛逆风上扬",
+          "motifEn": "a single feather lifting against the wind"
+        },
+        {
+          "id": "card_zhongzhu",
+          "motif": "一件装备在砧上被重铸成方坯",
+          "motifEn": "a piece of gear recast into a square billet on an anvil"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 10,
+      "cellLabel": "r4c1",
+      "cellRow": 4,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        768,
+        512,
+        1024
+      ],
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "id": "card_zhongzhu",
+      "name": "重铸",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "1 件已装备品类的数值转 +30 extra_pool（受 600 上限）",
+      "motif": "一件装备在砧上被重铸成方坯",
+      "motifEn": "a piece of gear recast into a square billet on an anvil",
+      "silhouette": "铁砧与方形坯料",
+      "composition": "forge",
+      "focalBand": "gold",
+      "signature": "一件装备在砧上被重铸成方坯|铁砧与方形坯料|forge|gold",
+      "codexRef": "r1c2",
+      "codexRefPos": "第 1 行第 2 张",
+      "codexRefSample": "金光术",
+      "codexRefTechnique": "金色八角星芒居中，硬边细放射线向外，暗棕底，四角星点",
+      "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
+      "promptId": "card_zhongzhu",
+      "outputName": "card_zhongzhu-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_juxi",
+          "motif": "脱战后气息汇成一圈静环",
+          "motifEn": "breath gathering into one still ring after combat"
+        },
+        {
+          "id": "card_jingpo",
+          "motif": "三枚魂魄层叠且最外层正在剥落",
+          "motifEn": "three soul layers stacked with the outermost peeling away"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 11,
+      "cellLabel": "r4c2",
+      "cellRow": 4,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        768,
+        1024,
+        1024
+      ],
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "id": "card_jingpo",
+      "name": "精魄",
+      "category": "attr",
+      "categoryName": "属性提升",
+      "rarity": "legend",
+      "rarityName": "仙品",
+      "effect": "全属性 +5%，每次受击失去 1 层（初始 3 层）",
+      "motif": "三枚魂魄层叠且最外层正在剥落",
+      "motifEn": "three soul layers stacked with the outermost peeling away",
+      "silhouette": "三层魂环与剥落的一角",
+      "composition": "peel",
+      "focalBand": "violet",
+      "signature": "三枚魂魄层叠且最外层正在剥落|三层魂环与剥落的一角|peel|violet",
+      "codexRef": "r3c4",
+      "codexRefPos": "第 3 行第 4 张",
+      "codexRefSample": "太虚咒",
+      "codexRefTechnique": "紫色同心螺旋法阵居中，多层环带，深紫底，环带硬边",
+      "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
+      "promptId": "card_jingpo",
+      "outputName": "card_jingpo-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_zhongzhu",
+          "motif": "一件装备在砧上被重铸成方坯",
+          "motifEn": "a piece of gear recast into a square billet on an anvil"
+        },
+        {
+          "id": "card_cuijing",
+          "motif": "一点精光在晶体内向内收束",
+          "motifEn": "a single glint converging inward inside a crystal"
+        }
+      ],
+      "sheetIndex": 2,
+      "sheetFile": "sheet-02.png",
+      "cell": 12,
+      "cellLabel": "r4c3",
+      "cellRow": 4,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        768,
+        1536,
+        1024
+      ],
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    },
+    {
+      "id": "card_nianzhuan",
+      "name": "逆转回灵",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "击杀回灵改为命中回灵（每次命中 +2）",
+      "motif": "击杀符号倒转成为命中符号",
+      "motifEn": "a kill glyph reversing into an on-hit glyph",
+      "silhouette": "首尾互指的双向箭头",
+      "composition": "reverse",
+      "focalBand": "violet",
+      "signature": "击杀符号倒转成为命中符号|首尾互指的双向箭头|reverse|violet",
+      "codexRef": "r1c1",
+      "codexRefPos": "第 1 行第 1 张",
+      "codexRefSample": "清风诀",
+      "codexRefTechnique": "青白螺旋气旋居中，四周散布菱形小星点，深墨蓝底，细放射线",
+      "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
+      "promptId": "card_nianzhuan",
+      "outputName": "card_nianzhuan-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_pojing",
+          "motif": "两枚道途目标同挂并被边界钳住",
+          "motifEn": "two path goals hanging together inside a clamped boundary"
+        },
+        {
+          "id": "card_huanshi",
+          "motif": "两个技能槽之间的换位箭头",
+          "motifEn": "two skill slots exchanging places along crossed arrows"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 1,
+      "cellLabel": "r1c1",
+      "cellRow": 1,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        0,
+        512,
+        256
+      ],
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "id": "card_huanshi",
+      "name": "换势",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "层间可额外更换 1 个技能（1→2）",
+      "motif": "两个技能槽之间的换位箭头",
+      "motifEn": "two skill slots exchanging places along crossed arrows",
+      "silhouette": "两格槽位与交叉换位箭头",
+      "composition": "swap",
+      "focalBand": "violet",
+      "signature": "两个技能槽之间的换位箭头|两格槽位与交叉换位箭头|swap|violet",
+      "codexRef": "r3c4",
+      "codexRefPos": "第 3 行第 4 张",
+      "codexRefSample": "太虚咒",
+      "codexRefTechnique": "紫色同心螺旋法阵居中，多层环带，深紫底，环带硬边",
+      "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
+      "promptId": "card_huanshi",
+      "outputName": "card_huanshi-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_nianzhuan",
+          "motif": "击杀符号倒转成为命中符号",
+          "motifEn": "a kill glyph reversing into an on-hit glyph"
+        },
+        {
+          "id": "card_shuangxiu",
+          "motif": "两道流派标签并在一枚主印上",
+          "motifEn": "two school tags merging onto one dominant seal"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 2,
+      "cellLabel": "r1c2",
+      "cellRow": 1,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        0,
+        1024,
+        256
+      ],
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "id": "card_shuangxiu",
+      "name": "双修",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "可同时携带 2 个流派标签，质变按主标签计",
+      "motif": "两道流派标签并在一枚主印上",
+      "motifEn": "two school tags merging onto one dominant seal",
+      "silhouette": "双印叠合且一印压前一印",
+      "composition": "dual",
+      "focalBand": "violet",
+      "signature": "两道流派标签并在一枚主印上|双印叠合且一印压前一印|dual|violet",
+      "codexRef": "r4c3",
+      "codexRefPos": "第 4 行第 3 张",
+      "codexRefSample": "混沌诀",
+      "codexRefTechnique": "紫金阴阳旋涡居中，四周菱形星点，朱砂暗底",
+      "codexRefTechniqueEn": "a violet-gold yin-yang vortex with diamond star points on dark cinnabar ground",
+      "promptId": "card_shuangxiu",
+      "outputName": "card_shuangxiu-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_huanshi",
+          "motif": "两个技能槽之间的换位箭头",
+          "motifEn": "two skill slots exchanging places along crossed arrows"
+        },
+        {
+          "id": "card_yuqi",
+          "motif": "边移动边出招的三段残影",
+          "motifEn": "three motion afterimages of casting while moving"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 3,
+      "cellLabel": "r1c3",
+      "cellRow": 1,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        0,
+        1536,
+        256
+      ],
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "id": "card_yuqi",
+      "name": "御气",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "施法不再锁定移动，但施法伤害 −10%",
+      "motif": "边移动边出招的三段残影",
+      "motifEn": "three motion afterimages of casting while moving",
+      "silhouette": "三级递进的人形残影",
+      "composition": "motion",
+      "focalBand": "violet",
+      "signature": "边移动边出招的三段残影|三级递进的人形残影|motion|violet",
+      "codexRef": "r2c4",
+      "codexRefPos": "第 2 行第 4 张",
+      "codexRefSample": "风行术",
+      "codexRefTechnique": "奔跑人形剪影居中，横向青蓝速度线，深墨蓝底，四肢硬边",
+      "codexRefTechniqueEn": "a centered running human silhouette with horizontal cyan speed lines on deep ink-blue ground",
+      "promptId": "card_yuqi",
+      "outputName": "card_yuqi-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_shuangxiu",
+          "motif": "两道流派标签并在一枚主印上",
+          "motifEn": "two school tags merging onto one dominant seal"
+        },
+        {
+          "id": "card_daoyin",
+          "motif": "技能顺序被重排的序号轨道",
+          "motifEn": "a reordered sequence track of skill slots"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 4,
+      "cellLabel": "r2c1",
+      "cellRow": 2,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        256,
+        512,
+        512
+      ],
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "id": "card_daoyin",
+      "name": "导引",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "技能释放顺序可自定义（映射在 UI 明示）",
+      "motif": "技能顺序被重排的序号轨道",
+      "motifEn": "a reordered sequence track of skill slots",
+      "silhouette": "带序号刻度的弯曲轨道",
+      "composition": "sequence",
+      "focalBand": "violet",
+      "signature": "技能顺序被重排的序号轨道|带序号刻度的弯曲轨道|sequence|violet",
+      "codexRef": "r3c4",
+      "codexRefPos": "第 3 行第 4 张",
+      "codexRefSample": "太虚咒",
+      "codexRefTechnique": "紫色同心螺旋法阵居中，多层环带，深紫底，环带硬边",
+      "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
+      "promptId": "card_daoyin",
+      "outputName": "card_daoyin-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_yuqi",
+          "motif": "边移动边出招的三段残影",
+          "motifEn": "three motion afterimages of casting while moving"
+        },
+        {
+          "id": "card_jieyin",
+          "motif": "一枚印章封住旧卡并腾出空位",
+          "motifEn": "a seal stamping an old card away and leaving an empty slot"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 5,
+      "cellLabel": "r2c2",
+      "cellRow": 2,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        256,
+        1024,
+        512
+      ],
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "id": "card_jieyin",
+      "name": "借印",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "每 3 层封印 1 张已选卡，腾出抽卡位并重抽一次",
+      "motif": "一枚印章封住旧卡并腾出空位",
+      "motifEn": "a seal stamping an old card away and leaving an empty slot",
+      "silhouette": "朱印与空出的卡位",
+      "composition": "seal",
+      "focalBand": "violet",
+      "signature": "一枚印章封住旧卡并腾出空位|朱印与空出的卡位|seal|violet",
+      "codexRef": "r4c2",
+      "codexRefPos": "第 4 行第 2 张",
+      "codexRefSample": "天罚劫",
+      "codexRefTechnique": "朱红环形剑气居中，一道斜剑穿过，朱砂暗底，环带断口",
+      "codexRefTechniqueEn": "a cinnabar ring of sword-qi crossed by one diagonal blade on dark cinnabar ground",
+      "promptId": "card_jieyin",
+      "outputName": "card_jieyin-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_daoyin",
+          "motif": "技能顺序被重排的序号轨道",
+          "motifEn": "a reordered sequence track of skill slots"
+        },
+        {
+          "id": "card_wuxiangpo",
+          "motif": "两张候选被撑开成三张",
+          "motifEn": "two candidate cards being pushed apart into three"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 6,
+      "cellLabel": "r2c3",
+      "cellRow": 2,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        256,
+        1536,
+        512
+      ],
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "id": "card_wuxiangpo",
+      "name": "无相破",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "「无相」词缀下仍按 3 张候选（原压成 2 张）",
+      "motif": "两张候选被撑开成三张",
+      "motifEn": "two candidate cards being pushed apart into three",
+      "silhouette": "二到三的展开扇形",
+      "composition": "expand",
+      "focalBand": "violet",
+      "signature": "两张候选被撑开成三张|二到三的展开扇形|expand|violet",
+      "codexRef": "r1c2",
+      "codexRefPos": "第 1 行第 2 张",
+      "codexRefSample": "金光术",
+      "codexRefTechnique": "金色八角星芒居中，硬边细放射线向外，暗棕底，四角星点",
+      "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
+      "promptId": "card_wuxiangpo",
+      "outputName": "card_wuxiangpo-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_jieyin",
+          "motif": "一枚印章封住旧卡并腾出空位",
+          "motifEn": "a seal stamping an old card away and leaving an empty slot"
+        },
+        {
+          "id": "card_chongzhu",
+          "motif": "令旗悬在免费一次的铁砧上",
+          "motifEn": "a command banner hanging above a free-use anvil"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 7,
+      "cellLabel": "r3c1",
+      "cellRow": 3,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        512,
+        512,
+        768
+      ],
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "id": "card_chongzhu",
+      "name": "重铸令",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "层间铸器免费 1 次/层",
+      "motif": "令旗悬在免费一次的铁砧上",
+      "motifEn": "a command banner hanging above a free-use anvil",
+      "silhouette": "垂挂令旗与砧台",
+      "composition": "banner",
+      "focalBand": "violet",
+      "signature": "令旗悬在免费一次的铁砧上|垂挂令旗与砧台|banner|violet",
+      "codexRef": "r1c2",
+      "codexRefPos": "第 1 行第 2 张",
+      "codexRefSample": "金光术",
+      "codexRefTechnique": "金色八角星芒居中，硬边细放射线向外，暗棕底，四角星点",
+      "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
+      "promptId": "card_chongzhu",
+      "outputName": "card_chongzhu-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_wuxiangpo",
+          "motif": "两张候选被撑开成三张",
+          "motifEn": "two candidate cards being pushed apart into three"
+        },
+        {
+          "id": "card_tianren",
+          "motif": "进层前显影敌人构成的卷轴",
+          "motifEn": "a scroll revealing the enemy lineup before entering a floor"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 8,
+      "cellLabel": "r3c2",
+      "cellRow": 3,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        512,
+        1024,
+        768
+      ],
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "id": "card_tianren",
+      "name": "天人感应",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "进层前显示本层敌人构成与词缀",
+      "motif": "进层前显影敌人构成的卷轴",
+      "motifEn": "a scroll revealing the enemy lineup before entering a floor",
+      "silhouette": "展开卷轴与三枚敌人剪影",
+      "composition": "scroll",
+      "focalBand": "violet",
+      "signature": "进层前显影敌人构成的卷轴|展开卷轴与三枚敌人剪影|scroll|violet",
+      "codexRef": "r3c3",
+      "codexRefPos": "第 3 行第 3 张",
+      "codexRefSample": "星晨变",
+      "codexRefTechnique": "金色行星环居中，中心亮星，四周菱形星点，深棕金底",
+      "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
+      "promptId": "card_tianren",
+      "outputName": "card_tianren-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_chongzhu",
+          "motif": "令旗悬在免费一次的铁砧上",
+          "motifEn": "a command banner hanging above a free-use anvil"
+        },
+        {
+          "id": "card_sheli",
+          "motif": "舍利子复活一次后卡牌流断开",
+          "motifEn": "a relic reviving once while the card stream is cut"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 9,
+      "cellLabel": "r3c3",
+      "cellRow": 3,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        512,
+        1536,
+        768
+      ],
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "id": "card_sheli",
+      "name": "舍利",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "legend",
+      "rarityName": "仙品",
+      "effect": "死亡时以 30% 生命复活一次，此后本局不再获得卡牌",
+      "motif": "舍利子复活一次后卡牌流断开",
+      "motifEn": "a relic reviving once while the card stream is cut",
+      "silhouette": "舍利圆珠与断开的卡流",
+      "composition": "still",
+      "focalBand": "gold",
+      "signature": "舍利子复活一次后卡牌流断开|舍利圆珠与断开的卡流|still|gold",
+      "codexRef": "r2c1",
+      "codexRefPos": "第 2 行第 1 张",
+      "codexRefSample": "聚灵阵",
+      "codexRefTechnique": "青玉双层圆环法阵居中，环上八个光点，中心阴阳，深墨青底",
+      "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
+      "promptId": "card_sheli",
+      "outputName": "card_sheli-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_tianren",
+          "motif": "进层前显影敌人构成的卷轴",
+          "motifEn": "a scroll revealing the enemy lineup before entering a floor"
+        },
+        {
+          "id": "card_lunhui",
+          "motif": "两条灵韵候选汇成一条固化",
+          "motifEn": "two legacy candidate streams merging into one fixed line"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 10,
+      "cellLabel": "r4c1",
+      "cellRow": 4,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        768,
+        512,
+        1024
+      ],
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "id": "card_lunhui",
+      "name": "轮回",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "失败时从 2 条候选灵韵中选 1 条固化（固化数量仍为 1）",
+      "motif": "两条灵韵候选汇成一条固化",
+      "motifEn": "two legacy candidate streams merging into one fixed line",
+      "silhouette": "双流归一的分岔合流",
+      "composition": "merge",
+      "focalBand": "violet",
+      "signature": "两条灵韵候选汇成一条固化|双流归一的分岔合流|merge|violet",
+      "codexRef": "r1c1",
+      "codexRefPos": "第 1 行第 1 张",
+      "codexRefSample": "清风诀",
+      "codexRefTechnique": "青白螺旋气旋居中，四周散布菱形小星点，深墨蓝底，细放射线",
+      "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
+      "promptId": "card_lunhui",
+      "outputName": "card_lunhui-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_sheli",
+          "motif": "舍利子复活一次后卡牌流断开",
+          "motifEn": "a relic reviving once while the card stream is cut"
+        },
+        {
+          "id": "card_pojing",
+          "motif": "两枚道途目标同挂并被边界钳住",
+          "motifEn": "two path goals hanging together inside a clamped boundary"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 11,
+      "cellLabel": "r4c2",
+      "cellRow": 4,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        768,
+        1024,
+        1024
+      ],
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "id": "card_pojing",
+      "name": "破境",
+      "category": "mech",
+      "categoryName": "机制改变",
+      "rarity": "legend",
+      "rarityName": "仙品",
+      "effect": "本局可选 2 个道途目标，奖励累加并 clamp 1.60",
+      "motif": "两枚道途目标同挂并被边界钳住",
+      "motifEn": "two path goals hanging together inside a clamped boundary",
+      "silhouette": "双目标牌与上下界横线",
+      "composition": "clamp",
+      "focalBand": "gold",
+      "signature": "两枚道途目标同挂并被边界钳住|双目标牌与上下界横线|clamp|gold",
+      "codexRef": "r4c2",
+      "codexRefPos": "第 4 行第 2 张",
+      "codexRefSample": "天罚劫",
+      "codexRefTechnique": "朱红环形剑气居中，一道斜剑穿过，朱砂暗底，环带断口",
+      "codexRefTechniqueEn": "a cinnabar ring of sword-qi crossed by one diagonal blade on dark cinnabar ground",
+      "promptId": "card_pojing",
+      "outputName": "card_pojing-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_lunhui",
+          "motif": "两条灵韵候选汇成一条固化",
+          "motifEn": "two legacy candidate streams merging into one fixed line"
+        },
+        {
+          "id": "card_nianzhuan",
+          "motif": "击杀符号倒转成为命中符号",
+          "motifEn": "a kill glyph reversing into an on-hit glyph"
+        }
+      ],
+      "sheetIndex": 3,
+      "sheetFile": "sheet-03.png",
+      "cell": 12,
+      "cellLabel": "r4c3",
+      "cellRow": 4,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        768,
+        1536,
+        1024
+      ],
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    },
+    {
+      "id": "card_juling",
+      "name": "聚灵阵",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "击杀回灵 +3",
+      "motif": "击杀魂火汇入阵眼",
+      "motifEn": "kill flames converging into an array eye",
+      "silhouette": "八角阵眼与四缕魂火",
+      "composition": "radial",
+      "focalBand": "gold",
+      "signature": "击杀魂火汇入阵眼|八角阵眼与四缕魂火|radial|gold",
+      "codexRef": "r2c1",
+      "codexRefPos": "第 2 行第 1 张",
+      "codexRefSample": "聚灵阵",
+      "codexRefTechnique": "青玉双层圆环法阵居中，环上八个光点，中心阴阳，深墨青底",
+      "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
+      "promptId": "card_juling",
+      "outputName": "card_juling-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_shouyin",
+          "motif": "三枚印叠满后一次引爆",
+          "motifEn": "three seals stacking to a single detonation"
+        },
+        {
+          "id": "card_shengxi",
+          "motif": "灵力漏斗被收窄一格",
+          "motifEn": "a spirit funnel narrowed by one notch"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 1,
+      "cellLabel": "r1c1",
+      "cellRow": 1,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        0,
+        512,
+        256
+      ],
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "id": "card_shengxi",
+      "name": "省息",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "技能灵耗 −8%",
+      "motif": "灵力漏斗被收窄一格",
+      "motifEn": "a spirit funnel narrowed by one notch",
+      "silhouette": "上宽下窄的收口漏斗",
+      "composition": "funnel",
+      "focalBand": "gold",
+      "signature": "灵力漏斗被收窄一格|上宽下窄的收口漏斗|funnel|gold",
+      "codexRef": "r2c2",
+      "codexRefPos": "第 2 行第 2 张",
+      "codexRefSample": "炼丹术",
+      "codexRefTechnique": "青玉丹瓶居中，上浮气泡光点，深墨青底，瓶口一圈亮边",
+      "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
+      "promptId": "card_shengxi",
+      "outputName": "card_shengxi-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_juling",
+          "motif": "击杀魂火汇入阵眼",
+          "motifEn": "kill flames converging into an array eye"
+        },
+        {
+          "id": "card_huanling",
+          "motif": "刻度瓶按层回灌四分之一",
+          "motifEn": "a graduated flask refilled by one quarter per floor"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 2,
+      "cellLabel": "r1c2",
+      "cellRow": 1,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        0,
+        1024,
+        256
+      ],
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "id": "card_huanling",
+      "name": "还灵",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "每通过 1 层回复 25% 灵力",
+      "motif": "刻度瓶按层回灌四分之一",
+      "motifEn": "a graduated flask refilled by one quarter per floor",
+      "silhouette": "带四格刻度的灵力瓶",
+      "composition": "gauge",
+      "focalBand": "gold",
+      "signature": "刻度瓶按层回灌四分之一|带四格刻度的灵力瓶|gauge|gold",
+      "codexRef": "r2c2",
+      "codexRefPos": "第 2 行第 2 张",
+      "codexRefSample": "炼丹术",
+      "codexRefTechnique": "青玉丹瓶居中，上浮气泡光点，深墨青底，瓶口一圈亮边",
+      "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
+      "promptId": "card_huanling",
+      "outputName": "card_huanling-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_shengxi",
+          "motif": "灵力漏斗被收窄一格",
+          "motifEn": "a spirit funnel narrowed by one notch"
+        },
+        {
+          "id": "card_danxiang",
+          "motif": "一缕丹香替下半份灵耗",
+          "motifEn": "one wisp of pill incense replacing half the spirit cost"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 3,
+      "cellLabel": "r1c3",
+      "cellRow": 1,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        0,
+        1536,
+        256
+      ],
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "id": "card_danxiang",
+      "name": "丹香",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "回春诀灵耗减半，治疗量 −20%",
+      "motif": "一缕丹香替下半份灵耗",
+      "motifEn": "one wisp of pill incense replacing half the spirit cost",
+      "silhouette": "细长上升的香缕",
+      "composition": "wisp",
+      "focalBand": "jade",
+      "signature": "一缕丹香替下半份灵耗|细长上升的香缕|wisp|jade",
+      "codexRef": "r1c3",
+      "codexRefPos": "第 1 行第 3 张",
+      "codexRefSample": "回春术",
+      "codexRefTechnique": "青绿双叶新芽居中，四周菱形星点，深墨绿底，柔和但不模糊的圆形背光",
+      "codexRefTechniqueEn": "a centered jade two-leaf sprout with diamond star points on deep ink-green ground",
+      "promptId": "card_danxiang",
+      "outputName": "card_danxiang-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_huanling",
+          "motif": "刻度瓶按层回灌四分之一",
+          "motifEn": "a graduated flask refilled by one quarter per floor"
+        },
+        {
+          "id": "card_lingchao",
+          "motif": "满潮浪头托起一次不耗灵的出招",
+          "motifEn": "a full-tide wave crest carrying one free cast"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 4,
+      "cellLabel": "r2c1",
+      "cellRow": 2,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        256,
+        512,
+        512
+      ],
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "id": "card_lingchao",
+      "name": "灵潮",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "灵力满时下一技能不耗灵且 +15% 伤害（不改上界）",
+      "motif": "满潮浪头托起一次不耗灵的出招",
+      "motifEn": "a full-tide wave crest carrying one free cast",
+      "silhouette": "翻卷浪头与托起的剑光",
+      "composition": "wave",
+      "focalBand": "gold",
+      "signature": "满潮浪头托起一次不耗灵的出招|翻卷浪头与托起的剑光|wave|gold",
+      "codexRef": "r1c1",
+      "codexRefPos": "第 1 行第 1 张",
+      "codexRefSample": "清风诀",
+      "codexRefTechnique": "青白螺旋气旋居中，四周散布菱形小星点，深墨蓝底，细放射线",
+      "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
+      "promptId": "card_lingchao",
+      "outputName": "card_lingchao-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_danxiang",
+          "motif": "一缕丹香替下半份灵耗",
+          "motifEn": "one wisp of pill incense replacing half the spirit cost"
+        },
+        {
+          "id": "card_jieqi",
+          "motif": "受击瞬间截下四点灵光",
+          "motifEn": "four spirit sparks intercepted at the moment of being hit"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 5,
+      "cellLabel": "r2c2",
+      "cellRow": 2,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        256,
+        1024,
+        512
+      ],
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "id": "card_jieqi",
+      "name": "截取",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "受击回 4 灵力，冷却 2 s",
+      "motif": "受击瞬间截下四点灵光",
+      "motifEn": "four spirit sparks intercepted at the moment of being hit",
+      "silhouette": "四个等距光点与一道斜截线",
+      "composition": "dots",
+      "focalBand": "gold",
+      "signature": "受击瞬间截下四点灵光|四个等距光点与一道斜截线|dots|gold",
+      "codexRef": "r3c3",
+      "codexRefPos": "第 3 行第 3 张",
+      "codexRefSample": "星晨变",
+      "codexRefTechnique": "金色行星环居中，中心亮星，四周菱形星点，深棕金底",
+      "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
+      "promptId": "card_jieqi",
+      "outputName": "card_jieqi-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_lingchao",
+          "motif": "满潮浪头托起一次不耗灵的出招",
+          "motifEn": "a full-tide wave crest carrying one free cast"
+        },
+        {
+          "id": "card_kongzhan",
+          "motif": "空盏杯底最后一滴被放大",
+          "motifEn": "the last drop in an empty cup enlarged"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 6,
+      "cellLabel": "r2c3",
+      "cellRow": 2,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        256,
+        1536,
+        512
+      ],
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "id": "card_kongzhan",
+      "name": "空盏",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "灵力 <20% 时技能伤害 +20%（combo 上界 2.5 不变）",
+      "motif": "空盏杯底最后一滴被放大",
+      "motifEn": "the last drop in an empty cup enlarged",
+      "silhouette": "空杯与杯底一滴",
+      "composition": "vessel",
+      "focalBand": "gold",
+      "signature": "空盏杯底最后一滴被放大|空杯与杯底一滴|vessel|gold",
+      "codexRef": "r2c2",
+      "codexRefPos": "第 2 行第 2 张",
+      "codexRefSample": "炼丹术",
+      "codexRefTechnique": "青玉丹瓶居中，上浮气泡光点，深墨青底，瓶口一圈亮边",
+      "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
+      "promptId": "card_kongzhan",
+      "outputName": "card_kongzhan-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_jieqi",
+          "motif": "受击瞬间截下四点灵光",
+          "motifEn": "four spirit sparks intercepted at the moment of being hit"
+        },
+        {
+          "id": "card_fanyong",
+          "motif": "溢出的灵力反卷成一层护盾",
+          "motifEn": "overflowing spirit curling back into a shield"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 7,
+      "cellLabel": "r3c1",
+      "cellRow": 3,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        512,
+        512,
+        768
+      ],
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "id": "card_fanyong",
+      "name": "反涌",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "灵力溢出部分转护盾（上限 40）",
+      "motif": "溢出的灵力反卷成一层护盾",
+      "motifEn": "overflowing spirit curling back into a shield",
+      "silhouette": "反卷液流与弧形盾面",
+      "composition": "curl",
+      "focalBand": "jade",
+      "signature": "溢出的灵力反卷成一层护盾|反卷液流与弧形盾面|curl|jade",
+      "codexRef": "r2c1",
+      "codexRefPos": "第 2 行第 1 张",
+      "codexRefSample": "聚灵阵",
+      "codexRefTechnique": "青玉双层圆环法阵居中，环上八个光点，中心阴阳，深墨青底",
+      "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
+      "promptId": "card_fanyong",
+      "outputName": "card_fanyong-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_kongzhan",
+          "motif": "空盏杯底最后一滴被放大",
+          "motifEn": "the last drop in an empty cup enlarged"
+        },
+        {
+          "id": "card_zhulian",
+          "motif": "三珠连成一线后第六点回灵",
+          "motifEn": "three beads in a line with a sixth returning spark"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 8,
+      "cellLabel": "r3c2",
+      "cellRow": 3,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        512,
+        1024,
+        768
+      ],
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "id": "card_zhulian",
+      "name": "珠链",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "连续 3 次命中回灵 6",
+      "motif": "三珠连成一线后第六点回灵",
+      "motifEn": "three beads in a line with a sixth returning spark",
+      "silhouette": "三珠串线与末端一点",
+      "composition": "chain",
+      "focalBand": "gold",
+      "signature": "三珠连成一线后第六点回灵|三珠串线与末端一点|chain|gold",
+      "codexRef": "r3c4",
+      "codexRefPos": "第 3 行第 4 张",
+      "codexRefSample": "太虚咒",
+      "codexRefTechnique": "紫色同心螺旋法阵居中，多层环带，深紫底，环带硬边",
+      "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
+      "promptId": "card_zhulian",
+      "outputName": "card_zhulian-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_fanyong",
+          "motif": "溢出的灵力反卷成一层护盾",
+          "motifEn": "overflowing spirit curling back into a shield"
+        },
+        {
+          "id": "card_wugen",
+          "motif": "无根之木被削去两成灵力",
+          "motifEn": "a rootless tree with one fifth of its spirit cut away"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 9,
+      "cellLabel": "r3c3",
+      "cellRow": 3,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        512,
+        1536,
+        768
+      ],
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "id": "card_wugen",
+      "name": "无根",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "curse",
+      "rarityName": "劫品",
+      "effect": "灵力上限 −20%，但技能 CD −12%",
+      "motif": "无根之木被削去两成灵力",
+      "motifEn": "a rootless tree with one fifth of its spirit cut away",
+      "silhouette": "断根树形与削去的缺口",
+      "composition": "still",
+      "focalBand": "cinnabar",
+      "signature": "无根之木被削去两成灵力|断根树形与削去的缺口|still|cinnabar",
+      "codexRef": "r1c3",
+      "codexRefPos": "第 1 行第 3 张",
+      "codexRefSample": "回春术",
+      "codexRefTechnique": "青绿双叶新芽居中，四周菱形星点，深墨绿底，柔和但不模糊的圆形背光",
+      "codexRefTechniqueEn": "a centered jade two-leaf sprout with diamond star points on deep ink-green ground",
+      "promptId": "card_wugen",
+      "outputName": "card_wugen-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_zhulian",
+          "motif": "三珠连成一线后第六点回灵",
+          "motifEn": "three beads in a line with a sixth returning spark"
+        },
+        {
+          "id": "card_tianlu",
+          "motif": "每层首杀落下六枚灵石",
+          "motifEn": "six spirit stones dropping from the first kill of a floor"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 10,
+      "cellLabel": "r4c1",
+      "cellRow": 4,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        768,
+        512,
+        1024
+      ],
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "id": "card_tianlu",
+      "name": "天禄",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "每层首杀额外 +6 灵石",
+      "motif": "每层首杀落下六枚灵石",
+      "motifEn": "six spirit stones dropping from the first kill of a floor",
+      "silhouette": "六枚下坠方石",
+      "composition": "fall",
+      "focalBand": "gold",
+      "signature": "每层首杀落下六枚灵石|六枚下坠方石|fall|gold",
+      "codexRef": "r3c3",
+      "codexRefPos": "第 3 行第 3 张",
+      "codexRefSample": "星晨变",
+      "codexRefTechnique": "金色行星环居中，中心亮星，四周菱形星点，深棕金底",
+      "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
+      "promptId": "card_tianlu",
+      "outputName": "card_tianlu-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_wugen",
+          "motif": "无根之木被削去两成灵力",
+          "motifEn": "a rootless tree with one fifth of its spirit cut away"
+        },
+        {
+          "id": "card_shouyin",
+          "motif": "三枚印叠满后一次引爆",
+          "motifEn": "three seals stacking to a single detonation"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 11,
+      "cellLabel": "r4c2",
+      "cellRow": 4,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        768,
+        1024,
+        1024
+      ],
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "id": "card_shouyin",
+      "name": "收印",
+      "category": "res",
+      "categoryName": "资源灵力",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "符系命中叠「印」，3 层引爆（伤害=3 次均值，不新增峰值）",
+      "motif": "三枚印叠满后一次引爆",
+      "motifEn": "three seals stacking to a single detonation",
+      "silhouette": "三枚叠印与一次放射",
+      "composition": "burst",
+      "focalBand": "gold",
+      "signature": "三枚印叠满后一次引爆|三枚叠印与一次放射|burst|gold",
+      "codexRef": "r4c3",
+      "codexRefPos": "第 4 行第 3 张",
+      "codexRefSample": "混沌诀",
+      "codexRefTechnique": "紫金阴阳旋涡居中，四周菱形星点，朱砂暗底",
+      "codexRefTechniqueEn": "a violet-gold yin-yang vortex with diamond star points on dark cinnabar ground",
+      "promptId": "card_shouyin",
+      "outputName": "card_shouyin-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_tianlu",
+          "motif": "每层首杀落下六枚灵石",
+          "motifEn": "six spirit stones dropping from the first kill of a floor"
+        },
+        {
+          "id": "card_juling",
+          "motif": "击杀魂火汇入阵眼",
+          "motifEn": "kill flames converging into an array eye"
+        }
+      ],
+      "sheetIndex": 4,
+      "sheetFile": "sheet-04.png",
+      "cell": 12,
+      "cellLabel": "r4c3",
+      "cellRow": 4,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        768,
+        1536,
+        1024
+      ],
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    },
+    {
+      "id": "card_huichun",
+      "name": "回春",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "回春诀治疗量 +18%",
+      "motif": "回春光晕里舒展的新芽",
+      "motifEn": "a new sprout unfolding inside a healing halo",
+      "silhouette": "双叶新芽与环形光晕",
+      "composition": "sprout",
+      "focalBand": "jade",
+      "signature": "回春光晕里舒展的新芽|双叶新芽与环形光晕|sprout|jade",
+      "codexRef": "r1c3",
+      "codexRefPos": "第 1 行第 3 张",
+      "codexRefSample": "回春术",
+      "codexRefTechnique": "青绿双叶新芽居中，四周菱形星点，深墨绿底，柔和但不模糊的圆形背光",
+      "codexRefTechniqueEn": "a centered jade two-leaf sprout with diamond star points on deep ink-green ground",
+      "promptId": "card_huichun",
+      "outputName": "card_huichun-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_sheshi",
+          "motif": "命盘被削去一角换取 CD 收缩",
+          "motifEn": "a life disc with one corner cut away to shorten cooldown"
+        },
+        {
+          "id": "card_huti",
+          "motif": "护盾值格被填满三层",
+          "motifEn": "three rows of shield gauge cells filling up"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 1,
+      "cellLabel": "r1c1",
+      "cellRow": 1,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        0,
+        512,
+        256
+      ],
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "id": "card_huti",
+      "name": "护体",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "最大护盾 +20（护盾不超 60）",
+      "motif": "护盾值格被填满三层",
+      "motifEn": "three rows of shield gauge cells filling up",
+      "silhouette": "三行方格盾槽",
+      "composition": "grid",
+      "focalBand": "jade",
+      "signature": "护盾值格被填满三层|三行方格盾槽|grid|jade",
+      "codexRef": "r3c2",
+      "codexRefPos": "第 3 行第 2 张",
+      "codexRefSample": "玄冰诀",
+      "codexRefTechnique": "青蓝冰晶簇居中，冷光碎点，深蓝底，晶体棱面分明",
+      "codexRefTechniqueEn": "a centered cyan ice crystal cluster with cold glints on deep blue ground",
+      "promptId": "card_huti",
+      "outputName": "card_huti-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_huichun",
+          "motif": "回春光晕里舒展的新芽",
+          "motifEn": "a new sprout unfolding inside a healing halo"
+        },
+        {
+          "id": "card_bishui",
+          "motif": "受击后拉长的无敌时间窗",
+          "motifEn": "an invulnerability time window stretched after a hit"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 2,
+      "cellLabel": "r1c2",
+      "cellRow": 1,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        0,
+        1024,
+        256
+      ],
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "id": "card_bishui",
+      "name": "避水",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "受击后无敌窗口 0.2 s → 0.5 s",
+      "motif": "受击后拉长的无敌时间窗",
+      "motifEn": "an invulnerability time window stretched after a hit",
+      "silhouette": "被拉长的矩形时间窗",
+      "composition": "window",
+      "focalBand": "jade",
+      "signature": "受击后拉长的无敌时间窗|被拉长的矩形时间窗|window|jade",
+      "codexRef": "r2c4",
+      "codexRefPos": "第 2 行第 4 张",
+      "codexRefSample": "风行术",
+      "codexRefTechnique": "奔跑人形剪影居中，横向青蓝速度线，深墨蓝底，四肢硬边",
+      "codexRefTechniqueEn": "a centered running human silhouette with horizontal cyan speed lines on deep ink-blue ground",
+      "promptId": "card_bishui",
+      "outputName": "card_bishui-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_huti",
+          "motif": "护盾值格被填满三层",
+          "motifEn": "three rows of shield gauge cells filling up"
+        },
+        {
+          "id": "card_duanxu",
+          "motif": "按层回血的断续阶梯折线",
+          "motifEn": "a broken step line of per-floor healing"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 3,
+      "cellLabel": "r1c3",
+      "cellRow": 1,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        0,
+        1536,
+        256
+      ],
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "id": "card_duanxu",
+      "name": "断续",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "每通过 1 层回复 12% 生命",
+      "motif": "按层回血的断续阶梯折线",
+      "motifEn": "a broken step line of per-floor healing",
+      "silhouette": "三段断续上升折线",
+      "composition": "step",
+      "focalBand": "jade",
+      "signature": "按层回血的断续阶梯折线|三段断续上升折线|step|jade",
+      "codexRef": "r1c1",
+      "codexRefPos": "第 1 行第 1 张",
+      "codexRefSample": "清风诀",
+      "codexRefTechnique": "青白螺旋气旋居中，四周散布菱形小星点，深墨蓝底，细放射线",
+      "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
+      "promptId": "card_duanxu",
+      "outputName": "card_duanxu-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_bishui",
+          "motif": "受击后拉长的无敌时间窗",
+          "motifEn": "an invulnerability time window stretched after a hit"
+        },
+        {
+          "id": "card_jiaren",
+          "motif": "纸傀儡替身挡下一击",
+          "motifEn": "a paper puppet taking a lethal hit in place"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 4,
+      "cellLabel": "r2c1",
+      "cellRow": 2,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        256,
+        512,
+        512
+      ],
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "id": "card_jiaren",
+      "name": "假人",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "纸傀儡替身抵挡一次致命伤",
+      "motif": "纸傀儡替身挡下一击",
+      "motifEn": "a paper puppet taking a lethal hit in place",
+      "silhouette": "方形纸傀儡与斜来的一击",
+      "composition": "puppet",
+      "focalBand": "jade",
+      "signature": "纸傀儡替身挡下一击|方形纸傀儡与斜来的一击|puppet|jade",
+      "codexRef": "r2c3",
+      "codexRefPos": "第 2 行第 3 张",
+      "codexRefSample": "化气诀",
+      "codexRefTechnique": "青玉打坐人形剪影居中，背后圆形背光与两侧气旋，深墨绿底",
+      "codexRefTechniqueEn": "a centered jade seated human silhouette with a round backlight on deep ink-green ground",
+      "promptId": "card_jiaren",
+      "outputName": "card_jiaren-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_duanxu",
+          "motif": "按层回血的断续阶梯折线",
+          "motifEn": "a broken step line of per-floor healing"
+        },
+        {
+          "id": "card_tiegu",
+          "motif": "骨节外包一层铁壳的剖面",
+          "motifEn": "a bone joint wrapped in an iron shell, cross-section"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 5,
+      "cellLabel": "r2c2",
+      "cellRow": 2,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        256,
+        1024,
+        512
+      ],
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "id": "card_tiegu",
+      "name": "铁骨",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "受击伤害 −6 固定减免",
+      "motif": "骨节外包一层铁壳的剖面",
+      "motifEn": "a bone joint wrapped in an iron shell, cross-section",
+      "silhouette": "骨节与外层铁壳剖面",
+      "composition": "armor",
+      "focalBand": "ink",
+      "signature": "骨节外包一层铁壳的剖面|骨节与外层铁壳剖面|armor|ink",
+      "codexRef": "r3c2",
+      "codexRefPos": "第 3 行第 2 张",
+      "codexRefSample": "玄冰诀",
+      "codexRefTechnique": "青蓝冰晶簇居中，冷光碎点，深蓝底，晶体棱面分明",
+      "codexRefTechniqueEn": "a centered cyan ice crystal cluster with cold glints on deep blue ground",
+      "promptId": "card_tiegu",
+      "outputName": "card_tiegu-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_jiaren",
+          "motif": "纸傀儡替身挡下一击",
+          "motifEn": "a paper puppet taking a lethal hit in place"
+        },
+        {
+          "id": "card_guisuo",
+          "motif": "低血线触发自动回春的阈值门",
+          "motifEn": "a threshold gate below which healing auto-triggers"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 6,
+      "cellLabel": "r2c3",
+      "cellRow": 2,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        256,
+        1536,
+        512
+      ],
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "id": "card_guisuo",
+      "name": "归所",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "生命 <25% 时回春诀自动释放（每局 2 次）",
+      "motif": "低血线触发自动回春的阈值门",
+      "motifEn": "a threshold gate below which healing auto-triggers",
+      "silhouette": "横贯阈值线与一道门",
+      "composition": "threshold",
+      "focalBand": "jade",
+      "signature": "低血线触发自动回春的阈值门|横贯阈值线与一道门|threshold|jade",
+      "codexRef": "r4c4",
+      "codexRefPos": "第 4 行第 4 张",
+      "codexRefSample": "无尽劫",
+      "codexRefTechnique": "朱红拱形火门居中，门内人形剪影，朱砂暗底",
+      "codexRefTechniqueEn": "a cinnabar arched flame gate with a human silhouette inside on dark cinnabar ground",
+      "promptId": "card_guisuo",
+      "outputName": "card_guisuo-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_tiegu",
+          "motif": "骨节外包一层铁壳的剖面",
+          "motifEn": "a bone joint wrapped in an iron shell, cross-section"
+        },
+        {
+          "id": "card_yinbi",
+          "motif": "静止一秒后淡入墨底的人形轮廓",
+          "motifEn": "a human outline fading into the ink ground after one still second"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 7,
+      "cellLabel": "r3c1",
+      "cellRow": 3,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        512,
+        512,
+        768
+      ],
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "id": "card_yinbi",
+      "name": "隐避",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "静止 1 s 进入潜行，敌人丢失目标 1 s",
+      "motif": "静止一秒后淡入墨底的人形轮廓",
+      "motifEn": "a human outline fading into the ink ground after one still second",
+      "silhouette": "半隐人形轮廓",
+      "composition": "stealth",
+      "focalBand": "ink",
+      "signature": "静止一秒后淡入墨底的人形轮廓|半隐人形轮廓|stealth|ink",
+      "codexRef": "r2c3",
+      "codexRefPos": "第 2 行第 3 张",
+      "codexRefSample": "化气诀",
+      "codexRefTechnique": "青玉打坐人形剪影居中，背后圆形背光与两侧气旋，深墨绿底",
+      "codexRefTechniqueEn": "a centered jade seated human silhouette with a round backlight on deep ink-green ground",
+      "promptId": "card_yinbi",
+      "outputName": "card_yinbi-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_guisuo",
+          "motif": "低血线触发自动回春的阈值门",
+          "motifEn": "a threshold gate below which healing auto-triggers"
+        },
+        {
+          "id": "card_zhuansheng",
+          "motif": "灰烬中重生并重置的 CD 环",
+          "motifEn": "rebirth from ashes with a reset cooldown ring"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 8,
+      "cellLabel": "r3c2",
+      "cellRow": 3,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        512,
+        1024,
+        768
+      ],
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "id": "card_zhuansheng",
+      "name": "转生",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "legend",
+      "rarityName": "仙品",
+      "effect": "Boss 战死亡后以 20% 生命复活并重置技能 CD（每局 1 次）",
+      "motif": "灰烬中重生并重置的 CD 环",
+      "motifEn": "rebirth from ashes with a reset cooldown ring",
+      "silhouette": "灰烬人形与闭合重置环",
+      "composition": "rebirth",
+      "focalBand": "gold",
+      "signature": "灰烬中重生并重置的 CD 环|灰烬人形与闭合重置环|rebirth|gold",
+      "codexRef": "r4c1",
+      "codexRefPos": "第 4 行第 1 张",
+      "codexRefSample": "万劫灭",
+      "codexRefTechnique": "朱红火焰包裹人形剪影居中，朱砂暗底，火舌硬边分叉",
+      "codexRefTechniqueEn": "a cinnabar flame wrapping a centered human silhouette on dark cinnabar ground",
+      "promptId": "card_zhuansheng",
+      "outputName": "card_zhuansheng-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_yinbi",
+          "motif": "静止一秒后淡入墨底的人形轮廓",
+          "motifEn": "a human outline fading into the ink ground after one still second"
+        },
+        {
+          "id": "card_qinglu",
+          "motif": "叶尖一滴露水将坠未坠",
+          "motifEn": "one dewdrop about to fall from a leaf tip"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 9,
+      "cellLabel": "r3c3",
+      "cellRow": 3,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        512,
+        1536,
+        768
+      ],
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "id": "card_qinglu",
+      "name": "清露",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "脱战每秒回血 +1",
+      "motif": "叶尖一滴露水将坠未坠",
+      "motifEn": "one dewdrop about to fall from a leaf tip",
+      "silhouette": "叶尖与单滴露水",
+      "composition": "drop",
+      "focalBand": "jade",
+      "signature": "叶尖一滴露水将坠未坠|叶尖与单滴露水|drop|jade",
+      "codexRef": "r2c2",
+      "codexRefPos": "第 2 行第 2 张",
+      "codexRefSample": "炼丹术",
+      "codexRefTechnique": "青玉丹瓶居中，上浮气泡光点，深墨青底，瓶口一圈亮边",
+      "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
+      "promptId": "card_qinglu",
+      "outputName": "card_qinglu-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_zhuansheng",
+          "motif": "灰烬中重生并重置的 CD 环",
+          "motifEn": "rebirth from ashes with a reset cooldown ring"
+        },
+        {
+          "id": "card_hunyuan",
+          "motif": "金刚罩内一层混元气旋",
+          "motifEn": "a primal vortex inside a vajra barrier"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 10,
+      "cellLabel": "r4c1",
+      "cellRow": 4,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        768,
+        512,
+        1024
+      ],
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "id": "card_hunyuan",
+      "name": "混元",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "金刚罩期间减伤 +8%（0.75 钳制不变）",
+      "motif": "金刚罩内一层混元气旋",
+      "motifEn": "a primal vortex inside a vajra barrier",
+      "silhouette": "钟罩轮廓与内部气旋",
+      "composition": "vortex",
+      "focalBand": "jade",
+      "signature": "金刚罩内一层混元气旋|钟罩轮廓与内部气旋|vortex|jade",
+      "codexRef": "r2c1",
+      "codexRefPos": "第 2 行第 1 张",
+      "codexRefSample": "聚灵阵",
+      "codexRefTechnique": "青玉双层圆环法阵居中，环上八个光点，中心阴阳，深墨青底",
+      "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
+      "promptId": "card_hunyuan",
+      "outputName": "card_hunyuan-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_qinglu",
+          "motif": "叶尖一滴露水将坠未坠",
+          "motifEn": "one dewdrop about to fall from a leaf tip"
+        },
+        {
+          "id": "card_sheshi",
+          "motif": "命盘被削去一角换取 CD 收缩",
+          "motifEn": "a life disc with one corner cut away to shorten cooldown"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 11,
+      "cellLabel": "r4c2",
+      "cellRow": 4,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        768,
+        1024,
+        1024
+      ],
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "id": "card_sheshi",
+      "name": "舍身",
+      "category": "surv",
+      "categoryName": "生存回复",
+      "rarity": "curse",
+      "rarityName": "劫品",
+      "effect": "最大生命 −15%，但全技能 CD −10%",
+      "motif": "命盘被削去一角换取 CD 收缩",
+      "motifEn": "a life disc with one corner cut away to shorten cooldown",
+      "silhouette": "缺角命盘与收缩环",
+      "composition": "sacrifice",
+      "focalBand": "cinnabar",
+      "signature": "命盘被削去一角换取 CD 收缩|缺角命盘与收缩环|sacrifice|cinnabar",
+      "codexRef": "r4c4",
+      "codexRefPos": "第 4 行第 4 张",
+      "codexRefSample": "无尽劫",
+      "codexRefTechnique": "朱红拱形火门居中，门内人形剪影，朱砂暗底",
+      "codexRefTechniqueEn": "a cinnabar arched flame gate with a human silhouette inside on dark cinnabar ground",
+      "promptId": "card_sheshi",
+      "outputName": "card_sheshi-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_hunyuan",
+          "motif": "金刚罩内一层混元气旋",
+          "motifEn": "a primal vortex inside a vajra barrier"
+        },
+        {
+          "id": "card_huichun",
+          "motif": "回春光晕里舒展的新芽",
+          "motifEn": "a new sprout unfolding inside a healing halo"
+        }
+      ],
+      "sheetIndex": 5,
+      "sheetFile": "sheet-05.png",
+      "cell": 12,
+      "cellLabel": "r4c3",
+      "cellRow": 4,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        768,
+        1536,
+        1024
+      ],
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    },
+    {
+      "id": "card_jianxin",
+      "name": "剑心",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "剑修质变阈值 −1 件（4→3），仅本局",
+      "motif": "剑修质变刻度从四件降到三件",
+      "motifEn": "a sword-ascension gauge dropping from four to three notches",
+      "silhouette": "带一格被抹去的刻度尺",
+      "composition": "notch",
+      "focalBand": "cinnabar",
+      "signature": "剑修质变刻度从四件降到三件|带一格被抹去的刻度尺|notch|cinnabar",
+      "codexRef": "r3c3",
+      "codexRefPos": "第 3 行第 3 张",
+      "codexRefSample": "星晨变",
+      "codexRefTechnique": "金色行星环居中，中心亮星，四周菱形星点，深棕金底",
+      "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
+      "promptId": "card_jianxin",
+      "outputName": "card_jianxin-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_wuxin",
+          "motif": "卡牌流断开而已选卡整体放大一圈",
+          "motifEn": "the card stream cut while chosen cards enlarge by one ring"
+        },
+        {
+          "id": "card_fuhun",
+          "motif": "符纸 CD 环上 10% 的概率亮点",
+          "motifEn": "a ten-percent chance glint on a talisman cooldown ring"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 1,
+      "cellLabel": "r1c1",
+      "cellRow": 1,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        0,
+        512,
+        256
+      ],
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "id": "card_fuhun",
+      "name": "符魂",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "符修技能命中后 10% 概率重置符纸 CD",
+      "motif": "符纸 CD 环上 10% 的概率亮点",
+      "motifEn": "a ten-percent chance glint on a talisman cooldown ring",
+      "silhouette": "CD 环与一枚孤立亮点",
+      "composition": "chance",
+      "focalBand": "violet",
+      "signature": "符纸 CD 环上 10% 的概率亮点|CD 环与一枚孤立亮点|chance|violet",
+      "codexRef": "r3c3",
+      "codexRefPos": "第 3 行第 3 张",
+      "codexRefSample": "星晨变",
+      "codexRefTechnique": "金色行星环居中，中心亮星，四周菱形星点，深棕金底",
+      "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
+      "promptId": "card_fuhun",
+      "outputName": "card_fuhun-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_jianxin",
+          "motif": "剑修质变刻度从四件降到三件",
+          "motifEn": "a sword-ascension gauge dropping from four to three notches"
+        },
+        {
+          "id": "card_danxin",
+          "motif": "灼伤印记叠三层而不刷新",
+          "motifEn": "three burn marks stacking instead of refreshing"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 2,
+      "cellLabel": "r1c2",
+      "cellRow": 1,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        0,
+        1024,
+        256
+      ],
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "id": "card_danxin",
+      "name": "丹心",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "丹火灼伤可叠 3 层（原本刷新不叠）",
+      "motif": "灼伤印记叠三层而不刷新",
+      "motifEn": "three burn marks stacking instead of refreshing",
+      "silhouette": "三层错叠的灼印",
+      "composition": "stack",
+      "focalBand": "cinnabar",
+      "signature": "灼伤印记叠三层而不刷新|三层错叠的灼印|stack|cinnabar",
+      "codexRef": "r4c1",
+      "codexRefPos": "第 4 行第 1 张",
+      "codexRefSample": "万劫灭",
+      "codexRefTechnique": "朱红火焰包裹人形剪影居中，朱砂暗底，火舌硬边分叉",
+      "codexRefTechniqueEn": "a cinnabar flame wrapping a centered human silhouette on dark cinnabar ground",
+      "promptId": "card_danxin",
+      "outputName": "card_danxin-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_fuhun",
+          "motif": "符纸 CD 环上 10% 的概率亮点",
+          "motifEn": "a ten-percent chance glint on a talisman cooldown ring"
+        },
+        {
+          "id": "card_tipo",
+          "motif": "近身 32 像素圈内被放大的拳",
+          "motifEn": "a fist enlarged inside a close-range radius circle"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 3,
+      "cellLabel": "r1c3",
+      "cellRow": 1,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        0,
+        1536,
+        256
+      ],
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "id": "card_tipo",
+      "name": "体魄",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "近身 32 px 内伤害 +12%（只改命中条件，不改上界）",
+      "motif": "近身 32 像素圈内被放大的拳",
+      "motifEn": "a fist enlarged inside a close-range radius circle",
+      "silhouette": "半径圆圈与放大的拳形",
+      "composition": "radius",
+      "focalBand": "cinnabar",
+      "signature": "近身 32 像素圈内被放大的拳|半径圆圈与放大的拳形|radius|cinnabar",
+      "codexRef": "r2c4",
+      "codexRefPos": "第 2 行第 4 张",
+      "codexRefSample": "风行术",
+      "codexRefTechnique": "奔跑人形剪影居中，横向青蓝速度线，深墨蓝底，四肢硬边",
+      "codexRefTechniqueEn": "a centered running human silhouette with horizontal cyan speed lines on deep ink-blue ground",
+      "promptId": "card_tipo",
+      "outputName": "card_tipo-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_danxin",
+          "motif": "灼伤印记叠三层而不刷新",
+          "motifEn": "three burn marks stacking instead of refreshing"
+        },
+        {
+          "id": "card_tongyuan",
+          "motif": "三槽装满时浮出第四张候选",
+          "motifEn": "a fourth candidate surfacing when three slots are full"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 4,
+      "cellLabel": "r2c1",
+      "cellRow": 2,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        256,
+        512,
+        512
+      ],
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "id": "card_tongyuan",
+      "name": "同源",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "3 槽装满时三选一可见第 4 张（仍只选 1）",
+      "motif": "三槽装满时浮出第四张候选",
+      "motifEn": "a fourth candidate surfacing when three slots are full",
+      "silhouette": "三格满槽与浮出的第四格",
+      "composition": "reveal",
+      "focalBand": "cinnabar",
+      "signature": "三槽装满时浮出第四张候选|三格满槽与浮出的第四格|reveal|cinnabar",
+      "codexRef": "r1c2",
+      "codexRefPos": "第 1 行第 2 张",
+      "codexRefSample": "金光术",
+      "codexRefTechnique": "金色八角星芒居中，硬边细放射线向外，暗棕底，四角星点",
+      "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
+      "promptId": "card_tongyuan",
+      "outputName": "card_tongyuan-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_tipo",
+          "motif": "近身 32 像素圈内被放大的拳",
+          "motifEn": "a fist enlarged inside a close-range radius circle"
+        },
+        {
+          "id": "card_jiezeng",
+          "motif": "天劫词缀由三格涨到四格",
+          "motifEn": "tribulation slots growing from three to four"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 5,
+      "cellLabel": "r2c2",
+      "cellRow": 2,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        256,
+        1024,
+        512
+      ],
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "id": "card_jiezeng",
+      "name": "劫增",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "curse",
+      "rarityName": "劫品",
+      "effect": "天劫词缀上限 +1（0–3→0–4），奖励按 09 §2.3 clamp 1.60",
+      "motif": "天劫词缀由三格涨到四格",
+      "motifEn": "tribulation slots growing from three to four",
+      "silhouette": "四格词缀槽与新增一格",
+      "composition": "slots",
+      "focalBand": "cinnabar",
+      "signature": "天劫词缀由三格涨到四格|四格词缀槽与新增一格|slots|cinnabar",
+      "codexRef": "r4c2",
+      "codexRefPos": "第 4 行第 2 张",
+      "codexRefSample": "天罚劫",
+      "codexRefTechnique": "朱红环形剑气居中，一道斜剑穿过，朱砂暗底，环带断口",
+      "codexRefTechniqueEn": "a cinnabar ring of sword-qi crossed by one diagonal blade on dark cinnabar ground",
+      "promptId": "card_jiezeng",
+      "outputName": "card_jiezeng-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_tongyuan",
+          "motif": "三槽装满时浮出第四张候选",
+          "motifEn": "a fourth candidate surfacing when three slots are full"
+        },
+        {
+          "id": "card_shuangren",
+          "motif": "一刀两刃一侧伤人一侧伤己",
+          "motifEn": "one blade with two edges, one outward and one inward"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 6,
+      "cellLabel": "r2c3",
+      "cellRow": 2,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        256,
+        1536,
+        512
+      ],
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "id": "card_shuangren",
+      "name": "双刃",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "curse",
+      "rarityName": "劫品",
+      "effect": "伤害 +12%（计入池上限），受击伤害 +15%",
+      "motif": "一刀两刃一侧伤人一侧伤己",
+      "motifEn": "one blade with two edges, one outward and one inward",
+      "silhouette": "双向开刃的对称刀",
+      "composition": "twin",
+      "focalBand": "cinnabar",
+      "signature": "一刀两刃一侧伤人一侧伤己|双向开刃的对称刀|twin|cinnabar",
+      "codexRef": "r4c2",
+      "codexRefPos": "第 4 行第 2 张",
+      "codexRefSample": "天罚劫",
+      "codexRefTechnique": "朱红环形剑气居中，一道斜剑穿过，朱砂暗底，环带断口",
+      "codexRefTechniqueEn": "a cinnabar ring of sword-qi crossed by one diagonal blade on dark cinnabar ground",
+      "promptId": "card_shuangren",
+      "outputName": "card_shuangren-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_jiezeng",
+          "motif": "天劫词缀由三格涨到四格",
+          "motifEn": "tribulation slots growing from three to four"
+        },
+        {
+          "id": "card_duozhu",
+          "motif": "第五个技能槽插入待重算的空位",
+          "motifEn": "a fifth skill slot inserted into an empty recompute space"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 7,
+      "cellLabel": "r3c1",
+      "cellRow": 3,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        512,
+        512,
+        768
+      ],
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "id": "card_duozhu",
+      "name": "夺主",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "legend",
+      "rarityName": "仙品",
+      "effect": "本局可携带第 5 个技能槽（k:4→5，需重算 B，待确认）",
+      "motif": "第五个技能槽插入待重算的空位",
+      "motifEn": "a fifth skill slot inserted into an empty recompute space",
+      "silhouette": "四槽之外插入的第五槽",
+      "composition": "insert",
+      "focalBand": "gold",
+      "signature": "第五个技能槽插入待重算的空位|四槽之外插入的第五槽|insert|gold",
+      "codexRef": "r3c4",
+      "codexRefPos": "第 3 行第 4 张",
+      "codexRefSample": "太虚咒",
+      "codexRefTechnique": "紫色同心螺旋法阵居中，多层环带，深紫底，环带硬边",
+      "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
+      "promptId": "card_duozhu",
+      "outputName": "card_duozhu-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_shuangren",
+          "motif": "一刀两刃一侧伤人一侧伤己",
+          "motifEn": "one blade with two edges, one outward and one inward"
+        },
+        {
+          "id": "card_zhongshi",
+          "motif": "禁用回春的朱印与道行倍率",
+          "motifEn": "a cinnabar oath seal banning healing with a dao multiplier"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 8,
+      "cellLabel": "r3c2",
+      "cellRow": 3,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        512,
+        1024,
+        768
+      ],
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "id": "card_zhongshi",
+      "name": "终誓",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "第 9 层 Boss 战禁用回春诀，道行 ×1.25（clamp 1.60）",
+      "motif": "禁用回春的朱印与道行倍率",
+      "motifEn": "a cinnabar oath seal banning healing with a dao multiplier",
+      "silhouette": "朱红誓印与倍率折线",
+      "composition": "oath",
+      "focalBand": "cinnabar",
+      "signature": "禁用回春的朱印与道行倍率|朱红誓印与倍率折线|oath|cinnabar",
+      "codexRef": "r4c4",
+      "codexRefPos": "第 4 行第 4 张",
+      "codexRefSample": "无尽劫",
+      "codexRefTechnique": "朱红拱形火门居中，门内人形剪影，朱砂暗底",
+      "codexRefTechniqueEn": "a cinnabar arched flame gate with a human silhouette inside on dark cinnabar ground",
+      "promptId": "card_zhongshi",
+      "outputName": "card_zhongshi-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_duozhu",
+          "motif": "第五个技能槽插入待重算的空位",
+          "motifEn": "a fifth skill slot inserted into an empty recompute space"
+        },
+        {
+          "id": "card_shouzhuo",
+          "motif": "空手退让三选一并逐层叠起减伤梯",
+          "motifEn": "an empty hand declining the draft beside a rising defense stair"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 9,
+      "cellLabel": "r3c3",
+      "cellRow": 3,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        512,
+        1536,
+        768
+      ],
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "id": "card_shouzhuo",
+      "name": "守拙",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "rare",
+      "rarityName": "灵品",
+      "effect": "放弃本层三选一，此后每层 +4% 减伤（0.75 钳制不变）",
+      "motif": "空手退让三选一并逐层叠起减伤梯",
+      "motifEn": "an empty hand declining the draft beside a rising defense stair",
+      "silhouette": "空掌与四级上升阶梯",
+      "composition": "abstain",
+      "focalBand": "cinnabar",
+      "signature": "空手退让三选一并逐层叠起减伤梯|空掌与四级上升阶梯|abstain|cinnabar",
+      "codexRef": "r2c3",
+      "codexRefPos": "第 2 行第 3 张",
+      "codexRefSample": "化气诀",
+      "codexRefTechnique": "青玉打坐人形剪影居中，背后圆形背光与两侧气旋，深墨绿底",
+      "codexRefTechniqueEn": "a centered jade seated human silhouette with a round backlight on deep ink-green ground",
+      "promptId": "card_shouzhuo",
+      "outputName": "card_shouzhuo-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_zhongshi",
+          "motif": "禁用回春的朱印与道行倍率",
+          "motifEn": "a cinnabar oath seal banning healing with a dao multiplier"
+        },
+        {
+          "id": "card_yiyu",
+          "motif": "三张候选中一枚异色离群卡",
+          "motifEn": "one off-palette outlier card among three candidates"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 10,
+      "cellLabel": "r4c1",
+      "cellRow": 4,
+      "cellCol": 1,
+      "cellBox": [
+        0,
+        768,
+        512,
+        1024
+      ],
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "id": "card_yiyu",
+      "name": "异遇",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "common",
+      "rarityName": "凡品",
+      "effect": "三选一中至少 1 张来自本局未选过的类别",
+      "motif": "三张候选中一枚异色离群卡",
+      "motifEn": "one off-palette outlier card among three candidates",
+      "silhouette": "两同色一异色的三卡组",
+      "composition": "outlier",
+      "focalBand": "violet",
+      "signature": "三张候选中一枚异色离群卡|两同色一异色的三卡组|outlier|violet",
+      "codexRef": "r4c3",
+      "codexRefPos": "第 4 行第 3 张",
+      "codexRefSample": "混沌诀",
+      "codexRefTechnique": "紫金阴阳旋涡居中，四周菱形星点，朱砂暗底",
+      "codexRefTechniqueEn": "a violet-gold yin-yang vortex with diamond star points on dark cinnabar ground",
+      "promptId": "card_yiyu",
+      "outputName": "card_yiyu-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_shouzhuo",
+          "motif": "空手退让三选一并逐层叠起减伤梯",
+          "motifEn": "an empty hand declining the draft beside a rising defense stair"
+        },
+        {
+          "id": "card_wuxin",
+          "motif": "卡牌流断开而已选卡整体放大一圈",
+          "motifEn": "the card stream cut while chosen cards enlarge by one ring"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 11,
+      "cellLabel": "r4c2",
+      "cellRow": 4,
+      "cellCol": 2,
+      "cellBox": [
+        512,
+        768,
+        1024,
+        1024
+      ],
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "id": "card_wuxin",
+      "name": "无心",
+      "category": "syn",
+      "categoryName": "构筑风险",
+      "rarity": "legend",
+      "rarityName": "仙品",
+      "effect": "本局不再获得卡牌，已选卡效果 ×1.5（不超各自 stack 上限）",
+      "motif": "卡牌流断开而已选卡整体放大一圈",
+      "motifEn": "the card stream cut while chosen cards enlarge by one ring",
+      "silhouette": "断开的卡流与放大外环",
+      "composition": "amplify",
+      "focalBand": "gold",
+      "signature": "卡牌流断开而已选卡整体放大一圈|断开的卡流与放大外环|amplify|gold",
+      "codexRef": "r3c4",
+      "codexRefPos": "第 3 行第 4 张",
+      "codexRefSample": "太虚咒",
+      "codexRefTechnique": "紫色同心螺旋法阵居中，多层环带，深紫底，环带硬边",
+      "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
+      "promptId": "card_wuxin",
+      "outputName": "card_wuxin-cardart-original.png",
+      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "excludes": [
+        {
+          "id": "card_yiyu",
+          "motif": "三张候选中一枚异色离群卡",
+          "motifEn": "one off-palette outlier card among three candidates"
+        },
+        {
+          "id": "card_jianxin",
+          "motif": "剑修质变刻度从四件降到三件",
+          "motifEn": "a sword-ascension gauge dropping from four to three notches"
+        }
+      ],
+      "sheetIndex": 6,
+      "sheetFile": "sheet-06.png",
+      "cell": 12,
+      "cellLabel": "r4c3",
+      "cellRow": 4,
+      "cellCol": 3,
+      "cellBox": [
+        1024,
+        768,
+        1536,
+        1024
+      ],
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    }
+  ],
+  "stats": {
+    "total": 72,
+    "byCategory": {
+      "attr": 12,
+      "dmg": 12,
+      "mech": 12,
+      "res": 12,
+      "surv": 12,
+      "syn": 12
+    },
+    "byRarity": {
+      "common": 30,
+      "rare": 30,
+      "legend": 8,
+      "curse": 4
+    },
+    "uniqueMotifs": 72,
+    "uniqueSignatures": 72,
+    "uniqueSilhouettes": 72,
+    "codexSampleCoverage": 16,
+    "sheetsTotal": 6,
+    "cellsPerSheet": 12,
+    "generations": 6,
+    "sheetsReceived": 0,
+    "sheetsPending": 6,
+    "artReceived": 0,
+    "artPending": 72
+  },
+  "knownExceptions": [
+    "docs/12 §5 现行冻结口径是「72 卡只需 4 卡框 + 6 纹样共 10 张小图」；本决策与之冲突，记为 R57，Q17 拍板前不改写该文档",
+    "07-codex 稿内 16 张示意卡的卡名与冻结 72 卡库不是一套，且含文字，不得直接当卡面入库",
+    "R58 拼版风险：AI 可能画成一张整图、格位漂移、元素跨格、格间风格漂移或擅画格线；先出 1 张 sheet 试裁目检再批量",
+    "拼版后每格有效分辨率为 384×256（原单张方案为 1024×1024），目标插画区仅 84×56 / 4× 约 336×224，够用但不等于单张细节密度",
+    "回稿未到齐；sheetsReceived / artReceived 如实统计，不伪造 6/6 或 72/72"
+  ],
+  "boundary": "本表只是外发规格与映射，不是美术资产、不是已入库资源、不改任何冻结数值与规则；Q17 未拍板、GUI F5 未跑、未接 Godot 场景。"
+}

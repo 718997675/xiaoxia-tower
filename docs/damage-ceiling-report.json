@@ -1,0 +1,130 @@
+{
+  "spec": "docs/01-策划案.md §8.1 + docs/11-塔层三选一卡牌系统.md §4",
+  "generator": "tools/verify_damage_ceiling.py",
+  "engineVersion": "Godot 4.7.2.stable（本验算为离线公式复算，未在编辑器实测）",
+  "formula": "final = clamp(round((base*realm_ratio + extra_pool) * combo_mult * crit_mult * (1-defense_rate)), 1, 9999)",
+  "confirmedCeiling": {
+    "base": 180.0,
+    "realm_ratio": 1.6,
+    "extra_pool": 600.0,
+    "combo_mult": 2.5,
+    "crit_mult": 1.8,
+    "defense_rate_min": 0.0
+  },
+  "bossHP": 4400,
+  "headroom": 404,
+  "cardsScanned": 72,
+  "numericCards": 17,
+  "numericRatio": 0.2361,
+  "mechanicalOrHybrid": 55,
+  "ceilingTouchingCards": [
+    {
+      "id": "card_jianfeng",
+      "hook": "SkillCaster.base_damage",
+      "touched": [
+        "base_damage"
+      ],
+      "guard": "cap=600",
+      "compliant": true
+    },
+    {
+      "id": "card_danbao",
+      "hook": "SkillCaster.base_damage",
+      "touched": [
+        "base_damage"
+      ],
+      "guard": "cap=600",
+      "compliant": true
+    },
+    {
+      "id": "card_lianhuan",
+      "hook": "SkillCaster.combo_multiplier",
+      "touched": [
+        "per_stack"
+      ],
+      "guard": "cap=2",
+      "compliant": true
+    },
+    {
+      "id": "card_zhanxing",
+      "hook": "SkillCaster.base_damage",
+      "touched": [
+        "base_damage"
+      ],
+      "guard": "pool=offense_pool",
+      "compliant": true
+    },
+    {
+      "id": "card_huixin",
+      "hook": "SkillCaster.crit_multiplier",
+      "touched": [
+        "crit_multiplier"
+      ],
+      "guard": "cap=1.8",
+      "compliant": true
+    },
+    {
+      "id": "card_zhongzhu",
+      "hook": "SkillCaster.extra_pool",
+      "touched": [
+        "extra_pool"
+      ],
+      "guard": "cap=600",
+      "compliant": true
+    },
+    {
+      "id": "card_kongzhan",
+      "hook": "SkillCaster.combo_multiplier",
+      "touched": [
+        "damage"
+      ],
+      "guard": "cap=2.5",
+      "compliant": true
+    },
+    {
+      "id": "card_shuangren",
+      "hook": "SkillCaster.extra_pool",
+      "touched": [
+        "extra_pool"
+      ],
+      "guard": "cap=600",
+      "compliant": true
+    }
+  ],
+  "violations": [],
+  "scenario": {
+    "baseline": {
+      "base": 180.0,
+      "damage": 3996,
+      "verdict": "PASS"
+    },
+    "worstWithoutSharedPool": {
+      "base": 180.0,
+      "baseBonus": 0.0,
+      "damage": 3996,
+      "verdict": "PASS",
+      "note": "仅未声明 pool 的 base_damage 卡直接叠加；修复前为 236 -> 4399，距 4400 只剩 1 点，任何后续调 stack 即击穿"
+    },
+    "worstIfAllBaseCardsDirect": {
+      "base": 254.0,
+      "baseBonus": 74.0,
+      "damage": 4529,
+      "verdict": "FAIL",
+      "note": "假设连已声明 pool 的卡也被实现成直接叠加（第 12 轮四上界铁律漏掉第五变量 base 的真实风险）"
+    },
+    "withSharedPool": {
+      "base": 180.0,
+      "damage": 3996,
+      "verdict": "PASS",
+      "note": "修复后：base 固定 <=180，所有数值增益并入 offense_pool 并与 extra_pool 共享 600 上限"
+    }
+  },
+  "rule": {
+    "fiveCeilings": "realm_ratio<=1.60 / extra_pool<=600 / combo<=2.5 / crit<=1.8 / base<=180",
+    "sharedPool": "offense_pool 与 extra_pool 共享同一个 600 点上限，不得另开池",
+    "machineCheck": "凡 SkillCaster.* 钩子且 params 触碰上界变量的卡，必须显式带 cap 或 pool"
+  },
+  "verdict": "PASS",
+  "recompute": "python3 tools/verify_damage_ceiling.py  # 可复算，零第三方依赖",
+  "status": "结构红线已机器核对；卡牌具体数值/权重仍为 PROPOSAL 待实测"
+}

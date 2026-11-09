@@ -1,0 +1,140 @@
+{
+  "mode": "dry-run",
+  "generatedAt": "2026-11-08T01:30:59",
+  "source": "tools/apply_decisions.py",
+  "cardSpec": "docs/decision-card.json",
+  "proposalSpec": "docs/09-内容命名提案.md",
+  "willNot": [
+    "不改 01/02/04/06/07/08 任何正文",
+    "不把 design-freeze-draft.json 的 frozen 置 true",
+    "不产出 docs/design-freeze.json（正式冻结清单）",
+    "不生成任何图标 / 不建 Godot 工程",
+    "不把「预选推荐值」当作用户确认"
+  ],
+  "applyMode": "由助手在用户确认后按本计划逐条执行；脚本本身不执行落地",
+  "closedQuestions": [
+    "C01",
+    "Q1",
+    "Q15",
+    "Q19",
+    "Q21",
+    "Q22",
+    "Q23",
+    "Q24",
+    "Q25",
+    "Q26",
+    "Q27",
+    "Q28",
+    "Q2_4_6_9",
+    "Q3",
+    "Q5",
+    "Q8"
+  ],
+  "remainingUnanswered": [],
+  "hardGatesCleared": true,
+  "fileChanges": [
+    {
+      "id": "C01",
+      "answer": "accept_convergence",
+      "onResolve": "改 00 §2 那一行 + design-freeze-draft.json → conflicts"
+    },
+    {
+      "id": "Q3",
+      "answer": "stage_battle",
+      "onResolve": "改 01 §5/§9 与节点树、场景清单"
+    },
+    {
+      "id": "Q5",
+      "answer": "accept_roguelite",
+      "onResolve": "改 01 §6 M3 与 §12 存档章"
+    },
+    {
+      "id": "Q8",
+      "answer": "autoload_json",
+      "onResolve": "改场景流文档与 Autoload 配置"
+    },
+    {
+      "id": "Q24",
+      "answer": "procedural_plus_pixelfx",
+      "onResolve": "改 01 §9、asset-content-manifest.json、积分档位"
+    },
+    {
+      "id": "Q21",
+      "answer": "128",
+      "onResolve": "改 06 §3 与 regularize_sprites.py --size"
+    },
+    {
+      "id": "Q25",
+      "answer": "proposal_v1",
+      "onResolve": "改 02 P0-2、07 §7.3、build_icons.py"
+    },
+    {
+      "id": "Q26",
+      "answer": "proposal_b",
+      "onResolve": "改 01 M3、07 §7.3；方案 B 另需改存档结构"
+    },
+    {
+      "id": "Q27",
+      "answer": "proposal_3slots_8types",
+      "onResolve": "改 01 装备章、07 §7.2 补槽位契约"
+    },
+    {
+      "id": "Q28",
+      "answer": "proposal_local_only",
+      "onResolve": "改 02 §5、01 §15（R30 需把 M6 并入正式验收表）"
+    },
+    {
+      "id": "Q2_4_6_9",
+      "answer": "keep_assumptions",
+      "onResolve": "补 01 平台与发布章"
+    },
+    {
+      "id": "Q15",
+      "answer": "defer",
+      "onResolve": "改 02 §3 与 CSV longevity_*"
+    },
+    {
+      "id": "Q19",
+      "answer": "default",
+      "onResolve": "确认 04 §2"
+    },
+    {
+      "id": "Q22",
+      "answer": "confirm_4",
+      "onResolve": "追认 06 §3 的怪种数"
+    },
+    {
+      "id": "Q23",
+      "answer": "auto",
+      "onResolve": "回填 asset-content-manifest.json estimates"
+    },
+    {
+      "id": "Q1",
+      "answer": "4.7.2.stable",
+      "onResolve": "改 01 技术章、SkillCaster.gd、export_presets.cfg"
+    }
+  ],
+  "unlockedWork": [
+    "12 件词缀图标（16×16 菱形框）→ build_icons.py 程序化，0 积分",
+    "6 件灵韵图标（六边框）→ build_icons.py 程序化，0 积分",
+    "补 3 个 slot_* ID 契约；已产 8 件 icon_gear_* 保持不改名",
+    "B3 两个 Boss 可开工（需按所选尺寸走 regularize_sprites.py --size）",
+    "B4 剩余 4 技能 / 命中特效 / 5 组 overlay 可开工",
+    "M6 埋点字段可落入 02 §5 与 01 §15",
+    "四个硬门禁齐备 → 可进入 08 §5 的 v0.2 合并与冻结门禁检查（仍需用户整体确认策划案）"
+  ],
+  "creditsBand": "B 85–200（推荐）",
+  "risksToCarry": [
+    "R27 extra_pool 口径断裂（随 Q26 方案）",
+    "R28 3 槽 ≠ 8 品类（随 Q27）",
+    "R29 埋点 vs 无数据收集（随 Q28）",
+    "R30 M6 未并入 01 §15 正式验收表"
+  ],
+  "stillPending": [
+    "C01 若采纳收敛需改写 00 §2 与 design-freeze-draft.json → conflicts",
+    "18 件图标仍待用户确认提案后才生成",
+    "R9 字体最终核验、R22 阴兵对比度、hitboxOffsetX=16px、剑魂 8fps 节奏、Godot 编辑器验证",
+    "策划案整体确认 → 01 v0.2 → design-freeze.json 置 frozen=true → 才建工程"
+  ],
+  "note": "本计划是「拿到答复后该改什么」的清单，不是执行结果；全部数值与积分均为量级估算，待实测。"
+}

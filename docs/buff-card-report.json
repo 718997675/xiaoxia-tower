@@ -1,0 +1,180 @@
+{
+  "version": "v0.1",
+  "round": 12,
+  "source": "docs/buff-card-library.json",
+  "spec": [
+    "docs/11-塔层三选一卡牌系统.md",
+    "docs/12-卡牌UI规格.md"
+  ],
+  "status": "PROPOSAL · 数值/概率待实测；不是冻结规格",
+  "validation": {
+    "errors": [],
+    "passed": true
+  },
+  "stats": {
+    "totalCards": 72,
+    "byCategory": {
+      "dmg": 12,
+      "attr": 12,
+      "mech": 12,
+      "res": 12,
+      "surv": 12,
+      "syn": 12
+    },
+    "byRarity": {
+      "common": 30,
+      "rare": 30,
+      "legend": 8,
+      "curse": 4
+    },
+    "byEffectType": {
+      "numeric": 17,
+      "hybrid": 20,
+      "mechanical": 35
+    },
+    "numericCount": 17,
+    "numericRatio": 0.2361,
+    "numericCap": 0.3333,
+    "offeredPerStage": 3,
+    "picksPerStage": 1,
+    "stagesWithPick": 8,
+    "naiveSequenceUpperBound": 6561,
+    "naiveBoundNote": "3^8 只是数学上界，含去重/同类限制/前置/互斥，实际远小；且 η=0.10 折扣后不等于可感知差异，见 11 §6"
+  },
+  "offenseCeiling": {
+    "rule": "卡牌不得提高 compute_damage 四个上界：realm_ratio≤1.60、extra_pool≤600、combo_multiplier≤2.5、crit_multiplier≤1.8",
+    "why": "02 §4 P0-3 已把全最大伤害从 5940 压到 3996（第 9 层 Boss 4400），余量仅 404 点；再叠卡牌倍率会一击清层，红线复燃",
+    "implementation": "伤害类卡只改『达到上界的路径』（命中数/落点/命中条件/CD），或把增益并入 offense_pool 且与 extra_pool 共享 600 点上限",
+    "recompute": "3996 / 4400 = 0.908，卡牌引入后须重跑 01 §8.1 极值验算；本轮未重跑，标待实测"
+  },
+  "pngAssets": [
+    {
+      "id": "frame_common",
+      "size": [
+        96,
+        144
+      ],
+      "semiAlpha": 0,
+      "outOfPalette": 0,
+      "coverage": 0.9638
+    },
+    {
+      "id": "frame_rare",
+      "size": [
+        96,
+        144
+      ],
+      "semiAlpha": 0,
+      "outOfPalette": 0,
+      "coverage": 0.9638
+    },
+    {
+      "id": "frame_legend",
+      "size": [
+        96,
+        144
+      ],
+      "semiAlpha": 0,
+      "outOfPalette": 0,
+      "coverage": 0.9638
+    },
+    {
+      "id": "frame_curse",
+      "size": [
+        96,
+        144
+      ],
+      "semiAlpha": 0,
+      "outOfPalette": 0,
+      "coverage": 0.9638
+    },
+    {
+      "id": "sigil_dmg",
+      "size": [
+        24,
+        24
+      ],
+      "semiAlpha": 0,
+      "outOfPalette": 0,
+      "coverage": 0.1771
+    },
+    {
+      "id": "sigil_attr",
+      "size": [
+        24,
+        24
+      ],
+      "semiAlpha": 0,
+      "outOfPalette": 0,
+      "coverage": 0.3229
+    },
+    {
+      "id": "sigil_mech",
+      "size": [
+        24,
+        24
+      ],
+      "semiAlpha": 0,
+      "outOfPalette": 0,
+      "coverage": 0.5417
+    },
+    {
+      "id": "sigil_res",
+      "size": [
+        24,
+        24
+      ],
+      "semiAlpha": 0,
+      "outOfPalette": 0,
+      "coverage": 0.2483
+    },
+    {
+      "id": "sigil_surv",
+      "size": [
+        24,
+        24
+      ],
+      "semiAlpha": 0,
+      "outOfPalette": 0,
+      "coverage": 0.5208
+    },
+    {
+      "id": "sigil_syn",
+      "size": [
+        24,
+        24
+      ],
+      "semiAlpha": 0,
+      "outOfPalette": 0,
+      "coverage": 0.3316
+    }
+  ],
+  "outputs": {
+    "frames": [
+      "assets/ui/cards/frame_common.png",
+      "assets/ui/cards/frame_rare.png",
+      "assets/ui/cards/frame_legend.png",
+      "assets/ui/cards/frame_curse.png"
+    ],
+    "sigils": [
+      "assets/ui/cards/sigil_dmg.png",
+      "assets/ui/cards/sigil_attr.png",
+      "assets/ui/cards/sigil_mech.png",
+      "assets/ui/cards/sigil_res.png",
+      "assets/ui/cards/sigil_surv.png",
+      "assets/ui/cards/sigil_syn.png"
+    ],
+    "contactSheet": "assets/_preview/buff_cards_contact_sheet.png",
+    "preview": "assets/_preview/buff-card-preview.html",
+    "csv": "docs/卡牌库.csv"
+  },
+  "previewKB": 41.6,
+  "credits": 0,
+  "sourceImages": 0,
+  "caveats": [
+    "预览抽卡未模拟 build 前置与层数解锁，见 11 §6",
+    "卡面 PNG 不含文字；预览字体 ≠ 实机字体（R9 未核验）",
+    "卡牌全生效后 01 §8.1 极值验算未重跑（R32，待实测）",
+    "Q1 未填，硬门禁 3/4，未建工程、未冻结"
+  ]
+}

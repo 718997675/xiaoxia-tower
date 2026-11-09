@@ -1,0 +1,78 @@
+{
+  "source": "docs/design-freeze-draft.json",
+  "sourceRole": "阶段一历史快照（draft），不是当前权威",
+  "status": "draft",
+  "frozen": false,
+  "authoritative": {
+    "exists": true,
+    "path": "docs/design-freeze.json",
+    "status": "frozen",
+    "version": 1,
+    "engine": "Godot 4.7.2.stable.official.ed1daf0bf（标准版非 .NET；导出模板未装）",
+    "items": 22,
+    "invalidIds": [],
+    "duplicateIds": false,
+    "unconfirmedIds": [],
+    "coverage": {
+      "covered": 6,
+      "total": 22,
+      "rate": 0.2727,
+      "coveredIds": [
+        "DF-04",
+        "DF-12",
+        "DF-13",
+        "DF-15",
+        "DF-19",
+        "DF-21"
+      ]
+    },
+    "note": "最小验证工程只实现 DF-04 / DF-12 / DF-13 / DF-15 等少数几条；其余条目属正式工程范围，低覆盖率是真实进度，禁止塞标记凑数。",
+    "verdict": "PASS"
+  },
+  "confirmedCount": 18,
+  "idValidity": {
+    "valid": 18,
+    "total": 18,
+    "rate": 1.0,
+    "invalid": []
+  },
+  "sourceExists": {
+    "found": 22,
+    "total": 22,
+    "missing": []
+  },
+  "openQuestions": {
+    "count": 15,
+    "documented": 15,
+    "rate": 1.0,
+    "byType": {
+      "hardGate": 4,
+      "contentBlocker": 6,
+      "deferred": 5
+    }
+  },
+  "hardGates": {
+    "declared": 4,
+    "missing": [],
+    "mistyped": []
+  },
+  "conflicts": {
+    "count": 1,
+    "unresolved": []
+  },
+  "implementationCoverage": {
+    "covered": 4,
+    "total": 18,
+    "rate": 0.2222,
+    "coveredIds": [
+      "DF-04",
+      "DF-12",
+      "DF-13",
+      "DF-15"
+    ],
+    "scope": "assets/ + tools/ + scripts/ + scenes/ + project.godot（排除 assets/_preview/，R36）",
+    "note": "产物侧 DF-xx 回指 4/18；第 15 轮起工程已建，覆盖率不再等于 0。未覆盖条目属正式工程范围，是真实进度而非缺陷；禁止手工塞标记凑数。"
+  },
+  "issues": [],
+  "verdict": "PASS"
+}

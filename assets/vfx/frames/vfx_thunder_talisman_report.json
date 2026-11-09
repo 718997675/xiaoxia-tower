@@ -1,0 +1,71 @@
+{
+  "source": "8_bit_pixel_art_game_VFX_anima_2026-11-07T15-12-50.png",
+  "kind": "vfx",
+  "cells": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "hollow": false,
+  "append": false,
+  "crop": [
+    8,
+    8,
+    496,
+    496
+  ],
+  "frames": [
+    {
+      "file": "vfx_thunder_talisman_00.png",
+      "scale": 0.1148,
+      "colorsBeforeSnap": 61,
+      "pixelsSnapped": 61,
+      "usedColors": 5,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_thunder_talisman_01.png",
+      "scale": 0.1148,
+      "colorsBeforeSnap": 313,
+      "pixelsSnapped": 327,
+      "usedColors": 11,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_thunder_talisman_02.png",
+      "scale": 0.1148,
+      "colorsBeforeSnap": 470,
+      "pixelsSnapped": 496,
+      "usedColors": 11,
+      "outOfPalette": 0
+    },
+    {
+      "file": "vfx_thunder_talisman_03.png",
+      "scale": 0.1148,
+      "colorsBeforeSnap": 474,
+      "pixelsSnapped": 504,
+      "usedColors": 10,
+      "outOfPalette": 0
+    }
+  ],
+  "outputs": {
+    "frames": [
+      "vfx_thunder_talisman_00.png",
+      "vfx_thunder_talisman_01.png",
+      "vfx_thunder_talisman_02.png",
+      "vfx_thunder_talisman_03.png"
+    ],
+    "framesAddedThisBatch": [
+      "vfx_thunder_talisman_00.png",
+      "vfx_thunder_talisman_01.png",
+      "vfx_thunder_talisman_02.png",
+      "vfx_thunder_talisman_03.png"
+    ],
+    "sheet": "vfx_thunder_talisman_sheet.png",
+    "gif": "vfx_thunder_talisman.gif",
+    "preview": "vfx_thunder_talisman_preview.png",
+    "engineJson": "vfx_thunder_talisman.json"
+  },
+  "paletteOutOfRangeTotal": 0
+}

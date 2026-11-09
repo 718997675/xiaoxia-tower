@@ -1,0 +1,72 @@
+{
+  "source": "Use_the_reference_image_as_the_2026-11-07T16-09-10.png",
+  "kind": "mob",
+  "cells": [
+    1,
+    2,
+    3
+  ],
+  "hollow": false,
+  "append": true,
+  "crop": [
+    144,
+    152,
+    376,
+    377
+  ],
+  "frames": [
+    {
+      "file": "mob_jian_hun_death_r_00.png",
+      "scale": 0.2586,
+      "colorsBeforeSnap": 783,
+      "pixelsSnapped": 796,
+      "usedColors": 13,
+      "outOfPalette": 0
+    },
+    {
+      "file": "mob_jian_hun_death_r_01.png",
+      "scale": 0.2586,
+      "colorsBeforeSnap": 413,
+      "pixelsSnapped": 429,
+      "usedColors": 10,
+      "outOfPalette": 0
+    },
+    {
+      "file": "mob_jian_hun_death_r_02.png",
+      "scale": 0.2586,
+      "colorsBeforeSnap": 83,
+      "pixelsSnapped": 83,
+      "usedColors": 7,
+      "outOfPalette": 0
+    }
+  ],
+  "outputs": {
+    "frames": [
+      "mob_jian_hun_idle_r_00.png",
+      "mob_jian_hun_idle_r_01.png",
+      "mob_jian_hun_idle_r_02.png",
+      "mob_jian_hun_run_r_00.png",
+      "mob_jian_hun_run_r_01.png",
+      "mob_jian_hun_run_r_02.png",
+      "mob_jian_hun_run_r_03.png",
+      "mob_jian_hun_atk_r_00.png",
+      "mob_jian_hun_atk_r_01.png",
+      "mob_jian_hun_atk_r_02.png",
+      "mob_jian_hun_atk_r_03.png",
+      "mob_jian_hun_hit_r_00.png",
+      "mob_jian_hun_death_r_00.png",
+      "mob_jian_hun_death_r_01.png",
+      "mob_jian_hun_death_r_02.png"
+    ],
+    "framesAddedThisBatch": [
+      "mob_jian_hun_death_r_00.png",
+      "mob_jian_hun_death_r_01.png",
+      "mob_jian_hun_death_r_02.png"
+    ],
+    "sheet": "mob_jian_hun_sheet.png",
+    "gif": "mob_jian_hun.gif",
+    "preview": "mob_jian_hun_preview.png",
+    "engineJson": "mob_jian_hun.json"
+  },
+  "paletteOutOfRangeTotal": 0
+}

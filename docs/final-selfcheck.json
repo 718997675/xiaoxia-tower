@@ -1,0 +1,244 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-10",
+  "generator": "tools/final_selfcheck.py",
+  "scope": "第 15 轮收口 · 交付前全量静态自检",
+  "verdict": "PASS",
+  "summary": {
+    "checks": 36,
+    "passed": 36,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "id": "json_parse",
+      "desc": "docs/*.json 全部可解析",
+      "status": "PASS",
+      "detail": "34 份 JSON 全部可解析"
+    },
+    {
+      "id": "csv_numbers",
+      "desc": "数值源 9 列、无 BOM、无空行、含 round15",
+      "status": "PASS",
+      "detail": "279 行（含表头）× 9 列，无 BOM / 无空行，含 round15 行"
+    },
+    {
+      "id": "csv_cards",
+      "desc": "卡牌 CSV 15 列 / 73 行",
+      "status": "PASS",
+      "detail": "73 行（含表头）× 15 列，无 BOM / 无空行"
+    },
+    {
+      "id": "python_compile",
+      "desc": "tools/*.py 全部编译通过",
+      "status": "PASS",
+      "detail": "30 个 tools/*.py 全部编译通过"
+    },
+    {
+      "id": "freeze_authoritative",
+      "desc": "权威冻结清单 frozen / 22 条 DF",
+      "status": "PASS",
+      "detail": "status=frozen / version=1 / 22 条 DF-01..DF-22 连续唯一且全部 confirmed"
+    },
+    {
+      "id": "freeze_draft",
+      "desc": "draft 仍为历史快照且有失效说明",
+      "status": "PASS",
+      "detail": "仍 draft / frozen=false；历史字段失效说明齐备，且已清除占位符编号（R40）"
+    },
+    {
+      "id": "receipt",
+      "desc": "决策回执 16/16、硬门禁 4/4",
+      "status": "PASS",
+      "detail": "16/16 已答 / 硬门禁 4/4 / 错误 0 / 告警 1（Q28 正文修订，已随 v0.2 处置）"
+    },
+    {
+      "id": "damage_ceiling",
+      "desc": "R32 五上界 / 3996 < 4400",
+      "status": "PASS",
+      "detail": "五上界齐全 / 违规 0 / 峰值 3996 < Boss 4400 / 72 卡全扫"
+    },
+    {
+      "id": "card_library",
+      "desc": "72 张卡 + 3 张卡 pool/cap 声明",
+      "status": "PASS",
+      "detail": "72 张 / 6 类 / 4 档；3 张 R32 修复卡均带 pool:offense_pool + cap:600"
+    },
+    {
+      "id": "godot_project_check",
+      "desc": "工程结构自检错误 0",
+      "status": "PASS",
+      "detail": "错误 0 / 警告 2（覆盖率缺口 + 报告自指绝对路径，已知例外）"
+    },
+    {
+      "id": "traceability",
+      "desc": "追溯核对 PASS / 覆盖率动态自洽",
+      "status": "PASS",
+      "detail": "verdict=PASS / 权威清单 frozen 22 条 / 覆盖 6/22 = 27.27%（真实进度）"
+    },
+    {
+      "id": "qc_report",
+      "desc": "全量素材 SHIP（帧数动态自洽）",
+      "status": "PASS",
+      "detail": "23 组 / 214 项全 SHIP，越界色 0 / 半透明帧 0 / 尺寸不符 0（帧数动态自洽，>=142 基线）"
+    },
+    {
+      "id": "icon_catalog",
+      "desc": "47 图标 + 4 挂件 / pending 0",
+      "status": "PASS",
+      "detail": "图标 47/47、挂件 4/4、pending 归零（R31 返修后）"
+    },
+    {
+      "id": "project_config",
+      "desc": "project.godot 像素与输入配置",
+      "status": "PASS",
+      "detail": "480×270×4 / Nearest(0) / stretch=viewport / 主场景 / 左右输入映射齐全"
+    },
+    {
+      "id": "minimal_scene",
+      "desc": "MinimalRun.tscn 节点树",
+      "status": "PASS",
+      "detail": "节点树 MinimalRun → Player(CharacterBody2D) → Sprite(AnimatedSprite2D)，脚本已挂"
+    },
+    {
+      "id": "player_probe",
+      "desc": "主角 7 帧路径 + @trace 回指",
+      "status": "PASS",
+      "detail": "7 帧全部存在 / @trace = DF-04,DF-12,DF-13,DF-15 / 只镜像 Sprite.scale.x"
+    },
+    {
+      "id": "artifacts",
+      "desc": "关键产物齐备",
+      "status": "PASS",
+      "detail": "73 项关键产物齐备（交接文档 / 冻结 / 工程 / 报告 / 3 个预览页 / 2 张拼图 / 卡牌规则层 / 网页验证层 / 主菜单与战斗原型）"
+    },
+    {
+      "id": "absolute_paths",
+      "desc": "文档/工程无机器绝对路径",
+      "status": "PASS",
+      "detail": "扫描 75 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
+    },
+    {
+      "id": "stale_handover",
+      "desc": "交接文档过期状态已清除",
+      "status": "PASS",
+      "detail": "4 类过期状态已清除；当前状态 / R39 / R41 / R42 / 收口段 / 状态口径 / 17 处修正全部就位"
+    },
+    {
+      "id": "gdignore_r39",
+      "desc": "R39 的 .gdignore 与兜底规则",
+      "status": "PASS",
+      "detail": "空 .gdignore 就位 / 24 个生成物已清理 / .gitignore 双行兜底"
+    },
+    {
+      "id": "collision_r41",
+      "desc": "R41 主角碰撞体与真实地面",
+      "status": "PASS",
+      "detail": "Player/Body 32×56 + GroundBody/Shape 480×54，脚底 216 == 地面顶 216；verify 脚本带回归断言"
+    },
+    {
+      "id": "previews_r42",
+      "desc": "R42 预览画板归位与 .gdignore",
+      "status": "PASS",
+      "detail": "3 个画板已入 previews/（含空 .gdignore）；根目录无 miora / *_assets；assets/_preview 预览图 0 个 .import"
+    },
+    {
+      "id": "frames_tres_r43",
+      "desc": "R43 SpriteFrames 资源化并挂场景",
+      "status": "PASS",
+      "detail": "player_frames.tres 由引擎生成（idle3/run4，6/8fps）并已挂场景；脚本保留兜底分支"
+    },
+    {
+      "id": "workspace_moved_r17",
+      "desc": "R17 工作空间已迁至 ai-game 且接手指南在工程根",
+      "status": "PASS",
+      "detail": "工程位于 ~/Documents/ai-game/ ；接手指南在工程根 xianxia-tower/ 内（R44 用户口径），工作空间根无重复副本，交接文档已记录第 17 轮迁移，无误建路径残留"
+    },
+    {
+      "id": "card_runtime_data_r45",
+      "desc": "R45 运行时卡库副本与设计源一致",
+      "status": "PASS",
+      "detail": "72 张设计源 → data/ 运行时副本语义一致；docs/.gdignore 仍在（R45 链路完整）"
+    },
+    {
+      "id": "card_rules_r18",
+      "desc": "卡牌规则层 headless 23 项 + 五上界守卫",
+      "status": "PASS",
+      "detail": "headless 23/23 PASS / 72 卡 / 峰值 3996 < 4400 / 守卫事件 105 条 / @trace DF-19,DF-21"
+    },
+    {
+      "id": "web_demo_r19",
+      "desc": "R47 网页验证层 + 跨端同口径 25 项",
+      "status": "PASS",
+      "detail": "网页 Demo 六视图 / 245 图 / 72 卡齐备；内嵌 JS 与 R47 随机源同源；跨端 25/25 PASS；黄金样本 5 局 + 12 randf"
+    },
+    {
+      "id": "battle_demo_r20",
+      "desc": "第 20 轮主菜单 / 横版战斗原型 + 战斗内核 44 项",
+      "status": "PASS",
+      "detail": "六视图含主菜单 / 横版战斗；战斗内核 44/44 PASS；冻结数值与 Godot 主场景未改；R50–R52 边界如实标注"
+    },
+    {
+      "id": "card_effects_r21",
+      "desc": "第 21 轮机制型卡映射 + R54 口径 + 40 项断言",
+      "status": "PASS",
+      "detail": "卡牌效果 40/40 PASS；26/72 张生效 / 三层 28-42-59 如实分列；R54 已记录；冻结数值 / 抽卡规则 / Godot 主场景未改"
+    },
+    {
+      "id": "ui_prompt_r22",
+      "desc": "第 22 轮 UI 外发提示词包（18 段中英）+ 回稿体检脚本",
+      "status": "PASS",
+      "detail": "docs/19 18 段中英提示词 + 提示词包一致 + 回稿体检脚本就绪；冻结文档 / Godot 工程未改"
+    },
+    {
+      "id": "battle_cross_r22",
+      "desc": "第 22 轮战斗公式层 Godot ↔ 网页跨端（52 条黄金样本 / 8 项断言）",
+      "status": "PASS",
+      "detail": "战斗公式层跨端 8/8 PASS；52 条黄金样本逐条一致；maxHit 3996 < Boss 4400；不含逐 tick 状态机已如实标注；冻结数值未改"
+    },
+    {
+      "id": "assets_r29",
+      "desc": "第 29 轮三块素材报告 / 磁盘 / 目检页四方一致（第 30 轮补）",
+      "status": "PASS",
+      "detail": "B3 42 帧 / B4 30 帧 / 背景 16 层（带外像素 0 / 越界色 0）；目检页 108 图；三个生成器 --check 全 PASS"
+    },
+    {
+      "id": "ui_reference_r31",
+      "desc": "第 31 轮 gpt-image2 回稿源覆盖率（17 取 16）+ UI 派生资产一致",
+      "status": "PASS",
+      "detail": "17 张 palette24 回稿取用 16 张（A2 旧版被 A2R 取代且已登记）；UI 派生 116 张 / 越界色 0；冻结 47 图标 + 10 卡面未替换"
+    },
+    {
+      "id": "web_reference_art_r32",
+      "desc": "第 32 轮回稿转录资源接入网页战斗画面（真实字节 / R50 解除 / 自检动态化）",
+      "status": "PASS",
+      "detail": "网页默认原稿模式 / 内嵌 245 图（Boss 42 + overlay 10 + bg 4 + 第 33 轮 UI 设计稿对照 9 张）；R50 已解除、实时自检动态化、--check 一致"
+    },
+    {
+      "id": "ui_skin_r33",
+      "desc": "第 33 轮 9 张 UI 设计稿按视图联动对照（逐字节 / 边界 / 六视图映射）",
+      "status": "PASS",
+      "detail": "9 张 UI 设计稿逐字节内嵌 / 六视图联动 / 开关与边界齐备；浏览器实时自检 +2 条；网页与 UI 派生资产 --check 一致"
+    },
+    {
+      "id": "card_art_r34",
+      "desc": "第 34–37 轮 72 卡独立插画（6 组拼版 / 克制风格 / 参考图边界 / 自适应裁剪 / 冻结口径未动）",
+      "status": "PASS",
+      "detail": "6 张拼版 / 6 次生成 / 72 格位与裁切框一一对应 / 72 卡母题·签名·剪影唯一 / 6 组中英提示词（第 36 轮克制风格 + 第 37 轮参考图边界/唯一内容依据）+ 72 行核对页 / 07-codex 原稿第一基准且 16/16 画法样板全覆盖 / 裁剪器 fixed + --adaptive 双 --check 通过 / 回稿 0/6 与 0/72 如实披露 / docs/12 与 10 张冻结卡面原样未动"
+    }
+  ],
+  "knownExceptions": [
+    "docs/godot-project-check.json 的 projectDir 由检查器写入机器绝对路径，属报告自指；不属工程文件残留，按纪律保留警告不抑制。",
+    "docs/final-selfcheck.json 是本脚本的上一次输出，绝对路径扫描时排除自身以免自指；其 detail 文案也不写绝对路径字面量。",
+    "冻结条目覆盖率由 check_traceability.py 动态给出（第 18/19 轮为 6/22 = 27.27%），是最小验证工程的真实进度，不塞 @trace 标记凑数。",
+    "docs/design-freeze-draft.json 的 notTheRealFreeze 字段仍写「清单尚不存在」，是第 10 轮历史描述；按基线不覆盖原则保留，以 round15Freeze 的失效说明为准。",
+    "docs/decision-receipt.json 的 status=received-not-applied 是脚本语义（回执本身不是执行结果）；实际落地证据见 docs/10 状态更新与 01 v0.2。"
+  ],
+  "dynamicRecheck": [
+    "python3 tools/verify_damage_ceiling.py",
+    "python3 tools/check_traceability.py",
+    "check_godot_project.py . --spec docs/project-spec.json --freeze docs/design-freeze.json --json docs/godot-project-check.json",
+    "Godot --headless --script tools/verify_minimal_run.gd（须先由编辑器导入资源）"
+  ],
+  "boundary": "本脚本只做离线/静态验证。像素硬边、朝右镜像、480×270×4 对齐、阴兵对比度等仍需用户按 docs/13 §12 在 GUI 按 F5 目检；PASS 不等于游戏可玩。"
+}

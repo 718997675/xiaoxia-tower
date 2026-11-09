@@ -1,0 +1,3356 @@
+{
+  "version": 2,
+  "generatedBy": "tools/split_card_art_sheets.py",
+  "status": "待目检与合规确认；不得直接入库",
+  "sheetSpec": {
+    "sheetCount": 6,
+    "cellsPerSheet": 12,
+    "generations": 6,
+    "sheetSize": [
+      1536,
+      1024
+    ],
+    "grid": [
+      3,
+      4
+    ],
+    "cellSize": [
+      512,
+      256
+    ],
+    "cropSize": [
+      384,
+      256
+    ],
+    "cropPadX": 64,
+    "cellOrder": "行优先：从上到下、每行从左到右；01=第1行第1格，12=第4行第3格",
+    "sheetDir": "previews/card_art_sheets/",
+    "sheetNaming": "sheet-01.png … sheet-06.png",
+    "splitTool": "tools/split_card_art_sheets.py",
+    "cropRule": "每格先按 cellBox 取 512×256，再中心裁 384×256（左右各弃 64px 安全边）；3:2 与 84×56 插画区同比例",
+    "noDrawnGrid": "禁止在图上画格线/编号；裁剪按像素坐标（默认固定，--adaptive 自动探测真实行/列空隙），不依赖视觉检测格线"
+  },
+  "adaptive": false,
+  "sheets": [
+    {
+      "file": "sheet-01.png",
+      "category": "dmg",
+      "title": "技能伤害（朱砂主调）",
+      "present": false,
+      "sha256": null,
+      "size": null,
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "cardId": "card_jianfeng",
+          "cardName": "剑锋淬砺",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "usedBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_jianfeng-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "cardId": "card_poyun",
+          "cardName": "破云式",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "usedBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_poyun-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "cardId": "card_leizhuan",
+          "cardName": "雷篆重描",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "usedBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_leizhuan-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "cardId": "card_danbao",
+          "cardName": "丹火爆燃",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "usedBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_danbao-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "cardId": "card_fuzhen",
+          "cardName": "符阵叠印",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "usedBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_fuzhen-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "cardId": "card_quanfeng",
+          "cardName": "拳风连震",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "usedBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_quanfeng-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "cardId": "card_huiling",
+          "cardName": "回春化刃",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "usedBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_huiling-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "cardId": "card_jingang",
+          "cardName": "金刚怒目",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "usedBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_jingang-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "cardId": "card_jianyi",
+          "cardName": "剑意凝形",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "usedBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_jianyi-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "cardId": "card_wuxing",
+          "cardName": "五行逆克",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "usedBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_wuxing-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "cardId": "card_lianhuan",
+          "cardName": "连环符",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "usedBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_lianhuan-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "cardId": "card_zhanxing",
+          "cardName": "斩星",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "usedBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_zhanxing-cardart-original.png",
+          "outputPresent": false
+        }
+      ]
+    },
+    {
+      "file": "sheet-02.png",
+      "category": "attr",
+      "title": "属性提升（青玉主调）",
+      "present": false,
+      "sha256": null,
+      "size": null,
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "cardId": "card_cuijing",
+          "cardName": "淬精",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "usedBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_cuijing-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "cardId": "card_ningdan",
+          "cardName": "凝丹",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "usedBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_ningdan-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "cardId": "card_lingmai",
+          "cardName": "灵脉拓宽",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "usedBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_lingmai-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "cardId": "card_buyao",
+          "cardName": "步摇",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "usedBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_buyao-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "cardId": "card_tiepi",
+          "cardName": "铁皮",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "usedBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_tiepi-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "cardId": "card_huixin",
+          "cardName": "会心",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "usedBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_huixin-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "cardId": "card_poyu",
+          "cardName": "破域",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "usedBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_poyu-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "cardId": "card_shouyuan",
+          "cardName": "寿元",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "usedBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_shouyuan-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "cardId": "card_qingling",
+          "cardName": "轻灵",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "usedBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_qingling-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "cardId": "card_juxi",
+          "cardName": "聚息",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "usedBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_juxi-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "cardId": "card_zhongzhu",
+          "cardName": "重铸",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "usedBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_zhongzhu-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "cardId": "card_jingpo",
+          "cardName": "精魄",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "usedBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_jingpo-cardart-original.png",
+          "outputPresent": false
+        }
+      ]
+    },
+    {
+      "file": "sheet-03.png",
+      "category": "mech",
+      "title": "机制改变（紫主调）",
+      "present": false,
+      "sha256": null,
+      "size": null,
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "cardId": "card_nianzhuan",
+          "cardName": "逆转回灵",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "usedBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_nianzhuan-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "cardId": "card_huanshi",
+          "cardName": "换势",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "usedBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_huanshi-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "cardId": "card_shuangxiu",
+          "cardName": "双修",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "usedBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_shuangxiu-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "cardId": "card_yuqi",
+          "cardName": "御气",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "usedBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_yuqi-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "cardId": "card_daoyin",
+          "cardName": "导引",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "usedBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_daoyin-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "cardId": "card_jieyin",
+          "cardName": "借印",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "usedBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_jieyin-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "cardId": "card_wuxiangpo",
+          "cardName": "无相破",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "usedBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_wuxiangpo-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "cardId": "card_chongzhu",
+          "cardName": "重铸令",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "usedBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_chongzhu-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "cardId": "card_tianren",
+          "cardName": "天人感应",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "usedBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_tianren-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "cardId": "card_sheli",
+          "cardName": "舍利",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "usedBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_sheli-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "cardId": "card_lunhui",
+          "cardName": "轮回",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "usedBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_lunhui-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "cardId": "card_pojing",
+          "cardName": "破境",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "usedBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_pojing-cardart-original.png",
+          "outputPresent": false
+        }
+      ]
+    },
+    {
+      "file": "sheet-04.png",
+      "category": "res",
+      "title": "资源灵力（金主调）",
+      "present": false,
+      "sha256": null,
+      "size": null,
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "cardId": "card_juling",
+          "cardName": "聚灵阵",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "usedBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_juling-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "cardId": "card_shengxi",
+          "cardName": "省息",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "usedBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_shengxi-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "cardId": "card_huanling",
+          "cardName": "还灵",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "usedBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_huanling-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "cardId": "card_danxiang",
+          "cardName": "丹香",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "usedBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_danxiang-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "cardId": "card_lingchao",
+          "cardName": "灵潮",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "usedBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_lingchao-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "cardId": "card_jieqi",
+          "cardName": "截取",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "usedBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_jieqi-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "cardId": "card_kongzhan",
+          "cardName": "空盏",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "usedBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_kongzhan-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "cardId": "card_fanyong",
+          "cardName": "反涌",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "usedBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_fanyong-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "cardId": "card_zhulian",
+          "cardName": "珠链",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "usedBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_zhulian-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "cardId": "card_wugen",
+          "cardName": "无根",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "usedBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_wugen-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "cardId": "card_tianlu",
+          "cardName": "天禄",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "usedBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_tianlu-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "cardId": "card_shouyin",
+          "cardName": "收印",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "usedBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_shouyin-cardart-original.png",
+          "outputPresent": false
+        }
+      ]
+    },
+    {
+      "file": "sheet-05.png",
+      "category": "surv",
+      "title": "生存回复（青玉/淡青主调）",
+      "present": false,
+      "sha256": null,
+      "size": null,
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "cardId": "card_huichun",
+          "cardName": "回春",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "usedBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_huichun-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "cardId": "card_huti",
+          "cardName": "护体",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "usedBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_huti-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "cardId": "card_bishui",
+          "cardName": "避水",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "usedBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_bishui-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "cardId": "card_duanxu",
+          "cardName": "断续",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "usedBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_duanxu-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "cardId": "card_jiaren",
+          "cardName": "假人",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "usedBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_jiaren-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "cardId": "card_tiegu",
+          "cardName": "铁骨",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "usedBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_tiegu-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "cardId": "card_guisuo",
+          "cardName": "归所",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "usedBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_guisuo-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "cardId": "card_yinbi",
+          "cardName": "隐避",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "usedBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_yinbi-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "cardId": "card_zhuansheng",
+          "cardName": "转生",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "usedBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_zhuansheng-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "cardId": "card_qinglu",
+          "cardName": "清露",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "usedBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_qinglu-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "cardId": "card_hunyuan",
+          "cardName": "混元",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "usedBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_hunyuan-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "cardId": "card_sheshi",
+          "cardName": "舍身",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "usedBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_sheshi-cardart-original.png",
+          "outputPresent": false
+        }
+      ]
+    },
+    {
+      "file": "sheet-06.png",
+      "category": "syn",
+      "title": "构筑风险（朱砂暗主调）",
+      "present": false,
+      "sha256": null,
+      "size": null,
+      "cellCount": 12,
+      "cells": [
+        {
+          "cell": 1,
+          "label": "r1c1",
+          "cardId": "card_jianxin",
+          "cardName": "剑心",
+          "cellBox": [
+            0,
+            0,
+            512,
+            256
+          ],
+          "cropBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "usedBox": [
+            64,
+            0,
+            448,
+            256
+          ],
+          "outputName": "card_jianxin-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 2,
+          "label": "r1c2",
+          "cardId": "card_fuhun",
+          "cardName": "符魂",
+          "cellBox": [
+            512,
+            0,
+            1024,
+            256
+          ],
+          "cropBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "usedBox": [
+            576,
+            0,
+            960,
+            256
+          ],
+          "outputName": "card_fuhun-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 3,
+          "label": "r1c3",
+          "cardId": "card_danxin",
+          "cardName": "丹心",
+          "cellBox": [
+            1024,
+            0,
+            1536,
+            256
+          ],
+          "cropBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "usedBox": [
+            1088,
+            0,
+            1472,
+            256
+          ],
+          "outputName": "card_danxin-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 4,
+          "label": "r2c1",
+          "cardId": "card_tipo",
+          "cardName": "体魄",
+          "cellBox": [
+            0,
+            256,
+            512,
+            512
+          ],
+          "cropBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "usedBox": [
+            64,
+            256,
+            448,
+            512
+          ],
+          "outputName": "card_tipo-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 5,
+          "label": "r2c2",
+          "cardId": "card_tongyuan",
+          "cardName": "同源",
+          "cellBox": [
+            512,
+            256,
+            1024,
+            512
+          ],
+          "cropBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "usedBox": [
+            576,
+            256,
+            960,
+            512
+          ],
+          "outputName": "card_tongyuan-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 6,
+          "label": "r2c3",
+          "cardId": "card_jiezeng",
+          "cardName": "劫增",
+          "cellBox": [
+            1024,
+            256,
+            1536,
+            512
+          ],
+          "cropBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "usedBox": [
+            1088,
+            256,
+            1472,
+            512
+          ],
+          "outputName": "card_jiezeng-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 7,
+          "label": "r3c1",
+          "cardId": "card_shuangren",
+          "cardName": "双刃",
+          "cellBox": [
+            0,
+            512,
+            512,
+            768
+          ],
+          "cropBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "usedBox": [
+            64,
+            512,
+            448,
+            768
+          ],
+          "outputName": "card_shuangren-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 8,
+          "label": "r3c2",
+          "cardId": "card_duozhu",
+          "cardName": "夺主",
+          "cellBox": [
+            512,
+            512,
+            1024,
+            768
+          ],
+          "cropBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "usedBox": [
+            576,
+            512,
+            960,
+            768
+          ],
+          "outputName": "card_duozhu-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 9,
+          "label": "r3c3",
+          "cardId": "card_zhongshi",
+          "cardName": "终誓",
+          "cellBox": [
+            1024,
+            512,
+            1536,
+            768
+          ],
+          "cropBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "usedBox": [
+            1088,
+            512,
+            1472,
+            768
+          ],
+          "outputName": "card_zhongshi-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 10,
+          "label": "r4c1",
+          "cardId": "card_shouzhuo",
+          "cardName": "守拙",
+          "cellBox": [
+            0,
+            768,
+            512,
+            1024
+          ],
+          "cropBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "usedBox": [
+            64,
+            768,
+            448,
+            1024
+          ],
+          "outputName": "card_shouzhuo-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 11,
+          "label": "r4c2",
+          "cardId": "card_yiyu",
+          "cardName": "异遇",
+          "cellBox": [
+            512,
+            768,
+            1024,
+            1024
+          ],
+          "cropBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "usedBox": [
+            576,
+            768,
+            960,
+            1024
+          ],
+          "outputName": "card_yiyu-cardart-original.png",
+          "outputPresent": false
+        },
+        {
+          "cell": 12,
+          "label": "r4c3",
+          "cardId": "card_wuxin",
+          "cardName": "无心",
+          "cellBox": [
+            1024,
+            768,
+            1536,
+            1024
+          ],
+          "cropBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "usedBox": [
+            1088,
+            768,
+            1472,
+            1024
+          ],
+          "outputName": "card_wuxin-cardart-original.png",
+          "outputPresent": false
+        }
+      ]
+    }
+  ],
+  "sheetsReceived": 0,
+  "sheetsPending": 6,
+  "outputsTotal": 72,
+  "outputsOnDisk": 0,
+  "outputs": [
+    {
+      "sheet": "sheet-01.png",
+      "cell": 1,
+      "label": "r1c1",
+      "cardId": "card_jianfeng",
+      "outputName": "card_jianfeng-cardart-original.png",
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ],
+      "usedBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 2,
+      "label": "r1c2",
+      "cardId": "card_poyun",
+      "outputName": "card_poyun-cardart-original.png",
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ],
+      "usedBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 3,
+      "label": "r1c3",
+      "cardId": "card_leizhuan",
+      "outputName": "card_leizhuan-cardart-original.png",
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ],
+      "usedBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 4,
+      "label": "r2c1",
+      "cardId": "card_danbao",
+      "outputName": "card_danbao-cardart-original.png",
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ],
+      "usedBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 5,
+      "label": "r2c2",
+      "cardId": "card_fuzhen",
+      "outputName": "card_fuzhen-cardart-original.png",
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ],
+      "usedBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 6,
+      "label": "r2c3",
+      "cardId": "card_quanfeng",
+      "outputName": "card_quanfeng-cardart-original.png",
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ],
+      "usedBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 7,
+      "label": "r3c1",
+      "cardId": "card_huiling",
+      "outputName": "card_huiling-cardart-original.png",
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ],
+      "usedBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 8,
+      "label": "r3c2",
+      "cardId": "card_jingang",
+      "outputName": "card_jingang-cardart-original.png",
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ],
+      "usedBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 9,
+      "label": "r3c3",
+      "cardId": "card_jianyi",
+      "outputName": "card_jianyi-cardart-original.png",
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ],
+      "usedBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 10,
+      "label": "r4c1",
+      "cardId": "card_wuxing",
+      "outputName": "card_wuxing-cardart-original.png",
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ],
+      "usedBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 11,
+      "label": "r4c2",
+      "cardId": "card_lianhuan",
+      "outputName": "card_lianhuan-cardart-original.png",
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ],
+      "usedBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-01.png",
+      "cell": 12,
+      "label": "r4c3",
+      "cardId": "card_zhanxing",
+      "outputName": "card_zhanxing-cardart-original.png",
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ],
+      "usedBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 1,
+      "label": "r1c1",
+      "cardId": "card_cuijing",
+      "outputName": "card_cuijing-cardart-original.png",
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ],
+      "usedBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 2,
+      "label": "r1c2",
+      "cardId": "card_ningdan",
+      "outputName": "card_ningdan-cardart-original.png",
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ],
+      "usedBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 3,
+      "label": "r1c3",
+      "cardId": "card_lingmai",
+      "outputName": "card_lingmai-cardart-original.png",
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ],
+      "usedBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 4,
+      "label": "r2c1",
+      "cardId": "card_buyao",
+      "outputName": "card_buyao-cardart-original.png",
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ],
+      "usedBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 5,
+      "label": "r2c2",
+      "cardId": "card_tiepi",
+      "outputName": "card_tiepi-cardart-original.png",
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ],
+      "usedBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 6,
+      "label": "r2c3",
+      "cardId": "card_huixin",
+      "outputName": "card_huixin-cardart-original.png",
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ],
+      "usedBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 7,
+      "label": "r3c1",
+      "cardId": "card_poyu",
+      "outputName": "card_poyu-cardart-original.png",
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ],
+      "usedBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 8,
+      "label": "r3c2",
+      "cardId": "card_shouyuan",
+      "outputName": "card_shouyuan-cardart-original.png",
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ],
+      "usedBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 9,
+      "label": "r3c3",
+      "cardId": "card_qingling",
+      "outputName": "card_qingling-cardart-original.png",
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ],
+      "usedBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 10,
+      "label": "r4c1",
+      "cardId": "card_juxi",
+      "outputName": "card_juxi-cardart-original.png",
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ],
+      "usedBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 11,
+      "label": "r4c2",
+      "cardId": "card_zhongzhu",
+      "outputName": "card_zhongzhu-cardart-original.png",
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ],
+      "usedBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-02.png",
+      "cell": 12,
+      "label": "r4c3",
+      "cardId": "card_jingpo",
+      "outputName": "card_jingpo-cardart-original.png",
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ],
+      "usedBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 1,
+      "label": "r1c1",
+      "cardId": "card_nianzhuan",
+      "outputName": "card_nianzhuan-cardart-original.png",
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ],
+      "usedBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 2,
+      "label": "r1c2",
+      "cardId": "card_huanshi",
+      "outputName": "card_huanshi-cardart-original.png",
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ],
+      "usedBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 3,
+      "label": "r1c3",
+      "cardId": "card_shuangxiu",
+      "outputName": "card_shuangxiu-cardart-original.png",
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ],
+      "usedBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 4,
+      "label": "r2c1",
+      "cardId": "card_yuqi",
+      "outputName": "card_yuqi-cardart-original.png",
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ],
+      "usedBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 5,
+      "label": "r2c2",
+      "cardId": "card_daoyin",
+      "outputName": "card_daoyin-cardart-original.png",
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ],
+      "usedBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 6,
+      "label": "r2c3",
+      "cardId": "card_jieyin",
+      "outputName": "card_jieyin-cardart-original.png",
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ],
+      "usedBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 7,
+      "label": "r3c1",
+      "cardId": "card_wuxiangpo",
+      "outputName": "card_wuxiangpo-cardart-original.png",
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ],
+      "usedBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 8,
+      "label": "r3c2",
+      "cardId": "card_chongzhu",
+      "outputName": "card_chongzhu-cardart-original.png",
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ],
+      "usedBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 9,
+      "label": "r3c3",
+      "cardId": "card_tianren",
+      "outputName": "card_tianren-cardart-original.png",
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ],
+      "usedBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 10,
+      "label": "r4c1",
+      "cardId": "card_sheli",
+      "outputName": "card_sheli-cardart-original.png",
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ],
+      "usedBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 11,
+      "label": "r4c2",
+      "cardId": "card_lunhui",
+      "outputName": "card_lunhui-cardart-original.png",
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ],
+      "usedBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-03.png",
+      "cell": 12,
+      "label": "r4c3",
+      "cardId": "card_pojing",
+      "outputName": "card_pojing-cardart-original.png",
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ],
+      "usedBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 1,
+      "label": "r1c1",
+      "cardId": "card_juling",
+      "outputName": "card_juling-cardart-original.png",
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ],
+      "usedBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 2,
+      "label": "r1c2",
+      "cardId": "card_shengxi",
+      "outputName": "card_shengxi-cardart-original.png",
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ],
+      "usedBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 3,
+      "label": "r1c3",
+      "cardId": "card_huanling",
+      "outputName": "card_huanling-cardart-original.png",
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ],
+      "usedBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 4,
+      "label": "r2c1",
+      "cardId": "card_danxiang",
+      "outputName": "card_danxiang-cardart-original.png",
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ],
+      "usedBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 5,
+      "label": "r2c2",
+      "cardId": "card_lingchao",
+      "outputName": "card_lingchao-cardart-original.png",
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ],
+      "usedBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 6,
+      "label": "r2c3",
+      "cardId": "card_jieqi",
+      "outputName": "card_jieqi-cardart-original.png",
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ],
+      "usedBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 7,
+      "label": "r3c1",
+      "cardId": "card_kongzhan",
+      "outputName": "card_kongzhan-cardart-original.png",
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ],
+      "usedBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 8,
+      "label": "r3c2",
+      "cardId": "card_fanyong",
+      "outputName": "card_fanyong-cardart-original.png",
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ],
+      "usedBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 9,
+      "label": "r3c3",
+      "cardId": "card_zhulian",
+      "outputName": "card_zhulian-cardart-original.png",
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ],
+      "usedBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 10,
+      "label": "r4c1",
+      "cardId": "card_wugen",
+      "outputName": "card_wugen-cardart-original.png",
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ],
+      "usedBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 11,
+      "label": "r4c2",
+      "cardId": "card_tianlu",
+      "outputName": "card_tianlu-cardart-original.png",
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ],
+      "usedBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-04.png",
+      "cell": 12,
+      "label": "r4c3",
+      "cardId": "card_shouyin",
+      "outputName": "card_shouyin-cardart-original.png",
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ],
+      "usedBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 1,
+      "label": "r1c1",
+      "cardId": "card_huichun",
+      "outputName": "card_huichun-cardart-original.png",
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ],
+      "usedBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 2,
+      "label": "r1c2",
+      "cardId": "card_huti",
+      "outputName": "card_huti-cardart-original.png",
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ],
+      "usedBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 3,
+      "label": "r1c3",
+      "cardId": "card_bishui",
+      "outputName": "card_bishui-cardart-original.png",
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ],
+      "usedBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 4,
+      "label": "r2c1",
+      "cardId": "card_duanxu",
+      "outputName": "card_duanxu-cardart-original.png",
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ],
+      "usedBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 5,
+      "label": "r2c2",
+      "cardId": "card_jiaren",
+      "outputName": "card_jiaren-cardart-original.png",
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ],
+      "usedBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 6,
+      "label": "r2c3",
+      "cardId": "card_tiegu",
+      "outputName": "card_tiegu-cardart-original.png",
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ],
+      "usedBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 7,
+      "label": "r3c1",
+      "cardId": "card_guisuo",
+      "outputName": "card_guisuo-cardart-original.png",
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ],
+      "usedBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 8,
+      "label": "r3c2",
+      "cardId": "card_yinbi",
+      "outputName": "card_yinbi-cardart-original.png",
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ],
+      "usedBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 9,
+      "label": "r3c3",
+      "cardId": "card_zhuansheng",
+      "outputName": "card_zhuansheng-cardart-original.png",
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ],
+      "usedBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 10,
+      "label": "r4c1",
+      "cardId": "card_qinglu",
+      "outputName": "card_qinglu-cardart-original.png",
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ],
+      "usedBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 11,
+      "label": "r4c2",
+      "cardId": "card_hunyuan",
+      "outputName": "card_hunyuan-cardart-original.png",
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ],
+      "usedBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-05.png",
+      "cell": 12,
+      "label": "r4c3",
+      "cardId": "card_sheshi",
+      "outputName": "card_sheshi-cardart-original.png",
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ],
+      "usedBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 1,
+      "label": "r1c1",
+      "cardId": "card_jianxin",
+      "outputName": "card_jianxin-cardart-original.png",
+      "cropBox": [
+        64,
+        0,
+        448,
+        256
+      ],
+      "usedBox": [
+        64,
+        0,
+        448,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 2,
+      "label": "r1c2",
+      "cardId": "card_fuhun",
+      "outputName": "card_fuhun-cardart-original.png",
+      "cropBox": [
+        576,
+        0,
+        960,
+        256
+      ],
+      "usedBox": [
+        576,
+        0,
+        960,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 3,
+      "label": "r1c3",
+      "cardId": "card_danxin",
+      "outputName": "card_danxin-cardart-original.png",
+      "cropBox": [
+        1088,
+        0,
+        1472,
+        256
+      ],
+      "usedBox": [
+        1088,
+        0,
+        1472,
+        256
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 4,
+      "label": "r2c1",
+      "cardId": "card_tipo",
+      "outputName": "card_tipo-cardart-original.png",
+      "cropBox": [
+        64,
+        256,
+        448,
+        512
+      ],
+      "usedBox": [
+        64,
+        256,
+        448,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 5,
+      "label": "r2c2",
+      "cardId": "card_tongyuan",
+      "outputName": "card_tongyuan-cardart-original.png",
+      "cropBox": [
+        576,
+        256,
+        960,
+        512
+      ],
+      "usedBox": [
+        576,
+        256,
+        960,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 6,
+      "label": "r2c3",
+      "cardId": "card_jiezeng",
+      "outputName": "card_jiezeng-cardart-original.png",
+      "cropBox": [
+        1088,
+        256,
+        1472,
+        512
+      ],
+      "usedBox": [
+        1088,
+        256,
+        1472,
+        512
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 7,
+      "label": "r3c1",
+      "cardId": "card_shuangren",
+      "outputName": "card_shuangren-cardart-original.png",
+      "cropBox": [
+        64,
+        512,
+        448,
+        768
+      ],
+      "usedBox": [
+        64,
+        512,
+        448,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 8,
+      "label": "r3c2",
+      "cardId": "card_duozhu",
+      "outputName": "card_duozhu-cardart-original.png",
+      "cropBox": [
+        576,
+        512,
+        960,
+        768
+      ],
+      "usedBox": [
+        576,
+        512,
+        960,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 9,
+      "label": "r3c3",
+      "cardId": "card_zhongshi",
+      "outputName": "card_zhongshi-cardart-original.png",
+      "cropBox": [
+        1088,
+        512,
+        1472,
+        768
+      ],
+      "usedBox": [
+        1088,
+        512,
+        1472,
+        768
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 10,
+      "label": "r4c1",
+      "cardId": "card_shouzhuo",
+      "outputName": "card_shouzhuo-cardart-original.png",
+      "cropBox": [
+        64,
+        768,
+        448,
+        1024
+      ],
+      "usedBox": [
+        64,
+        768,
+        448,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 11,
+      "label": "r4c2",
+      "cardId": "card_yiyu",
+      "outputName": "card_yiyu-cardart-original.png",
+      "cropBox": [
+        576,
+        768,
+        960,
+        1024
+      ],
+      "usedBox": [
+        576,
+        768,
+        960,
+        1024
+      ]
+    },
+    {
+      "sheet": "sheet-06.png",
+      "cell": 12,
+      "label": "r4c3",
+      "cardId": "card_wuxin",
+      "outputName": "card_wuxin-cardart-original.png",
+      "cropBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ],
+      "usedBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ]
+    }
+  ],
+  "cropPolicy": "固定像素坐标硬裁：cellBox 512×256 → 中心 384×256；不做视觉检测、不改像素、不做 24 色吸附",
+  "knownExceptions": [
+    "R58 拼版风险：AI 可能画成一张整图、格位漂移、元素跨格、格间风格漂移或擅画格线；先出 1 张试裁目检",
+    "第 36 轮实测：sheet-01 真实行边界 y=289/534/779，与固定 256/512/768 偏移 +33/+22/+11px，固定裁切 12/12 格有上下切边；建议用 --adaptive",
+    "每格有效分辨率 384×256，低于单张 1024×1024 方案；目标插画区仅 84×56（4× 约 336×224），够用但不等价",
+    "回稿未到齐；sheetsReceived / outputsOnDisk 如实统计，不伪造 6/6 或 72/72"
+  ],
+  "boundary": "本表只是裁剪记录，不是美术资产、不是已入库资源；Q17 未拍板、GUI F5 未跑、未接 Godot 场景。"
+}

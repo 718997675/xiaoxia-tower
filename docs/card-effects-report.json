@@ -1,0 +1,321 @@
+{
+  "verdict": "PASS",
+  "summary": {
+    "total": 40,
+    "passed": 40,
+    "failed": 0,
+    "battleBoundCards": 26,
+    "boundEntries": 28,
+    "deckBound": 42,
+    "unbound": 59,
+    "unboundKeys": 66,
+    "specConflicts": 1
+  },
+  "checks": [
+    {
+      "label": "冻结运行时卡库恰 72 张",
+      "ok": true,
+      "detail": "cards=72"
+    },
+    {
+      "label": "72 卡全量编译不抛异常且三层计数自洽",
+      "ok": true,
+      "detail": "battle=28 / deck=42 / none=59 / params=129"
+    },
+    {
+      "label": "每个未映射键都有非空理由（不静默丢弃）",
+      "ok": true,
+      "detail": "unboundKeys=66"
+    },
+    {
+      "label": "R54「破云式卡面 / params 不自洽」被显式记录",
+      "ok": true,
+      "detail": "notes=5"
+    },
+    {
+      "label": "如实统计有战斗层效果的卡（26/72，不凑数）",
+      "ok": true,
+      "detail": "26/72"
+    },
+    {
+      "label": "scope 明确标注为网页验证层（不是冻结规格 / 不是 Godot）",
+      "ok": true,
+      "detail": "web-validation-only"
+    },
+    {
+      "label": "空效果集 == defaultMods()",
+      "ok": true,
+      "detail": "mods 全默认"
+    },
+    {
+      "label": "两端 mods 字段集合一致（card_effects ↔ battle_sim）",
+      "ok": true,
+      "detail": "schema 同源"
+    },
+    {
+      "label": "空效果与未接效果 120 tick 快照逐字段一致",
+      "ok": true,
+      "detail": "120 tick / 4 s"
+    },
+    {
+      "label": "空效果不标记「已生效卡」",
+      "ok": true,
+      "detail": "active=false / bound=0"
+    },
+    {
+      "label": "五上界常量未被第 21 轮改动",
+      "ok": true,
+      "detail": "180 / 1.60 / 600 / 2.5 / 1.8 / 0.75"
+    },
+    {
+      "label": "全 72 卡效果叠加后 damageFormula 峰值仍 3996",
+      "ok": true,
+      "detail": "peak=3996 < Boss 4400"
+    },
+    {
+      "label": "全 72 卡 mods 全部在网页验证层安全上界内",
+      "ok": true,
+      "detail": "segments=3 / cdScale=0.74"
+    },
+    {
+      "label": "破云式 → 2 段且总伤不变（卡面「总伤不变」优先于 params 0.6×2）",
+      "ok": true,
+      "detail": "0.5 + 0.5"
+    },
+    {
+      "label": "雷篆重描 → 落点均分 0.5 / 0.5（不改总伤）",
+      "ok": true,
+      "detail": "0.5 + 0.5"
+    },
+    {
+      "label": "拳风连震 → 追加 1 段 30%（单次峰值不变）",
+      "ok": true,
+      "detail": "1.0 + 0.3"
+    },
+    {
+      "label": "破域 → 破防 5%（无条件）",
+      "ok": true,
+      "detail": "0.05"
+    },
+    {
+      "label": "五行逆克 → 需「铁壁」词缀，词缀系统未建故不生效（不伪造）",
+      "ok": true,
+      "detail": "归 none"
+    },
+    {
+      "label": "回春化刃 / 金刚怒目的 convert 不映射成吸血（卡面是治疗量转伤害）",
+      "ok": true,
+      "detail": "归 none / 不新增吸血字段"
+    },
+    {
+      "label": "聚息 / 珠链 / 清露的 regen 不映射（卡面均为脱战或连击条件）",
+      "ok": true,
+      "detail": "战斗中不伪造回血"
+    },
+    {
+      "label": "截取 on_hit → 玩家「受击」回灵（不是命中回灵）",
+      "ok": true,
+      "detail": "spiritOnHurt=4"
+    },
+    {
+      "label": "逆转回灵 per_hit → 每次命中回灵 +2（按卡 ID 区分，不按参数名猜）",
+      "ok": true,
+      "detail": "spiritOnHit=2"
+    },
+    {
+      "label": "破云式 per_hit 是分段倍率，不再被误当回灵",
+      "ok": true,
+      "detail": "归 none / 由 split 处理"
+    },
+    {
+      "label": "剑意凝形 pierce 需剑修标签 ≥2，标签系统未建故不生效",
+      "ok": true,
+      "detail": "归 none"
+    },
+    {
+      "label": "灵潮 free_cast → 灵力满时下一技能不耗灵",
+      "ok": true,
+      "detail": "freeCastOnFull=true"
+    },
+    {
+      "label": "丹香 spirit_cost 限定回春诀，本验证层不全局套用",
+      "ok": true,
+      "detail": "归 none"
+    },
+    {
+      "label": "凝丹 hp_max +24 是绝对值，舍身 −0.15 是比例（不混用）",
+      "ok": true,
+      "detail": "flat=24 / ratio=-0.15"
+    },
+    {
+      "label": "灵脉拓宽 +16 绝对值 / 无根 −20% 比例",
+      "ok": true,
+      "detail": "flat=16 / ratio=-0.20"
+    },
+    {
+      "label": "护体 shield_max +20 生效 / 反涌「灵力溢出转护盾」不固定发盾",
+      "ok": true,
+      "detail": "20 / 0"
+    },
+    {
+      "label": "避水 invuln → 受击后无敌窗口 0.5 s（不是闪避无敌）",
+      "ok": true,
+      "detail": "hurtInvuln=0.5"
+    },
+    {
+      "label": "舍利 30% / 转生 20% → 首次阵亡复活",
+      "ok": true,
+      "detail": "0.30 / 0.20"
+    },
+    {
+      "label": "天人感应 reveal 只标信息层，不改判定",
+      "ok": true,
+      "detail": "reveal=true"
+    },
+    {
+      "label": "五上界变量（base_damage / extra_pool / cap 等）归抽卡层，不在此重复",
+      "ok": true,
+      "detail": "归 deck"
+    },
+    {
+      "label": "破云式 → 一次剑气斩发出 2 个 damage_applied（第 1/2、2/2 段）",
+      "ok": true,
+      "detail": "段数=2 / 伤害 9+9"
+    },
+    {
+      "label": "凝丹 → 战斗快照 HP 上限 300 → 324",
+      "ok": true,
+      "detail": "maxHp=324"
+    },
+    {
+      "label": "轻灵 → 技能 CD 0.8 s × 0.96 = 0.768 s",
+      "ok": true,
+      "detail": "cd=0.768"
+    },
+    {
+      "label": "破域 → 对 30% 减伤敌人的实战伤害变大",
+      "ok": true,
+      "detail": "18 → 19"
+    },
+    {
+      "label": "护体 → 受击先扣护盾并发出 shield_absorb 事件",
+      "ok": true,
+      "detail": "shield 20 → 1"
+    },
+    {
+      "label": "舍利 → 首次阵亡复活且本局不结束",
+      "ok": true,
+      "detail": "hp=90 / finished=false"
+    },
+    {
+      "label": "预置机制卡组 → snapshot 标记已生效卡与命中分段",
+      "ok": true,
+      "detail": "bound=5 / segments=2"
+    }
+  ],
+  "notes": [
+    {
+      "card": "card_poyun",
+      "name": "破云式",
+      "key": "split",
+      "note": "⚠️ R54：卡面「总伤不变」与 params split:2 × per_hit:0.6 = 1.2 不自洽；本验证层以冻结卡面 text 为准，待设计确认"
+    },
+    {
+      "card": "card_leizhuan",
+      "name": "雷篆重描",
+      "key": "hits",
+      "note": "网页验证层没有「落点」坐标系统，用同一目标分段近似；不改总伤"
+    },
+    {
+      "card": "card_tiepi",
+      "name": "铁皮",
+      "key": "defense_rate",
+      "note": "卡面 0.75 钳制指攻击侧 defense_rate；这里按玩家承伤近似，待设计确认"
+    },
+    {
+      "card": "card_hunyuan",
+      "name": "混元",
+      "key": "defense_rate",
+      "note": "卡面 0.75 钳制指攻击侧 defense_rate；这里按玩家承伤近似，待设计确认"
+    },
+    {
+      "card": "card_shouzhuo",
+      "name": "守拙",
+      "key": "defense_rate",
+      "note": "卡面 0.75 钳制指攻击侧 defense_rate；这里按玩家承伤近似，待设计确认"
+    }
+  ],
+  "unboundKeys": [
+    "affix",
+    "affix_cap",
+    "all_stats",
+    "amplify",
+    "base_damage",
+    "cap",
+    "cast_lock",
+    "cd",
+    "choice_count",
+    "convert",
+    "crit_multiplier",
+    "damage",
+    "dao_xing",
+    "dot_stack",
+    "extra_pool",
+    "free_forge",
+    "fresh_category",
+    "goals",
+    "heal",
+    "idle",
+    "layers",
+    "legacy_choices",
+    "legacy_count",
+    "mode",
+    "no_heal",
+    "no_new_peak",
+    "out_combat",
+    "per_hit",
+    "per_puppet",
+    "per_stack",
+    "per_stage",
+    "pick",
+    "pierce",
+    "pierce_defense",
+    "pool",
+    "proc",
+    "proxy",
+    "range",
+    "recompute_B",
+    "redraw",
+    "regen",
+    "remap",
+    "reset_cd",
+    "reward_clamp",
+    "school",
+    "school_tags",
+    "seal_every",
+    "self_damage",
+    "shield_cap",
+    "skill",
+    "skill_slots",
+    "skip_draw",
+    "spirit_cost",
+    "split_total",
+    "stack",
+    "stealth",
+    "stone",
+    "stop_draw",
+    "streak",
+    "swap_per_stage",
+    "tags",
+    "taken",
+    "threshold",
+    "threshold_delta",
+    "uses",
+    "visible"
+  ],
+  "generatedAt": "2026-11-08 17:20:34",
+  "generator": "tools/verify_card_effects.py",
+  "nodeBinary": "node",
+  "scope": "网页验证层：tools/card_effects.js 只读 data/buff-card-library.json，编译成 tools/battle_sim.js 可消费的 EffectSet。不是冻结规格、不是平衡结论、不迁移到 Godot 实机；Godot 侧仍无战斗逻辑。",
+  "proposalNote": "效果映射按卡面 text 与 params 逐张核对；语义需设计确认、归抽卡层、或网页验证层没有对应系统的参数一律列入 unbound 并给出理由，不猜数值、不伪造效果。R54：破云式卡面「总伤不变」与 params split:2 × per_hit:0.6 = 1.2 不自洽，本验证层以冻结卡面 text 为准，待设计确认。"
+}
