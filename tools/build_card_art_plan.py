@@ -367,7 +367,7 @@ q.addEventListener('input', () => {
         '<div class="sub">第 34–35 轮 · 由 <code>tools/build_card_art_plan.py</code> 生成 · '
         '母题全部从 <code>docs/卡牌库.csv</code> 的效果文案派生 · '
         '<b>第一风格基准 = <code>previews/ui/07-codex-gpt-image2_original.png</code></b>（用户已确认审美的图鉴回稿）</div>',
-        '<div class="banner"><b>状态：PROPOSAL / 待外发 / 未回稿 / 候选规格；不得直接入库。</b>'
+        '<div class="banner"><b>状态：PROPOSAL / 第 39 轮 6 组回稿已到齐并转录为候选插画；不得直接入库。</b>'
         ' Q17 未拍板、GUI F5 未跑。<b>一共只需 6 次生成</b>：6 张 1536×1024 拼版，每张 3 列 × 4 行 = 12 格，'
         ' 按固定坐标裁成 72 张单卡原稿（<code>tools/split_card_art_sheets.py</code>），无需你手动切图。'
         ' 出图用 <code>previews/card-art-prompts-pack.md</code>，边界见 <code>docs/27</code>。</div>',
@@ -667,9 +667,9 @@ def build() -> tuple[str, str, str]:
             "07-codex 稿内 16 张示意卡的卡名与冻结 72 卡库不是一套，且含文字，不得直接当卡面入库",
             "R58 拼版风险：AI 可能画成一张整图、格位漂移、元素跨格、格间风格漂移或擅画格线；先出 1 张 sheet 试裁目检再批量",
             "拼版后每格有效分辨率为 384×256（原单张方案为 1024×1024），目标插画区仅 84×56 / 4× 约 336×224，够用但不等于单张细节密度",
-            "回稿未到齐；sheetsReceived / artReceived 如实统计，不伪造 6/6 或 72/72",
+            "第 39 轮 6 组回稿已到齐并完成裁切 / 转录；sheetsReceived / artReceived 按磁盘如实统计，素材落盘后仍属候选资产，不得直接入库",
         ],
-        "boundary": "本表只是外发规格与映射，不是美术资产、不是已入库资源、不改任何冻结数值与规则；Q17 未拍板、GUI F5 未跑、未接 Godot 场景。",
+        "boundary": "本表只是外发规格与映射，不是美术资产、不是已入库资源、不改任何冻结数值与规则；Q17 未拍板、GUI F5 未跑、未接 Godot 主场景（第 39 轮只新增示例 CardArtView.tscn，不改 run/main_scene）。",
     }
     plan_text = json.dumps(plan, ensure_ascii=False, indent=2) + "\n"
 
@@ -821,7 +821,7 @@ def build() -> tuple[str, str, str]:
         "6. 三选一同屏目检：任取 3 张并排，剪影 / 构图 / 主色段不得撞脸；图鉴 72 张整屏并排不得出现明显复用感。",
         "7. 全部标「待目检与合规确认；不得直接入库」；Q17 拍板 + GUI F5 目检后才谈替换 `assets/ui/cards/` 的 10 张冻结卡面。",
         "",
-        "> **状态：待外发 / 未回稿 / 候选规格，不是已入库资源。** 本包不改 `docs/12` 冻结口径、不改任何冻结数值与规则。",
+        "> **状态：第 39 轮 6 组回稿已全部出齐，已裁切并转录为候选插画；仍是 PROPOSAL / 不是已入库资源。** 上述「先出第 1 组试裁」是出图阶段的建议，现已走完；本包保留作外发规格留档。本包不改 `docs/12` 冻结口径、不改任何冻结数值与规则。",
         "",
     ]
     pack_text = "\n".join(lines)

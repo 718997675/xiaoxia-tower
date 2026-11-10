@@ -5,8 +5,8 @@
   "scope": "第 15 轮收口 · 交付前全量静态自检",
   "verdict": "PASS",
   "summary": {
-    "checks": 36,
-    "passed": 36,
+    "checks": 37,
+    "passed": 37,
     "failed": 0
   },
   "checks": [
@@ -14,7 +14,7 @@
       "id": "json_parse",
       "desc": "docs/*.json 全部可解析",
       "status": "PASS",
-      "detail": "34 份 JSON 全部可解析"
+      "detail": "36 份 JSON 全部可解析"
     },
     {
       "id": "csv_numbers",
@@ -32,7 +32,7 @@
       "id": "python_compile",
       "desc": "tools/*.py 全部编译通过",
       "status": "PASS",
-      "detail": "30 个 tools/*.py 全部编译通过"
+      "detail": "32 个 tools/*.py 全部编译通过"
     },
     {
       "id": "freeze_authoritative",
@@ -116,7 +116,7 @@
       "id": "absolute_paths",
       "desc": "文档/工程无机器绝对路径",
       "status": "PASS",
-      "detail": "扫描 75 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
+      "detail": "扫描 79 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
     },
     {
       "id": "stale_handover",
@@ -170,7 +170,7 @@
       "id": "web_demo_r19",
       "desc": "R47 网页验证层 + 跨端同口径 25 项",
       "status": "PASS",
-      "detail": "网页 Demo 六视图 / 245 图 / 72 卡齐备；内嵌 JS 与 R47 随机源同源；跨端 25/25 PASS；黄金样本 5 局 + 12 randf"
+      "detail": "网页 Demo 六视图 / 317 图 / 72 卡齐备；内嵌 JS 与 R47 随机源同源；跨端 25/25 PASS；黄金样本 5 局 + 12 randf"
     },
     {
       "id": "battle_demo_r20",
@@ -212,7 +212,7 @@
       "id": "web_reference_art_r32",
       "desc": "第 32 轮回稿转录资源接入网页战斗画面（真实字节 / R50 解除 / 自检动态化）",
       "status": "PASS",
-      "detail": "网页默认原稿模式 / 内嵌 245 图（Boss 42 + overlay 10 + bg 4 + 第 33 轮 UI 设计稿对照 9 张）；R50 已解除、实时自检动态化、--check 一致"
+      "detail": "网页默认原稿模式 / 内嵌 317 图（Boss 42 + overlay 10 + bg 4 + 第 33 轮 UI 设计稿对照 9 张）；R50 已解除、实时自检动态化、--check 一致"
     },
     {
       "id": "ui_skin_r33",
@@ -224,7 +224,13 @@
       "id": "card_art_r34",
       "desc": "第 34–37 轮 72 卡独立插画（6 组拼版 / 克制风格 / 参考图边界 / 自适应裁剪 / 冻结口径未动）",
       "status": "PASS",
-      "detail": "6 张拼版 / 6 次生成 / 72 格位与裁切框一一对应 / 72 卡母题·签名·剪影唯一 / 6 组中英提示词（第 36 轮克制风格 + 第 37 轮参考图边界/唯一内容依据）+ 72 行核对页 / 07-codex 原稿第一基准且 16/16 画法样板全覆盖 / 裁剪器 fixed + --adaptive 双 --check 通过 / 回稿 0/6 与 0/72 如实披露 / docs/12 与 10 张冻结卡面原样未动"
+      "detail": "6 张拼版 / 6 次生成 / 72 格位与裁切框一一对应 / 72 卡母题·签名·剪影唯一 / 6 组中英提示词（第 36 轮克制风格 + 第 37 轮参考图边界/唯一内容依据）+ 72 行核对页 / 07-codex 原稿第一基准且 16/16 画法样板全覆盖 / 裁剪器 fixed + --adaptive 双 --check 通过 / 回稿 6/6 与 72/72 如实披露 / docs/12 与 10 张冻结卡面原样未动"
+    },
+    {
+      "id": "card_art_integration_r39",
+      "desc": "第 39 轮 6 组回稿集成（导入标准化 / 72 张 84×56 / 网页卡面 / Godot 组件 / 冻结口径未动）",
+      "status": "PASS",
+      "detail": "6 组回稿按母题核对落盘 sheet-01..06（B 组 1:1 无损重排）/ 72 张 384×256 原稿 → 24 色吸附 → 72 张 84×56 插画且色板外颜色 0 / web-demo 三选一卡面按 card_id 内嵌并绘制 / Godot CardArtView 组件与示例场景就位 / 主场景、冻结 10 张卡面、数值与规则均未动"
     }
   ],
   "knownExceptions": [

@@ -30,15 +30,18 @@
     "cropRule": "每格先按 cellBox 取 512×256，再中心裁 384×256（左右各弃 64px 安全边）；3:2 与 84×56 插画区同比例",
     "noDrawnGrid": "禁止在图上画格线/编号；裁剪按像素坐标（默认固定，--adaptive 自动探测真实行/列空隙），不依赖视觉检测格线"
   },
-  "adaptive": false,
+  "adaptive": true,
   "sheets": [
     {
       "file": "sheet-01.png",
       "category": "dmg",
       "title": "技能伤害（朱砂主调）",
-      "present": false,
-      "sha256": null,
-      "size": null,
+      "present": true,
+      "sha256": "5d241f679ebd9889eed0fc5e0606c44dfa750de27eb57a0cfa3fd7348d196d96",
+      "size": [
+        1536,
+        1024
+      ],
       "cellCount": 12,
       "cells": [
         {
@@ -60,12 +63,12 @@
           ],
           "usedBox": [
             64,
-            0,
+            11,
             448,
-            256
+            267
           ],
           "outputName": "card_jianfeng-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 2,
@@ -86,12 +89,12 @@
           ],
           "usedBox": [
             576,
-            0,
+            11,
             960,
-            256
+            267
           ],
           "outputName": "card_poyun-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 3,
@@ -112,12 +115,12 @@
           ],
           "usedBox": [
             1088,
-            0,
+            11,
             1472,
-            256
+            267
           ],
           "outputName": "card_leizhuan-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 4,
@@ -138,12 +141,12 @@
           ],
           "usedBox": [
             64,
-            256,
+            267,
             448,
-            512
+            523
           ],
           "outputName": "card_danbao-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 5,
@@ -164,12 +167,12 @@
           ],
           "usedBox": [
             576,
-            256,
+            267,
             960,
-            512
+            523
           ],
           "outputName": "card_fuzhen-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 6,
@@ -190,12 +193,12 @@
           ],
           "usedBox": [
             1088,
-            256,
+            267,
             1472,
-            512
+            523
           ],
           "outputName": "card_quanfeng-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 7,
@@ -221,7 +224,7 @@
             768
           ],
           "outputName": "card_huiling-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 8,
@@ -247,7 +250,7 @@
             768
           ],
           "outputName": "card_jingang-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 9,
@@ -273,7 +276,7 @@
             768
           ],
           "outputName": "card_jianyi-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 10,
@@ -299,7 +302,7 @@
             1024
           ],
           "outputName": "card_wuxing-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 11,
@@ -325,7 +328,7 @@
             1024
           ],
           "outputName": "card_lianhuan-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 12,
@@ -351,17 +354,57 @@
             1024
           ],
           "outputName": "card_zhanxing-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         }
-      ]
+      ],
+      "detectedBoundaries": {
+        "background": [
+          12,
+          18,
+          30
+        ],
+        "theoreticalY": [
+          256,
+          512,
+          768
+        ],
+        "detectedY": [
+          278,
+          512,
+          768
+        ],
+        "offsetY": [
+          22,
+          0,
+          0
+        ],
+        "theoreticalX": [
+          512,
+          1024
+        ],
+        "detectedX": [
+          512,
+          1024
+        ],
+        "offsetX": [
+          0,
+          0
+        ],
+        "tolerance": 2,
+        "searchWindow": 64,
+        "method": "亮像素密度低谷；理论边界已在空隙内则保持不变"
+      }
     },
     {
       "file": "sheet-02.png",
       "category": "attr",
       "title": "属性提升（青玉主调）",
-      "present": false,
-      "sha256": null,
-      "size": null,
+      "present": true,
+      "sha256": "a70dcda1892241393c63c951083083874ebcf59656f521673301a60e1197e55e",
+      "size": [
+        1536,
+        1024
+      ],
       "cellCount": 12,
       "cells": [
         {
@@ -388,7 +431,7 @@
             256
           ],
           "outputName": "card_cuijing-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 2,
@@ -414,7 +457,7 @@
             256
           ],
           "outputName": "card_ningdan-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 3,
@@ -440,7 +483,7 @@
             256
           ],
           "outputName": "card_lingmai-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 4,
@@ -466,7 +509,7 @@
             512
           ],
           "outputName": "card_buyao-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 5,
@@ -492,7 +535,7 @@
             512
           ],
           "outputName": "card_tiepi-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 6,
@@ -518,7 +561,7 @@
             512
           ],
           "outputName": "card_huixin-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 7,
@@ -544,7 +587,7 @@
             768
           ],
           "outputName": "card_poyu-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 8,
@@ -570,7 +613,7 @@
             768
           ],
           "outputName": "card_shouyuan-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 9,
@@ -596,7 +639,7 @@
             768
           ],
           "outputName": "card_qingling-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 10,
@@ -622,7 +665,7 @@
             1024
           ],
           "outputName": "card_juxi-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 11,
@@ -648,7 +691,7 @@
             1024
           ],
           "outputName": "card_zhongzhu-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 12,
@@ -674,17 +717,57 @@
             1024
           ],
           "outputName": "card_jingpo-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         }
-      ]
+      ],
+      "detectedBoundaries": {
+        "background": [
+          5,
+          11,
+          25
+        ],
+        "theoreticalY": [
+          256,
+          512,
+          768
+        ],
+        "detectedY": [
+          256,
+          512,
+          768
+        ],
+        "offsetY": [
+          0,
+          0,
+          0
+        ],
+        "theoreticalX": [
+          512,
+          1024
+        ],
+        "detectedX": [
+          512,
+          1024
+        ],
+        "offsetX": [
+          0,
+          0
+        ],
+        "tolerance": 2,
+        "searchWindow": 64,
+        "method": "亮像素密度低谷；理论边界已在空隙内则保持不变"
+      }
     },
     {
       "file": "sheet-03.png",
       "category": "mech",
       "title": "机制改变（紫主调）",
-      "present": false,
-      "sha256": null,
-      "size": null,
+      "present": true,
+      "sha256": "8ef30c595ba42d6d88d756a327a88f27e833599f902ff0b8e2f6de0fda0784d8",
+      "size": [
+        1536,
+        1024
+      ],
       "cellCount": 12,
       "cells": [
         {
@@ -706,12 +789,12 @@
           ],
           "usedBox": [
             64,
-            0,
+            9,
             448,
-            256
+            265
           ],
           "outputName": "card_nianzhuan-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 2,
@@ -732,12 +815,12 @@
           ],
           "usedBox": [
             576,
-            0,
+            9,
             960,
-            256
+            265
           ],
           "outputName": "card_huanshi-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 3,
@@ -758,12 +841,12 @@
           ],
           "usedBox": [
             1088,
-            0,
+            9,
             1472,
-            256
+            265
           ],
           "outputName": "card_shuangxiu-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 4,
@@ -784,12 +867,12 @@
           ],
           "usedBox": [
             64,
-            256,
+            265,
             448,
-            512
+            521
           ],
           "outputName": "card_yuqi-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 5,
@@ -810,12 +893,12 @@
           ],
           "usedBox": [
             576,
-            256,
+            265,
             960,
-            512
+            521
           ],
           "outputName": "card_daoyin-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 6,
@@ -836,12 +919,12 @@
           ],
           "usedBox": [
             1088,
-            256,
+            265,
             1472,
-            512
+            521
           ],
           "outputName": "card_jieyin-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 7,
@@ -867,7 +950,7 @@
             768
           ],
           "outputName": "card_wuxiangpo-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 8,
@@ -893,7 +976,7 @@
             768
           ],
           "outputName": "card_chongzhu-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 9,
@@ -919,7 +1002,7 @@
             768
           ],
           "outputName": "card_tianren-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 10,
@@ -945,7 +1028,7 @@
             1024
           ],
           "outputName": "card_sheli-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 11,
@@ -971,7 +1054,7 @@
             1024
           ],
           "outputName": "card_lunhui-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 12,
@@ -997,17 +1080,57 @@
             1024
           ],
           "outputName": "card_pojing-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         }
-      ]
+      ],
+      "detectedBoundaries": {
+        "background": [
+          4,
+          10,
+          25
+        ],
+        "theoreticalY": [
+          256,
+          512,
+          768
+        ],
+        "detectedY": [
+          274,
+          512,
+          768
+        ],
+        "offsetY": [
+          18,
+          0,
+          0
+        ],
+        "theoreticalX": [
+          512,
+          1024
+        ],
+        "detectedX": [
+          512,
+          1024
+        ],
+        "offsetX": [
+          0,
+          0
+        ],
+        "tolerance": 2,
+        "searchWindow": 64,
+        "method": "亮像素密度低谷；理论边界已在空隙内则保持不变"
+      }
     },
     {
       "file": "sheet-04.png",
       "category": "res",
       "title": "资源灵力（金主调）",
-      "present": false,
-      "sha256": null,
-      "size": null,
+      "present": true,
+      "sha256": "63fff40b6c5cd15b9a778404a6ce58f6bdb85eb8c43817deec676f795afd9f45",
+      "size": [
+        1536,
+        1024
+      ],
       "cellCount": 12,
       "cells": [
         {
@@ -1034,7 +1157,7 @@
             256
           ],
           "outputName": "card_juling-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 2,
@@ -1060,7 +1183,7 @@
             256
           ],
           "outputName": "card_shengxi-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 3,
@@ -1086,7 +1209,7 @@
             256
           ],
           "outputName": "card_huanling-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 4,
@@ -1112,7 +1235,7 @@
             512
           ],
           "outputName": "card_danxiang-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 5,
@@ -1138,7 +1261,7 @@
             512
           ],
           "outputName": "card_lingchao-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 6,
@@ -1164,7 +1287,7 @@
             512
           ],
           "outputName": "card_jieqi-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 7,
@@ -1190,7 +1313,7 @@
             768
           ],
           "outputName": "card_kongzhan-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 8,
@@ -1216,7 +1339,7 @@
             768
           ],
           "outputName": "card_fanyong-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 9,
@@ -1242,7 +1365,7 @@
             768
           ],
           "outputName": "card_zhulian-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 10,
@@ -1268,7 +1391,7 @@
             1024
           ],
           "outputName": "card_wugen-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 11,
@@ -1294,7 +1417,7 @@
             1024
           ],
           "outputName": "card_tianlu-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 12,
@@ -1320,17 +1443,57 @@
             1024
           ],
           "outputName": "card_shouyin-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         }
-      ]
+      ],
+      "detectedBoundaries": {
+        "background": [
+          13,
+          19,
+          31
+        ],
+        "theoreticalY": [
+          256,
+          512,
+          768
+        ],
+        "detectedY": [
+          256,
+          512,
+          768
+        ],
+        "offsetY": [
+          0,
+          0,
+          0
+        ],
+        "theoreticalX": [
+          512,
+          1024
+        ],
+        "detectedX": [
+          512,
+          1024
+        ],
+        "offsetX": [
+          0,
+          0
+        ],
+        "tolerance": 2,
+        "searchWindow": 64,
+        "method": "亮像素密度低谷；理论边界已在空隙内则保持不变"
+      }
     },
     {
       "file": "sheet-05.png",
       "category": "surv",
       "title": "生存回复（青玉/淡青主调）",
-      "present": false,
-      "sha256": null,
-      "size": null,
+      "present": true,
+      "sha256": "2b92f97a26c0d72fc5f179b9ec124922ff4ea5134e19d481f5e8e72cc0e3a15f",
+      "size": [
+        1536,
+        1024
+      ],
       "cellCount": 12,
       "cells": [
         {
@@ -1352,12 +1515,12 @@
           ],
           "usedBox": [
             64,
-            0,
+            7,
             448,
-            256
+            263
           ],
           "outputName": "card_huichun-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 2,
@@ -1378,12 +1541,12 @@
           ],
           "usedBox": [
             576,
-            0,
+            7,
             960,
-            256
+            263
           ],
           "outputName": "card_huti-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 3,
@@ -1404,12 +1567,12 @@
           ],
           "usedBox": [
             1088,
-            0,
+            7,
             1472,
-            256
+            263
           ],
           "outputName": "card_bishui-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 4,
@@ -1430,12 +1593,12 @@
           ],
           "usedBox": [
             64,
-            256,
+            263,
             448,
-            512
+            519
           ],
           "outputName": "card_duanxu-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 5,
@@ -1456,12 +1619,12 @@
           ],
           "usedBox": [
             576,
-            256,
+            263,
             960,
-            512
+            519
           ],
           "outputName": "card_jiaren-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 6,
@@ -1482,12 +1645,12 @@
           ],
           "usedBox": [
             1088,
-            256,
+            263,
             1472,
-            512
+            519
           ],
           "outputName": "card_tiegu-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 7,
@@ -1508,12 +1671,12 @@
           ],
           "usedBox": [
             64,
-            512,
+            494,
             448,
-            768
+            750
           ],
           "outputName": "card_guisuo-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 8,
@@ -1534,12 +1697,12 @@
           ],
           "usedBox": [
             576,
-            512,
+            494,
             960,
-            768
+            750
           ],
           "outputName": "card_yinbi-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 9,
@@ -1560,12 +1723,12 @@
           ],
           "usedBox": [
             1088,
-            512,
+            494,
             1472,
-            768
+            750
           ],
           "outputName": "card_zhuansheng-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 10,
@@ -1586,12 +1749,12 @@
           ],
           "usedBox": [
             64,
-            768,
+            750,
             448,
-            1024
+            1006
           ],
           "outputName": "card_qinglu-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 11,
@@ -1612,12 +1775,12 @@
           ],
           "usedBox": [
             576,
-            768,
+            750,
             960,
-            1024
+            1006
           ],
           "outputName": "card_hunyuan-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 12,
@@ -1638,22 +1801,62 @@
           ],
           "usedBox": [
             1088,
-            768,
+            750,
             1472,
-            1024
+            1006
           ],
           "outputName": "card_sheshi-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         }
-      ]
+      ],
+      "detectedBoundaries": {
+        "background": [
+          9,
+          15,
+          27
+        ],
+        "theoreticalY": [
+          256,
+          512,
+          768
+        ],
+        "detectedY": [
+          270,
+          512,
+          733
+        ],
+        "offsetY": [
+          14,
+          0,
+          -35
+        ],
+        "theoreticalX": [
+          512,
+          1024
+        ],
+        "detectedX": [
+          512,
+          1024
+        ],
+        "offsetX": [
+          0,
+          0
+        ],
+        "tolerance": 2,
+        "searchWindow": 64,
+        "method": "亮像素密度低谷；理论边界已在空隙内则保持不变"
+      }
     },
     {
       "file": "sheet-06.png",
       "category": "syn",
       "title": "构筑风险（朱砂暗主调）",
-      "present": false,
-      "sha256": null,
-      "size": null,
+      "present": true,
+      "sha256": "3259c4f75f71fac829d120bcd2194d86289f7e3bc31e1a8d0212cfa0fcde8ae9",
+      "size": [
+        1536,
+        1024
+      ],
       "cellCount": 12,
       "cells": [
         {
@@ -1675,12 +1878,12 @@
           ],
           "usedBox": [
             64,
-            0,
+            4,
             448,
-            256
+            260
           ],
           "outputName": "card_jianxin-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 2,
@@ -1701,12 +1904,12 @@
           ],
           "usedBox": [
             576,
-            0,
+            4,
             960,
-            256
+            260
           ],
           "outputName": "card_fuhun-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 3,
@@ -1727,12 +1930,12 @@
           ],
           "usedBox": [
             1088,
-            0,
+            4,
             1472,
-            256
+            260
           ],
           "outputName": "card_danxin-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 4,
@@ -1753,12 +1956,12 @@
           ],
           "usedBox": [
             64,
-            256,
+            260,
             448,
-            512
+            516
           ],
           "outputName": "card_tipo-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 5,
@@ -1779,12 +1982,12 @@
           ],
           "usedBox": [
             576,
-            256,
+            260,
             960,
-            512
+            516
           ],
           "outputName": "card_tongyuan-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 6,
@@ -1805,12 +2008,12 @@
           ],
           "usedBox": [
             1088,
-            256,
+            260,
             1472,
-            512
+            516
           ],
           "outputName": "card_jiezeng-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 7,
@@ -1831,12 +2034,12 @@
           ],
           "usedBox": [
             64,
-            512,
+            486,
             448,
-            768
+            742
           ],
           "outputName": "card_shuangren-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 8,
@@ -1857,12 +2060,12 @@
           ],
           "usedBox": [
             576,
-            512,
+            486,
             960,
-            768
+            742
           ],
           "outputName": "card_duozhu-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 9,
@@ -1883,12 +2086,12 @@
           ],
           "usedBox": [
             1088,
-            512,
+            486,
             1472,
-            768
+            742
           ],
           "outputName": "card_zhongshi-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 10,
@@ -1909,12 +2112,12 @@
           ],
           "usedBox": [
             64,
-            768,
+            742,
             448,
-            1024
+            998
           ],
           "outputName": "card_shouzhuo-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 11,
@@ -1935,12 +2138,12 @@
           ],
           "usedBox": [
             576,
-            768,
+            742,
             960,
-            1024
+            998
           ],
           "outputName": "card_yiyu-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         },
         {
           "cell": 12,
@@ -1961,20 +2164,57 @@
           ],
           "usedBox": [
             1088,
-            768,
+            742,
             1472,
-            1024
+            998
           ],
           "outputName": "card_wuxin-cardart-original.png",
-          "outputPresent": false
+          "outputPresent": true
         }
-      ]
+      ],
+      "detectedBoundaries": {
+        "background": [
+          6,
+          12,
+          24
+        ],
+        "theoreticalY": [
+          256,
+          512,
+          768
+        ],
+        "detectedY": [
+          264,
+          512,
+          716
+        ],
+        "offsetY": [
+          8,
+          0,
+          -52
+        ],
+        "theoreticalX": [
+          512,
+          1024
+        ],
+        "detectedX": [
+          512,
+          1024
+        ],
+        "offsetX": [
+          0,
+          0
+        ],
+        "tolerance": 2,
+        "searchWindow": 64,
+        "method": "亮像素密度低谷；理论边界已在空隙内则保持不变"
+      }
     }
   ],
-  "sheetsReceived": 0,
-  "sheetsPending": 6,
+  "sheetsReceived": 6,
+  "sheetsPending": 0,
   "outputsTotal": 72,
-  "outputsOnDisk": 0,
+  "outputsOnDisk": 72,
   "outputs": [
     {
       "sheet": "sheet-01.png",
@@ -1990,9 +2230,9 @@
       ],
       "usedBox": [
         64,
-        0,
+        11,
         448,
-        256
+        267
       ]
     },
     {
@@ -2009,9 +2249,9 @@
       ],
       "usedBox": [
         576,
-        0,
+        11,
         960,
-        256
+        267
       ]
     },
     {
@@ -2028,9 +2268,9 @@
       ],
       "usedBox": [
         1088,
-        0,
+        11,
         1472,
-        256
+        267
       ]
     },
     {
@@ -2047,9 +2287,9 @@
       ],
       "usedBox": [
         64,
-        256,
+        267,
         448,
-        512
+        523
       ]
     },
     {
@@ -2066,9 +2306,9 @@
       ],
       "usedBox": [
         576,
-        256,
+        267,
         960,
-        512
+        523
       ]
     },
     {
@@ -2085,9 +2325,9 @@
       ],
       "usedBox": [
         1088,
-        256,
+        267,
         1472,
-        512
+        523
       ]
     },
     {
@@ -2446,9 +2686,9 @@
       ],
       "usedBox": [
         64,
-        0,
+        9,
         448,
-        256
+        265
       ]
     },
     {
@@ -2465,9 +2705,9 @@
       ],
       "usedBox": [
         576,
-        0,
+        9,
         960,
-        256
+        265
       ]
     },
     {
@@ -2484,9 +2724,9 @@
       ],
       "usedBox": [
         1088,
-        0,
+        9,
         1472,
-        256
+        265
       ]
     },
     {
@@ -2503,9 +2743,9 @@
       ],
       "usedBox": [
         64,
-        256,
+        265,
         448,
-        512
+        521
       ]
     },
     {
@@ -2522,9 +2762,9 @@
       ],
       "usedBox": [
         576,
-        256,
+        265,
         960,
-        512
+        521
       ]
     },
     {
@@ -2541,9 +2781,9 @@
       ],
       "usedBox": [
         1088,
-        256,
+        265,
         1472,
-        512
+        521
       ]
     },
     {
@@ -2902,9 +3142,9 @@
       ],
       "usedBox": [
         64,
-        0,
+        7,
         448,
-        256
+        263
       ]
     },
     {
@@ -2921,9 +3161,9 @@
       ],
       "usedBox": [
         576,
-        0,
+        7,
         960,
-        256
+        263
       ]
     },
     {
@@ -2940,9 +3180,9 @@
       ],
       "usedBox": [
         1088,
-        0,
+        7,
         1472,
-        256
+        263
       ]
     },
     {
@@ -2959,9 +3199,9 @@
       ],
       "usedBox": [
         64,
-        256,
+        263,
         448,
-        512
+        519
       ]
     },
     {
@@ -2978,9 +3218,9 @@
       ],
       "usedBox": [
         576,
-        256,
+        263,
         960,
-        512
+        519
       ]
     },
     {
@@ -2997,9 +3237,9 @@
       ],
       "usedBox": [
         1088,
-        256,
+        263,
         1472,
-        512
+        519
       ]
     },
     {
@@ -3016,9 +3256,9 @@
       ],
       "usedBox": [
         64,
-        512,
+        494,
         448,
-        768
+        750
       ]
     },
     {
@@ -3035,9 +3275,9 @@
       ],
       "usedBox": [
         576,
-        512,
+        494,
         960,
-        768
+        750
       ]
     },
     {
@@ -3054,9 +3294,9 @@
       ],
       "usedBox": [
         1088,
-        512,
+        494,
         1472,
-        768
+        750
       ]
     },
     {
@@ -3073,9 +3313,9 @@
       ],
       "usedBox": [
         64,
-        768,
+        750,
         448,
-        1024
+        1006
       ]
     },
     {
@@ -3092,9 +3332,9 @@
       ],
       "usedBox": [
         576,
-        768,
+        750,
         960,
-        1024
+        1006
       ]
     },
     {
@@ -3111,9 +3351,9 @@
       ],
       "usedBox": [
         1088,
-        768,
+        750,
         1472,
-        1024
+        1006
       ]
     },
     {
@@ -3130,9 +3370,9 @@
       ],
       "usedBox": [
         64,
-        0,
+        4,
         448,
-        256
+        260
       ]
     },
     {
@@ -3149,9 +3389,9 @@
       ],
       "usedBox": [
         576,
-        0,
+        4,
         960,
-        256
+        260
       ]
     },
     {
@@ -3168,9 +3408,9 @@
       ],
       "usedBox": [
         1088,
-        0,
+        4,
         1472,
-        256
+        260
       ]
     },
     {
@@ -3187,9 +3427,9 @@
       ],
       "usedBox": [
         64,
-        256,
+        260,
         448,
-        512
+        516
       ]
     },
     {
@@ -3206,9 +3446,9 @@
       ],
       "usedBox": [
         576,
-        256,
+        260,
         960,
-        512
+        516
       ]
     },
     {
@@ -3225,9 +3465,9 @@
       ],
       "usedBox": [
         1088,
-        256,
+        260,
         1472,
-        512
+        516
       ]
     },
     {
@@ -3244,9 +3484,9 @@
       ],
       "usedBox": [
         64,
-        512,
+        486,
         448,
-        768
+        742
       ]
     },
     {
@@ -3263,9 +3503,9 @@
       ],
       "usedBox": [
         576,
-        512,
+        486,
         960,
-        768
+        742
       ]
     },
     {
@@ -3282,9 +3522,9 @@
       ],
       "usedBox": [
         1088,
-        512,
+        486,
         1472,
-        768
+        742
       ]
     },
     {
@@ -3301,9 +3541,9 @@
       ],
       "usedBox": [
         64,
-        768,
+        742,
         448,
-        1024
+        998
       ]
     },
     {
@@ -3320,9 +3560,9 @@
       ],
       "usedBox": [
         576,
-        768,
+        742,
         960,
-        1024
+        998
       ]
     },
     {
@@ -3339,13 +3579,13 @@
       ],
       "usedBox": [
         1088,
-        768,
+        742,
         1472,
-        1024
+        998
       ]
     }
   ],
-  "cropPolicy": "固定像素坐标硬裁：cellBox 512×256 → 中心 384×256；不做视觉检测、不改像素、不做 24 色吸附",
+  "cropPolicy": "自适应格位：扫描亮像素密度低谷定位真实行/列空隙，按实测边界分段取中心 384×256，不拉伸、越界补墨底；报告 usedBox 为实际使用框，cropBox 为标称框",
   "knownExceptions": [
     "R58 拼版风险：AI 可能画成一张整图、格位漂移、元素跨格、格间风格漂移或擅画格线；先出 1 张试裁目检",
     "第 36 轮实测：sheet-01 真实行边界 y=289/534/779，与固定 256/512/768 偏移 +33/+22/+11px，固定裁切 12/12 格有上下切边；建议用 --adaptive",

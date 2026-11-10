@@ -147,6 +147,20 @@ def load_images() -> dict:
             raise RuntimeError(f"缺 UI 设计稿底板：{p}")
         out[Path(name).stem] = b64(p)
 
+    # 第 39 轮：72 张「一卡一插画」84×56 转录图接进三选一卡面。
+    # key 用卡库里的 <card_id>，renderCards() 直接按 c.id 取，不另建映射表。
+    art_dir = ROOT / "assets" / "ui" / "card_art"
+    lib_cards = json.loads(LIB_PATH.read_text(encoding="utf-8"))["cards"]
+    art_ids = [c["id"] for c in lib_cards]
+    if len(art_ids) != 72 or len(set(art_ids)) != 72:
+        raise RuntimeError("卡库不是 72 张唯一 id，卡面插画无法对位")
+    for cid in art_ids:
+        p = art_dir / f"{cid}.png"
+        if not p.is_file():
+            raise RuntimeError(f"缺卡面插画：{p}（先跑 tools/transcribe_card_art.py）")
+        out[cid] = b64(p)
+    needed |= set(art_ids)
+
     missing = sorted(needed - set(out))
     if missing:
         raise RuntimeError(f"缺素材：{missing}")
@@ -370,7 +384,10 @@ h3{font-size:13px;margin:18px 0 8px;color:var(--jade)}
 .card .paper{position:absolute;inset:0;background:var(--paper)}
 .card .frame{position:absolute;inset:0;width:96px;height:144px}
 .card .catbar{position:absolute;left:5px;top:4px;width:8px;height:8px;background:var(--line)}
-.card .sigil{position:absolute;left:24px;top:24px;width:48px;height:48px}
+/* 第 39 轮：一卡一插画替换插画区（docs/12 §2 x6–89 / y19–75，转录为 84×56）。
+   类别纹样不再占 48×48 插画区，缩到类别条 8×8，避免与新插画重叠。 */
+.card .cardart{position:absolute;left:6px;top:19px;width:84px;height:56px;image-rendering:pixelated}
+.card .sigil{position:absolute;left:5px;top:4px;width:8px;height:8px;image-rendering:pixelated}
 .card .cname{position:absolute;left:4px;top:79px;width:88px;height:15px;line-height:15px;
   font-size:12px;text-align:center;color:#1B2130;overflow:hidden;white-space:nowrap}
 .card .cdesc{position:absolute;left:5px;top:96px;width:86px;height:30px;font-size:10px;
@@ -663,9 +680,9 @@ footer{margin-top:26px;border-top:1px solid var(--line);padding-top:12px;color:v
         <div class="titleband"></div><div class="separator"></div>
         <div class="t" id="stageTitle"></div><div class="p" id="stageProgress"></div>
         <div class="goldbase" id="goldBase"></div>
-        <div class="card" data-i="0"><div class="paper"></div><img class="frame"><div class="catbar"></div><img class="sigil"><div class="cname"></div><div class="cdesc"></div><div class="cinfo"></div><div class="pips"></div><div class="unread"></div><div class="goldframe"></div></div>
-        <div class="card" data-i="1"><div class="paper"></div><img class="frame"><div class="catbar"></div><img class="sigil"><div class="cname"></div><div class="cdesc"></div><div class="cinfo"></div><div class="pips"></div><div class="unread"></div><div class="goldframe"></div></div>
-        <div class="card" data-i="2"><div class="paper"></div><img class="frame"><div class="catbar"></div><img class="sigil"><div class="cname"></div><div class="cdesc"></div><div class="cinfo"></div><div class="pips"></div><div class="unread"></div><div class="goldframe"></div></div>
+        <div class="card" data-i="0"><div class="paper"></div><img class="frame"><img class="cardart"><div class="catbar"></div><img class="sigil"><div class="cname"></div><div class="cdesc"></div><div class="cinfo"></div><div class="pips"></div><div class="unread"></div><div class="goldframe"></div></div>
+        <div class="card" data-i="1"><div class="paper"></div><img class="frame"><img class="cardart"><div class="catbar"></div><img class="sigil"><div class="cname"></div><div class="cdesc"></div><div class="cinfo"></div><div class="pips"></div><div class="unread"></div><div class="goldframe"></div></div>
+        <div class="card" data-i="2"><div class="paper"></div><img class="frame"><img class="cardart"><div class="catbar"></div><img class="sigil"><div class="cname"></div><div class="cdesc"></div><div class="cinfo"></div><div class="pips"></div><div class="unread"></div><div class="goldframe"></div></div>
         <div class="stateline" id="stageState"></div>
         <div class="footer"></div>
         <div class="hint" id="stageHint"></div>
@@ -1446,6 +1463,9 @@ function renderCards() {
     el.querySelector('.paper').style.background = c.rarity === 'curse' ? '#7A2420' : '#E8DFC8';
     el.querySelector('.frame').src = IMG['frame_' + c.rarity] || IMG.frame_common;
     el.querySelector('.sigil').src = IMG['sigil_' + c.cat] || IMG.sigil_dmg;
+    const art = el.querySelector('.cardart');
+    art.src = IMG[c.id] || '';
+    art.style.display = IMG[c.id] ? 'block' : 'none';
     el.querySelector('.catbar').style.background = (catMap[c.cat] || {}).color || '#4A5568';
     el.querySelector('.cname').textContent = c.name;
     el.querySelector('.cdesc').textContent = wrapText(c.text, 8, 3);
@@ -2003,7 +2023,8 @@ def structural_checks(html: str) -> list[str]:
                   "id=\"sprite\"", "id=\"codex\"", "id=\"status\"", "id=\"battleStage\"",
                   "id=\"menuScreen\"", "id=\"uiSkinBar\"", "id=\"uiSkinImg\"",
                   "function setUiSkin", "function applyUiSkinForTab",
-                  "const UI_SKINS", "const SKIN_BY_TAB", "ui=off"):
+                  "const UI_SKINS", "const SKIN_BY_TAB", "ui=off",
+                  'class="cardart"', "IMG[c.id]"):
         if needle not in html:
             problems.append(f"关键片段缺失：{needle}")
     if html.count("<script>") != 2 or html.count("</script>") != 2:

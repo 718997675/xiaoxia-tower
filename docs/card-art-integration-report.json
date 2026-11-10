@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "generatedBy": "tools/import_card_art_sheets.py",
+  "status": "待目检与合规确认；不得直接入库",
+  "sheetSpec": {
+    "sheetCount": 6,
+    "cellsPerSheet": 12,
+    "generations": 6,
+    "sheetSize": [
+      1536,
+      1024
+    ],
+    "grid": [
+      3,
+      4
+    ],
+    "cellSize": [
+      512,
+      256
+    ],
+    "cropSize": [
+      384,
+      256
+    ],
+    "cropPadX": 64,
+    "cellOrder": "行优先：从上到下、每行从左到右；01=第1行第1格，12=第4行第3格",
+    "sheetDir": "previews/card_art_sheets/",
+    "sheetNaming": "sheet-01.png … sheet-06.png",
+    "splitTool": "tools/split_card_art_sheets.py",
+    "cropRule": "每格先按 cellBox 取 512×256，再中心裁 384×256（左右各弃 64px 安全边）；3:2 与 84×56 插画区同比例",
+    "noDrawnGrid": "禁止在图上画格线/编号；裁剪按像素坐标（默认固定，--adaptive 自动探测真实行/列空隙），不依赖视觉检测格线"
+  },
+  "groupToSheet": {
+    "A": 1,
+    "B": 2,
+    "C": 3,
+    "D": 4,
+    "E": 5,
+    "F": 6
+  },
+  "mappingBasis": "按 12 格母题逐格核对确定，非文件名顺序；见每条 motifEyeball",
+  "sources": [
+    {
+      "group": "A",
+      "sheetIndex": 1,
+      "sourceFile": "assets/_source/card_art_sheets/sheet-01-A-source.jpg",
+      "clipboardName": "clipboard-2026-11-10T13-35-30-170Z-ea056752.jpg",
+      "sourceSha256": "6b550889644b9e74d92491ca7fb317884274acacf4f8b8450f9e68d93d4c102b",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceBackground": [
+        12,
+        18,
+        30
+      ],
+      "sourceFormat": "JPEG（聊天附件压缩版，非无损 PNG 原件）",
+      "standardizeMethod": "原尺寸直转 PNG（像素内容未改）",
+      "motifEyeball": "12/12：磨石淬剑、对称双剑、双雷柱符篆、丹炉回卷火舌、符纸方阵、三段同心弧、半叶半刃、破钟罩扇形、水平剑贯穿三人、五行环裂盾、三符环、斜剑坠星"
+    },
+    {
+      "group": "B",
+      "sheetIndex": 2,
+      "sourceFile": "assets/_source/card_art_sheets/sheet-02-B-source.jpg",
+      "clipboardName": "clipboard-2026-11-10T13-35-30-172Z-ba733a84.jpg",
+      "sourceSha256": "ec6cea85537fa1e5ab8c66f3aa5c99f4b4502dd50ea6083bf5dcc0806658c75c",
+      "sourceSize": [
+        1024,
+        1024
+      ],
+      "sourceBackground": [
+        6,
+        12,
+        26
+      ],
+      "sourceFormat": "JPEG（聊天附件压缩版，非无损 PNG 原件）",
+      "standardizeMethod": "1024×1024 无损重排到 1536×1024（不拉伸）",
+      "motifEyeball": "12/12：晶体收束、掌上丹丸、灵脉分三、步摇垂弧、四片叠甲、靶心命中、劈开方框、寿桃刻痕、逆风羽毛、气息静环、砧上方坯、三魂剥落"
+    },
+    {
+      "group": "C",
+      "sheetIndex": 3,
+      "sourceFile": "assets/_source/card_art_sheets/sheet-03-C-source.jpg",
+      "clipboardName": "clipboard-2026-11-10T13-35-30-171Z-c9160a10.jpg",
+      "sourceSha256": "0504b6a2fb4653af4f4d6ed8f65d5f0eaa68719a0a775893f4a9686b37832c52",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceBackground": [
+        4,
+        10,
+        25
+      ],
+      "sourceFormat": "JPEG（聊天附件压缩版，非无损 PNG 原件）",
+      "standardizeMethod": "原尺寸直转 PNG（像素内容未改）",
+      "motifEyeball": "12/12：符号倒转、双槽换位、双流派主印、三段残影、序号轨道、印章封旧卡、两张撑成三张、令旗铁砧、敌人卷轴、舍利断流、两灵韵汇一、两道途同挂"
+    },
+    {
+      "group": "D",
+      "sheetIndex": 4,
+      "sourceFile": "assets/_source/card_art_sheets/sheet-04-D-source.jpg",
+      "clipboardName": "clipboard-2026-11-10T13-35-30-172Z-8df0f929.jpg",
+      "sourceSha256": "02c83ecf945affda54858114d223bb2c1fa5c73952427941f4d935ef7ae2ae75",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceBackground": [
+        13,
+        19,
+        31
+      ],
+      "sourceFormat": "JPEG（聊天附件压缩版，非无损 PNG 原件）",
+      "standardizeMethod": "原尺寸直转 PNG（像素内容未改）",
+      "motifEyeball": "12/12：魂火入阵眼、收窄漏斗、刻度瓶回灌、丹香、满潮浪头、截四点灵光、空盏一滴、反涌护盾、三珠连珠、无根木、六枚灵石、三印引爆"
+    },
+    {
+      "group": "E",
+      "sheetIndex": 5,
+      "sourceFile": "assets/_source/card_art_sheets/sheet-05-E-source.jpg",
+      "clipboardName": "clipboard-2026-11-10T13-35-30-172Z-c4e93a99.jpg",
+      "sourceSha256": "1923bd17a348b39fd00e7969e84e6d05ff710044696ffffe36acdb0f2182e60b",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceBackground": [
+        9,
+        15,
+        27
+      ],
+      "sourceFormat": "JPEG（聊天附件压缩版，非无损 PNG 原件）",
+      "standardizeMethod": "原尺寸直转 PNG（像素内容未改）",
+      "motifEyeball": "12/12：新芽光晕、三层护盾格、拉长无敌窗、断续阶梯、纸傀儡挡击、铁壳骨节、阈值门、淡入墨底人形、灰烬 CD 环、叶尖露、罩内气旋、命盘削角"
+    },
+    {
+      "group": "F",
+      "sheetIndex": 6,
+      "sourceFile": "assets/_source/card_art_sheets/sheet-06-F-source.jpg",
+      "clipboardName": "clipboard-2026-11-10T13-35-30-172Z-8c35772f.jpg",
+      "sourceSha256": "d043e5a686b77dc9e316d583a2b2d04195520f6bdfd86aa76bcfbdc6c9a1463b",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceBackground": [
+        6,
+        12,
+        24
+      ],
+      "sourceFormat": "JPEG（聊天附件压缩版，非无损 PNG 原件）",
+      "standardizeMethod": "原尺寸直转 PNG（像素内容未改）",
+      "motifEyeball": "12/12：刻度四降三、CD 环概率点、灼伤三层、放大拳、第四候选、天劫四格、一刀两刃、第五槽空位、朱印倍率、退让减伤梯、异色离群卡、卡流断开放大"
+    }
+  ],
+  "outputs": [
+    {
+      "sheet": 1,
+      "group": "A",
+      "file": "previews/card_art_sheets/sheet-01.png",
+      "outputSha256": "5d241f679ebd9889eed0fc5e0606c44dfa750de27eb57a0cfa3fd7348d196d96",
+      "size": [
+        1536,
+        1024
+      ],
+      "format": "PNG"
+    },
+    {
+      "sheet": 2,
+      "group": "B",
+      "file": "previews/card_art_sheets/sheet-02.png",
+      "outputSha256": "a70dcda1892241393c63c951083083874ebcf59656f521673301a60e1197e55e",
+      "size": [
+        1536,
+        1024
+      ],
+      "format": "PNG"
+    },
+    {
+      "sheet": 3,
+      "group": "C",
+      "file": "previews/card_art_sheets/sheet-03.png",
+      "outputSha256": "8ef30c595ba42d6d88d756a327a88f27e833599f902ff0b8e2f6de0fda0784d8",
+      "size": [
+        1536,
+        1024
+      ],
+      "format": "PNG"
+    },
+    {
+      "sheet": 4,
+      "group": "D",
+      "file": "previews/card_art_sheets/sheet-04.png",
+      "outputSha256": "63fff40b6c5cd15b9a778404a6ce58f6bdb85eb8c43817deec676f795afd9f45",
+      "size": [
+        1536,
+        1024
+      ],
+      "format": "PNG"
+    },
+    {
+      "sheet": 5,
+      "group": "E",
+      "file": "previews/card_art_sheets/sheet-05.png",
+      "outputSha256": "2b92f97a26c0d72fc5f179b9ec124922ff4ea5134e19d481f5e8e72cc0e3a15f",
+      "size": [
+        1536,
+        1024
+      ],
+      "format": "PNG"
+    },
+    {
+      "sheet": 6,
+      "group": "F",
+      "file": "previews/card_art_sheets/sheet-06.png",
+      "outputSha256": "3259c4f75f71fac829d120bcd2194d86289f7e3bc31e1a8d0212cfa0fcde8ae9",
+      "size": [
+        1536,
+        1024
+      ],
+      "format": "PNG"
+    }
+  ],
+  "sheetsReceived": 6,
+  "knownExceptions": [
+    {
+      "sheet": 2,
+      "group": "B",
+      "reason": "平台导出 1:1 方图，而非提示词要求的 3:2 / 1536×1024",
+      "sourceSize": [
+        1024,
+        1024
+      ],
+      "sourceCellWidths": [
+        341,
+        342
+      ],
+      "action": "按 3×4 切出 341/342×256 的格，原像素居中嵌入 512×256 标准格，左右补该格自身底色；不拉伸、不裁内容",
+      "effect": "主体在标准格内横向占比变小、留白更多；裁切框 384×256 仍能完整容纳主体",
+      "palette": "底色差异在后续 24 色吸附时统一到 #12161F"
+    }
+  ],
+  "pixelPolicy": "导入阶段只换容器与重排位置，不做缩放/拉伸/量化；JPEG 压缩噪声由 24 色吸附消除",
+  "boundary": "Q17 未拍板、GUI F5 未跑；冻结卡面 assets/ui/cards/ 的 10 张 PNG 未改动；不接数值与规则"
+}

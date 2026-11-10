@@ -5487,17 +5487,17 @@
     "sheetsTotal": 6,
     "cellsPerSheet": 12,
     "generations": 6,
-    "sheetsReceived": 0,
-    "sheetsPending": 6,
-    "artReceived": 0,
-    "artPending": 72
+    "sheetsReceived": 6,
+    "sheetsPending": 0,
+    "artReceived": 72,
+    "artPending": 0
   },
   "knownExceptions": [
     "docs/12 §5 现行冻结口径是「72 卡只需 4 卡框 + 6 纹样共 10 张小图」；本决策与之冲突，记为 R57，Q17 拍板前不改写该文档",
     "07-codex 稿内 16 张示意卡的卡名与冻结 72 卡库不是一套，且含文字，不得直接当卡面入库",
     "R58 拼版风险：AI 可能画成一张整图、格位漂移、元素跨格、格间风格漂移或擅画格线；先出 1 张 sheet 试裁目检再批量",
     "拼版后每格有效分辨率为 384×256（原单张方案为 1024×1024），目标插画区仅 84×56 / 4× 约 336×224，够用但不等于单张细节密度",
-    "回稿未到齐；sheetsReceived / artReceived 如实统计，不伪造 6/6 或 72/72"
+    "第 39 轮 6 组回稿已到齐并完成裁切 / 转录；sheetsReceived / artReceived 按磁盘如实统计，素材落盘后仍属候选资产，不得直接入库"
   ],
-  "boundary": "本表只是外发规格与映射，不是美术资产、不是已入库资源、不改任何冻结数值与规则；Q17 未拍板、GUI F5 未跑、未接 Godot 场景。"
+  "boundary": "本表只是外发规格与映射，不是美术资产、不是已入库资源、不改任何冻结数值与规则；Q17 未拍板、GUI F5 未跑、未接 Godot 主场景（第 39 轮只新增示例 CardArtView.tscn，不改 run/main_scene）。"
 }

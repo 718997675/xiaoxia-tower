@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/CardArtView.gd" id="1_cardart"]
+
+[node name="CardArtView" type="Control"]
+custom_minimum_size = Vector2(96, 144)
+offset_right = 96.0
+offset_bottom = 144.0
+script = ExtResource("1_cardart")
+card_id = "card_jianfeng"
+rarity = "common"
+card_name = "剑锋淬砺"
+category = "dmg"

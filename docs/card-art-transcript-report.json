@@ -1,0 +1,1616 @@
+{
+  "version": 1,
+  "generatedBy": "tools/transcribe_card_art.py",
+  "status": "待目检与合规确认；不得直接入库",
+  "pipeline": [
+    "previews/card_art_sheets/sheet-01..06.png（1536×1024，导入标准化）",
+    "split_card_art_sheets.py --adaptive → 72 张 384×256 单卡原稿",
+    "24 色锁定板吸附 → <card_id>-cardart_palette24.png",
+    "NEAREST 84×56 → assets/ui/card_art/<card_id>.png"
+  ],
+  "paletteSize": 20,
+  "artSize": [
+    84,
+    56
+  ],
+  "artOrigin": [
+    6,
+    19
+  ],
+  "artSpecNote": "docs/12 §2 为 x6–89/y19–75=84×57；84×56 是 PROPOSAL 的 4 倍数友好值，1px 差异待 4× 实机复核，未改冻结坐标",
+  "cards": [
+    {
+      "cardId": "card_jianfeng",
+      "sheet": "sheet-01.png",
+      "cell": 1,
+      "label": "r1c1",
+      "usedBox": [
+        64,
+        11,
+        448,
+        267
+      ],
+      "original": "previews/card_art/card_jianfeng-cardart-original.png",
+      "palette24": "previews/card_art/card_jianfeng-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_jianfeng.png",
+      "outputSha256": "5b4fdbd24d5921fa5de26f9f660f172014a0b2acfb70f4c2df75c9b45b539e5c",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 468
+    },
+    {
+      "cardId": "card_poyun",
+      "sheet": "sheet-01.png",
+      "cell": 2,
+      "label": "r1c2",
+      "usedBox": [
+        576,
+        11,
+        960,
+        267
+      ],
+      "original": "previews/card_art/card_poyun-cardart-original.png",
+      "palette24": "previews/card_art/card_poyun-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_poyun.png",
+      "outputSha256": "281e3ecddead0523c4aeabc966b6572181e976412c8f0d6f12281e66f86754c3",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 630
+    },
+    {
+      "cardId": "card_leizhuan",
+      "sheet": "sheet-01.png",
+      "cell": 3,
+      "label": "r1c3",
+      "usedBox": [
+        1088,
+        11,
+        1472,
+        267
+      ],
+      "original": "previews/card_art/card_leizhuan-cardart-original.png",
+      "palette24": "previews/card_art/card_leizhuan-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_leizhuan.png",
+      "outputSha256": "15184713440bee15f13a388431bd71949e81962844e0e9f8b06df12ba5c64824",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 932
+    },
+    {
+      "cardId": "card_danbao",
+      "sheet": "sheet-01.png",
+      "cell": 4,
+      "label": "r2c1",
+      "usedBox": [
+        64,
+        267,
+        448,
+        523
+      ],
+      "original": "previews/card_art/card_danbao-cardart-original.png",
+      "palette24": "previews/card_art/card_danbao-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_danbao.png",
+      "outputSha256": "1bd3191c869a9a6af163d9735fb478abbfffa51dda4b2779aa5ddc71d8ad2189",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 523
+    },
+    {
+      "cardId": "card_fuzhen",
+      "sheet": "sheet-01.png",
+      "cell": 5,
+      "label": "r2c2",
+      "usedBox": [
+        576,
+        267,
+        960,
+        523
+      ],
+      "original": "previews/card_art/card_fuzhen-cardart-original.png",
+      "palette24": "previews/card_art/card_fuzhen-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_fuzhen.png",
+      "outputSha256": "abef8dc42a38f8ebb803cd13e54404b16577558c409d08dd2dccc83c1fd0268c",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 967
+    },
+    {
+      "cardId": "card_quanfeng",
+      "sheet": "sheet-01.png",
+      "cell": 6,
+      "label": "r2c3",
+      "usedBox": [
+        1088,
+        267,
+        1472,
+        523
+      ],
+      "original": "previews/card_art/card_quanfeng-cardart-original.png",
+      "palette24": "previews/card_art/card_quanfeng-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_quanfeng.png",
+      "outputSha256": "0ff952161716d539e019db95b5ee12ce0cc413a68082073419681ee4a952e82b",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 512
+    },
+    {
+      "cardId": "card_huiling",
+      "sheet": "sheet-01.png",
+      "cell": 7,
+      "label": "r3c1",
+      "usedBox": [
+        64,
+        512,
+        448,
+        768
+      ],
+      "original": "previews/card_art/card_huiling-cardart-original.png",
+      "palette24": "previews/card_art/card_huiling-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_huiling.png",
+      "outputSha256": "904e5d44ba4f1d0366d6dcc17a0710ac22300d2e6ed7f904ac2aeda3f688df91",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 370
+    },
+    {
+      "cardId": "card_jingang",
+      "sheet": "sheet-01.png",
+      "cell": 8,
+      "label": "r3c2",
+      "usedBox": [
+        576,
+        512,
+        960,
+        768
+      ],
+      "original": "previews/card_art/card_jingang-cardart-original.png",
+      "palette24": "previews/card_art/card_jingang-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_jingang.png",
+      "outputSha256": "21ed32b1a8133380d52ffbd39aa32fe63b567394fd7be0cadb28ce95a29ef5b9",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 708
+    },
+    {
+      "cardId": "card_jianyi",
+      "sheet": "sheet-01.png",
+      "cell": 9,
+      "label": "r3c3",
+      "usedBox": [
+        1088,
+        512,
+        1472,
+        768
+      ],
+      "original": "previews/card_art/card_jianyi-cardart-original.png",
+      "palette24": "previews/card_art/card_jianyi-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_jianyi.png",
+      "outputSha256": "6304e2b69020328d89d01d1554a1c0ffec9247dd1605cee3cb28e5ae6d5d363e",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 359
+    },
+    {
+      "cardId": "card_wuxing",
+      "sheet": "sheet-01.png",
+      "cell": 10,
+      "label": "r4c1",
+      "usedBox": [
+        64,
+        768,
+        448,
+        1024
+      ],
+      "original": "previews/card_art/card_wuxing-cardart-original.png",
+      "palette24": "previews/card_art/card_wuxing-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_wuxing.png",
+      "outputSha256": "dabb7e23ed91694bee9f04c65e7a84ca16981263a12444a0e89c1e9e9713e9aa",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 861
+    },
+    {
+      "cardId": "card_lianhuan",
+      "sheet": "sheet-01.png",
+      "cell": 11,
+      "label": "r4c2",
+      "usedBox": [
+        576,
+        768,
+        960,
+        1024
+      ],
+      "original": "previews/card_art/card_lianhuan-cardart-original.png",
+      "palette24": "previews/card_art/card_lianhuan-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_lianhuan.png",
+      "outputSha256": "fe0d169d1bc00ad11b1454ee874f0177d0d8f0cf1e53cc2d240904012291ee43",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 845
+    },
+    {
+      "cardId": "card_zhanxing",
+      "sheet": "sheet-01.png",
+      "cell": 12,
+      "label": "r4c3",
+      "usedBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ],
+      "original": "previews/card_art/card_zhanxing-cardart-original.png",
+      "palette24": "previews/card_art/card_zhanxing-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_zhanxing.png",
+      "outputSha256": "392b7931b3a134dc259793fd3e70574a472c2aeb62cef3be6d9e28771128877e",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 433
+    },
+    {
+      "cardId": "card_cuijing",
+      "sheet": "sheet-02.png",
+      "cell": 1,
+      "label": "r1c1",
+      "usedBox": [
+        64,
+        0,
+        448,
+        256
+      ],
+      "original": "previews/card_art/card_cuijing-cardart-original.png",
+      "palette24": "previews/card_art/card_cuijing-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_cuijing.png",
+      "outputSha256": "e3f0b5c63f074219fdb4f1600e1a3dc336867b3f46f4c897b3cd4658664f2da2",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 300
+    },
+    {
+      "cardId": "card_ningdan",
+      "sheet": "sheet-02.png",
+      "cell": 2,
+      "label": "r1c2",
+      "usedBox": [
+        576,
+        0,
+        960,
+        256
+      ],
+      "original": "previews/card_art/card_ningdan-cardart-original.png",
+      "palette24": "previews/card_art/card_ningdan-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_ningdan.png",
+      "outputSha256": "110b44190896dd7fb39ebc9aad9ff9c936904d54cc880b947c96ee4772869cda",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 460
+    },
+    {
+      "cardId": "card_lingmai",
+      "sheet": "sheet-02.png",
+      "cell": 3,
+      "label": "r1c3",
+      "usedBox": [
+        1088,
+        0,
+        1472,
+        256
+      ],
+      "original": "previews/card_art/card_lingmai-cardart-original.png",
+      "palette24": "previews/card_art/card_lingmai-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_lingmai.png",
+      "outputSha256": "39f8ae57cb39053e662c8817b5260208e8296ce4fea67f4e1c85c44e8c44be1f",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 408
+    },
+    {
+      "cardId": "card_buyao",
+      "sheet": "sheet-02.png",
+      "cell": 4,
+      "label": "r2c1",
+      "usedBox": [
+        64,
+        256,
+        448,
+        512
+      ],
+      "original": "previews/card_art/card_buyao-cardart-original.png",
+      "palette24": "previews/card_art/card_buyao-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_buyao.png",
+      "outputSha256": "861410ef681e4a87a5a5a49cbedced1de426e5ecf481788ccf929f1e2f48c7b0",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 160
+    },
+    {
+      "cardId": "card_tiepi",
+      "sheet": "sheet-02.png",
+      "cell": 5,
+      "label": "r2c2",
+      "usedBox": [
+        576,
+        256,
+        960,
+        512
+      ],
+      "original": "previews/card_art/card_tiepi-cardart-original.png",
+      "palette24": "previews/card_art/card_tiepi-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_tiepi.png",
+      "outputSha256": "ce8d23199e07c1c191de410558ce6bfb2e876ffc90813b10ee00d17745bb199f",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 206
+    },
+    {
+      "cardId": "card_huixin",
+      "sheet": "sheet-02.png",
+      "cell": 6,
+      "label": "r2c3",
+      "usedBox": [
+        1088,
+        256,
+        1472,
+        512
+      ],
+      "original": "previews/card_art/card_huixin-cardart-original.png",
+      "palette24": "previews/card_art/card_huixin-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_huixin.png",
+      "outputSha256": "b4d764f528d0e44f36a9c497c7adc28084234eae9273ddd26dd2885f8972717f",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 230
+    },
+    {
+      "cardId": "card_poyu",
+      "sheet": "sheet-02.png",
+      "cell": 7,
+      "label": "r3c1",
+      "usedBox": [
+        64,
+        512,
+        448,
+        768
+      ],
+      "original": "previews/card_art/card_poyu-cardart-original.png",
+      "palette24": "previews/card_art/card_poyu-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_poyu.png",
+      "outputSha256": "471ab9f55505ece79d8a4f919afab693a9f3852c3d746fbab62fef81b357ad3b",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 207
+    },
+    {
+      "cardId": "card_shouyuan",
+      "sheet": "sheet-02.png",
+      "cell": 8,
+      "label": "r3c2",
+      "usedBox": [
+        576,
+        512,
+        960,
+        768
+      ],
+      "original": "previews/card_art/card_shouyuan-cardart-original.png",
+      "palette24": "previews/card_art/card_shouyuan-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_shouyuan.png",
+      "outputSha256": "3666e56e18bd990824b17a8c4afdb7782dd69274d9e61389ea7dd7e61e83e017",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 613
+    },
+    {
+      "cardId": "card_qingling",
+      "sheet": "sheet-02.png",
+      "cell": 9,
+      "label": "r3c3",
+      "usedBox": [
+        1088,
+        512,
+        1472,
+        768
+      ],
+      "original": "previews/card_art/card_qingling-cardart-original.png",
+      "palette24": "previews/card_art/card_qingling-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_qingling.png",
+      "outputSha256": "2b0e5f5d47f0922e2c758121715df17d7c2112c88f342880a7809d4cdd88f83c",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 296
+    },
+    {
+      "cardId": "card_juxi",
+      "sheet": "sheet-02.png",
+      "cell": 10,
+      "label": "r4c1",
+      "usedBox": [
+        64,
+        768,
+        448,
+        1024
+      ],
+      "original": "previews/card_art/card_juxi-cardart-original.png",
+      "palette24": "previews/card_art/card_juxi-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_juxi.png",
+      "outputSha256": "0216365de757a4a7fcb21c4b2f749f3302e209bb363c58541fe2bc48cd16e970",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 262
+    },
+    {
+      "cardId": "card_zhongzhu",
+      "sheet": "sheet-02.png",
+      "cell": 11,
+      "label": "r4c2",
+      "usedBox": [
+        576,
+        768,
+        960,
+        1024
+      ],
+      "original": "previews/card_art/card_zhongzhu-cardart-original.png",
+      "palette24": "previews/card_art/card_zhongzhu-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_zhongzhu.png",
+      "outputSha256": "df530137632606769334e1b66026af7da135d4d72dc6ff53b06b3ce4587f975a",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 604
+    },
+    {
+      "cardId": "card_jingpo",
+      "sheet": "sheet-02.png",
+      "cell": 12,
+      "label": "r4c3",
+      "usedBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ],
+      "original": "previews/card_art/card_jingpo-cardart-original.png",
+      "palette24": "previews/card_art/card_jingpo-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_jingpo.png",
+      "outputSha256": "0135de4d08052438d98efc02a3efa1492464d8c47982cee8c48d19887d920f51",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 505
+    },
+    {
+      "cardId": "card_nianzhuan",
+      "sheet": "sheet-03.png",
+      "cell": 1,
+      "label": "r1c1",
+      "usedBox": [
+        64,
+        9,
+        448,
+        265
+      ],
+      "original": "previews/card_art/card_nianzhuan-cardart-original.png",
+      "palette24": "previews/card_art/card_nianzhuan-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_nianzhuan.png",
+      "outputSha256": "50aeb392c388bfc52f618ade9b12055002c6d4e36a591e718a298c252687e583",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 501
+    },
+    {
+      "cardId": "card_huanshi",
+      "sheet": "sheet-03.png",
+      "cell": 2,
+      "label": "r1c2",
+      "usedBox": [
+        576,
+        9,
+        960,
+        265
+      ],
+      "original": "previews/card_art/card_huanshi-cardart-original.png",
+      "palette24": "previews/card_art/card_huanshi-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_huanshi.png",
+      "outputSha256": "116614b1ac1ed8b26c76709e0a7a222294a13f469c22ba08f41fa4fe768ae07c",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 522
+    },
+    {
+      "cardId": "card_shuangxiu",
+      "sheet": "sheet-03.png",
+      "cell": 3,
+      "label": "r1c3",
+      "usedBox": [
+        1088,
+        9,
+        1472,
+        265
+      ],
+      "original": "previews/card_art/card_shuangxiu-cardart-original.png",
+      "palette24": "previews/card_art/card_shuangxiu-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_shuangxiu.png",
+      "outputSha256": "64f976d0abbab8f95e9ff97b483a8af6b8366af1f1c64652ca5e98f55aa70d19",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 504
+    },
+    {
+      "cardId": "card_yuqi",
+      "sheet": "sheet-03.png",
+      "cell": 4,
+      "label": "r2c1",
+      "usedBox": [
+        64,
+        265,
+        448,
+        521
+      ],
+      "original": "previews/card_art/card_yuqi-cardart-original.png",
+      "palette24": "previews/card_art/card_yuqi-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_yuqi.png",
+      "outputSha256": "44b98acbbeeb9a265de651add8a971d319ad96ba5dfeae5c4ca69a094eb9604c",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 780
+    },
+    {
+      "cardId": "card_daoyin",
+      "sheet": "sheet-03.png",
+      "cell": 5,
+      "label": "r2c2",
+      "usedBox": [
+        576,
+        265,
+        960,
+        521
+      ],
+      "original": "previews/card_art/card_daoyin-cardart-original.png",
+      "palette24": "previews/card_art/card_daoyin-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_daoyin.png",
+      "outputSha256": "818ba3acf85135483f40394bbf361f94a58275ed85d24f62c1dc820a6e960be2",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 368
+    },
+    {
+      "cardId": "card_jieyin",
+      "sheet": "sheet-03.png",
+      "cell": 6,
+      "label": "r2c3",
+      "usedBox": [
+        1088,
+        265,
+        1472,
+        521
+      ],
+      "original": "previews/card_art/card_jieyin-cardart-original.png",
+      "palette24": "previews/card_art/card_jieyin-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_jieyin.png",
+      "outputSha256": "c4cbaa450189667f67cdaae51e212d58b079c9bd2ffbe889818ccdd7f57c6eac",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 476
+    },
+    {
+      "cardId": "card_wuxiangpo",
+      "sheet": "sheet-03.png",
+      "cell": 7,
+      "label": "r3c1",
+      "usedBox": [
+        64,
+        512,
+        448,
+        768
+      ],
+      "original": "previews/card_art/card_wuxiangpo-cardart-original.png",
+      "palette24": "previews/card_art/card_wuxiangpo-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_wuxiangpo.png",
+      "outputSha256": "f303454e5e59dfc169b81862b6a894c36756fff87cd06221b9e7015609e83c70",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 1194
+    },
+    {
+      "cardId": "card_chongzhu",
+      "sheet": "sheet-03.png",
+      "cell": 8,
+      "label": "r3c2",
+      "usedBox": [
+        576,
+        512,
+        960,
+        768
+      ],
+      "original": "previews/card_art/card_chongzhu-cardart-original.png",
+      "palette24": "previews/card_art/card_chongzhu-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_chongzhu.png",
+      "outputSha256": "d4c436d49091ae18bdc959aba9f5b458f808229f342d3bf5d010fa470daba6c5",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 518
+    },
+    {
+      "cardId": "card_tianren",
+      "sheet": "sheet-03.png",
+      "cell": 9,
+      "label": "r3c3",
+      "usedBox": [
+        1088,
+        512,
+        1472,
+        768
+      ],
+      "original": "previews/card_art/card_tianren-cardart-original.png",
+      "palette24": "previews/card_art/card_tianren-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_tianren.png",
+      "outputSha256": "038263c01d4eef3660482c78898bfb71d274fae37e7f6f9eb0f5dc1cf9184417",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 1372
+    },
+    {
+      "cardId": "card_sheli",
+      "sheet": "sheet-03.png",
+      "cell": 10,
+      "label": "r4c1",
+      "usedBox": [
+        64,
+        768,
+        448,
+        1024
+      ],
+      "original": "previews/card_art/card_sheli-cardart-original.png",
+      "palette24": "previews/card_art/card_sheli-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_sheli.png",
+      "outputSha256": "db8c2f5495b0e91bf52489b488d6eee6b47ebb8a9358fd209463e7cc818e3537",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 844
+    },
+    {
+      "cardId": "card_lunhui",
+      "sheet": "sheet-03.png",
+      "cell": 11,
+      "label": "r4c2",
+      "usedBox": [
+        576,
+        768,
+        960,
+        1024
+      ],
+      "original": "previews/card_art/card_lunhui-cardart-original.png",
+      "palette24": "previews/card_art/card_lunhui-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_lunhui.png",
+      "outputSha256": "77b551ffde4759ba84802eb6605f64644e37a15e1f4df080a01945e41873c93f",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 587
+    },
+    {
+      "cardId": "card_pojing",
+      "sheet": "sheet-03.png",
+      "cell": 12,
+      "label": "r4c3",
+      "usedBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ],
+      "original": "previews/card_art/card_pojing-cardart-original.png",
+      "palette24": "previews/card_art/card_pojing-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_pojing.png",
+      "outputSha256": "c5b4f0b8994e8cf84bf3f1fc345244060c2ebd1f54d3100326d3931aa872827f",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 1036
+    },
+    {
+      "cardId": "card_juling",
+      "sheet": "sheet-04.png",
+      "cell": 1,
+      "label": "r1c1",
+      "usedBox": [
+        64,
+        0,
+        448,
+        256
+      ],
+      "original": "previews/card_art/card_juling-cardart-original.png",
+      "palette24": "previews/card_art/card_juling-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_juling.png",
+      "outputSha256": "4d2b5233d359b03fc3ee88bfdcce30dd6e418b9d2befd132e0625cf356be7753",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 1034
+    },
+    {
+      "cardId": "card_shengxi",
+      "sheet": "sheet-04.png",
+      "cell": 2,
+      "label": "r1c2",
+      "usedBox": [
+        576,
+        0,
+        960,
+        256
+      ],
+      "original": "previews/card_art/card_shengxi-cardart-original.png",
+      "palette24": "previews/card_art/card_shengxi-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_shengxi.png",
+      "outputSha256": "7adc1fc6106d4cee70690fcce563bc0a7fbfa630c14373d9eb17b30aae5a1e82",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 1007
+    },
+    {
+      "cardId": "card_huanling",
+      "sheet": "sheet-04.png",
+      "cell": 3,
+      "label": "r1c3",
+      "usedBox": [
+        1088,
+        0,
+        1472,
+        256
+      ],
+      "original": "previews/card_art/card_huanling-cardart-original.png",
+      "palette24": "previews/card_art/card_huanling-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_huanling.png",
+      "outputSha256": "94af8a6c76810da305a93c88b68e2f2b7cb104a5dedb80e8c68f2a4553012f41",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 627
+    },
+    {
+      "cardId": "card_danxiang",
+      "sheet": "sheet-04.png",
+      "cell": 4,
+      "label": "r2c1",
+      "usedBox": [
+        64,
+        256,
+        448,
+        512
+      ],
+      "original": "previews/card_art/card_danxiang-cardart-original.png",
+      "palette24": "previews/card_art/card_danxiang-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_danxiang.png",
+      "outputSha256": "54fc3e68eec3c66eea4106e4ac623a5e4230d1908e17b53907c527af62080e20",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 474
+    },
+    {
+      "cardId": "card_lingchao",
+      "sheet": "sheet-04.png",
+      "cell": 5,
+      "label": "r2c2",
+      "usedBox": [
+        576,
+        256,
+        960,
+        512
+      ],
+      "original": "previews/card_art/card_lingchao-cardart-original.png",
+      "palette24": "previews/card_art/card_lingchao-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_lingchao.png",
+      "outputSha256": "3de7b557eada751bdaee210af29b6cfcbdd2a252afc00d6052fe124d8f94f4f8",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 1171
+    },
+    {
+      "cardId": "card_jieqi",
+      "sheet": "sheet-04.png",
+      "cell": 6,
+      "label": "r2c3",
+      "usedBox": [
+        1088,
+        256,
+        1472,
+        512
+      ],
+      "original": "previews/card_art/card_jieqi-cardart-original.png",
+      "palette24": "previews/card_art/card_jieqi-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_jieqi.png",
+      "outputSha256": "e0fb70a5f07c427d3987649300e2c3f7d8a2c89140f20a9d69dc4470936d63a5",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 291
+    },
+    {
+      "cardId": "card_kongzhan",
+      "sheet": "sheet-04.png",
+      "cell": 7,
+      "label": "r3c1",
+      "usedBox": [
+        64,
+        512,
+        448,
+        768
+      ],
+      "original": "previews/card_art/card_kongzhan-cardart-original.png",
+      "palette24": "previews/card_art/card_kongzhan-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_kongzhan.png",
+      "outputSha256": "7c9bb1e758baafad5001b654026ff00c8f818c9b44fc2a641786e9899d284f74",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 522
+    },
+    {
+      "cardId": "card_fanyong",
+      "sheet": "sheet-04.png",
+      "cell": 8,
+      "label": "r3c2",
+      "usedBox": [
+        576,
+        512,
+        960,
+        768
+      ],
+      "original": "previews/card_art/card_fanyong-cardart-original.png",
+      "palette24": "previews/card_art/card_fanyong-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_fanyong.png",
+      "outputSha256": "1195068b6449aef5f687b36d0bf05e88fee1c0ebf355d5dbeff2ead59b7d4e4b",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 1162
+    },
+    {
+      "cardId": "card_zhulian",
+      "sheet": "sheet-04.png",
+      "cell": 9,
+      "label": "r3c3",
+      "usedBox": [
+        1088,
+        512,
+        1472,
+        768
+      ],
+      "original": "previews/card_art/card_zhulian-cardart-original.png",
+      "palette24": "previews/card_art/card_zhulian-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_zhulian.png",
+      "outputSha256": "1210cdd508c6f648d42ff2087820444e7af24e25ac35e777f3d2db9ee1523881",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 294
+    },
+    {
+      "cardId": "card_wugen",
+      "sheet": "sheet-04.png",
+      "cell": 10,
+      "label": "r4c1",
+      "usedBox": [
+        64,
+        768,
+        448,
+        1024
+      ],
+      "original": "previews/card_art/card_wugen-cardart-original.png",
+      "palette24": "previews/card_art/card_wugen-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_wugen.png",
+      "outputSha256": "064db66f0bfa05676dbcbbb3f6ff677fd2d4668ddba97420dc57e512c56e10ba",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 670
+    },
+    {
+      "cardId": "card_tianlu",
+      "sheet": "sheet-04.png",
+      "cell": 11,
+      "label": "r4c2",
+      "usedBox": [
+        576,
+        768,
+        960,
+        1024
+      ],
+      "original": "previews/card_art/card_tianlu-cardart-original.png",
+      "palette24": "previews/card_art/card_tianlu-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_tianlu.png",
+      "outputSha256": "9388a32647116282cb67d3e1c5f356f6cc787a353df7a2d6b2ed0aad603bf25f",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 552
+    },
+    {
+      "cardId": "card_shouyin",
+      "sheet": "sheet-04.png",
+      "cell": 12,
+      "label": "r4c3",
+      "usedBox": [
+        1088,
+        768,
+        1472,
+        1024
+      ],
+      "original": "previews/card_art/card_shouyin-cardart-original.png",
+      "palette24": "previews/card_art/card_shouyin-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_shouyin.png",
+      "outputSha256": "cdb380c3229dca643c6060beea945a2f024a3f63a957f99f7c640bfa899f9f12",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 852
+    },
+    {
+      "cardId": "card_huichun",
+      "sheet": "sheet-05.png",
+      "cell": 1,
+      "label": "r1c1",
+      "usedBox": [
+        64,
+        7,
+        448,
+        263
+      ],
+      "original": "previews/card_art/card_huichun-cardart-original.png",
+      "palette24": "previews/card_art/card_huichun-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_huichun.png",
+      "outputSha256": "43d051a5d5e3669fed816e7897d28051d94e7aab65cb532e8a332a1e0f5d436f",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 560
+    },
+    {
+      "cardId": "card_huti",
+      "sheet": "sheet-05.png",
+      "cell": 2,
+      "label": "r1c2",
+      "usedBox": [
+        576,
+        7,
+        960,
+        263
+      ],
+      "original": "previews/card_art/card_huti-cardart-original.png",
+      "palette24": "previews/card_art/card_huti-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_huti.png",
+      "outputSha256": "ef830a93845a583081da848cfe6416b5bd6a317f93976ca834c979f1540fc6de",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 845
+    },
+    {
+      "cardId": "card_bishui",
+      "sheet": "sheet-05.png",
+      "cell": 3,
+      "label": "r1c3",
+      "usedBox": [
+        1088,
+        7,
+        1472,
+        263
+      ],
+      "original": "previews/card_art/card_bishui-cardart-original.png",
+      "palette24": "previews/card_art/card_bishui-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_bishui.png",
+      "outputSha256": "8586ea3f9d1dd9bec60b363e9cfbc5830b8327c2324792e40b78cf6321dd8868",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 648
+    },
+    {
+      "cardId": "card_duanxu",
+      "sheet": "sheet-05.png",
+      "cell": 4,
+      "label": "r2c1",
+      "usedBox": [
+        64,
+        263,
+        448,
+        519
+      ],
+      "original": "previews/card_art/card_duanxu-cardart-original.png",
+      "palette24": "previews/card_art/card_duanxu-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_duanxu.png",
+      "outputSha256": "3c638ecea40dc78361605b3162fa6127f13f5de4d25957f4291bdfb2bf9e1f98",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 315
+    },
+    {
+      "cardId": "card_jiaren",
+      "sheet": "sheet-05.png",
+      "cell": 5,
+      "label": "r2c2",
+      "usedBox": [
+        576,
+        263,
+        960,
+        519
+      ],
+      "original": "previews/card_art/card_jiaren-cardart-original.png",
+      "palette24": "previews/card_art/card_jiaren-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_jiaren.png",
+      "outputSha256": "f5ea3295da2cdc7a21c1714002f7c97315f560f7461ee552e353488b1ee45f19",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 620
+    },
+    {
+      "cardId": "card_tiegu",
+      "sheet": "sheet-05.png",
+      "cell": 6,
+      "label": "r2c3",
+      "usedBox": [
+        1088,
+        263,
+        1472,
+        519
+      ],
+      "original": "previews/card_art/card_tiegu-cardart-original.png",
+      "palette24": "previews/card_art/card_tiegu-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_tiegu.png",
+      "outputSha256": "017e9bb36a1c28b8559240a72e9aa4a083d40c475de7b5923a59654137fe7b59",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 574
+    },
+    {
+      "cardId": "card_guisuo",
+      "sheet": "sheet-05.png",
+      "cell": 7,
+      "label": "r3c1",
+      "usedBox": [
+        64,
+        494,
+        448,
+        750
+      ],
+      "original": "previews/card_art/card_guisuo-cardart-original.png",
+      "palette24": "previews/card_art/card_guisuo-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_guisuo.png",
+      "outputSha256": "98c1d7997fc4cf9ab1a3ad0f169fb00cc9a4a2ad881dfb5c46fb6b8408e90372",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 326
+    },
+    {
+      "cardId": "card_yinbi",
+      "sheet": "sheet-05.png",
+      "cell": 8,
+      "label": "r3c2",
+      "usedBox": [
+        576,
+        494,
+        960,
+        750
+      ],
+      "original": "previews/card_art/card_yinbi-cardart-original.png",
+      "palette24": "previews/card_art/card_yinbi-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_yinbi.png",
+      "outputSha256": "5f1cbbb019d76f3dc31717e28447cdec7120daab822b11b0a8c4af50b6d4910c",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 110
+    },
+    {
+      "cardId": "card_zhuansheng",
+      "sheet": "sheet-05.png",
+      "cell": 9,
+      "label": "r3c3",
+      "usedBox": [
+        1088,
+        494,
+        1472,
+        750
+      ],
+      "original": "previews/card_art/card_zhuansheng-cardart-original.png",
+      "palette24": "previews/card_art/card_zhuansheng-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_zhuansheng.png",
+      "outputSha256": "c9a812be75d3d90801c735260eb2f3fc41b968cd5a7fd22d0431c0f8693376b6",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 594
+    },
+    {
+      "cardId": "card_qinglu",
+      "sheet": "sheet-05.png",
+      "cell": 10,
+      "label": "r4c1",
+      "usedBox": [
+        64,
+        750,
+        448,
+        1006
+      ],
+      "original": "previews/card_art/card_qinglu-cardart-original.png",
+      "palette24": "previews/card_art/card_qinglu-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_qinglu.png",
+      "outputSha256": "1c78c2bddf6cbc68f05fb91cebe93c60ffc3b4d108516df78d3192a12fa93591",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 294
+    },
+    {
+      "cardId": "card_hunyuan",
+      "sheet": "sheet-05.png",
+      "cell": 11,
+      "label": "r4c2",
+      "usedBox": [
+        576,
+        750,
+        960,
+        1006
+      ],
+      "original": "previews/card_art/card_hunyuan-cardart-original.png",
+      "palette24": "previews/card_art/card_hunyuan-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_hunyuan.png",
+      "outputSha256": "18950a8a3db5b625d9f920e91a746864d8c3a5bb70323ecad6eefd317487b396",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 482
+    },
+    {
+      "cardId": "card_sheshi",
+      "sheet": "sheet-05.png",
+      "cell": 12,
+      "label": "r4c3",
+      "usedBox": [
+        1088,
+        750,
+        1472,
+        1006
+      ],
+      "original": "previews/card_art/card_sheshi-cardart-original.png",
+      "palette24": "previews/card_art/card_sheshi-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_sheshi.png",
+      "outputSha256": "7a7f7ab01594af18df47cc78bbaf011bd4265b8419afa60b747ce463ecf6ed10",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 690
+    },
+    {
+      "cardId": "card_jianxin",
+      "sheet": "sheet-06.png",
+      "cell": 1,
+      "label": "r1c1",
+      "usedBox": [
+        64,
+        4,
+        448,
+        260
+      ],
+      "original": "previews/card_art/card_jianxin-cardart-original.png",
+      "palette24": "previews/card_art/card_jianxin-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_jianxin.png",
+      "outputSha256": "d9d8b043d60a6c6769d9fb7f60bc455b73c91dc43228868a8699adba5207945e",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 332
+    },
+    {
+      "cardId": "card_fuhun",
+      "sheet": "sheet-06.png",
+      "cell": 2,
+      "label": "r1c2",
+      "usedBox": [
+        576,
+        4,
+        960,
+        260
+      ],
+      "original": "previews/card_art/card_fuhun-cardart-original.png",
+      "palette24": "previews/card_art/card_fuhun-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_fuhun.png",
+      "outputSha256": "481e2d8612795e7865dfc991455608ecb6f9dc13c44be13f45bfa1469f7e28a7",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 453
+    },
+    {
+      "cardId": "card_danxin",
+      "sheet": "sheet-06.png",
+      "cell": 3,
+      "label": "r1c3",
+      "usedBox": [
+        1088,
+        4,
+        1472,
+        260
+      ],
+      "original": "previews/card_art/card_danxin-cardart-original.png",
+      "palette24": "previews/card_art/card_danxin-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_danxin.png",
+      "outputSha256": "03db4668b285859106ee54908179464694cdaa5113f35606f2be205959dd3bd8",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 785
+    },
+    {
+      "cardId": "card_tipo",
+      "sheet": "sheet-06.png",
+      "cell": 4,
+      "label": "r2c1",
+      "usedBox": [
+        64,
+        260,
+        448,
+        516
+      ],
+      "original": "previews/card_art/card_tipo-cardart-original.png",
+      "palette24": "previews/card_art/card_tipo-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_tipo.png",
+      "outputSha256": "8829154272b474b4e409f5addf0acaac2fe3724e782383fb80ba18c386b159d2",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 508
+    },
+    {
+      "cardId": "card_tongyuan",
+      "sheet": "sheet-06.png",
+      "cell": 5,
+      "label": "r2c2",
+      "usedBox": [
+        576,
+        260,
+        960,
+        516
+      ],
+      "original": "previews/card_art/card_tongyuan-cardart-original.png",
+      "palette24": "previews/card_art/card_tongyuan-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_tongyuan.png",
+      "outputSha256": "62de49dc3ac6cb459e533f2c7356ed9b63cae4b3f68beb909a0db0a1f4e47c8b",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 420
+    },
+    {
+      "cardId": "card_jiezeng",
+      "sheet": "sheet-06.png",
+      "cell": 6,
+      "label": "r2c3",
+      "usedBox": [
+        1088,
+        260,
+        1472,
+        516
+      ],
+      "original": "previews/card_art/card_jiezeng-cardart-original.png",
+      "palette24": "previews/card_art/card_jiezeng-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_jiezeng.png",
+      "outputSha256": "0d422353612f59441308d8b6acdac719a756674fdc883e4ac1fe95ff8f1be0ef",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 466
+    },
+    {
+      "cardId": "card_shuangren",
+      "sheet": "sheet-06.png",
+      "cell": 7,
+      "label": "r3c1",
+      "usedBox": [
+        64,
+        486,
+        448,
+        742
+      ],
+      "original": "previews/card_art/card_shuangren-cardart-original.png",
+      "palette24": "previews/card_art/card_shuangren-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_shuangren.png",
+      "outputSha256": "6fd2ac87c9dd7c0b71fc88cd8fe634f576509024e2054e4fc5b017b7125edf80",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 433
+    },
+    {
+      "cardId": "card_duozhu",
+      "sheet": "sheet-06.png",
+      "cell": 8,
+      "label": "r3c2",
+      "usedBox": [
+        576,
+        486,
+        960,
+        742
+      ],
+      "original": "previews/card_art/card_duozhu-cardart-original.png",
+      "palette24": "previews/card_art/card_duozhu-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_duozhu.png",
+      "outputSha256": "378d3fe2381c2d8f6d5f2d670d433b39ef2c769c34ecfefc8aa9e52208a35615",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 631
+    },
+    {
+      "cardId": "card_zhongshi",
+      "sheet": "sheet-06.png",
+      "cell": 9,
+      "label": "r3c3",
+      "usedBox": [
+        1088,
+        486,
+        1472,
+        742
+      ],
+      "original": "previews/card_art/card_zhongshi-cardart-original.png",
+      "palette24": "previews/card_art/card_zhongshi-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_zhongshi.png",
+      "outputSha256": "83c9926a81ce8b6585bedf09ffd004818a00655ceb9033f9addb07d3d245f9a3",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 717
+    },
+    {
+      "cardId": "card_shouzhuo",
+      "sheet": "sheet-06.png",
+      "cell": 10,
+      "label": "r4c1",
+      "usedBox": [
+        64,
+        742,
+        448,
+        998
+      ],
+      "original": "previews/card_art/card_shouzhuo-cardart-original.png",
+      "palette24": "previews/card_art/card_shouzhuo-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_shouzhuo.png",
+      "outputSha256": "d3e9d169d5272838422e8be6308737170f996bab9162fdf0209c0e9fbb99dfa2",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 469
+    },
+    {
+      "cardId": "card_yiyu",
+      "sheet": "sheet-06.png",
+      "cell": 11,
+      "label": "r4c2",
+      "usedBox": [
+        576,
+        742,
+        960,
+        998
+      ],
+      "original": "previews/card_art/card_yiyu-cardart-original.png",
+      "palette24": "previews/card_art/card_yiyu-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_yiyu.png",
+      "outputSha256": "21bbd2955f631028586856ae2f2c5be586c97b6518084aca9ed5b6c75ca324c9",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 453
+    },
+    {
+      "cardId": "card_wuxin",
+      "sheet": "sheet-06.png",
+      "cell": 12,
+      "label": "r4c3",
+      "usedBox": [
+        1088,
+        742,
+        1472,
+        998
+      ],
+      "original": "previews/card_art/card_wuxin-cardart-original.png",
+      "palette24": "previews/card_art/card_wuxin-cardart_palette24.png",
+      "output": "assets/ui/card_art/card_wuxin.png",
+      "outputSha256": "8b3f6d2c2a4fc477581b42b2a0f1e8638c5e9d7ed9e45e779c11c6d4bb9aa11b",
+      "size": [
+        84,
+        56
+      ],
+      "offPaletteColors": 0,
+      "foregroundPixels": 764
+    }
+  ],
+  "cardsTotal": 72,
+  "cardsOnDisk": 72,
+  "offPaletteTotal": 0,
+  "previews": {
+    "transcript": "assets/_preview/card-art-72-transcript.png",
+    "fullCards": "assets/_preview/card-art-full-cards.png",
+    "sheetsOverview": "assets/_preview/card-art-sheets-overview.png"
+  },
+  "boundary": "冻结卡面 assets/ui/cards/ 10 张未改；卡框只在预览里叠加，游戏仍分层绘制；Q17 未拍板、GUI F5 未跑；未改数值 / 概率 / 权重 / 规则"
+}

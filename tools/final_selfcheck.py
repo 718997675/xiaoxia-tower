@@ -1190,6 +1190,76 @@ def c_card_art_r34():
             f"{stats['artReceived']}/72 如实披露 / docs/12 与 10 张冻结卡面原样未动")
 
 
+def c_card_art_integration_r39() -> str:
+    """第 39 轮：6 组回稿 → 72 张 84×56 → 网页验证层 / Godot 卡面组件接入。"""
+    import struct
+
+    def png_size(p: Path) -> tuple[int, int]:
+        with p.open("rb") as fh:
+            head = fh.read(24)
+        need(head[:8] == b"\x89PNG\r\n\x1a\n", f"{p.name} 不是 PNG")
+        return struct.unpack(">II", head[16:24])
+
+    imp = load("card-art-integration-report.json")
+    need(imp["sheetsReceived"] == 6 and len(imp["outputs"]) == 6,
+         "导入报告不是 6/6 拼版")
+    need(imp["groupToSheet"] == {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6},
+         "A–F → sheet-01..06 映射被改动")
+    need(any(e["sheet"] == 2 and "1024" in e["reason"] for e in imp["knownExceptions"]),
+         "B 组 1024×1024 尺寸例外未如实记录")
+    for o in imp["outputs"]:
+        p = ROOT / o["file"]
+        need(p.is_file() and png_size(p) == (1536, 1024),
+             f"{o['file']} 缺失或不是 1536×1024")
+
+    tr = load("card-art-transcript-report.json")
+    need(tr["cardsTotal"] == 72 and tr["cardsOnDisk"] == 72
+         and tr["offPaletteTotal"] == 0 and tr["artSize"] == [84, 56],
+         "转录报告不是 72/72 张 84×56 且色板外颜色 0")
+    art_dir = ROOT / "assets" / "ui" / "card_art"
+    lib = json.loads((ROOT / "data" / "buff-card-library.json").read_text(encoding="utf-8"))
+    ids = [c["id"] for c in lib["cards"]]
+    need(len(ids) == 72 and len(set(ids)) == 72, "运行时卡库不是 72 张唯一 id")
+    files = sorted(p.name for p in art_dir.glob("*.png"))
+    need(files == sorted(f"{i}.png" for i in ids),
+         "assets/ui/card_art/ 的 72 个文件名与卡库 id 不逐一对位")
+    for name in files:
+        need(png_size(art_dir / name) == (84, 56), f"{name} 不是 84×56")
+
+    html = (ROOT / "previews" / "web-demo.html").read_text(encoding="utf-8")
+    need(html.count('class="cardart"') == 3 and "IMG[c.id]" in html,
+         "web-demo 缺一卡一插画的 cardart 图层或按 id 取值")
+    need(all(f'"{cid}":"data:image/png;base64,' in html for cid in ids),
+         "web-demo 未内嵌全部 72 张插画")
+    need(".card .cardart{position:absolute;left:6px;top:19px;width:84px;height:56px" in html,
+         "web-demo 插画区定位不是 docs/12 §2 的 x6/y19/84×56")
+    for extra in (["--check"],):
+        res = subprocess.run([sys.executable, str(ROOT / "tools" / "build_web_demo.py"), *extra],
+                             cwd=ROOT, capture_output=True, text=True)
+        need(res.returncode == 0,
+             f"build_web_demo.py --check 失败：{res.stdout[-200:]} {res.stderr[-200:]}")
+
+    gd = (ROOT / "scripts" / "CardArtView.gd").read_text(encoding="utf-8")
+    need("class_name CardArtView" in gd and "assets/ui/card_art/" in gd
+         and "func show_card(" in gd and "TEXTURE_FILTER_NEAREST" in gd,
+         "Godot 卡面组件缺动态按 card_id 载入 / 最近邻过滤")
+    tscn = (ROOT / "scenes" / "CardArtView.tscn").read_text(encoding="utf-8")
+    need("CardArtView.gd" in tscn and 'card_id = "card_jianfeng"' in tscn,
+         "CardArtView.tscn 未挂脚本或缺示例卡 id")
+    godot = (ROOT / "project.godot").read_text(encoding="utf-8")
+    need('run/main_scene="res://scenes/MinimalRun.tscn"' in godot,
+         "主场景被改动（第 39 轮只新增示例场景，不接管 F5）")
+    frozen = sorted(p.name for p in (ROOT / "assets" / "ui" / "cards").glob("*.png"))
+    need(len(frozen) == 10, f"冻结 10 张卡面被替换或增删：{len(frozen)}")
+    need(imp["status"] == tr["status"] == "待目检与合规确认；不得直接入库",
+         "集成报告状态被标成已入库")
+
+    return ("6 组回稿按母题核对落盘 sheet-01..06（B 组 1:1 无损重排）/ "
+            "72 张 384×256 原稿 → 24 色吸附 → 72 张 84×56 插画且色板外颜色 0 / "
+            "web-demo 三选一卡面按 card_id 内嵌并绘制 / Godot CardArtView 组件与示例场景就位 / "
+            "主场景、冻结 10 张卡面、数值与规则均未动")
+
+
 def main() -> None:
     check("json_parse", "docs/*.json 全部可解析", c_json)
     check("csv_numbers", "数值源 9 列、无 BOM、无空行、含 round15", c_nums)
@@ -1227,6 +1297,7 @@ def main() -> None:
     check("web_reference_art_r32", "第 32 轮回稿转录资源接入网页战斗画面（真实字节 / R50 解除 / 自检动态化）", c_web_reference_art_r32)
     check("ui_skin_r33", "第 33 轮 9 张 UI 设计稿按视图联动对照（逐字节 / 边界 / 六视图映射）", c_ui_skin_r33)
     check("card_art_r34", "第 34–37 轮 72 卡独立插画（6 组拼版 / 克制风格 / 参考图边界 / 自适应裁剪 / 冻结口径未动）", c_card_art_r34)
+    check("card_art_integration_r39", "第 39 轮 6 组回稿集成（导入标准化 / 72 张 84×56 / 网页卡面 / Godot 组件 / 冻结口径未动）", c_card_art_integration_r39)
 
     passed = sum(1 for c in CHECKS if c["status"] == "PASS")
     failed = len(CHECKS) - passed
