@@ -161,6 +161,16 @@ def load_images() -> dict:
         out[cid] = b64(p)
     needed |= set(art_ids)
 
+    # 第 40 轮：按 07-codex 重绘的 4 档候选卡框（PROPOSAL，不覆盖冻结卡面）。
+    # key 加 codex_ 前缀与冻结 frame_* 并存，网页用 ?frame=frozen 一键切回对照。
+    codex_dir = ROOT / "previews" / "card_frames_codex"
+    for r in ("common", "rare", "legend", "curse"):
+        p = codex_dir / f"frame_{r}.png"
+        if not p.is_file():
+            raise RuntimeError(f"缺 07 风格候选卡框：{p}（先跑 tools/build_codex_card_frames.py）")
+        out[f"codex_frame_{r}"] = b64(p)
+    needed |= {f"codex_frame_{r}" for r in ("common", "rare", "legend", "curse")}
+
     missing = sorted(needed - set(out))
     if missing:
         raise RuntimeError(f"缺素材：{missing}")
@@ -391,9 +401,25 @@ h3{font-size:13px;margin:18px 0 8px;color:var(--jade)}
 .card .cname{position:absolute;left:4px;top:79px;width:88px;height:15px;line-height:15px;
   font-size:12px;text-align:center;color:#1B2130;overflow:hidden;white-space:nowrap}
 .card .cdesc{position:absolute;left:5px;top:96px;width:86px;height:30px;font-size:10px;
-  line-height:10px;color:#2A3140;overflow:hidden;white-space:pre-line}
+  line-height:10px;color:#2A3140;overflow:hidden;white-space:pre}
 .card .cinfo{position:absolute;left:5px;top:130px;width:86px;height:11px;font-size:9px;
   line-height:11px;color:#4A5568}
+/* 第 40 轮 · 07-codex 候选卡框模式（默认）：整卡深墨底，卡名移回顶部条，
+   描述区留纯墨底不画占位横线，底部信息条独立成带；文字全部由 UI 层绘制。
+   ?frame=frozen 切回 docs/12 冻结卡框 + 旧排版，用于并排对照。 */
+.card.codex .paper{background:#12161F}
+.card.codex .catbar,.card.codex .sigil{left:3px;top:5px;width:8px;height:8px}
+.card.codex .cname{left:14px;top:3px;width:68px;height:14px;line-height:14px;
+  font-size:11px;text-align:left;color:#E8DFC8;letter-spacing:0}
+/* white-space:pre 是关键：旧版用 pre-line，浏览器按 84px 容器又自动折一次，
+   与 JS 折行叠加出现「可」「伤害」「命」单独成行的错乱。折行完全交给 wrapText。 */
+.card.codex .cdesc{left:6px;top:79px;width:84px;height:36px;font-size:10px;
+  line-height:12px;color:#E8DFC8;white-space:pre;overflow:hidden}
+.card.codex .cinfo{left:18px;top:119px;width:73px;height:18px;font-size:9px;
+  line-height:18px;color:#C9BFA3;white-space:nowrap;overflow:hidden}
+.card.codex .pips{display:none}  /* 07 风格菱形阶角标已画在框内，不再叠一层金点 */
+.card.codex .unread{left:91px;top:19px}
+.card.codex.curse .cname,.card.codex.curse .cdesc{color:#E8DFC8}
 .card .pips{position:absolute;left:84px;top:3px;width:9px;height:9px}
 .card .pips i{position:absolute;width:2px;height:2px;background:var(--gold)}
 .card .unread{position:absolute;left:91px;top:12px;width:3px;height:3px;background:var(--red-hi);display:none}
@@ -697,7 +723,9 @@ footer{margin-top:26px;border-top:1px solid var(--line);padding-top:12px;color:v
         <button class="btn" id="btnReplay">确定性复核</button>
         <button class="btn" id="btnCodex">已选卡 (Esc)</button>
         <button class="btn primary" id="btnAutoRun">▶ 自动演示整局（8 层）</button>
+        <button class="btn" id="btnFrameMode">卡框：07 候选（点击对照冻结版）</button>
       </div>
+      <div class="note" style="margin-top:2px">卡框默认展示 <b>第 40 轮 07-codex 重绘候选（PROPOSAL）</b>：按 07 图鉴改为整卡深墨底、顶部卡名条、四角云纹、底部独立信息条；描述折行不再拆开数字与英文。<code>?frame=frozen</code> 或上方按钮可切回 <code>docs/12</code> 冻结卡框并排对照。<b>冻结卡面 10 张与规格一个字节未改</b>，Q17 未拍板、GUI F5 未跑，候选不得直接入库。</div>
       <div class="log" id="draftLog"></div>
     </div>
     <aside class="panel">
@@ -780,6 +808,9 @@ __EFFECTS_JS__</script>
 const LIB = __LIB_JSON__;
 const IMG = __IMG_JSON__;
 const META = __META_JSON__;
+/* 第 40 轮：默认展示 07-codex 重绘候选卡框（PROPOSAL），?frame=frozen 切回冻结卡框对照。
+   候选只用于目检，不代表 docs/12 冻结口径已改写、也不代表正式入库。 */
+let frameMode = /[?&]frame=frozen/.test(location.search) ? 'frozen' : 'codex';
 
 /* ---------------- 第 33 轮：UI 设计稿对照层（按视图联动） ---------------- */
 /* 9 张 16:9 归一底板，key 与 assets/ui/reference/ui_reference_manifest.json
@@ -850,19 +881,48 @@ const BOSS = R.BOSS_HP_REFERENCE;
 function $(id) { return document.getElementById(id); }
 function esc(s) { return String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
 function kv(k, v, cls) { return '<div class="kv"><span>' + esc(k) + '</span><span class="' + (cls||'') + '">' + v + '</span></div>'; }
-/* 卡面描述按真实像素容量截断。注意：docs/12 §2 写「最多 3 行 × 每行 ≤14 汉字（10px）」，
-   但 96px 卡面 / 86px 文本区放不下 14 个 10px 汉字（需 140px），规格内部不自洽。
-   网页验证层按 8 字/行 × 3 行截断，全文在图鉴详情可见；该矛盾记为待 4× 实机复核。 */
-function wrapText(s, perLine, maxLines) {
-  const chars = Array.from(String(s));
+/* 卡面描述按真实像素容量折行。注意：docs/12 §2 写「最多 3 行 × 每行 ≤14 汉字（10px）」，
+   但 96px 卡面 / 86px 文本区放不下 14 个 10px 汉字（需 140px），规格内部不自洽（R48）。
+   第 40 轮修正（用户「文字排版都乱了」）：
+     ① 旧版按字符数硬切，把 "20%" 拆成 "2" / "0%"、英文单词断在中间；
+     ② CSS 用 pre-line 又按容器宽度自动折一次，与 JS 折行叠加出现单字独占一行；
+     ③ 按「汉字=1 / ASCII=0.5」估算宽度仍会低估 <20% 这类 ASCII 组合，末字被裁。
+   最终改为 canvas.measureText 用与 .cdesc 完全相同的字体按真实像素累加，token 化保证
+   数字+百分号 / 英文单词不拆；折行完全由 JS 决定（CSS white-space:pre 不再二次折行）。
+   全文仍在图鉴详情可见。maxWidthPx 为文本区像素宽（84px）。 */
+let _wrapCtx = null;
+function wrapMeasure(s) {
+  if (!_wrapCtx) {
+    _wrapCtx = document.createElement('canvas').getContext('2d');
+    _wrapCtx.font = '10px "PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif';
+  }
+  return _wrapCtx.measureText(s).width;
+}
+function wrapText(s, maxWidthPx, maxLines) {
+  const raw = String(s).match(
+    /[\u4E00-\u9FFF\u3000-\u303F\uFF00-\uFFEF]|[A-Za-z_]+|\d+(?:\.\d+)?%?|\S/g) || [];
+  // 开括号 / 开引号不与后一个词分开，避免「（」孤零零挂在行尾。
+  const tokens = [];
+  for (let i = 0; i < raw.length; i++) {
+    if (/^[（(【\[《「]/.test(raw[i]) && i + 1 < raw.length) {
+      tokens.push(raw[i] + raw[i + 1]); i++;
+    } else tokens.push(raw[i]);
+  }
   const lines = [];
-  for (let i = 0; i < chars.length && lines.length < maxLines; i += perLine) {
-    lines.push(chars.slice(i, i + perLine).join(''));
+  let cur = '';
+  for (const t of tokens) {
+    if (cur && wrapMeasure(cur + t) > maxWidthPx) { lines.push(cur); cur = t; }
+    else cur += t;
   }
-  if (chars.length > perLine * maxLines) {
-    lines[maxLines - 1] = Array.from(lines[maxLines - 1]).slice(0, perLine - 1).join('') + '…';
+  if (cur) lines.push(cur);
+  if (lines.length <= maxLines) return lines.join('\n');
+  const kept = lines.slice(0, maxLines);
+  let last = kept[maxLines - 1] || '';
+  while (last && wrapMeasure(last + '…') > maxWidthPx) {
+    last = Array.from(last).slice(0, -1).join('');
   }
-  return lines.join('\n');
+  kept[maxLines - 1] = last + '…';
+  return kept.join('\n');
 }
 
 /* ---------------- Tab 切换 ---------------- */
@@ -1460,16 +1520,25 @@ function renderCards() {
     el.classList.add('show');
     if (c.rarity === 'curse') el.classList.add('curse');
     if (i === selected) el.classList.add('selected');
-    el.querySelector('.paper').style.background = c.rarity === 'curse' ? '#7A2420' : '#E8DFC8';
-    el.querySelector('.frame').src = IMG['frame_' + c.rarity] || IMG.frame_common;
+    const codex = frameMode === 'codex';
+    el.classList.toggle('codex', codex);
+    el.querySelector('.paper').style.background = codex
+      ? '#12161F' : (c.rarity === 'curse' ? '#7A2420' : '#E8DFC8');
+    el.querySelector('.frame').src = codex
+      ? (IMG['codex_frame_' + c.rarity] || IMG.codex_frame_common)
+      : (IMG['frame_' + c.rarity] || IMG.frame_common);
     el.querySelector('.sigil').src = IMG['sigil_' + c.cat] || IMG.sigil_dmg;
     const art = el.querySelector('.cardart');
     art.src = IMG[c.id] || '';
     art.style.display = IMG[c.id] ? 'block' : 'none';
     el.querySelector('.catbar').style.background = (catMap[c.cat] || {}).color || '#4A5568';
     el.querySelector('.cname').textContent = c.name;
-    el.querySelector('.cdesc').textContent = wrapText(c.text, 8, 3);
-    el.querySelector('.cinfo').textContent = (rarMap[c.rarity] || {}).name + ' ×' + (c.stack || 1) + ' · ' + c.cat;
+    /* 84px 文本区按真实像素测量折行；信息条按 07 原稿「◆ 灵气+1」的克制口径
+       只留短标签，避免长文案被裁。两种卡框模式共用同一套折行，只对照框本身。 */
+    el.querySelector('.cdesc').textContent = wrapText(c.text, 84, 3);
+    el.querySelector('.cinfo').textContent = codex
+      ? (rarMap[c.rarity] || {}).name + ' ×' + (c.stack || 1)
+      : (rarMap[c.rarity] || {}).name + ' ×' + (c.stack || 1) + ' · ' + c.cat;
     const pips = el.querySelector('.pips'); pips.innerHTML = '';
     const n = RAR_ORDER.indexOf(c.rarity) + 1;
     for (let k = 0; k < n; k++) {
@@ -1865,6 +1934,25 @@ $('btnWuxiang').addEventListener('click', () => {
 $('btnReplay').addEventListener('click', replay);
 $('btnCodex').addEventListener('click', toggleCodex);
 $('btnAutoRun').addEventListener('click', autoRunDemo);
+/* 第 40 轮：07 候选卡框 ↔ docs/12 冻结卡框一键对照（只改验证层显示，不改任何资产）。 */
+function applyFrameModeLabel() {
+  const btn = $('btnFrameMode');
+  btn.textContent = frameMode === 'codex'
+    ? '卡框：07 候选（点击对照冻结版）' : '卡框：冻结版（点击回到 07 候选）';
+  btn.classList.toggle('on', frameMode === 'codex');
+}
+$('btnFrameMode').addEventListener('click', () => {
+  frameMode = frameMode === 'codex' ? 'frozen' : 'codex';
+  applyFrameModeLabel();
+  try {
+    const u = new URL(location.href);
+    if (frameMode === 'frozen') u.searchParams.set('frame', 'frozen');
+    else u.searchParams.delete('frame');
+    history.replaceState(null, '', u.toString());
+  } catch (e) { /* file:// 下 replaceState 可能被拒，不影响切换 */ }
+  renderCards();
+});
+applyFrameModeLabel();
 document.querySelectorAll('#stage .card').forEach(el =>
   el.addEventListener('click', () => { selectIndex(Number(el.dataset.i)); confirmPick(); }));
 document.addEventListener('keydown', e => {
@@ -2024,7 +2112,10 @@ def structural_checks(html: str) -> list[str]:
                   "id=\"menuScreen\"", "id=\"uiSkinBar\"", "id=\"uiSkinImg\"",
                   "function setUiSkin", "function applyUiSkinForTab",
                   "const UI_SKINS", "const SKIN_BY_TAB", "ui=off",
-                  'class="cardart"', "IMG[c.id]"):
+                  'class="cardart"', "IMG[c.id]",
+                  # 第 40 轮：07 候选卡框与冻结卡框双模式、折行修复、不覆盖基线的说明
+                  "frame=frozen", "codex_frame_", "applyFrameModeLabel",
+                  "btnFrameMode", "card.codex .cname", "冻结卡面 10 张与规格一个字节未改"):
         if needle not in html:
             problems.append(f"关键片段缺失：{needle}")
     if html.count("<script>") != 2 or html.count("</script>") != 2:

@@ -1,0 +1,518 @@
+{
+  "version": 1,
+  "round": 40,
+  "generatedBy": "tools/build_codex_card_frames.py",
+  "status": "待目检与合规确认；不得直接入库",
+  "reference": "previews/ui/07-codex-gpt-image2_original.png",
+  "size": [
+    96,
+    144
+  ],
+  "artOrigin": [
+    6,
+    19
+  ],
+  "artSize": [
+    84,
+    56
+  ],
+  "paletteSize": 20,
+  "structure": [
+    "整卡 #12161F 深墨底，与 84×56 插画同色无缝衔接",
+    "1px 黑硬边 + 1px 稀有度内圈细线（劫品四边断点）",
+    "y2–17 顶部卡名条（#2A3140）：左 8×8 类别纹样位 + 右上菱形阶角标",
+    "x5–90 / y18–75 插画区 1px 内凹细边，框内不画任何内容",
+    "y79–116 效果描述区留纯墨底，不画占位横线",
+    "y118–139 底部信息条：独立色带 + 左侧菱形 + 上下分隔线",
+    "四角 7×7 卷云回纹，稀有度只换线条颜色、结构四档一致"
+  ],
+  "noTextInPng": true,
+  "frames": [
+    {
+      "rarity": "common",
+      "file": "previews/card_frames_codex/frame_common.png",
+      "sha256": "f38b5dd26ed9f2bb20291818b5c5f89510f52905ad6c369aadced28eead23dbb",
+      "lineColor": "#4A5568",
+      "hiColor": "#8A8268",
+      "tier": 1
+    },
+    {
+      "rarity": "rare",
+      "file": "previews/card_frames_codex/frame_rare.png",
+      "sha256": "a4b3fb938df6ccd991744948a79ae90e9277296582bc0835c0329a2e21898e0f",
+      "lineColor": "#5FA8A0",
+      "hiColor": "#9BD4CC",
+      "tier": 2
+    },
+    {
+      "rarity": "legend",
+      "file": "previews/card_frames_codex/frame_legend.png",
+      "sha256": "860d0dcbce3fe86172a6ee614ff9214bac5a160e1c102a8362de83eae063f001",
+      "lineColor": "#D9A441",
+      "hiColor": "#F2D089",
+      "tier": 3
+    },
+    {
+      "rarity": "curse",
+      "file": "previews/card_frames_codex/frame_curse.png",
+      "sha256": "2fcf00a35f4b0d513829813163a3d2a35a12dd824b4ecb98964347876bc55982",
+      "lineColor": "#C8453B",
+      "hiColor": "#E8806F",
+      "tier": 4
+    }
+  ],
+  "cardsCombo": 72,
+  "cards": [
+    {
+      "cardId": "card_jianfeng",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_jianfeng.png"
+    },
+    {
+      "cardId": "card_poyun",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_poyun.png"
+    },
+    {
+      "cardId": "card_leizhuan",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_leizhuan.png"
+    },
+    {
+      "cardId": "card_danbao",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_danbao.png"
+    },
+    {
+      "cardId": "card_fuzhen",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_fuzhen.png"
+    },
+    {
+      "cardId": "card_quanfeng",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_quanfeng.png"
+    },
+    {
+      "cardId": "card_huiling",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_huiling.png"
+    },
+    {
+      "cardId": "card_jingang",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_jingang.png"
+    },
+    {
+      "cardId": "card_jianyi",
+      "rarity": "legend",
+      "frame": "frame_legend.png",
+      "art": "card_jianyi.png"
+    },
+    {
+      "cardId": "card_wuxing",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_wuxing.png"
+    },
+    {
+      "cardId": "card_lianhuan",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_lianhuan.png"
+    },
+    {
+      "cardId": "card_zhanxing",
+      "rarity": "legend",
+      "frame": "frame_legend.png",
+      "art": "card_zhanxing.png"
+    },
+    {
+      "cardId": "card_cuijing",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_cuijing.png"
+    },
+    {
+      "cardId": "card_ningdan",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_ningdan.png"
+    },
+    {
+      "cardId": "card_lingmai",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_lingmai.png"
+    },
+    {
+      "cardId": "card_buyao",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_buyao.png"
+    },
+    {
+      "cardId": "card_tiepi",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_tiepi.png"
+    },
+    {
+      "cardId": "card_huixin",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_huixin.png"
+    },
+    {
+      "cardId": "card_poyu",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_poyu.png"
+    },
+    {
+      "cardId": "card_shouyuan",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_shouyuan.png"
+    },
+    {
+      "cardId": "card_qingling",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_qingling.png"
+    },
+    {
+      "cardId": "card_juxi",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_juxi.png"
+    },
+    {
+      "cardId": "card_zhongzhu",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_zhongzhu.png"
+    },
+    {
+      "cardId": "card_jingpo",
+      "rarity": "legend",
+      "frame": "frame_legend.png",
+      "art": "card_jingpo.png"
+    },
+    {
+      "cardId": "card_nianzhuan",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_nianzhuan.png"
+    },
+    {
+      "cardId": "card_huanshi",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_huanshi.png"
+    },
+    {
+      "cardId": "card_shuangxiu",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_shuangxiu.png"
+    },
+    {
+      "cardId": "card_yuqi",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_yuqi.png"
+    },
+    {
+      "cardId": "card_daoyin",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_daoyin.png"
+    },
+    {
+      "cardId": "card_jieyin",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_jieyin.png"
+    },
+    {
+      "cardId": "card_wuxiangpo",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_wuxiangpo.png"
+    },
+    {
+      "cardId": "card_chongzhu",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_chongzhu.png"
+    },
+    {
+      "cardId": "card_tianren",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_tianren.png"
+    },
+    {
+      "cardId": "card_sheli",
+      "rarity": "legend",
+      "frame": "frame_legend.png",
+      "art": "card_sheli.png"
+    },
+    {
+      "cardId": "card_lunhui",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_lunhui.png"
+    },
+    {
+      "cardId": "card_pojing",
+      "rarity": "legend",
+      "frame": "frame_legend.png",
+      "art": "card_pojing.png"
+    },
+    {
+      "cardId": "card_juling",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_juling.png"
+    },
+    {
+      "cardId": "card_shengxi",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_shengxi.png"
+    },
+    {
+      "cardId": "card_huanling",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_huanling.png"
+    },
+    {
+      "cardId": "card_danxiang",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_danxiang.png"
+    },
+    {
+      "cardId": "card_lingchao",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_lingchao.png"
+    },
+    {
+      "cardId": "card_jieqi",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_jieqi.png"
+    },
+    {
+      "cardId": "card_kongzhan",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_kongzhan.png"
+    },
+    {
+      "cardId": "card_fanyong",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_fanyong.png"
+    },
+    {
+      "cardId": "card_zhulian",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_zhulian.png"
+    },
+    {
+      "cardId": "card_wugen",
+      "rarity": "curse",
+      "frame": "frame_curse.png",
+      "art": "card_wugen.png"
+    },
+    {
+      "cardId": "card_tianlu",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_tianlu.png"
+    },
+    {
+      "cardId": "card_shouyin",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_shouyin.png"
+    },
+    {
+      "cardId": "card_huichun",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_huichun.png"
+    },
+    {
+      "cardId": "card_huti",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_huti.png"
+    },
+    {
+      "cardId": "card_bishui",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_bishui.png"
+    },
+    {
+      "cardId": "card_duanxu",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_duanxu.png"
+    },
+    {
+      "cardId": "card_jiaren",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_jiaren.png"
+    },
+    {
+      "cardId": "card_tiegu",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_tiegu.png"
+    },
+    {
+      "cardId": "card_guisuo",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_guisuo.png"
+    },
+    {
+      "cardId": "card_yinbi",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_yinbi.png"
+    },
+    {
+      "cardId": "card_zhuansheng",
+      "rarity": "legend",
+      "frame": "frame_legend.png",
+      "art": "card_zhuansheng.png"
+    },
+    {
+      "cardId": "card_qinglu",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_qinglu.png"
+    },
+    {
+      "cardId": "card_hunyuan",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_hunyuan.png"
+    },
+    {
+      "cardId": "card_sheshi",
+      "rarity": "curse",
+      "frame": "frame_curse.png",
+      "art": "card_sheshi.png"
+    },
+    {
+      "cardId": "card_jianxin",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_jianxin.png"
+    },
+    {
+      "cardId": "card_fuhun",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_fuhun.png"
+    },
+    {
+      "cardId": "card_danxin",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_danxin.png"
+    },
+    {
+      "cardId": "card_tipo",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_tipo.png"
+    },
+    {
+      "cardId": "card_tongyuan",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_tongyuan.png"
+    },
+    {
+      "cardId": "card_jiezeng",
+      "rarity": "curse",
+      "frame": "frame_curse.png",
+      "art": "card_jiezeng.png"
+    },
+    {
+      "cardId": "card_shuangren",
+      "rarity": "curse",
+      "frame": "frame_curse.png",
+      "art": "card_shuangren.png"
+    },
+    {
+      "cardId": "card_duozhu",
+      "rarity": "legend",
+      "frame": "frame_legend.png",
+      "art": "card_duozhu.png"
+    },
+    {
+      "cardId": "card_zhongshi",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_zhongshi.png"
+    },
+    {
+      "cardId": "card_shouzhuo",
+      "rarity": "rare",
+      "frame": "frame_rare.png",
+      "art": "card_shouzhuo.png"
+    },
+    {
+      "cardId": "card_yiyu",
+      "rarity": "common",
+      "frame": "frame_common.png",
+      "art": "card_yiyu.png"
+    },
+    {
+      "cardId": "card_wuxin",
+      "rarity": "legend",
+      "frame": "frame_legend.png",
+      "art": "card_wuxin.png"
+    }
+  ],
+  "frozenCardAssetsSha256": {
+    "frame_common.png": "68006a5c4a5126b88971d69619781c2a75aacabdfecea0ff6359fc18256c28b1",
+    "frame_curse.png": "18d766052bce5c047946a313feb056e3002e7804929aa33360678c19360401b6",
+    "frame_legend.png": "2763580be490fe71a8cf965cbcafb4ba4ffe46fc40c12db54c7ac48c3d112899",
+    "frame_rare.png": "adce6e4bc11df88108dc72d998c22f13e9e5f7b40c1d564aaf15c645c6979798",
+    "sigil_attr.png": "de0bdcf5e4ac2775d033ef180a3da610df86eb548eef8d8a3091c635ea6fd69f",
+    "sigil_dmg.png": "f421e554916710f5d7b61125bc4e06266c6daeb5654fda53007ad8889a02c40b",
+    "sigil_mech.png": "5b1be00a45720c2e56415c68cc51d2ee66f9e9b583f15a58da8fc13f92b00ace",
+    "sigil_res.png": "c2924712ef6305b0e553f5dc69df018d7dad186e4060c2a43824fa0877b7e9fc",
+    "sigil_surv.png": "f02688b51bf38ed76d1f1b95bdf10ea7034e51237925ce8a158929e409280c97",
+    "sigil_syn.png": "39e867f7861b880cfae9fe5afcbb052cfcec812f1952a64bdeb54e3f488a5628"
+  },
+  "previews": {
+    "tiers": "assets/_preview/codex-frames-4tiers.png",
+    "fullCardsCodex": "assets/_preview/card-art-full-cards-codex.png",
+    "frozenVsCodex": "assets/_preview/card-frame-frozen-vs-codex.png"
+  },
+  "oldPreviewRetained": "assets/_preview/card-art-full-cards.png",
+  "boundary": "assets/ui/cards/ 10 张冻结卡面与 docs/12 均未改动；候选框仅在 previews/card_frames_codex/ 与网页验证层以 ?frame=codex 供对照；Q17 未拍板、GUI F5 未跑、数值 / 概率 / 权重 / 规则未改"
+}

@@ -1260,6 +1260,75 @@ def c_card_art_integration_r39() -> str:
             "主场景、冻结 10 张卡面、数值与规则均未动")
 
 
+def c_codex_frame_r40() -> str:
+    """第 40 轮：07-codex 风格卡框候选 + 文字排版修复，冻结基线不许动。"""
+    import hashlib
+    import struct
+
+    sys.path.insert(0, str(ROOT / "tools"))
+    from snap_ui_palette import load_palette
+
+    def png_size(p: Path) -> tuple[int, int]:
+        with p.open("rb") as fh:
+            head = fh.read(24)
+        need(head[:8] == b"\x89PNG\r\n\x1a\n", f"{p.name} 不是 PNG")
+        return struct.unpack(">II", head[16:24])
+
+    rep = load("codex-card-frames-report.json")
+    need(rep["round"] == 40 and rep["size"] == [96, 144]
+         and rep["paletteSize"] == len(load_palette()),
+         "候选卡框报告轮次 / 尺寸 / 色板数不对")
+    need(rep["status"] == "待目检与合规确认；不得直接入库"
+         and rep["noTextInPng"] is True,
+         "候选卡框状态被标成已入库，或 PNG 内被写入文字")
+    need(len(rep["frames"]) == 4 and rep["cardsCombo"] == 72,
+         "候选卡框不是 4 档 / 整卡预览不是 72 张")
+    for f in rep["frames"]:
+        p = ROOT / f["file"]
+        need(p.is_file() and png_size(p) == (96, 144), f"{f['file']} 缺失或不是 96×144")
+        need(hashlib.sha256(p.read_bytes()).hexdigest() == f["sha256"],
+             f"{f['file']} 与报告 sha256 不一致")
+
+    # 冻结基线：10 张卡面 sha256 逐张比对，候选不得覆盖
+    frozen_dir = ROOT / "assets" / "ui" / "cards"
+    now = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+           for p in sorted(frozen_dir.glob("*.png"))}
+    need(now == rep["frozenCardAssetsSha256"] and len(now) == 10,
+         "冻结 10 张卡面被候选卡框覆盖或增删")
+    spec = (ROOT / "docs" / "12-卡牌UI规格.md").read_text(encoding="utf-8")
+    need("72 张卡只需要 4 张卡框 + 6 张纹样共 **10 张小图**" in spec,
+         "docs/12 §2 冻结口径被改写（第 40 轮只允许出候选，不许改规格）")
+
+    html = (ROOT / "previews" / "web-demo.html").read_text(encoding="utf-8")
+    for token in ("frame=frozen", "codex_frame_", "applyFrameModeLabel",
+                  "btnFrameMode", "wrapMeasure", "card.codex .cname",
+                  "冻结卡面 10 张与规格一个字节未改"):
+        need(token in html, f"web-demo 缺第 40 轮片段：{token}")
+    for r in ("common", "rare", "legend", "curse"):
+        need(f'"codex_frame_{r}":"data:image/png;base64,' in html,
+             f"web-demo 未内嵌候选卡框 {r}")
+    need("white-space:pre" in html and "measureText" in html,
+         "折行修复（像素测量 + 禁止二次折行）未落地")
+
+    for name in ("codex-frames-4tiers.png", "card-art-full-cards-codex.png",
+                 "card-frame-frozen-vs-codex.png",
+                 "web-demo-frame-codex-zoom.png", "web-demo-frame-frozen-zoom.png"):
+        need((ROOT / "assets" / "_preview" / name).is_file(), f"缺目检预览 {name}")
+    need((ROOT / "assets" / "_preview" / "card-art-full-cards.png").is_file(),
+         "第 39 轮旧整卡预览被覆盖（基线不覆盖纪律）")
+
+    for script in ("build_codex_card_frames.py", "build_web_demo.py"):
+        res = subprocess.run([sys.executable, str(ROOT / "tools" / script), "--check"],
+                             cwd=ROOT, capture_output=True, text=True)
+        need(res.returncode == 0,
+             f"{script} --check 失败：{res.stdout[-200:]} {res.stderr[-200:]}")
+
+    return ("4 档 07-codex 候选卡框 96×144 / 色板外颜色 0 / PNG 无文字 / "
+            "冻结 10 张卡面与 docs/12 §2 逐字节未动 / "
+            "网页 ?frame=codex|frozen 双模式 + canvas 像素测量折行 / "
+            "5 张目检预览齐备 / 两个生成器 --check 通过")
+
+
 def main() -> None:
     check("json_parse", "docs/*.json 全部可解析", c_json)
     check("csv_numbers", "数值源 9 列、无 BOM、无空行、含 round15", c_nums)
@@ -1298,6 +1367,7 @@ def main() -> None:
     check("ui_skin_r33", "第 33 轮 9 张 UI 设计稿按视图联动对照（逐字节 / 边界 / 六视图映射）", c_ui_skin_r33)
     check("card_art_r34", "第 34–37 轮 72 卡独立插画（6 组拼版 / 克制风格 / 参考图边界 / 自适应裁剪 / 冻结口径未动）", c_card_art_r34)
     check("card_art_integration_r39", "第 39 轮 6 组回稿集成（导入标准化 / 72 张 84×56 / 网页卡面 / Godot 组件 / 冻结口径未动）", c_card_art_integration_r39)
+    check("codex_frame_r40", "第 40 轮 07 风格卡框候选 + 文字排版修复（4 档 96×144 / 双模式对照 / 冻结基线逐字节未动）", c_codex_frame_r40)
 
     passed = sum(1 for c in CHECKS if c["status"] == "PASS")
     failed = len(CHECKS) - passed
