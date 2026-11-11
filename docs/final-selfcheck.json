@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-10",
+  "generatedAt": "2026-11-11",
   "generator": "tools/final_selfcheck.py",
   "scope": "第 15 轮收口 · 交付前全量静态自检",
   "verdict": "PASS",
   "summary": {
-    "checks": 38,
-    "passed": 38,
+    "checks": 39,
+    "passed": 39,
     "failed": 0
   },
   "checks": [
@@ -116,7 +116,7 @@
       "id": "absolute_paths",
       "desc": "文档/工程无机器绝对路径",
       "status": "PASS",
-      "detail": "扫描 81 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
+      "detail": "扫描 82 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
     },
     {
       "id": "stale_handover",
@@ -150,9 +150,15 @@
     },
     {
       "id": "workspace_moved_r17",
-      "desc": "R17 工作空间已迁至 ai-game 且接手指南在工程根",
+      "desc": "R17 工作空间位于固定名 ai-game/ 根且接手指南在工程根",
       "status": "PASS",
-      "detail": "工程位于 ~/Documents/ai-game/ ；接手指南在工程根 xianxia-tower/ 内（R44 用户口径），工作空间根无重复副本，交接文档已记录第 17 轮迁移，无误建路径残留"
+      "detail": "工程位于固定名工作空间根 ai-game/ 内（上级非会话时间戳目录）；接手指南在工程根 xianxia-tower/ 内（R44 用户口径），工作空间根无重复副本，交接文档已记录第 17 轮迁移，无误建路径残留"
+    },
+    {
+      "id": "workspace_path_r41",
+      "desc": "第 41 轮 工作空间迁址：路径断言与机器绝对路径解耦（文档零本机绝对路径）",
+      "status": "PASS",
+      "detail": "工作空间根为固定名 ai-game/（上级非会话时间戳目录）；扫描 69 个文档，当前机绝对路径命中 0；迁址事实已按相对路径记录（第 41 轮）"
     },
     {
       "id": "card_runtime_data_r45",

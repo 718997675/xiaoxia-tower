@@ -483,7 +483,14 @@ def build() -> tuple[str, str, str]:
             "codexRefTechnique": ref_zh, "codexRefTechniqueEn": ref_en,
             "promptId": c["id"],
             "outputName": f"{c['id']}-cardart-original.png",
-            "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+            # 第 41 轮更正：卡级 status 改为**按磁盘实况**动态判定，不再写死「未回稿」。
+            # 判据 = 24 色转录产物是否落盘（assets/ui/card_art/<card_id>.png）。
+            # 第 39 轮 6 组回稿已到齐并全部转录，写死的「待外发 · 未回稿」与本文件
+            # stats 里 sheetsReceived=6 / artReceived=72 自相矛盾，会误导接手者。
+            # 口径不变：无论是否回稿，都只是**候选资产**，不得直接入库。
+            "status": ("已转录 · 候选资产；待目检与合规确认；不得直接入库"
+                       if (TRANSCRIPT_DIR / f"{c['id']}.png").is_file()
+                       else "待外发 · 未回稿 · 候选资产；不得直接入库"),
         })
 
     # 排除项：同类上一张 / 下一张的母题，用来在提示词里显式压制「同类别长一个样」。
@@ -587,7 +594,7 @@ def build() -> tuple[str, str, str]:
         "version": 2,
         "generatedBy": "tools/build_card_art_plan.py",
         "round": "34–35",
-        "status": "PROPOSAL · 第 34 轮「一卡一插画」+ 第 35 轮「6 张拼版 sheet（每张 12 格）出图」；待 Q17 拍板与 GUI F5 目检；不得直接入库",
+        "status": "PROPOSAL · 第 34 轮「一卡一插画」+ 第 35 轮「6 张拼版 sheet（每张 12 格）出图」；第 39 轮 6 组回稿已到齐并转录为候选插画；待 Q17 拍板与 GUI F5 目检；不得直接入库",
         "designPrinciple": "OMPC / 一卡一母题：72 个由效果文案派生的母题两两不同，任取 3 张候选签名必互异，从规格上消除三选一同屏重复感",
         "generationPrinciple": "用户第 35 轮决策：一张图里画 12 张卡，72 / 12 = 6 次生成（6 张 1536×1024 拼版 sheet），节省 gpt-image2 额度；由 tools/split_card_art_sheets.py 按固定坐标裁成 72 张单卡原稿，画面效果不变",
         "sourceOfTruth": {
