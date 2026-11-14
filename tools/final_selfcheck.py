@@ -30,6 +30,10 @@ ROOT = Path(__file__).resolve().parent.parent
 DOC = ROOT / "docs"
 REPORT = DOC / "final-selfcheck.json"
 
+# 带时间戳的会话目录名（如 WorkBuddy 下的 2026-11-07-20-33-57）。
+# 工作空间根必须挂在**稳定**的固定名目录下，不能落回会话目录 —— R17 的原始关切。
+SESSION_DIR_RE = re.compile(r"^\d{4}-\d{2}-\d{2}(-\d{2}-\d{2}-\d{2})?$")
+
 CHECKS: list[dict] = []
 
 
@@ -392,21 +396,29 @@ def c_abs_paths():
 # ---------------------------------------------------------------- 19 交接状态
 # ---------------------------------------------------------------- 24 工作空间迁移
 def c_workspace_moved():
-    """第 17 轮：工作空间迁至 ~/Documents/ai-game/ 的一致性断言。
+    """第 17 轮：工作空间位于固定名 `ai-game/` 工作空间根下的一致性断言。
 
     检查三件事：① 工程确实位于 ai-game 稳定目录下（不再在带时间戳的会话目录）；
     ② 接手指南在**工程根** `xianxia-tower/` 内且指向唯一交接入口（第 18 轮 R44：
        用户明确「不该放到 ai-game 下，那是根目录；正确要放在 ai-game/xianxia-tower 下」，
        故工作空间根 `ai-game/` 不得再有同名副本）；
     ③ 交接文档已记录第 17 轮迁移事实。
+
+    第 41 轮更正：原断言写死 `ROOT.parent.parent.name == "Documents"`（即要求工作空间根
+    必须是 `~/Documents/ai-game`）。这有两个问题：① 把机器绝对路径写进自检，违反项目
+    第 ④ 条约定（文档/工程内禁止写机器绝对路径，一律用项目内相对路径）；② 工作空间根
+    一旦迁到别的固定名目录就必然 FAIL —— 第 41 轮迁址后它就是 38 项自检里唯一的 FAIL。
+    现改为**结构性**断言：只要求「工作空间根是固定名 `ai-game/`」且「其上级不是带时间戳的
+    会话目录」（R17 的原始关切），迁到哪台机器都成立；机器相关的绝对路径检查移交给
+    新增的第 39 项 `workspace_path_r41`（动态取本机实际路径，文档零命中）。
     """
-    # ① 目录位置：必须在 ai-game 下，且必须是用户指定的 ~/Documents/ai-game
+    # ① 目录位置：必须在固定名工作空间根 `ai-game/` 下，且其上级不是会话时间戳目录
     need("ai-game" in ROOT.parts,
-         f"工程不在 ai-game 工作空间目录下（当前：{ROOT}）")
-    need(ROOT.parent.parent.name == "Documents",
-         f"工作空间根目录应为 ~/Documents/ai-game（当前：{ROOT.parent}）")
+         f"工程不在 ai-game 工作空间目录下（当前目录名：{ROOT.name}）")
     need(ROOT.parent.name == "ai-game",
          f"工作空间根目录名应为 ai-game（当前：{ROOT.parent.name}）")
+    need(not SESSION_DIR_RE.match(ROOT.parent.parent.name),
+         f"工作空间根的上级目录不应是带时间戳的会话目录（当前：{ROOT.parent.parent.name}）")
     # ② 接手指南：按用户第 18 轮口径，归工程根所有，不放在工作空间根
     guide = ROOT / "README-从这里开始.md"
     need(guide.is_file(), "缺 xianxia-tower/README-从这里开始.md（换账号后的第一入口）")
@@ -414,11 +426,11 @@ def c_workspace_moved():
          "工作空间根 ai-game/ 下多出同名接手指南；用户明确要求只放工程根（R44 回归）")
     g = guide.read_text(encoding="utf-8")
     for s in ["docs/00-项目交接与进度.md", "开场白", "xianxia-tower/project.godot",
-              "~/Documents/ai-game/"]:
+              "ai-game/"]:
         need(s in g, f"接手指南缺关键指引：{s}")
     # ③ 交接文档记录
     t = (DOC / "00-项目交接与进度.md").read_text(encoding="utf-8")
-    for s in ["第 17 轮", "~/Documents/ai-game/"]:
+    for s in ["第 17 轮", "ai-game/"]:
         need(s in t, f"交接文档缺迁移记录：{s}")
     # ④ 不得把工程指向误建的中间路径。
     #    注意：文档里「曾误建 ~/WorkBuddy/ai-game，已清理」属于如实记录历史，允许存在；
@@ -433,8 +445,55 @@ def c_workspace_moved():
             if any(k in line for k in ["误建", "已清理", "曾误建", "已移除"]):
                 continue
             need(False, f"{p.name}:{i} 把当前路径误写为 {stale_path}")
-    return (f"工程位于 ~/Documents/ai-game/ ；接手指南在工程根 xianxia-tower/ 内（R44 用户口径），"
+    return (f"工程位于固定名工作空间根 ai-game/ 内（上级非会话时间戳目录）；"
+            f"接手指南在工程根 xianxia-tower/ 内（R44 用户口径），"
             f"工作空间根无重复副本，交接文档已记录第 17 轮迁移，无误建路径残留")
+
+
+def c_workspace_path_r41():
+    """第 41 轮：工作空间迁址后，路径断言与机器绝对路径彻底解耦（新增第 39 项）。
+
+    背景：工作空间根从 `~/Documents/ai-game/` 迁到新机器的固定名 `ai-game/` 根后，
+    `workspace_moved_r17` 因硬编码机器绝对路径而 FAIL。本项把「机器相关」的那部分
+    单独拿出来断言，且**动态取本机实际路径**，换机器也不用改代码：
+
+    ① 工作空间根是固定名 `ai-game/`，其上级不是带时间戳的会话目录（R17 原始关切）；
+    ② **文档零当前机绝对路径**：动态取本机工作空间根与工程根的实际写法
+       （Windows 反斜杠 + POSIX 正斜杠两种），出现在任何文档里都算 FAIL ——
+       这条比原来只扫 `/Users/` 的 `absolute_paths` 更严格，且自动适配当前机器；
+    ③ 交接文档与接手指南已按**相对路径**记录本轮迁址事实（不写盘符）。
+    """
+    ws = ROOT.parent
+    need(ws.name == "ai-game",
+         f"工作空间根目录名应为 ai-game（当前：{ws.name}）")
+    need(not SESSION_DIR_RE.match(ws.parent.name),
+         f"工作空间根的上级不应是会话时间戳目录（当前：{ws.parent.name}）")
+    # ② 文档零当前机绝对路径（动态、随机器自动适配）
+    variants = {str(ws), ws.as_posix(), str(ROOT), ROOT.as_posix()}
+    targets = [p for p in DOC.iterdir()
+               if p.is_file() and p.suffix in (".md", ".json", ".csv")
+               and p.name not in ("godot-project-check.json", "final-selfcheck.json")]
+    targets.append(ROOT / "README-从这里开始.md")
+    hits = []
+    for p in targets:
+        try:
+            txt = p.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        for i, line in enumerate(txt.splitlines(), 1):
+            if any(v in line for v in variants):
+                hits.append(f"{p.relative_to(ROOT).as_posix()}:{i}")
+                break
+    need(not hits, f"文档残留当前机工作空间根绝对路径：{hits[:6]}")
+    # ③ 迁址事实已按相对路径记录
+    g = (ROOT / "README-从这里开始.md").read_text(encoding="utf-8")
+    t = (DOC / "00-项目交接与进度.md").read_text(encoding="utf-8")
+    need("第 41 轮" in t, "交接文档缺第 41 轮迁址记录")
+    need("第 41 轮" in g, "接手指南缺第 41 轮迁址记录")
+    need("ai-game/" in g, "接手指南缺工作空间根相对路径表述")
+    return (f"工作空间根为固定名 ai-game/（上级非会话时间戳目录）；"
+            f"扫描 {len(targets)} 个文档，当前机绝对路径命中 0；"
+            f"迁址事实已按相对路径记录（第 41 轮）")
 
 
 # ---------------------------------------------------------------- 25/26 卡牌规则层（第 18 轮）
@@ -1059,8 +1118,19 @@ def c_card_art_r34():
     sheet_dir = ROOT / "previews" / "card_art_sheets"
     sheets_on_disk = sorted(p.name for p in sheet_dir.glob("sheet-*.png")) if sheet_dir.is_dir() else []
     need(stats["sheetsReceived"] == len(sheets_on_disk), "拼版回稿计数与磁盘不一致")
-    need(all(c["status"] == "待外发 · 未回稿 · 候选资产；不得直接入库" for c in cards),
-         "有卡被标成已入库")
+    # 第 41 轮更正：不再写死「72 张卡全部未回稿」（第 39 轮 6 组回稿已到齐并转录，
+    # 写死的断言与 stats 的 6/6、72/72 自相矛盾），改为**按磁盘实况**断言如实披露：
+    # 已落盘转录产物的卡不得再标「未回稿」；未落盘的卡也不许标「已转录」。
+    transcript_dir = ROOT / "assets" / "ui" / "card_art"
+    stale_done = [c["id"] for c in cards
+                  if (transcript_dir / f"{c['id']}.png").is_file() and "未回稿" in c["status"]]
+    need(not stale_done, f"已转录落盘却仍标「未回稿」：{stale_done[:5]}")
+    false_done = [c["id"] for c in cards
+                  if not (transcript_dir / f"{c['id']}.png").is_file() and "已转录" in c["status"]]
+    need(not false_done, f"未落盘却标「已转录」：{false_done[:5]}")
+    # 口径红线：无论是否回稿，都必须标「候选资产 / 不得直接入库」（不得写成已入库）
+    need(all("候选资产" in c["status"] and "不得直接入库" in c["status"] for c in cards),
+         "有卡的状态口径丢掉「候选资产 / 不得直接入库」红线")
 
     anchors = plan["styleAnchors"]
     need(len(anchors) == 4 and all("gpt-image2" in a for a in anchors),
@@ -1371,7 +1441,7 @@ def c_tower_run_r41() -> str:
     for rel in ("scripts/RunConfig.gd", "scripts/StageView.gd", "scripts/RunHUD.gd",
                 "scripts/RewardPicker.gd", "scripts/TowerRun.gd",
                 "scenes/TowerRun.tscn", "tools/verify_tower_run.gd",
-                "docs/29-Godot可玩原型与第41轮边界.md"):
+                "docs/30-Godot可玩原型与第41轮边界.md"):
         need((ROOT / rel).is_file(), f"缺第 41 轮文件 {rel}")
 
     cfg = (ROOT / "project.godot").read_text(encoding="utf-8")
@@ -1411,7 +1481,7 @@ def c_tower_run_r41() -> str:
     need("46 张卡的非五上界 hook" in stage_src and "R56" in stage_src,
          "StageView.gd 缺「46 张卡未映射 / 逐 tick 未跨端对齐」边界标注")
 
-    doc29 = (ROOT / "docs" / "29-Godot可玩原型与第41轮边界.md").read_text(encoding="utf-8")
+    doc29 = (ROOT / "docs" / "30-Godot可玩原型与第41轮边界.md").read_text(encoding="utf-8")
     for token in ("PROPOSAL", "R61", "F5", "MinimalRun.tscn", "不实现"):
         need(token in doc29, f"docs/29 缺关键口径：{token}")
 
@@ -1445,7 +1515,8 @@ def main() -> None:
     check("collision_r41", "R41 主角碰撞体与真实地面", c_collision_r41)
     check("previews_r42", "R42 预览画板归位与 .gdignore", c_previews_r42)
     check("frames_tres_r43", "R43 SpriteFrames 资源化并挂场景", c_frames_tres)
-    check("workspace_moved_r17", "R17 工作空间已迁至 ai-game 且接手指南在工程根", c_workspace_moved)
+    check("workspace_moved_r17", "R17 工作空间位于固定名 ai-game/ 根且接手指南在工程根", c_workspace_moved)
+    check("workspace_path_r41", "第 41 轮 工作空间迁址：路径断言与机器绝对路径解耦（文档零本机绝对路径）", c_workspace_path_r41)
     check("card_runtime_data_r45", "R45 运行时卡库副本与设计源一致", c_card_runtime_data)
     check("card_rules_r18", "卡牌规则层 headless 23 项 + 五上界守卫", c_card_rules)
     check("web_demo_r19", "R47 网页验证层 + 跨端同口径 25 项", c_web_demo_r19)

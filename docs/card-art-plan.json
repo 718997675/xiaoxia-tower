@@ -2,7 +2,7 @@
   "version": 2,
   "generatedBy": "tools/build_card_art_plan.py",
   "round": "34–35",
-  "status": "PROPOSAL · 第 34 轮「一卡一插画」+ 第 35 轮「6 张拼版 sheet（每张 12 格）出图」；待 Q17 拍板与 GUI F5 目检；不得直接入库",
+  "status": "PROPOSAL · 第 34 轮「一卡一插画」+ 第 35 轮「6 张拼版 sheet（每张 12 格）出图」；第 39 轮 6 组回稿已到齐并转录为候选插画；待 Q17 拍板与 GUI F5 目检；不得直接入库",
   "designPrinciple": "OMPC / 一卡一母题：72 个由效果文案派生的母题两两不同，任取 3 张候选签名必互异，从规格上消除三选一同屏重复感",
   "generationPrinciple": "用户第 35 轮决策：一张图里画 12 张卡，72 / 12 = 6 次生成（6 张 1536×1024 拼版 sheet），节省 gpt-image2 额度；由 tools/split_card_art_sheets.py 按固定坐标裁成 72 张单卡原稿，画面效果不变",
   "sourceOfTruth": {
@@ -1668,7 +1668,7 @@
       "codexRefTechniqueEn": "a centered diagonal flying sword with cyan diagonal speed lines on deep ink-blue ground",
       "promptId": "card_jianfeng",
       "outputName": "card_jianfeng-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_zhanxing",
@@ -1721,7 +1721,7 @@
       "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
       "promptId": "card_poyun",
       "outputName": "card_poyun-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_jianfeng",
@@ -1774,7 +1774,7 @@
       "codexRefTechniqueEn": "a centered violet forked lightning with hard-edged radial shards on deep violet-black ground",
       "promptId": "card_leizhuan",
       "outputName": "card_leizhuan-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_poyun",
@@ -1827,7 +1827,7 @@
       "codexRefTechniqueEn": "a cinnabar flame wrapping a centered human silhouette on dark cinnabar ground",
       "promptId": "card_danbao",
       "outputName": "card_danbao-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_leizhuan",
@@ -1880,7 +1880,7 @@
       "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
       "promptId": "card_fuzhen",
       "outputName": "card_fuzhen-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_danbao",
@@ -1933,7 +1933,7 @@
       "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
       "promptId": "card_quanfeng",
       "outputName": "card_quanfeng-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_fuzhen",
@@ -1986,7 +1986,7 @@
       "codexRefTechniqueEn": "a centered jade two-leaf sprout with diamond star points on deep ink-green ground",
       "promptId": "card_huiling",
       "outputName": "card_huiling-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_quanfeng",
@@ -2039,7 +2039,7 @@
       "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
       "promptId": "card_jingang",
       "outputName": "card_jingang-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_huiling",
@@ -2092,7 +2092,7 @@
       "codexRefTechniqueEn": "a centered diagonal flying sword with cyan diagonal speed lines on deep ink-blue ground",
       "promptId": "card_jianyi",
       "outputName": "card_jianyi-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_jingang",
@@ -2145,7 +2145,7 @@
       "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
       "promptId": "card_wuxing",
       "outputName": "card_wuxing-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_jianyi",
@@ -2198,7 +2198,7 @@
       "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
       "promptId": "card_lianhuan",
       "outputName": "card_lianhuan-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_wuxing",
@@ -2251,7 +2251,7 @@
       "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
       "promptId": "card_zhanxing",
       "outputName": "card_zhanxing-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_lianhuan",
@@ -2304,7 +2304,7 @@
       "codexRefTechniqueEn": "a centered cyan ice crystal cluster with cold glints on deep blue ground",
       "promptId": "card_cuijing",
       "outputName": "card_cuijing-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_jingpo",
@@ -2357,7 +2357,7 @@
       "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
       "promptId": "card_ningdan",
       "outputName": "card_ningdan-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_cuijing",
@@ -2410,7 +2410,7 @@
       "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
       "promptId": "card_lingmai",
       "outputName": "card_lingmai-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_ningdan",
@@ -2463,7 +2463,7 @@
       "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
       "promptId": "card_buyao",
       "outputName": "card_buyao-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_lingmai",
@@ -2516,7 +2516,7 @@
       "codexRefTechniqueEn": "a centered cyan ice crystal cluster with cold glints on deep blue ground",
       "promptId": "card_tiepi",
       "outputName": "card_tiepi-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_buyao",
@@ -2569,7 +2569,7 @@
       "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
       "promptId": "card_huixin",
       "outputName": "card_huixin-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_tiepi",
@@ -2622,7 +2622,7 @@
       "codexRefTechniqueEn": "a centered diagonal flying sword with cyan diagonal speed lines on deep ink-blue ground",
       "promptId": "card_poyu",
       "outputName": "card_poyu-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_huixin",
@@ -2675,7 +2675,7 @@
       "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
       "promptId": "card_shouyuan",
       "outputName": "card_shouyuan-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_poyu",
@@ -2728,7 +2728,7 @@
       "codexRefTechniqueEn": "a centered jade two-leaf sprout with diamond star points on deep ink-green ground",
       "promptId": "card_qingling",
       "outputName": "card_qingling-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_shouyuan",
@@ -2781,7 +2781,7 @@
       "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
       "promptId": "card_juxi",
       "outputName": "card_juxi-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_qingling",
@@ -2834,7 +2834,7 @@
       "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
       "promptId": "card_zhongzhu",
       "outputName": "card_zhongzhu-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_juxi",
@@ -2887,7 +2887,7 @@
       "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
       "promptId": "card_jingpo",
       "outputName": "card_jingpo-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_zhongzhu",
@@ -2940,7 +2940,7 @@
       "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
       "promptId": "card_nianzhuan",
       "outputName": "card_nianzhuan-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_pojing",
@@ -2993,7 +2993,7 @@
       "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
       "promptId": "card_huanshi",
       "outputName": "card_huanshi-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_nianzhuan",
@@ -3046,7 +3046,7 @@
       "codexRefTechniqueEn": "a violet-gold yin-yang vortex with diamond star points on dark cinnabar ground",
       "promptId": "card_shuangxiu",
       "outputName": "card_shuangxiu-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_huanshi",
@@ -3099,7 +3099,7 @@
       "codexRefTechniqueEn": "a centered running human silhouette with horizontal cyan speed lines on deep ink-blue ground",
       "promptId": "card_yuqi",
       "outputName": "card_yuqi-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_shuangxiu",
@@ -3152,7 +3152,7 @@
       "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
       "promptId": "card_daoyin",
       "outputName": "card_daoyin-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_yuqi",
@@ -3205,7 +3205,7 @@
       "codexRefTechniqueEn": "a cinnabar ring of sword-qi crossed by one diagonal blade on dark cinnabar ground",
       "promptId": "card_jieyin",
       "outputName": "card_jieyin-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_daoyin",
@@ -3258,7 +3258,7 @@
       "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
       "promptId": "card_wuxiangpo",
       "outputName": "card_wuxiangpo-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_jieyin",
@@ -3311,7 +3311,7 @@
       "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
       "promptId": "card_chongzhu",
       "outputName": "card_chongzhu-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_wuxiangpo",
@@ -3364,7 +3364,7 @@
       "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
       "promptId": "card_tianren",
       "outputName": "card_tianren-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_chongzhu",
@@ -3417,7 +3417,7 @@
       "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
       "promptId": "card_sheli",
       "outputName": "card_sheli-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_tianren",
@@ -3470,7 +3470,7 @@
       "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
       "promptId": "card_lunhui",
       "outputName": "card_lunhui-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_sheli",
@@ -3523,7 +3523,7 @@
       "codexRefTechniqueEn": "a cinnabar ring of sword-qi crossed by one diagonal blade on dark cinnabar ground",
       "promptId": "card_pojing",
       "outputName": "card_pojing-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_lunhui",
@@ -3576,7 +3576,7 @@
       "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
       "promptId": "card_juling",
       "outputName": "card_juling-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_shouyin",
@@ -3629,7 +3629,7 @@
       "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
       "promptId": "card_shengxi",
       "outputName": "card_shengxi-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_juling",
@@ -3682,7 +3682,7 @@
       "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
       "promptId": "card_huanling",
       "outputName": "card_huanling-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_shengxi",
@@ -3735,7 +3735,7 @@
       "codexRefTechniqueEn": "a centered jade two-leaf sprout with diamond star points on deep ink-green ground",
       "promptId": "card_danxiang",
       "outputName": "card_danxiang-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_huanling",
@@ -3788,7 +3788,7 @@
       "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
       "promptId": "card_lingchao",
       "outputName": "card_lingchao-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_danxiang",
@@ -3841,7 +3841,7 @@
       "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
       "promptId": "card_jieqi",
       "outputName": "card_jieqi-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_lingchao",
@@ -3894,7 +3894,7 @@
       "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
       "promptId": "card_kongzhan",
       "outputName": "card_kongzhan-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_jieqi",
@@ -3947,7 +3947,7 @@
       "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
       "promptId": "card_fanyong",
       "outputName": "card_fanyong-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_kongzhan",
@@ -4000,7 +4000,7 @@
       "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
       "promptId": "card_zhulian",
       "outputName": "card_zhulian-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_fanyong",
@@ -4053,7 +4053,7 @@
       "codexRefTechniqueEn": "a centered jade two-leaf sprout with diamond star points on deep ink-green ground",
       "promptId": "card_wugen",
       "outputName": "card_wugen-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_zhulian",
@@ -4106,7 +4106,7 @@
       "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
       "promptId": "card_tianlu",
       "outputName": "card_tianlu-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_wugen",
@@ -4159,7 +4159,7 @@
       "codexRefTechniqueEn": "a violet-gold yin-yang vortex with diamond star points on dark cinnabar ground",
       "promptId": "card_shouyin",
       "outputName": "card_shouyin-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_tianlu",
@@ -4212,7 +4212,7 @@
       "codexRefTechniqueEn": "a centered jade two-leaf sprout with diamond star points on deep ink-green ground",
       "promptId": "card_huichun",
       "outputName": "card_huichun-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_sheshi",
@@ -4265,7 +4265,7 @@
       "codexRefTechniqueEn": "a centered cyan ice crystal cluster with cold glints on deep blue ground",
       "promptId": "card_huti",
       "outputName": "card_huti-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_huichun",
@@ -4318,7 +4318,7 @@
       "codexRefTechniqueEn": "a centered running human silhouette with horizontal cyan speed lines on deep ink-blue ground",
       "promptId": "card_bishui",
       "outputName": "card_bishui-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_huti",
@@ -4371,7 +4371,7 @@
       "codexRefTechniqueEn": "a centered cyan-white spiral vortex with small diamond star points around it on deep ink-blue ground",
       "promptId": "card_duanxu",
       "outputName": "card_duanxu-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_bishui",
@@ -4424,7 +4424,7 @@
       "codexRefTechniqueEn": "a centered jade seated human silhouette with a round backlight on deep ink-green ground",
       "promptId": "card_jiaren",
       "outputName": "card_jiaren-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_duanxu",
@@ -4477,7 +4477,7 @@
       "codexRefTechniqueEn": "a centered cyan ice crystal cluster with cold glints on deep blue ground",
       "promptId": "card_tiegu",
       "outputName": "card_tiegu-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_jiaren",
@@ -4530,7 +4530,7 @@
       "codexRefTechniqueEn": "a cinnabar arched flame gate with a human silhouette inside on dark cinnabar ground",
       "promptId": "card_guisuo",
       "outputName": "card_guisuo-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_tiegu",
@@ -4583,7 +4583,7 @@
       "codexRefTechniqueEn": "a centered jade seated human silhouette with a round backlight on deep ink-green ground",
       "promptId": "card_yinbi",
       "outputName": "card_yinbi-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_guisuo",
@@ -4636,7 +4636,7 @@
       "codexRefTechniqueEn": "a cinnabar flame wrapping a centered human silhouette on dark cinnabar ground",
       "promptId": "card_zhuansheng",
       "outputName": "card_zhuansheng-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_yinbi",
@@ -4689,7 +4689,7 @@
       "codexRefTechniqueEn": "a centered jade pill flask with rising bubble glints on deep ink-teal ground",
       "promptId": "card_qinglu",
       "outputName": "card_qinglu-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_zhuansheng",
@@ -4742,7 +4742,7 @@
       "codexRefTechniqueEn": "a centered jade double-ring array with eight light nodes and a yin-yang core on deep ink-teal ground",
       "promptId": "card_hunyuan",
       "outputName": "card_hunyuan-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_qinglu",
@@ -4795,7 +4795,7 @@
       "codexRefTechniqueEn": "a cinnabar arched flame gate with a human silhouette inside on dark cinnabar ground",
       "promptId": "card_sheshi",
       "outputName": "card_sheshi-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_hunyuan",
@@ -4848,7 +4848,7 @@
       "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
       "promptId": "card_jianxin",
       "outputName": "card_jianxin-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_wuxin",
@@ -4901,7 +4901,7 @@
       "codexRefTechniqueEn": "a centered gold ringed planet with a bright core star and diamond star points on dark brown-gold ground",
       "promptId": "card_fuhun",
       "outputName": "card_fuhun-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_jianxin",
@@ -4954,7 +4954,7 @@
       "codexRefTechniqueEn": "a cinnabar flame wrapping a centered human silhouette on dark cinnabar ground",
       "promptId": "card_danxin",
       "outputName": "card_danxin-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_fuhun",
@@ -5007,7 +5007,7 @@
       "codexRefTechniqueEn": "a centered running human silhouette with horizontal cyan speed lines on deep ink-blue ground",
       "promptId": "card_tipo",
       "outputName": "card_tipo-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_danxin",
@@ -5060,7 +5060,7 @@
       "codexRefTechniqueEn": "a centered gold eight-point starburst with hard-edged thin rays on dark brown ground",
       "promptId": "card_tongyuan",
       "outputName": "card_tongyuan-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_tipo",
@@ -5113,7 +5113,7 @@
       "codexRefTechniqueEn": "a cinnabar ring of sword-qi crossed by one diagonal blade on dark cinnabar ground",
       "promptId": "card_jiezeng",
       "outputName": "card_jiezeng-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_tongyuan",
@@ -5166,7 +5166,7 @@
       "codexRefTechniqueEn": "a cinnabar ring of sword-qi crossed by one diagonal blade on dark cinnabar ground",
       "promptId": "card_shuangren",
       "outputName": "card_shuangren-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_jiezeng",
@@ -5219,7 +5219,7 @@
       "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
       "promptId": "card_duozhu",
       "outputName": "card_duozhu-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_shuangren",
@@ -5272,7 +5272,7 @@
       "codexRefTechniqueEn": "a cinnabar arched flame gate with a human silhouette inside on dark cinnabar ground",
       "promptId": "card_zhongshi",
       "outputName": "card_zhongshi-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_duozhu",
@@ -5325,7 +5325,7 @@
       "codexRefTechniqueEn": "a centered jade seated human silhouette with a round backlight on deep ink-green ground",
       "promptId": "card_shouzhuo",
       "outputName": "card_shouzhuo-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_zhongshi",
@@ -5378,7 +5378,7 @@
       "codexRefTechniqueEn": "a violet-gold yin-yang vortex with diamond star points on dark cinnabar ground",
       "promptId": "card_yiyu",
       "outputName": "card_yiyu-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_shouzhuo",
@@ -5431,7 +5431,7 @@
       "codexRefTechniqueEn": "a centered violet concentric spiral array with layered ring bands on deep violet ground",
       "promptId": "card_wuxin",
       "outputName": "card_wuxin-cardart-original.png",
-      "status": "待外发 · 未回稿 · 候选资产；不得直接入库",
+      "status": "已转录 · 候选资产；待目检与合规确认；不得直接入库",
       "excludes": [
         {
           "id": "card_yiyu",

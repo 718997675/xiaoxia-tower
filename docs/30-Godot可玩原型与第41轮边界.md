@@ -59,7 +59,7 @@ TowerRun (Node2D)                 scripts/TowerRun.gd        局内根 / 9 层�
 辅助：
 - `scripts/RunConfig.gd`：所有 PROPOSAL 占位常量、24 色取用色、输入映射、CJK 主题、资源路径。
 - `tools/verify_tower_run.gd`：headless 20 项断言，写 `docs/tower-run-verify-report.json`。
-- `docs/29`（本文件）、`tools/final_selfcheck.py` 第 39 项 `tower_run_r41`。
+- `docs/30`（本文件）、`tools/final_selfcheck.py` 第 39 项 `tower_run_r41`。
 
 **`CardArtView.gd` / `CardArtView.tscn`（第 39 轮）本轮才第一次被真正接进可玩循环**：
 `RewardPicker` 逐张 `CardArtView.new()` → `show_card(id, rarity, name, cat)`，
@@ -146,7 +146,7 @@ Godot --headless --path . --script res://tools/verify_tower_run.gd
 
 另复跑 `Godot --headless --path . --quit-after 5`（F5 配置路径，无编译错误）
 与 `tools/verify_minimal_run.gd`（旧门禁场景仍 PASS）。
-`tools/final_selfcheck.py` 新增第 39 项 `tower_run_r41`，**全量 39/39 PASS**。
+`tools/final_selfcheck.py` 新增第 40 项 `tower_run_r41`（远端 `workspace_path_r41` 为第 39 项），**合并后全量 40/40 PASS**。
 
 > headless 不渲染画面。像素硬边、24 色、480×270×4 对齐、中文字形、卡面 4× 排版、
 > 手感与平衡**全部仍需用户按 F5 目检**，不得把本表写成「画面已验证」。
