@@ -1,0 +1,118 @@
+{
+	"boundary": "headless 结构与状态机证据；GUI 画面 / 中文字形 / 手感 / 平衡均未目检",
+	"cardsLoaded": 72,
+	"checks": [
+		{
+			"detail": "TowerRun.tscn",
+			"name": "scene_load",
+			"ok": true
+		},
+		{
+			"detail": "缺节点=[]",
+			"name": "node_tree",
+			"ok": true
+		},
+		{
+			"detail": "res://scenes/TowerRun.tscn",
+			"name": "main_scene",
+			"ok": true
+		},
+		{
+			"detail": "门禁验证场景保留",
+			"name": "minimal_run_retained",
+			"ok": true
+		},
+		{
+			"detail": "deck=72 library=72",
+			"name": "cards_loaded",
+			"ok": true
+		},
+		{
+			"detail": "png=72",
+			"name": "card_art_72",
+			"ok": true
+		},
+		{
+			"detail": "png=10（4 卡框 + 6 纹样）",
+			"name": "frozen_frames",
+			"ok": true
+		},
+		{
+			"detail": "count=9",
+			"name": "nine_stages",
+			"ok": true
+		},
+		{
+			"detail": "maxHit=3996 / 4400",
+			"name": "damage_ceiling",
+			"ok": true
+		},
+		{
+			"detail": "4 张 480x270 背景合成图",
+			"name": "bg_composites",
+			"ok": true
+		},
+		{
+			"detail": "4 技能首帧",
+			"name": "skill_vfx",
+			"ok": true
+		},
+		{
+			"detail": "offer(1)=[\"card_danxiang\", \"card_poyun\", \"card_shouyuan\"]",
+			"name": "offer_deterministic",
+			"ok": true
+		},
+		{
+			"detail": "state=1 stage=0",
+			"name": "start_battle",
+			"ok": true
+		},
+		{
+			"detail": "state=2",
+			"name": "stage1_to_draft",
+			"ok": true
+		},
+		{
+			"detail": "offered=[\"card_danxiang\", \"card_poyun\", \"card_shouyuan\"]",
+			"name": "draft_three_distinct",
+			"ok": true
+		},
+		{
+			"detail": "state=1 stage=1 picks=1",
+			"name": "pick_to_stage2",
+			"ok": true
+		},
+		{
+			"detail": "result=win runEnded=1 loopSteps=15",
+			"name": "run_finished_win",
+			"ok": true
+		},
+		{
+			"detail": "stage_index=8",
+			"name": "reached_last_stage",
+			"ok": true
+		},
+		{
+			"detail": "picks=8（R49 封牌可少于 8）",
+			"name": "picks_within_cap",
+			"ok": true
+		},
+		{
+			"detail": "peak<4400 且违规 0",
+			"name": "ceiling_not_violated",
+			"ok": true
+		}
+	],
+	"engine": "4.7.2.stable",
+	"failed": 0,
+	"finalResult": "win",
+	"mainScene": "res://scenes/TowerRun.tscn",
+	"maxHit": 3996,
+	"passed": 20,
+	"picks": 8,
+	"reachedStage": 9,
+	"round": 41,
+	"runEndedSignals": 1,
+	"stages": 9,
+	"status": "PASS"
+}

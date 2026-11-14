@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="九重天梯 · 最小验证工程"
-config/description="阶段二门禁验证：480x270 逻辑分辨率 x 整数 4 倍 / Nearest 硬边 / 朝右一套 scale.x 镜像"
-run/main_scene="res://scenes/MinimalRun.tscn"
+config/name="九重天梯"
+config/description="第 41 轮：F5 直接进入可玩原型 TowerRun.tscn；MinimalRun.tscn 保留作阶段二门禁验证（编辑器里单独打开按 F6 运行当前场景）"
+run/main_scene="res://scenes/TowerRun.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [display]

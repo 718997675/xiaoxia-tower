@@ -226,10 +226,14 @@ def c_project_cfg():
     for token in ['window_width_override=1920', 'window_height_override=1080',
                   'viewport_width=480', 'viewport_height=270',
                   'default_texture_filter=0', 'stretch/mode="viewport"',
-                  'run/main_scene="res://scenes/MinimalRun.tscn"',
                   '[input]', 'move_left={', 'move_right={']:
         need(token in t, f"project.godot 缺 {token}")
-    return "480×270×4 / Nearest(0) / stretch=viewport / 主场景 / 左右输入映射齐全"
+    # 第 41 轮口径更新（不是抑制检查）：F5 默认进入可玩原型，门禁场景仍须保留。
+    need('run/main_scene="res://scenes/TowerRun.tscn"' in t,
+         "project.godot 主场景应为第 41 轮可玩原型 TowerRun.tscn")
+    need((ROOT / "scenes" / "MinimalRun.tscn").is_file(),
+         "阶段二门禁验证场景 MinimalRun.tscn 不得删除（编辑器里可单独按 F6 运行）")
+    return "480×270×4 / Nearest(0) / stretch=viewport / 主场景 TowerRun（MinimalRun 保留）/ 左右输入映射齐全"
 
 
 def c_scene():
@@ -560,8 +564,8 @@ def c_battle_demo_r20():
         ROOT / "tools" / "verify_battle_sim.py",
     )), "第 20 轮关键产物不齐")
     cfg = (ROOT / "project.godot").read_text(encoding="utf-8")
-    need('run/main_scene="res://scenes/MinimalRun.tscn"' in cfg,
-         "Godot 主场景被改（第 20 轮禁止动工程）")
+    need(main_scene_baseline_ok(cfg),
+         "第 41 轮口径：主场景须为已知场景且 MinimalRun 保留（原第 20 轮禁止动工程）")
     scene = (ROOT / "scenes" / "MinimalRun.tscn").read_text(encoding="utf-8")
     need("CardDraftDemo" not in scene and "BattleSim" not in scene,
          "MinimalRun.tscn 被挂了网页原型节点")
@@ -607,7 +611,8 @@ def c_card_effects_r21():
     need(len(lib["cards"]) == 72 and "PROPOSAL" in lib.get("status", ""),
          "卡库被改（本轮只读，不得改 72 张卡或 PROPOSAL 状态口径）")
     cfg = (ROOT / "project.godot").read_text(encoding="utf-8")
-    need('run/main_scene="res://scenes/MinimalRun.tscn"' in cfg, "Godot 主场景被改")
+    need(main_scene_baseline_ok(cfg),
+         "第 41 轮口径：主场景须为已知场景且 MinimalRun 保留")
     doc = (ROOT / "docs" / "18-卡牌效果在网页战斗中的映射说明.md").read_text(encoding="utf-8")
     for token in ("不是平衡结论", "不迁移到 Godot 实机", "R54", "26 / 72",
                   "不猜数值", "不可迁移到实机"):
@@ -649,7 +654,8 @@ def c_ui_prompt_r22():
          "体检脚本缺少越界色 / 半透明检查项")
     # 冻结文档与 Godot 工程一个字节都不能动
     cfg = (ROOT / "project.godot").read_text(encoding="utf-8")
-    need('run/main_scene="res://scenes/MinimalRun.tscn"' in cfg, "Godot 主场景被改")
+    need(main_scene_baseline_ok(cfg),
+         "第 41 轮口径：主场景须为已知场景且 MinimalRun 保留")
     scene = (ROOT / "scenes" / "MinimalRun.tscn").read_text(encoding="utf-8")
     need("BattleFormula" not in scene and "CardDraftDemo" not in scene,
          "第 22 轮禁止把新脚本挂进 MinimalRun.tscn")
@@ -688,7 +694,8 @@ def c_battle_cross_r22():
     need("xorshift32" in deck and "RandomNumberGenerator.new()" not in deck,
          "抽卡随机源被改（R47 黄金样本会失效）")
     cfg = (ROOT / "project.godot").read_text(encoding="utf-8")
-    need('run/main_scene="res://scenes/MinimalRun.tscn"' in cfg, "Godot 主场景被改")
+    need(main_scene_baseline_ok(cfg),
+         "第 41 轮口径：主场景须为已知场景且 MinimalRun 保留")
     return (f"战斗公式层跨端 {s['passed']}/{s['total']} PASS；52 条黄金样本逐条一致；"
             f"maxHit 3996 < Boss 4400；不含逐 tick 状态机已如实标注；冻结数值未改")
 
@@ -1247,8 +1254,8 @@ def c_card_art_integration_r39() -> str:
     need("CardArtView.gd" in tscn and 'card_id = "card_jianfeng"' in tscn,
          "CardArtView.tscn 未挂脚本或缺示例卡 id")
     godot = (ROOT / "project.godot").read_text(encoding="utf-8")
-    need('run/main_scene="res://scenes/MinimalRun.tscn"' in godot,
-         "主场景被改动（第 39 轮只新增示例场景，不接管 F5）")
+    need(main_scene_baseline_ok(godot),
+         "第 41 轮口径：主场景须为已知场景且 MinimalRun 保留（原第 39 轮不接管 F5）")
     frozen = sorted(p.name for p in (ROOT / "assets" / "ui" / "cards").glob("*.png"))
     need(len(frozen) == 10, f"冻结 10 张卡面被替换或增删：{len(frozen)}")
     need(imp["status"] == tr["status"] == "待目检与合规确认；不得直接入库",
@@ -1329,6 +1336,91 @@ def c_codex_frame_r40() -> str:
             "5 张目检预览齐备 / 两个生成器 --check 通过")
 
 
+def main_scene_baseline_ok(cfg_text: str) -> bool:
+    """第 41 轮口径更新（不是抑制检查）：
+    历史第 20/21/22/39 轮都断言「主场景必须是 MinimalRun.tscn」，用来保证当时
+    「网页原型不许接管 Godot」。第 41 轮用户要求继续做游戏，F5 改为进入可玩原型
+    TowerRun.tscn。这些历史断言统一走本函数：主场景必须是两个已知场景之一，
+    且门禁验证场景 MinimalRun.tscn 必须完整保留，任何其它改动仍会 FAIL。
+    """
+    if not (ROOT / "scenes" / "MinimalRun.tscn").is_file():
+        return False
+    return any(
+        f'run/main_scene="res://scenes/{name}.tscn"' in cfg_text
+        for name in ("MinimalRun", "TowerRun"))
+
+
+def c_tower_run_r41() -> str:
+    """第 41 轮：Godot 局内可玩本体（菜单→9 层→三选一→结算），冻结基线不许动。"""
+    import hashlib
+
+    rep = load("tower-run-verify-report.json")
+    need(rep["round"] == 41 and rep["status"] == "PASS",
+         "headless 报告轮次 / 状态不对")
+    need(int(rep["passed"]) >= 20 and int(rep["failed"]) == 0,
+         "headless 断言不是 20/20 全过")
+    need(int(rep["cardsLoaded"]) == 72 and int(rep["stages"]) == 9
+         and int(rep["maxHit"]) == 3996,
+         "卡库 / 层数 / 伤害红线证据不对")
+    need(rep["finalResult"] == "win" and int(rep["reachedStage"]) == 9
+         and int(rep["picks"]) <= 8 and int(rep["runEndedSignals"]) == 1,
+         "完整闭环证据不对（应 9 层通关 / 选卡 ≤8 / run_ended 发 1 次）")
+    need("GUI 画面" in str(rep["boundary"]),
+         "报告未声明 headless 不等于 GUI 画面已验证")
+
+    for rel in ("scripts/RunConfig.gd", "scripts/StageView.gd", "scripts/RunHUD.gd",
+                "scripts/RewardPicker.gd", "scripts/TowerRun.gd",
+                "scenes/TowerRun.tscn", "tools/verify_tower_run.gd",
+                "docs/29-Godot可玩原型与第41轮边界.md"):
+        need((ROOT / rel).is_file(), f"缺第 41 轮文件 {rel}")
+
+    cfg = (ROOT / "project.godot").read_text(encoding="utf-8")
+    need('run/main_scene="res://scenes/TowerRun.tscn"' in cfg,
+         "F5 默认场景未指向 TowerRun.tscn")
+    scene = (ROOT / "scenes" / "TowerRun.tscn").read_text(encoding="utf-8")
+    for node in ("TowerRun", "Stage", "HUD", "RewardPicker", "MenuLayer", "ResultLayer"):
+        need(f'name="{node}"' in scene, f"节点树缺 {node}")
+
+    # 冻结基线：10 张卡面逐字节未动、docs/12 §2 与 docs/01 §12 规格未被改写
+    frames_rep = load("codex-card-frames-report.json")
+    frozen_dir = ROOT / "assets" / "ui" / "cards"
+    now = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+           for p in sorted(frozen_dir.glob("*.png"))}
+    need(now == frames_rep["frozenCardAssetsSha256"] and len(now) == 10,
+         "第 41 轮改动了冻结的 10 张卡面")
+    spec12 = (ROOT / "docs" / "12-卡牌UI规格.md").read_text(encoding="utf-8")
+    need("72 张卡只需要 4 张卡框 + 6 张纹样共 **10 张小图**" in spec12,
+         "docs/12 §2 冻结口径被改写")
+    spec01 = (ROOT / "docs" / "01-策划案.md").read_text(encoding="utf-8")
+    need("`TowerRun` | Node2D" in spec01 and "`RewardPicker` | CanvasLayer" in spec01,
+         "docs/01 §12 节点树规格被改写")
+
+    sources = "\n".join(
+        (ROOT / rel).read_text(encoding="utf-8") for rel in (
+            "scripts/RunConfig.gd", "scripts/StageView.gd", "scripts/RunHUD.gd",
+            "scripts/RewardPicker.gd", "scripts/TowerRun.gd", "scenes/TowerRun.tscn"))
+    need("res://previews/card_frames_codex" not in sources,
+         "游戏本体不得引用第 40 轮的 07 候选卡框（R61：候选不得直接入库）")
+    need("PROPOSAL 占位" in (ROOT / "scripts" / "RunConfig.gd").read_text(encoding="utf-8")
+         and "不是冻结规格" in (ROOT / "scripts" / "RunConfig.gd").read_text(encoding="utf-8"),
+         "PROPOSAL 占位边界标注丢失（R51）")
+    for token in ("Q17 未拍板", "GUI F5 目检未跑", "M2 境界 / M3 灵韵 / 存档 / 埋点 / 音频未实现"):
+        need(token in (ROOT / "scripts" / "TowerRun.gd").read_text(encoding="utf-8"),
+             f"TowerRun.gd 缺边界标注：{token}")
+    stage_src = (ROOT / "scripts" / "StageView.gd").read_text(encoding="utf-8")
+    need("46 张卡的非五上界 hook" in stage_src and "R56" in stage_src,
+         "StageView.gd 缺「46 张卡未映射 / 逐 tick 未跨端对齐」边界标注")
+
+    doc29 = (ROOT / "docs" / "29-Godot可玩原型与第41轮边界.md").read_text(encoding="utf-8")
+    for token in ("PROPOSAL", "R61", "F5", "MinimalRun.tscn", "不实现"):
+        need(token in doc29, f"docs/29 缺关键口径：{token}")
+
+    return ("TowerRun 节点树 / 9 层横版战斗 / 层间三选一 / 结算重开闭环 / "
+            "headless 20/20 PASS（通关 9 层、8 次选卡、maxHit 3996）/ "
+            "冻结 10 张卡面与 docs/01 §12、docs/12 §2 逐字节未动 / "
+            "PROPOSAL 与 R61 边界写死")
+
+
 def main() -> None:
     check("json_parse", "docs/*.json 全部可解析", c_json)
     check("csv_numbers", "数值源 9 列、无 BOM、无空行、含 round15", c_nums)
@@ -1368,6 +1460,7 @@ def main() -> None:
     check("card_art_r34", "第 34–37 轮 72 卡独立插画（6 组拼版 / 克制风格 / 参考图边界 / 自适应裁剪 / 冻结口径未动）", c_card_art_r34)
     check("card_art_integration_r39", "第 39 轮 6 组回稿集成（导入标准化 / 72 张 84×56 / 网页卡面 / Godot 组件 / 冻结口径未动）", c_card_art_integration_r39)
     check("codex_frame_r40", "第 40 轮 07 风格卡框候选 + 文字排版修复（4 档 96×144 / 双模式对照 / 冻结基线逐字节未动）", c_codex_frame_r40)
+    check("tower_run_r41", "第 41 轮 Godot 可玩本体（菜单→9 层→三选一→结算 / headless 20 项 / 冻结基线未动）", c_tower_run_r41)
 
     passed = sum(1 for c in CHECKS if c["status"] == "PASS")
     failed = len(CHECKS) - passed
@@ -1391,6 +1484,7 @@ def main() -> None:
             "python3 tools/check_traceability.py",
             "check_godot_project.py . --spec docs/project-spec.json --freeze docs/design-freeze.json --json docs/godot-project-check.json",
             "Godot --headless --script tools/verify_minimal_run.gd（须先由编辑器导入资源）",
+            "Godot --headless --path . --script res://tools/verify_tower_run.gd（第 41 轮可玩闭环 20 项）",
         ],
         "boundary": "本脚本只做离线/静态验证。像素硬边、朝右镜像、480×270×4 对齐、阴兵对比度等仍需用户按 docs/13 §12 在 GUI 按 F5 目检；PASS 不等于游戏可玩。",
     }

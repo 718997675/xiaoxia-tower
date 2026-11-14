@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-10",
+  "generatedAt": "2026-11-14",
   "generator": "tools/final_selfcheck.py",
   "scope": "第 15 轮收口 · 交付前全量静态自检",
   "verdict": "PASS",
   "summary": {
-    "checks": 38,
-    "passed": 38,
+    "checks": 39,
+    "passed": 39,
     "failed": 0
   },
   "checks": [
@@ -14,7 +14,7 @@
       "id": "json_parse",
       "desc": "docs/*.json 全部可解析",
       "status": "PASS",
-      "detail": "37 份 JSON 全部可解析"
+      "detail": "38 份 JSON 全部可解析"
     },
     {
       "id": "csv_numbers",
@@ -92,7 +92,7 @@
       "id": "project_config",
       "desc": "project.godot 像素与输入配置",
       "status": "PASS",
-      "detail": "480×270×4 / Nearest(0) / stretch=viewport / 主场景 / 左右输入映射齐全"
+      "detail": "480×270×4 / Nearest(0) / stretch=viewport / 主场景 TowerRun（MinimalRun 保留）/ 左右输入映射齐全"
     },
     {
       "id": "minimal_scene",
@@ -116,7 +116,7 @@
       "id": "absolute_paths",
       "desc": "文档/工程无机器绝对路径",
       "status": "PASS",
-      "detail": "扫描 81 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
+      "detail": "扫描 90 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
     },
     {
       "id": "stale_handover",
@@ -237,6 +237,12 @@
       "desc": "第 40 轮 07 风格卡框候选 + 文字排版修复（4 档 96×144 / 双模式对照 / 冻结基线逐字节未动）",
       "status": "PASS",
       "detail": "4 档 07-codex 候选卡框 96×144 / 色板外颜色 0 / PNG 无文字 / 冻结 10 张卡面与 docs/12 §2 逐字节未动 / 网页 ?frame=codex|frozen 双模式 + canvas 像素测量折行 / 5 张目检预览齐备 / 两个生成器 --check 通过"
+    },
+    {
+      "id": "tower_run_r41",
+      "desc": "第 41 轮 Godot 可玩本体（菜单→9 层→三选一→结算 / headless 20 项 / 冻结基线未动）",
+      "status": "PASS",
+      "detail": "TowerRun 节点树 / 9 层横版战斗 / 层间三选一 / 结算重开闭环 / headless 20/20 PASS（通关 9 层、8 次选卡、maxHit 3996）/ 冻结 10 张卡面与 docs/01 §12、docs/12 §2 逐字节未动 / PROPOSAL 与 R61 边界写死"
     }
   ],
   "knownExceptions": [
@@ -250,7 +256,8 @@
     "python3 tools/verify_damage_ceiling.py",
     "python3 tools/check_traceability.py",
     "check_godot_project.py . --spec docs/project-spec.json --freeze docs/design-freeze.json --json docs/godot-project-check.json",
-    "Godot --headless --script tools/verify_minimal_run.gd（须先由编辑器导入资源）"
+    "Godot --headless --script tools/verify_minimal_run.gd（须先由编辑器导入资源）",
+    "Godot --headless --path . --script res://tools/verify_tower_run.gd（第 41 轮可玩闭环 20 项）"
   ],
   "boundary": "本脚本只做离线/静态验证。像素硬边、朝右镜像、480×270×4 对齐、阴兵对比度等仍需用户按 docs/13 §12 在 GUI 按 F5 目检；PASS 不等于游戏可玩。"
 }

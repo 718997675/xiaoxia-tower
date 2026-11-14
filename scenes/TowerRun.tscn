@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/TowerRun.gd" id="1_run"]
+[ext_resource type="Script" path="res://scripts/StageView.gd" id="2_stage"]
+[ext_resource type="Script" path="res://scripts/RunHUD.gd" id="3_hud"]
+[ext_resource type="Script" path="res://scripts/RewardPicker.gd" id="4_pick"]
+
+[node name="TowerRun" type="Node2D"]
+script = ExtResource("1_run")
+
+[node name="Stage" type="Node2D" parent="."]
+script = ExtResource("2_stage")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_hud")
+
+[node name="RewardPicker" type="CanvasLayer" parent="."]
+script = ExtResource("4_pick")
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="ResultLayer" type="CanvasLayer" parent="."]
