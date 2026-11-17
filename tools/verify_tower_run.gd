@@ -266,6 +266,91 @@ func _init() -> void:
 	var shots_nonboss: int = int(stage_node.call("debug_boss_fire_skill"))
 	_ck("boss_proj_clear_on_stage_change", n_before > 0 and n_after == 0 and shots_nonboss == 0,
 		"切层前=%d 切层后=%d 非Boss施法=%d" % [n_before, n_after, shots_nonboss])
+
+	# ===== 第 45 轮：杂兵攻击方式差异化 =====
+	# stage 6（index=6）含全部 4 种杂兵，可一次覆盖所有风格。
+	stage_node.call("start_stage", 6, inst.deck)
+	stage_node.call("debug_clear_projectiles")
+	stage_node.set("hp", 300.0)
+	stage_node.set("invuln", 0.0)
+	# 1. 风格表结构 + 帧资源存在（4 种杂兵各有 vfx，未新增出图）。
+	var sty_cfg: Dictionary = RunConfig.MOB_ATTACK_STYLE
+	var mob_ids: Array = ["mob_shanxiao", "mob_zhi_kui", "mob_yin_bing", "mob_jian_hun"]
+	var cfg_ok: bool = sty_cfg.size() == 4
+	for mid in mob_ids:
+		if not sty_cfg.has(mid):
+			cfg_ok = false
+			continue
+		var mid_vfx: String = String((sty_cfg[mid] as Dictionary).get("vfx", ""))
+		if mid_vfx.is_empty() \
+				or not ResourceLoader.exists("res://assets/vfx/frames/%s_00.png" % mid_vfx):
+			cfg_ok = false
+	_ck("mob_style_table_shape", cfg_ok, "4 风格齐备且 vfx 帧存在（size=%d）" % sty_cfg.size())
+	# 2. 风格确实有区分：重击 CD/伤害 > 疾刺；纸傀为远程；阴兵基准 dmg=1.0。
+	var shan: Dictionary = sty_cfg["mob_shanxiao"]
+	var jian: Dictionary = sty_cfg["mob_jian_hun"]
+	var yin: Dictionary = sty_cfg["mob_yin_bing"]
+	var zhi: Dictionary = sty_cfg["mob_zhi_kui"]
+	_ck("mob_styles_distinct", float(shan["cd"]) > float(jian["cd"]) \
+		and float(shan["dmg"]) > float(jian["dmg"]) \
+		and bool(zhi["ranged"]) and absf(float(yin["dmg"]) - 1.0) < 0.001,
+		"重击 cd=%.1f/dmg=%.2f 疾刺 cd=%.1f/dmg=%.2f 纸傀远程=%s 阴兵 dmg=%.1f" % [
+			float(shan["cd"]), float(shan["dmg"]), float(jian["cd"]), float(jian["dmg"]),
+			str(bool(zhi["ranged"])), float(yin["dmg"])])
+	# 3. 层内敌人携带正确风格快照；Boss 层风格为空（走原行为）。
+	var styles: Array = stage_node.call("debug_enemy_styles")
+	var by_id: Dictionary = {}
+	for s in styles:
+		by_id[String(s["id"])] = s
+	_ck("mob_styles_in_stage", by_id.size() == 4 \
+		and bool((by_id["mob_zhi_kui"] as Dictionary)["ranged"]) \
+		and not bool((by_id["mob_shanxiao"] as Dictionary)["ranged"]),
+		"stage6 敌人数=%d 纸傀远程=%s 山魈远程=%s" % [by_id.size(),
+			str(bool((by_id["mob_zhi_kui"] as Dictionary)["ranged"])),
+			str(bool((by_id["mob_shanxiao"] as Dictionary)["ranged"]))])
+	# 4. 纸傀远程发弹：强制攻击返回 1 弹，投射物 vfx 用纸傀帧（非 Boss 飞剑）。
+	var unit_incoming: float = RunConfig.ENEMY_ATTACK_BASE \
+		+ RunConfig.ENEMY_ATTACK_PER_STAGE * 6.0 + 34.0 * 0.12
+	var zhi_shots: int = int(stage_node.call("debug_mob_attack", "mob_zhi_kui", unit_incoming))
+	var zhi_projs: Array = stage_node.call("debug_projectiles")
+	_ck("mob_ranged_fires", zhi_shots == 1 and zhi_projs.size() == 1,
+		"纸傀发弹=%d 在飞=%d" % [zhi_shots, zhi_projs.size()])
+	# 5. 远程弹命中扣血（走 _hurt_player 统一路径）。
+	var hp_r_before: float = float(stage_node.call("snapshot").get("hp", 0.0))
+	stage_node.call("debug_place_projectiles_on_player")
+	stage_node.call("debug_tick_projectiles", 0.016)
+	var hp_r_after: float = float(stage_node.call("snapshot").get("hp", 0.0))
+	_ck("mob_ranged_hit_damages", hp_r_after < hp_r_before,
+		"远程弹命中 HP %.1f→%.1f" % [hp_r_before, hp_r_after])
+	# 6. 闪避无敌时远程弹穿过不扣血。
+	stage_node.call("debug_clear_projectiles")
+	stage_node.call("debug_mob_attack", "mob_zhi_kui", unit_incoming)
+	stage_node.set("invuln", 1.0)
+	var hp_d_before: float = float(stage_node.call("snapshot").get("hp", 0.0))
+	stage_node.call("debug_place_projectiles_on_player")
+	stage_node.call("debug_tick_projectiles", 0.016)
+	var hp_d_after: float = float(stage_node.call("snapshot").get("hp", 0.0))
+	_ck("mob_ranged_dodge_ignores", absf(hp_d_after - hp_d_before) < 0.001,
+		"无敌 HP %.1f→%.1f 不扣血" % [hp_d_before, hp_d_after])
+	stage_node.set("invuln", 0.0)
+	stage_node.call("debug_clear_projectiles")
+	# 7. 近战风格伤害比例落地：重击 > 疾刺（同一 incoming 基准，各打一次）。
+	stage_node.set("hp", 300.0)
+	stage_node.call("debug_mob_attack", "mob_shanxiao", unit_incoming)
+	var dmg_heavy: float = 300.0 - float(stage_node.call("snapshot").get("hp", 0.0))
+	stage_node.set("hp", 300.0)
+	stage_node.call("debug_mob_attack", "mob_jian_hun", unit_incoming)
+	var dmg_quick: float = 300.0 - float(stage_node.call("snapshot").get("hp", 0.0))
+	_ck("mob_melee_dmg_scaled", dmg_heavy > dmg_quick and dmg_quick > 0.0,
+		"重击扣 %.1f > 疾刺扣 %.1f" % [dmg_heavy, dmg_quick])
+	# 8. Boss 层敌人风格为空（不注入杂兵风格，逐字段走第 41 轮口径）。
+	stage_node.call("start_stage", 4, inst.deck)
+	var bstyles: Array = stage_node.call("debug_enemy_styles")
+	var boss_style_empty: bool = true
+	for bs in bstyles:
+		if bool((bs as Dictionary)["boss"]) and not String((bs as Dictionary)["style"]).is_empty():
+			boss_style_empty = false
+	_ck("mob_boss_style_unchanged", boss_style_empty, "Boss 层无杂兵风格注入")
 	stage_node.call("stop")
 
 	_finish({

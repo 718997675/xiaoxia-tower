@@ -186,6 +186,46 @@
 			"detail": "切层前=3 切层后=0 非Boss施法=0",
 			"name": "boss_proj_clear_on_stage_change",
 			"ok": true
+		},
+		{
+			"detail": "4 风格齐备且 vfx 帧存在（size=4）",
+			"name": "mob_style_table_shape",
+			"ok": true
+		},
+		{
+			"detail": "重击 cd=2.8/dmg=1.45 疾刺 cd=0.9/dmg=0.62 纸傀远程=true 阴兵 dmg=1.0",
+			"name": "mob_styles_distinct",
+			"ok": true
+		},
+		{
+			"detail": "stage6 敌人数=4 纸傀远程=true 山魈远程=false",
+			"name": "mob_styles_in_stage",
+			"ok": true
+		},
+		{
+			"detail": "纸傀发弹=1 在飞=1",
+			"name": "mob_ranged_fires",
+			"ok": true
+		},
+		{
+			"detail": "远程弹命中 HP 300.0→273.1",
+			"name": "mob_ranged_hit_damages",
+			"ok": true
+		},
+		{
+			"detail": "无敌 HP 273.1→273.1 不扣血",
+			"name": "mob_ranged_dodge_ignores",
+			"ok": true
+		},
+		{
+			"detail": "重击扣 45.9 > 疾刺扣 19.6",
+			"name": "mob_melee_dmg_scaled",
+			"ok": true
+		},
+		{
+			"detail": "Boss 层无杂兵风格注入",
+			"name": "mob_boss_style_unchanged",
+			"ok": true
 		}
 	],
 	"engine": "4.7.2.stable",
@@ -193,7 +233,7 @@
 	"finalResult": "win",
 	"mainScene": "res://scenes/TowerRun.tscn",
 	"maxHit": 3996,
-	"passed": 37,
+	"passed": 45,
 	"picks": 8,
 	"reachedStage": 9,
 	"round": 41,

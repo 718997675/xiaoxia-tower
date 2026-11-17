@@ -77,6 +77,24 @@ const BOSS_PROJ_LIFETIME: float = 3.2              # 投射物最长存活（秒
 const BOSS_PROJ_SPREAD: float = 0.22               # 多发扇形夹角（弧度，总张角 = (n-1)*spread）
 const BOSS_PROJ_VFX: String = "vfx_flying_sword"   # 复用现有飞剑特效帧（assets/vfx/frames/）
 
+# 杂兵攻击方式差异化（第 45 轮 · 表现层 PROPOSAL 占位，非冻结、非平衡结论 R51）。
+# 4 种杂兵此前只有 defense/speed 不同、攻击全是同一套平砍；这里给每种一个攻击风格，
+# 让战斗有辨识度。全部复用现有 vfx 帧（assets/vfx/frames/），不新增出图。
+# 字段：style=风格名 / ranged=是否远程 / cd=出手间隔秒 / dmg=伤害相对通用 incoming 的比例
+#       vfx=释放特效帧 id / proj_speed=远程弹速 / proj_life=远程弹存活秒
+# 纪律：mob_yin_bing 保持「基准近战」档（ranged=false, dmg=1.0），行为与第 41 轮一致；
+#       Boss 不在本表，走原有三阶段 + 远程技能逻辑，逐字段不变。
+const MOB_ATTACK_STYLE: Dictionary = {
+    "mob_shanxiao": {"style": "重击", "ranged": false, "cd": 2.8, "dmg": 1.45,
+                     "vfx": "vfx_fist_force"},
+    "mob_zhi_kui":  {"style": "符弹", "ranged": true, "cd": 2.2, "dmg": 0.85,
+                     "vfx": "vfx_paper_puppet", "proj_speed": 150.0, "proj_life": 3.0},
+    "mob_yin_bing": {"style": "常规", "ranged": false, "cd": 1.9, "dmg": 1.0,
+                     "vfx": "vfx_hit"},
+    "mob_jian_hun": {"style": "疾刺", "ranged": false, "cd": 0.9, "dmg": 0.62,
+                     "vfx": "vfx_sword_qi"},
+}
+
 # 4 技能槽：id / name / key / vfx / direction 来自 docs/06 §4 冻结字段；
 # cd / spirit / base / reach / hits / heal 全部 PROPOSAL（battle_sim.js 同源）。
 const SKILLS: Array = [

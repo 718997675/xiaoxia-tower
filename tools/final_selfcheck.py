@@ -1691,6 +1691,66 @@ def c_boss_ranged_r44() -> str:
             "R56 未跨端对齐、R66 弹幕参数未实测如实留档")
 
 
+def c_mob_attacks_r45() -> str:
+    """第 45 轮：杂兵攻击方式差异化，冻结基线不许动。"""
+    import hashlib
+
+    # 可玩闭环报告扩展了杂兵差异化断言（45/45，原 37 项不回退）
+    tr = load("tower-run-verify-report.json")
+    need(int(tr["passed"]) >= 45 and int(tr["failed"]) == 0,
+         "可玩闭环报告未含第 45 轮杂兵差异化断言或不是全过")
+    names = [c["name"] for c in tr.get("checks", [])]
+    for must in ("mob_style_table_shape", "mob_styles_distinct", "mob_styles_in_stage",
+                 "mob_ranged_fires", "mob_ranged_hit_damages", "mob_ranged_dodge_ignores",
+                 "mob_melee_dmg_scaled", "mob_boss_style_unchanged"):
+        need(must in names, f"可玩闭环报告缺杂兵差异化断言 {must}")
+
+    need((ROOT / "docs" / "34-杂兵攻击方式差异化与第45轮边界.md").is_file(),
+         "缺第 45 轮文件 docs/34")
+
+    # 源码：攻击风格表 + 远程发弹 + 泛化投射物 + 阴兵/Boss 不回退
+    sv = (ROOT / "scripts" / "StageView.gd").read_text(encoding="utf-8")
+    for token in ("_enemy_atk_cd", "_fire_mob_ranged", "_spawn_projectile",
+                  "debug_enemy_styles", "debug_mob_attack", "style.get(\"ranged\""):
+        need(token in sv, f"StageView.gd 缺杂兵差异化落点 {token}")
+    need("minf(step, move_target)" in sv, "StageView.gd 近战追击未保持第 41 轮口径")
+    cfg = (ROOT / "scripts" / "RunConfig.gd").read_text(encoding="utf-8")
+    for token in ("MOB_ATTACK_STYLE", "mob_shanxiao", "mob_zhi_kui",
+                  "mob_jian_hun", "vfx_paper_puppet", "vfx_fist_force"):
+        need(token in cfg, f"RunConfig.gd 缺杂兵风格系数 {token}")
+
+    # 复用现有特效帧，未新增出图
+    for vfx in ("vfx_fist_force", "vfx_paper_puppet", "vfx_sword_qi"):
+        need((ROOT / "assets" / "vfx" / "frames" / f"{vfx}_00.png").is_file(),
+             f"缺复用的特效帧 {vfx}_00.png")
+
+    # 冻结基线：卡库 / 10 张卡面 / docs/01 §12 / docs/12 §2 逐字节未动
+    frames_rep = load("codex-card-frames-report.json")
+    now = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+           for p in sorted((ROOT / "assets" / "ui" / "cards").glob("*.png"))}
+    need(now == frames_rep["frozenCardAssetsSha256"] and len(now) == 10,
+         "第 45 轮改动了冻结的 10 张卡面")
+    spec12 = (ROOT / "docs" / "12-卡牌UI规格.md").read_text(encoding="utf-8")
+    need("72 张卡只需要 4 张卡框 + 6 张纹样共 **10 张小图**" in spec12,
+         "docs/12 §2 冻结口径被改写")
+    spec01 = (ROOT / "docs" / "01-策划案.md").read_text(encoding="utf-8")
+    need("`TowerRun` | Node2D" in spec01 and "`RewardPicker` | CanvasLayer" in spec01,
+         "docs/01 §12 节点树规格被改写")
+    lib = (ROOT / "data" / "buff-card-library.json").read_bytes()
+    need(len(lib) > 0 and b'"cards"' in lib, "卡库异常")
+
+    # 边界文档口径
+    doc = (ROOT / "docs" / "34-杂兵攻击方式差异化与第45轮边界.md").read_text(encoding="utf-8")
+    for token in ("R56", "R67", "PROPOSAL", "不宣称", "Q17", "逐字节未动", "F5", "未新增"):
+        need(token in doc, f"docs/34 缺关键口径：{token}")
+
+    return ("杂兵攻击方式差异化 / 重击-符弹-常规-疾刺 4 风格 / 纸傀远程可闪避弹 / "
+            "复用现有 vfx 帧未新增出图 / 阴兵基准档与 Boss 逐字段不变 / "
+            "可玩闭环 45/45（原 37 项不回退 + 8 项杂兵差异化）/ "
+            "冻结卡库·10 张卡面·docs/01 §12·docs/12 §2 逐字节未动 / "
+            "R56 未跨端对齐、R67 风格参数未实测如实留档")
+
+
 def main() -> None:
     check("json_parse", "docs/*.json 全部可解析", c_json)
     check("csv_numbers", "数值源 9 列、无 BOM、无空行、含 round15", c_nums)
@@ -1735,6 +1795,7 @@ def main() -> None:
     check("card_effects_r42", "第 42 轮机制卡效果接入战斗（20 字段跨端 76 样本 / 闭环 24 项 / 冻结基线未动）", c_card_effects_r42)
     check("boss_phase_r43", "第 43 轮 Boss 三阶段接入战斗（0.66/0.33 划分 / 闭环 31 项 / 复用真帧 / 冻结基线未动）", c_boss_phase_r43)
     check("boss_ranged_r44", "第 44 轮 Boss 远程技能投射物（阶段弹数/CD / 闭环 37 项 / 共用受伤路径 / 飞剑帧复用 / 冻结基线未动）", c_boss_ranged_r44)
+    check("mob_attacks_r45", "第 45 轮杂兵攻击方式差异化（4 风格 / 闭环 45 项 / 远程可闪避 / 阴兵与 Boss 不回退 / 复用 vfx 帧 / 冻结基线未动）", c_mob_attacks_r45)
 
     passed = sum(1 for c in CHECKS if c["status"] == "PASS")
     failed = len(CHECKS) - passed
@@ -1758,7 +1819,7 @@ def main() -> None:
             "python3 tools/check_traceability.py",
             "check_godot_project.py . --spec docs/project-spec.json --freeze docs/design-freeze.json --json docs/godot-project-check.json",
             "Godot --headless --script tools/verify_minimal_run.gd（须先由编辑器导入资源）",
-            "Godot --headless --path . --script res://tools/verify_tower_run.gd（可玩闭环 37 项：第 41 轮 20 + 第 42 轮效果 4 + 第 43 轮 Boss 阶段 7 + 第 44 轮远程技能 6）",
+            "Godot --headless --path . --script res://tools/verify_tower_run.gd（可玩闭环 45 项：第 41 轮 20 + 第 42 轮效果 4 + 第 43 轮 Boss 阶段 7 + 第 44 轮远程技能 6 + 第 45 轮杂兵差异化 8）",
         ],
         "boundary": "本脚本只做离线/静态验证。像素硬边、朝右镜像、480×270×4 对齐、阴兵对比度等仍需用户按 docs/13 §12 在 GUI 按 F5 目检；PASS 不等于游戏可玩。",
     }

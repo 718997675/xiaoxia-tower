@@ -21,6 +21,9 @@ extends Node2D
 ## 第 44 轮：Boss 远程技能（投射物）——定时发扇形飞剑弹，复用现有 vfx_flying_sword 帧，
 ##   伤害走与近战同一条 _hurt_player() 路径（护盾/减伤/无敌/复活一致）；阶段越高弹数越多、
 ##   CD 越短。网页无弹幕系统，这是 Godot 表现层增强，R56 仍未跨端对齐，非冻结数值。
+## 第 45 轮：杂兵攻击方式差异化——4 种杂兵各有攻击风格（重击/符弹/常规/疾刺），
+##   远征兵复用第 44 轮投射物系统发可闪避弹，近战风格调 CD/伤害比例；全部 PROPOSAL
+##   集中在 RunConfig.MOB_ATTACK_STYLE。阴兵「常规」档与 Boss 逐字段不变，默认不回退。
 ## 画面资源：gpt-image2 回稿转录真帧（docs/24 / docs/25），非占位 CSS。
 
 signal stage_cleared(layer_index: int)
@@ -244,17 +247,22 @@ func _spawn_enemy(mob_id: String, mob_hp: float, i: int, total: int,
         sp.play("idle")
     node.add_child(sp)
     enemies_root.add_child(node)
+    # 第 45 轮：查杂兵攻击风格（PROPOSAL）；Boss 不在表内 → 拿到空字典，走原有行为。
+    var style: Dictionary = RunConfig.MOB_ATTACK_STYLE.get(mob_id, {}) as Dictionary
     enemies.append({
         "node": node, "sprite": sp, "id": mob_id, "hp": mob_hp, "max_hp": mob_hp,
         "defense": float(info.get("defense", 0.10)),
         "speed": float(info.get("speed", 1.0)) * difficulty,
-        "atk_timer": RunConfig.ENEMY_ATTACK_INTERVAL * (0.6 + 0.2 * float(i)),
+        # 第 45 轮：非 Boss 用风格 CD 做首次出手抖动；Boss 仍用通用间隔（技能另有 skill_cd）。
+        "atk_timer": _enemy_atk_cd(style) * (0.6 + 0.2 * float(i)),
         "dead": false,
         # 第 43 轮：Boss 阶段状态。非 Boss phase=0 且不参与任何阶段逻辑。
         "boss": is_boss, "phase": 1 if is_boss else 0,
         "phase_timer": 0.0,
         # 第 44 轮：Boss 远程技能冷却计时；首次施法有独立延迟。
         "skill_cd": RunConfig.BOSS_SKILL_FIRST_DELAY if is_boss else 0.0,
+        # 第 45 轮：杂兵攻击风格字典（空 = Boss / 未配置 → 走通用近战）。
+        "style": style,
     })
 
 
@@ -504,30 +512,68 @@ func _tick_enemies(delta: float) -> void:
         var dx: float = player.position.x - n.position.x
         var dist: float = absf(dx)
         var sp: AnimatedSprite2D = e["sprite"]
-        if dist > RunConfig.ENEMY_ATTACK_RANGE * 0.7:
+        # 第 45 轮：杂兵攻击风格。style 为空（Boss / 未配置）→ 全走第 41 轮通用近战口径。
+        var style: Dictionary = e.get("style", {}) as Dictionary
+        var ranged: bool = bool(style.get("ranged", false)) and not bool(e["boss"])
+        # 远程兵保持距离：站到更远处发弹，不贴脸；近战兵沿用原追击距离。
+        var approach_dist: float = RunConfig.ENEMY_ATTACK_RANGE * (2.4 if ranged else 0.7)
+        if dist > approach_dist:
             # 第 43 轮：Boss 阶段越高移动越快；非 Boss slot=0 系数 1.0，行为不变。
             var move_scale: float = float(RunConfig.BOSS_PHASE_MOVE_SCALE[_boss_phase_slot(e)])
             var step: float = RunConfig.ENEMY_MOVE_SPEED * float(e["speed"]) * move_scale * delta
-            n.position.x += signf(dx) * minf(step, dist)
+            # 近战沿用原追击（minf(step, dist) 贴脸）；只有远程兵停在射程边缘。
+            var move_target: float = dist - approach_dist if ranged else dist
+            n.position.x += signf(dx) * minf(step, move_target)
             if sp.sprite_frames.has_animation("run") and sp.animation != "run":
                 sp.play("run")
         e["atk_timer"] = float(e["atk_timer"]) - delta
-        if dist <= RunConfig.ENEMY_ATTACK_RANGE and float(e["atk_timer"]) <= 0.0:
+        var attack_range: float = approach_dist if ranged else RunConfig.ENEMY_ATTACK_RANGE
+        if dist <= attack_range and float(e["atk_timer"]) <= 0.0:
             # 第 43 轮：Boss 阶段越高出手越快；非 Boss slot=0 系数 1.0，行为不变。
             var interval_scale: float = float(RunConfig.BOSS_PHASE_ATK_INTERVAL_SCALE[_boss_phase_slot(e)])
-            e["atk_timer"] = RunConfig.ENEMY_ATTACK_INTERVAL * interval_scale
+            e["atk_timer"] = _enemy_atk_cd(style) * interval_scale
             if sp.sprite_frames.has_animation("atk"):
                 sp.play("atk")
+            # 第 45 轮：远程风格发可闪避投射物，走 _hurt_player() 同一条受伤路径。
+            if ranged:
+                _fire_mob_ranged(e, style, hit_incoming)
+                continue
             if invuln > 0.0:
                 _float_text("闪", player.position + Vector2(0, -46), RunConfig.C_JADE_LIGHT)
                 continue
+            # 第 45 轮：近战风格按 dmg 比例缩放（阴兵「常规」档 dmg=1.0，行为不变）。
+            var dmg_scale: float = float(style.get("dmg", 1.0)) if not style.is_empty() else 1.0
             # 第 44 轮：伤害结算抽到 _hurt_player()，近战与 Boss 投射物共用同一条路径
             # （减伤/护盾/受击无敌/回灵/复活/死亡逐字段不变），hit_incoming 已含第 43 轮阶段系数。
-            var hr: int = _hurt_player(hit_incoming)
+            var hr: int = _hurt_player(hit_incoming * dmg_scale)
             if hr == 1:
                 continue  # 复活触发，本敌本次攻击结束
             if hr == 2:
                 return    # 玩家阵亡，停止本 tick
+
+
+## 第 45 轮：取杂兵攻击间隔。空 style（Boss / 未配置）返回通用间隔，行为与第 41 轮一致。
+func _enemy_atk_cd(style: Dictionary) -> float:
+    if style.is_empty():
+        return RunConfig.ENEMY_ATTACK_INTERVAL
+    return float(style.get("cd", RunConfig.ENEMY_ATTACK_INTERVAL))
+
+
+## 第 45 轮：远程杂兵发弹（单发、直线朝玩家）。用风格自带的 vfx / 速度 / 存活，
+## 伤害 = hit_incoming × 风格 dmg 比例，命中走 _hurt_player() 统一路径（可闪避）。
+## 帧资源缺失则不发（安全降级为「不出弹」，不崩、不改冻结资源）。
+func _fire_mob_ranged(e: Dictionary, style: Dictionary, hit_incoming: float) -> void:
+    var vfx_id: String = String(style.get("vfx", ""))
+    if vfx_id.is_empty() \
+            or not ResourceLoader.exists("res://assets/vfx/frames/%s_00.png" % vfx_id):
+        return
+    var src: Node2D = e["node"]
+    var to_player: Vector2 = player.position - src.position
+    var angle: float = atan2(to_player.y, to_player.x)
+    var damage: float = hit_incoming * float(style.get("dmg", 1.0))
+    var speed: float = float(style.get("proj_speed", RunConfig.BOSS_PROJ_SPEED))
+    var life: float = float(style.get("proj_life", RunConfig.BOSS_PROJ_LIFETIME))
+    _spawn_projectile(src.position, angle, damage, String(e["id"]), vfx_id, speed, life)
 
 
 ## 统一玩家受伤结算（第 44 轮抽取，近战 / Boss 投射物共用）。
@@ -613,14 +659,18 @@ func _fire_boss_skill(e: Dictionary) -> void:
     boss_skill_fired.emit(shots, String(e["id"]))
 
 
-func _spawn_projectile(origin: Vector2, angle: float, damage: float, owner_id: String) -> void:
+## 第 45 轮：泛化投射物生成。新增可选参数 vfx_id/speed/life，默认值 = Boss 第 44 轮口径，
+## 因此 Boss 的四参数调用逐字段不变；远程杂兵传入风格参数即可复用同一套飞行/命中系统。
+func _spawn_projectile(origin: Vector2, angle: float, damage: float, owner_id: String, \
+        vfx_id: String = "", speed_override: float = -1.0, life_override: float = -1.0) -> void:
+    var use_vfx: String = vfx_id if not vfx_id.is_empty() else RunConfig.BOSS_PROJ_VFX
     var frames := SpriteFrames.new()
     frames.add_animation("fly")
     frames.set_animation_speed("fly", 14.0)
     frames.set_animation_loop("fly", true)
     var loaded: int = 0
     for i in range(4):
-        var path: String = "res://assets/vfx/frames/%s_%02d.png" % [RunConfig.BOSS_PROJ_VFX, i]
+        var path: String = "res://assets/vfx/frames/%s_%02d.png" % [use_vfx, i]
         if not ResourceLoader.exists(path):
             continue
         var tex := load(path) as Texture2D
@@ -630,18 +680,19 @@ func _spawn_projectile(origin: Vector2, angle: float, damage: float, owner_id: S
     if loaded == 0:
         return
     var sp := AnimatedSprite2D.new()
-    sp.name = "BossProj"
+    sp.name = "Projectile"
     sp.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
     sp.sprite_frames = frames
     sp.position = origin
     sp.play("fly")
     proj_root.add_child(sp)
-    var speed: float = float(RunConfig.BOSS_PROJ_SPEED)
+    var speed: float = speed_override if speed_override > 0.0 else float(RunConfig.BOSS_PROJ_SPEED)
+    var life: float = life_override if life_override > 0.0 else float(RunConfig.BOSS_PROJ_LIFETIME)
     projectiles.append({
         "node": sp, "x": origin.x, "y": origin.y,
         "vx": cos(angle) * speed, "vy": sin(angle) * speed,
-        "damage": damage, "life": float(RunConfig.BOSS_PROJ_LIFETIME),
-        "owner": owner_id,
+        "damage": damage, "life": life,
+        "owner": owner_id, "vfx": use_vfx,
     })
 
 
@@ -839,3 +890,38 @@ func debug_place_projectiles_on_player() -> void:
 ## 第 44 轮 headless 校验用：清掉全部投射物。
 func debug_clear_projectiles() -> void:
     _clear_projectiles()
+
+
+## 第 45 轮 headless 校验用：返回当前层每个敌人的攻击风格快照。
+func debug_enemy_styles() -> Array:
+    var out: Array = []
+    for e in enemies:
+        var style: Dictionary = e.get("style", {}) as Dictionary
+        out.append({
+            "id": String(e["id"]), "boss": bool(e["boss"]),
+            "style": String(style.get("style", "")),
+            "ranged": bool(style.get("ranged", false)),
+            "cd": float(style.get("cd", RunConfig.ENEMY_ATTACK_INTERVAL)),
+            "dmg": float(style.get("dmg", 1.0)),
+            "vfx": String(style.get("vfx", "")),
+            "dead": bool(e["dead"]),
+        })
+    return out
+
+
+## 第 45 轮 headless 校验用：强制首个存活的指定杂兵立即攻击一次（远程发弹 / 近战扣血），
+## 返回本次新增投射物数（近战恒为 0）。unit_incoming 传该层通用 incoming 基准。
+func debug_mob_attack(mob_id: String, unit_incoming: float) -> int:
+    for e in enemies:
+        if String(e["id"]) != mob_id or bool(e["dead"]):
+            continue
+        var style: Dictionary = e.get("style", {}) as Dictionary
+        var before: int = projectiles.size()
+        if bool(style.get("ranged", false)):
+            _fire_mob_ranged(e, style, unit_incoming)
+            return projectiles.size() - before
+        # 近战：直接结算一次（风格 dmg 比例），返回 -1 表示走的是近战扣血路径。
+        var dmg_scale: float = float(style.get("dmg", 1.0)) if not style.is_empty() else 1.0
+        _hurt_player(unit_incoming * dmg_scale)
+        return -1
+    return 0
