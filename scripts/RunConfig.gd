@@ -124,6 +124,20 @@ const SKILLS: Array = [
      "heal": 60.0},
 ]
 
+# 玩家技能施法演出差异化（第 47 轮 · 表现层 PROPOSAL 占位，非冻结、非平衡结论 R51）。
+# 四个技能此前都在玩家身前同一位置播一个 vfx，打法无辨识度；这里给每个技能一种
+# 弹道/演出形态。全部复用现有 vfx 帧（assets/vfx/frames/），不新增出图。
+# 纯视觉：不改命中 / 伤害 / CD / 灵力 / 治疗任何数值，只改特效节点的生成与运动。
+# 字段：style=形态 / vfx=帧 id / count=节点数 / life=存活秒 / speed=运动速度 px/s / spread=扇形夹角 rad
+#   dash=剑气前冲（沿面向水平飞出）/ strike=天雷砸落（从上方垂直落下）
+#   spray=丹火扇形喷射（多节点扇形散开）/ aura=回春光环（自身上浮放大）
+const SKILL_CAST_STYLE: Dictionary = {
+    "sword_qi":         {"style": "dash",   "vfx": "vfx_sword_qi",         "count": 1, "life": 0.30, "speed": 240.0, "spread": 0.0},
+    "thunder_talisman": {"style": "strike", "vfx": "vfx_thunder_talisman", "count": 1, "life": 0.34, "speed": 320.0, "spread": 0.0},
+    "dan_fire":         {"style": "spray",  "vfx": "vfx_dan_fire",         "count": 3, "life": 0.36, "speed": 160.0, "spread": 0.28},
+    "rejuvenation":     {"style": "aura",   "vfx": "vfx_rejuvenation",     "count": 1, "life": 0.55, "speed": 22.0,  "spread": 0.0},
+}
+
 # 怪物行为（docs/06 §5），defense / speed 是网页演示用的 PROPOSAL 占位。
 const MOBS: Dictionary = {
     "mob_shanxiao": {"name": "山魈", "defense": 0.10, "speed": 0.85},

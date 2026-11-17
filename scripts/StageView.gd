@@ -27,6 +27,9 @@ extends Node2D
 ## 第 46 轮：战斗打击感反馈——Camera2D.offset 衰减抖动（暴击/击杀/玩家受击）+ 连击里程碑
 ##   signal/飘字 + 暴击字号放大与击杀标识。全部只影响画面与提示，不改伤害/HP/CD/命中判定，
 ##   数值集中在 RunConfig（R51）；headless 可验证状态量，画面仍需 F5 目检。
+## 第 47 轮：玩家技能施法演出差异化——4 技能各有弹道形态（剑气前冲 / 天雷砸落 /
+##   丹火扇形喷射 / 回春上浮光环），复用现有 vfx 帧，纯视觉不改命中 / 伤害 / CD / 灵力。
+##   形态表集中在 RunConfig.SKILL_CAST_STYLE（R51），默认施法行为与第 41 轮等价。
 ## 画面资源：gpt-image2 回稿转录真帧（docs/24 / docs/25），非占位 CSS。
 
 signal stage_cleared(layer_index: int)
@@ -89,6 +92,13 @@ var combo_tier: int = -1           # 已触发的连击里程碑档位（-1=未�
 var feedback_stats: Dictionary = {"crit_shakes": 0, "kill_shakes": 0,
     "hurt_shakes": 0, "milestones": 0, "crit_labels": 0, "kill_labels": 0}
 
+# 第 47 轮：玩家技能施法演出节点（纯视觉，不改任何战斗数值）。
+# 每项 {node, style, kind, t, life, x, y, vx, vy, start_scale, end_scale, base_rot}
+var cast_fx: Array = []
+var cast_fx_root: Node2D
+var cast_fx_count_total: int = 0   # 累计生成的演出节点数（headless 校验用）
+var last_cast_style: String = ""   # 最近一次施法的形态 id（供验证 / HUD）
+
 
 func _ready() -> void:
     float_theme = RunConfig.make_cjk_theme()
@@ -111,6 +121,10 @@ func _ready() -> void:
     proj_root = Node2D.new()
     proj_root.name = "Projectiles"
     add_child(proj_root)
+    # 第 47 轮：技能施法演出层（纯视觉节点，与命中判定完全解耦）
+    cast_fx_root = Node2D.new()
+    cast_fx_root.name = "CastFx"
+    add_child(cast_fx_root)
     floats_root = Node2D.new()
     floats_root.name = "Floats"
     add_child(floats_root)
@@ -301,6 +315,8 @@ func _clear_enemies() -> void:
     enemies = []
     # 第 44 轮：切层时清掉所有在飞投射物，不跨层残留。
     _clear_projectiles()
+    # 第 47 轮：切层时清掉在飞的技能演出节点，不跨层残留。
+    _clear_cast_fx()
 
 
 func _clear_projectiles() -> void:
@@ -311,11 +327,21 @@ func _clear_projectiles() -> void:
     projectiles = []
 
 
+## 第 47 轮：清掉全部施法演出节点（纯视觉，切层/停止时调用）。
+func _clear_cast_fx() -> void:
+    for fx in cast_fx:
+        var fn: Node2D = fx["node"]
+        if is_instance_valid(fn):
+            fn.queue_free()
+    cast_fx = []
+
+
 func stop() -> void:
     running = false
     paused = false
     visible = false
     _clear_projectiles()
+    _clear_cast_fx()
 
 
 func set_paused(v: bool) -> void:
@@ -412,7 +438,10 @@ func _cast(idx: int) -> void:
     cast_lock = RunConfig.CAST_LOCK
     if player_sprite.sprite_frames.has_animation("cast"):
         player_sprite.play("cast")
-    _spawn_vfx(String(s["vfx"]), player.position + Vector2(float(facing) * 40.0, -8.0), facing)
+    # 第 47 轮：按技能形态生成差异化施法演出（纯视觉）。
+    # 第 41–46 轮原是在身前播一个 s["vfx"]；现改为 4 种弹道形态，帧仍取自 s["vfx"]。
+    # 命中判定 / 伤害 / 灵力 / CD 全部在此调用之后按原样执行，演出不参与任何结算。
+    _spawn_cast_fx(idx)
 
     if String(s["kind"]) == "heal":
         var amount: float = float(s.get("heal", 0.0))
@@ -485,6 +514,125 @@ func _cast(idx: int) -> void:
         combo = minf(1.5, combo + RunConfig.COMBO_GAIN_PER_HIT)
         # 第 46 轮：combo 增长后检查里程碑（signal + 飘字），不改 combo 数值与上界。
         _check_combo_milestone()
+
+
+## 第 47 轮：按技能 id 生成差异化施法演出（纯视觉，不改任何战斗数值）。
+## 四种形态：dash=身前水平前冲 / strike=目标上方垂直砸落 / spray=扇形喷射 / aura=自身上浮放大。
+## 帧取自 RunConfig.SKILL_CAST_STYLE[id].vfx（即 SKILLS 的 vfx 字段，已有真帧），不新增出图。
+func _spawn_cast_fx(skill_idx: int) -> void:
+    if skill_idx < 0 or skill_idx >= RunConfig.SKILLS.size():
+        return
+    var sid: String = String(RunConfig.SKILLS[skill_idx]["id"])
+    var cfg: Dictionary = RunConfig.SKILL_CAST_STYLE.get(sid, {}) as Dictionary
+    if cfg.is_empty():
+        return
+    var style: String = String(cfg.get("style", ""))
+    var vfx_id: String = String(cfg.get("vfx", ""))
+    if vfx_id.is_empty():
+        return
+    var frames := SpriteFrames.new()
+    frames.add_animation("play")
+    frames.set_animation_speed("play", 14.0)
+    frames.set_animation_loop("play", true)
+    var loaded: int = 0
+    for i in range(4):
+        var path: String = "%s%s_%02d.png" % [VFX_DIR, vfx_id, i]
+        if not ResourceLoader.exists(path):
+            continue
+        var tex := load(path) as Texture2D
+        if tex != null:
+            frames.add_frame("play", tex)
+            loaded += 1
+    if loaded == 0:
+        return
+
+    var count: int = maxi(1, int(cfg.get("count", 1)))
+    var life: float = float(cfg.get("life", 0.3))
+    var speed: float = float(cfg.get("speed", 0.0))
+    var spread: float = float(cfg.get("spread", 0.0))
+    var px: float = player.position.x
+    var py: float = player.position.y
+    for i in range(count):
+        var node := AnimatedSprite2D.new()
+        node.name = "CastFx_%s_%d" % [style, i]
+        node.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+        node.sprite_frames = frames
+        node.play("play")
+
+        var x: float = px
+        var y: float = py - 8.0
+        var vx: float = 0.0
+        var vy: float = 0.0
+        var base_rot: float = 0.0
+        var start_scale: float = 1.0
+        var end_scale: float = 1.0
+        match style:
+            "dash":
+                x = px + float(facing) * 30.0
+                vx = float(facing) * speed
+                start_scale = 1.0
+                end_scale = 0.85
+            "strike":
+                x = px + float(facing) * 44.0
+                y = float(RunConfig.GROUND_Y) - 92.0
+                vy = speed
+                start_scale = 0.8
+                end_scale = 1.25
+            "spray":
+                x = px + float(facing) * 26.0
+                var angle: float = (float(i) - float(count - 1) * 0.5) * spread
+                vx = float(facing) * cos(angle) * speed
+                vy = sin(angle) * speed
+                base_rot = angle
+                start_scale = 1.0
+                end_scale = 0.7
+            "aura":
+                y = float(RunConfig.GROUND_Y) - 4.0
+                vy = -speed
+                start_scale = 0.7
+                end_scale = 1.35
+            _:
+                x = px + float(facing) * 30.0
+                vx = float(facing) * speed
+
+        node.position = Vector2(x, y)
+        node.scale = Vector2(start_scale, start_scale)
+        if absf(base_rot) > 0.001:
+            node.rotation = base_rot
+        cast_fx_root.add_child(node)
+        cast_fx.append({
+            "node": node, "style": style, "kind": sid,
+            "t": 0.0, "life": life, "x": x, "y": y, "vx": vx, "vy": vy,
+            "start_scale": start_scale, "end_scale": end_scale,
+        })
+        cast_fx_count_total += 1
+    last_cast_style = style
+
+
+## 第 47 轮：推进施法演出（纯视觉）。用真实 delta，暂停时也让它自然播完，不进入战斗 tick。
+func _tick_cast_fx(delta: float) -> void:
+    if cast_fx.is_empty():
+        return
+    var alive: Array = []
+    for fx in cast_fx:
+        var node: Node2D = fx["node"]
+        if not is_instance_valid(node):
+            continue
+        var t: float = float(fx["t"]) + delta
+        if t >= float(fx["life"]):
+            node.queue_free()
+            continue
+        fx["t"] = t
+        var x: float = float(fx["x"]) + float(fx["vx"]) * delta
+        var y: float = float(fx["y"]) + float(fx["vy"]) * delta
+        fx["x"] = x
+        fx["y"] = y
+        node.position = Vector2(x, y)
+        var k: float = t / maxf(0.001, float(fx["life"]))
+        var sc: float = float(fx["start_scale"]) + (float(fx["end_scale"]) - float(fx["start_scale"])) * k
+        node.scale = Vector2(sc, sc)
+        alive.append(fx)
+    cast_fx = alive
 
 
 func _spawn_vfx(vfx_id: String, pos: Vector2, dir: int) -> void:
@@ -863,6 +1011,8 @@ func _process(delta: float) -> void:
         else:
             alive.append(item)
     floating = alive
+    # 第 47 轮：推进技能施法演出（纯视觉，用真实 delta，暂停时也让演出自然播完）。
+    _tick_cast_fx(delta)
 
 
 ## 供 HUD 每帧读取的状态快照（父 → 子直接调用，docs/01 §12）。
@@ -894,6 +1044,10 @@ func snapshot() -> Dictionary:
         "shake_amount": shake_amount,
         "combo_tier": combo_tier,
         "feedback_stats": feedback_stats.duplicate(),
+        # 第 47 轮：技能施法演出状态（供 headless 校验；纯表现）
+        "cast_fx_count": cast_fx.size(),
+        "cast_fx_total": cast_fx_count_total,
+        "last_cast_style": last_cast_style,
         "mods": mods.duplicate(true),
     }
 
@@ -1044,3 +1198,31 @@ func debug_trigger_shake(amount: float) -> bool:
 func debug_set_combo(value: float) -> void:
     combo = clampf(value, 0.0, 1.5)
     _check_combo_milestone()
+
+
+## 第 47 轮 headless 校验用：直接生成某技能的施法演出（跳过伤害结算，只测视觉形态）。
+func debug_spawn_cast_fx(skill_idx: int) -> void:
+    _spawn_cast_fx(skill_idx)
+
+
+## 第 47 轮 headless 校验用：清掉全部施法演出节点。
+func debug_clear_cast_fx() -> void:
+    _clear_cast_fx()
+
+
+## 第 47 轮 headless 校验用：推进演出一帧（--script 模式不自动跑 _process）。
+func debug_tick_cast_fx(delta: float) -> void:
+    _tick_cast_fx(delta)
+
+
+## 第 47 轮 headless 校验用：返回当前演出节点快照（形态/位置/存活时间）。
+func debug_cast_fx() -> Array:
+    var out: Array = []
+    for fx in cast_fx:
+        out.append({
+            "style": String(fx["style"]), "kind": String(fx["kind"]),
+            "x": float(fx["x"]), "y": float(fx["y"]),
+            "t": float(fx["t"]), "life": float(fx["life"]),
+            "vx": float(fx["vx"]), "vy": float(fx["vy"]),
+        })
+    return out

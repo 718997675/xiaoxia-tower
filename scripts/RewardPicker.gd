@@ -32,7 +32,7 @@ func _ready() -> void:
     title_label = _label(root, Vector2(0, 8), Vector2(480, 22), "层间三选一", 15,
         RunConfig.C_GOLD_LIGHT, HORIZONTAL_ALIGNMENT_CENTER)
     _label(root, Vector2(0, 28), Vector2(480, 14),
-        "选一张永久生效 · 数值卡即时改变伤害 · 机制卡仅登记不实现", 8,
+        "选一张永久生效 · 数值卡即时改变伤害 · 机制卡已接入战斗（第 42 轮）", 8,
         RunConfig.C_PAPER_DIM, HORIZONTAL_ALIGNMENT_CENTER)
     cards_root = Control.new()
     cards_root.set_anchors_preset(Control.PRESET_FULL_RECT)

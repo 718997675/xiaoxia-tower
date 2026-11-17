@@ -420,6 +420,93 @@ func _init() -> void:
 		if not fb.has(k):
 			fb_ok = false
 	_ck("feedback_stats_observable", fb_ok, "反馈统计字段齐备=%s" % str(fb_ok))
+
+	# ---- 第 47 轮：玩家技能施法演出差异化（纯视觉，不改战斗数值）----
+	# 1. 四技能形态表结构齐备、帧存在、形态互不相同。
+	var styles_seen: Dictionary = {}
+	var cast_table_ok: bool = true
+	for s in RunConfig.SKILLS:
+		var cfg: Dictionary = RunConfig.SKILL_CAST_STYLE.get(String(s["id"]), {}) as Dictionary
+		if cfg.is_empty() or String(cfg.get("style", "")).is_empty():
+			cast_table_ok = false
+			continue
+		var cf: String = "res://assets/vfx/frames/%s_00.png" % String(cfg.get("vfx", ""))
+		if not ResourceLoader.exists(cf):
+			cast_table_ok = false
+		styles_seen[String(cfg["style"])] = true
+	_ck("cast_style_table", cast_table_ok and styles_seen.size() == 4,
+		"4 技能形态齐备=%s 形态种类=%d" % [str(cast_table_ok), styles_seen.size()])
+
+	# 2. dash（剑气斩 idx0）：水平速度主导、垂直速度≈0，起点在身前。
+	stage_node.call("debug_clear_cast_fx")
+	stage_node.call("debug_spawn_cast_fx", 0)
+	var dash_fx: Array = stage_node.call("debug_cast_fx") as Array
+	var dash_ok: bool = dash_fx.size() == 1 and absf(dash_fx[0].get("vx", 0.0)) > 100.0 \
+		and absf(dash_fx[0].get("vy", 0.0)) < 0.01 \
+		and String(dash_fx[0].get("style", "")) == "dash"
+	_ck("cast_dash_forward", dash_ok, "dash 节点=%d vx=%.0f vy=%.0f" % [dash_fx.size(),
+		dash_fx[0].get("vx", 0.0) if dash_fx.size() > 0 else 0.0,
+		dash_fx[0].get("vy", 0.0) if dash_fx.size() > 0 else 0.0])
+
+	# 3. strike（引雷符 idx1）：垂直下落速度主导、水平≈0，起点在高处（y<GROUND_Y）。
+	stage_node.call("debug_clear_cast_fx")
+	stage_node.call("debug_spawn_cast_fx", 1)
+	var strike_fx: Array = stage_node.call("debug_cast_fx") as Array
+	var strike_ok: bool = strike_fx.size() == 1 and strike_fx[0].get("vy", 0.0) > 100.0 \
+		and absf(strike_fx[0].get("vx", 0.0)) < 0.01 \
+		and strike_fx[0].get("y", 999.0) < float(RunConfig.GROUND_Y) - 50.0 \
+		and String(strike_fx[0].get("style", "")) == "strike"
+	_ck("cast_strike_drop", strike_ok, "strike vy=%.0f y=%.0f" % [strike_fx[0].get("vy", 0.0),
+		strike_fx[0].get("y", 0.0)])
+
+	# 4. spray（丹火 idx2）：3 个节点、扇形（vy 分散，有正有负）。
+	stage_node.call("debug_clear_cast_fx")
+	stage_node.call("debug_spawn_cast_fx", 2)
+	var spray_fx: Array = stage_node.call("debug_cast_fx") as Array
+	var vy_min: float = 999.0
+	var vy_max: float = -999.0
+	for sx in spray_fx:
+		vy_min = minf(vy_min, sx.get("vy", 0.0))
+		vy_max = maxf(vy_max, sx.get("vy", 0.0))
+	var spray_ok: bool = spray_fx.size() == 3 and vy_max - vy_min > 10.0
+	_ck("cast_spray_fan", spray_ok, "spray 节点=%d vy范围=[%.0f,%.0f]" % [spray_fx.size(), vy_min, vy_max])
+
+	# 5. aura（回春 idx3）：向上速度（vy<0），起点在地面附近。
+	stage_node.call("debug_clear_cast_fx")
+	stage_node.call("debug_spawn_cast_fx", 3)
+	var aura_fx: Array = stage_node.call("debug_cast_fx") as Array
+	var aura_ok: bool = aura_fx.size() == 1 and aura_fx[0].get("vy", 0.0) < 0.0 \
+		and String(aura_fx[0].get("style", "")) == "aura"
+	_ck("cast_aura_rise", aura_ok, "aura vy=%.0f y=%.0f" % [aura_fx[0].get("vy", 0.0),
+		aura_fx[0].get("y", 0.0)])
+
+	# 6. 位置随时间推进：dash tick 后 x 增大（向 facing 方向移动）。
+	var x_before: float = dash_fx[0].get("x", 0.0)
+	stage_node.call("debug_clear_cast_fx")
+	stage_node.call("debug_spawn_cast_fx", 0)
+	var moved: Array = stage_node.call("debug_cast_fx") as Array
+	var x0: float = moved[0].get("x", 0.0)
+	stage_node.call("debug_tick_cast_fx", 0.1)
+	var moved2: Array = stage_node.call("debug_cast_fx") as Array
+	var dx: float = absf(moved2[0].get("x", 0.0) - x0)
+	_ck("cast_moves_over_time", dx > 5.0 and absf(x_before - moved2[0].get("x", 0.0)) >= 0.0,
+		"tick 0.1s 后水平位移=%.1fpx" % dx)
+
+	# 7. 生命周期：tick 超过最长 life 后演出节点全部清空。
+	stage_node.call("debug_tick_cast_fx", 1.0)
+	var cleared: Array = stage_node.call("debug_cast_fx") as Array
+	_ck("cast_lifecycle_clean", cleared.is_empty(), "超时后残留节点=%d" % cleared.size())
+
+	# 8. 纯视觉：生成演出不改 hp / spirit（无战斗数值副作用）。
+	var pre_hp: float = float(stage_node.call("snapshot").get("hp", 0.0))
+	var pre_sp: float = float(stage_node.call("snapshot").get("spirit", 0.0))
+	stage_node.call("debug_spawn_cast_fx", 0)
+	stage_node.call("debug_spawn_cast_fx", 1)
+	var post_hp: float = float(stage_node.call("snapshot").get("hp", 0.0))
+	var post_sp: float = float(stage_node.call("snapshot").get("spirit", 0.0))
+	_ck("cast_visual_only", absf(post_hp - pre_hp) < 0.001 and absf(post_sp - pre_sp) < 0.001,
+		"HP %.1f→%.1f 灵力 %.1f→%.1f" % [pre_hp, post_hp, pre_sp, post_sp])
+	stage_node.call("debug_clear_cast_fx")
 	stage_node.call("stop")
 
 	_finish({

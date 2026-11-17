@@ -256,6 +256,46 @@
 			"detail": "反馈统计字段齐备=true",
 			"name": "feedback_stats_observable",
 			"ok": true
+		},
+		{
+			"detail": "4 技能形态齐备=true 形态种类=4",
+			"name": "cast_style_table",
+			"ok": true
+		},
+		{
+			"detail": "dash 节点=1 vx=240 vy=0",
+			"name": "cast_dash_forward",
+			"ok": true
+		},
+		{
+			"detail": "strike vy=320 y=124",
+			"name": "cast_strike_drop",
+			"ok": true
+		},
+		{
+			"detail": "spray 节点=3 vy范围=[-44,44]",
+			"name": "cast_spray_fan",
+			"ok": true
+		},
+		{
+			"detail": "aura vy=-22 y=212",
+			"name": "cast_aura_rise",
+			"ok": true
+		},
+		{
+			"detail": "tick 0.1s 后水平位移=24.0px",
+			"name": "cast_moves_over_time",
+			"ok": true
+		},
+		{
+			"detail": "超时后残留节点=0",
+			"name": "cast_lifecycle_clean",
+			"ok": true
+		},
+		{
+			"detail": "HP 300.0→300.0 灵力 100.0→100.0",
+			"name": "cast_visual_only",
+			"ok": true
 		}
 	],
 	"engine": "4.7.2.stable",
@@ -263,7 +303,7 @@
 	"finalResult": "win",
 	"mainScene": "res://scenes/TowerRun.tscn",
 	"maxHit": 3996,
-	"passed": 51,
+	"passed": 59,
 	"picks": 8,
 	"reachedStage": 9,
 	"round": 41,
