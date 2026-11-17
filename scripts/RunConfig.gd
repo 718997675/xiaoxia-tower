@@ -66,6 +66,17 @@ const BOSS_PHASE_ATK_INTERVAL_SCALE: Array = [1.0, 0.85, 0.70]  # 阶段越高�
 const BOSS_PHASE_MOVE_SCALE: Array = [1.0, 1.10, 1.25]  # 阶段越高移动越快
 const BOSS_PHASE_LABEL: Array = ["", "壹·镇", "贰·狂", "叁·殁"]
 
+# Boss 远程技能 / 投射物（第 44 轮 · 表现层 PROPOSAL 占位，非冻结、非平衡结论）。
+# 复用现有 vfx_flying_sword 帧，不新增出图；数值未实测（R66）。
+const BOSS_SKILL_CD: Array = [6.0, 4.8, 3.6]       # 阶段 1/2/3 远程技能冷却（秒）
+const BOSS_SKILL_SHOTS: Array = [1, 2, 3]          # 阶段 1/2/3 每次发射弹数（扇形）
+const BOSS_SKILL_FIRST_DELAY: float = 2.5          # 开层后首次施法延迟（秒）
+const BOSS_PROJ_SPEED: float = 190.0               # 投射物飞行速度（px/s）
+const BOSS_PROJ_DAMAGE_SCALE: float = 0.55         # 投射物伤害相对近战 incoming 的比例
+const BOSS_PROJ_LIFETIME: float = 3.2              # 投射物最长存活（秒），超时自毁
+const BOSS_PROJ_SPREAD: float = 0.22               # 多发扇形夹角（弧度，总张角 = (n-1)*spread）
+const BOSS_PROJ_VFX: String = "vfx_flying_sword"   # 复用现有飞剑特效帧（assets/vfx/frames/）
+
 # 4 技能槽：id / name / key / vfx / direction 来自 docs/06 §4 冻结字段；
 # cd / spirit / base / reach / hits / heal 全部 PROPOSAL（battle_sim.js 同源）。
 const SKILLS: Array = [

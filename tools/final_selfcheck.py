@@ -1631,6 +1631,66 @@ def c_boss_phase_r43() -> str:
             "R65 阶段系数未实测如实留档")
 
 
+def c_boss_ranged_r44() -> str:
+    """第 44 轮：Boss 远程技能投射物，冻结基线不许动。"""
+    import hashlib
+
+    # 可玩闭环报告扩展了 Boss 远程技能断言（37/37，原 31 项不回退）
+    tr = load("tower-run-verify-report.json")
+    need(int(tr["passed"]) >= 37 and int(tr["failed"]) == 0,
+         "可玩闭环报告未含第 44 轮远程技能断言或不是全过")
+    names = [c["name"] for c in tr.get("checks", [])]
+    for must in ("boss_proj_vfx_reused", "boss_skill_shots_phase1",
+                 "boss_skill_shots_phase3", "boss_proj_hit_damages",
+                 "boss_proj_dodge_ignores", "boss_proj_clear_on_stage_change"):
+        need(must in names, f"可玩闭环报告缺 Boss 远程技能断言 {must}")
+
+    need((ROOT / "docs" / "33-Boss远程技能投射物与第44轮边界.md").is_file(),
+         "缺第 44 轮文件 docs/33")
+
+    # 源码：投射物系统 + 统一受伤路径 + 阶段弹数/CD + 非 Boss 零影响
+    sv = (ROOT / "scripts" / "StageView.gd").read_text(encoding="utf-8")
+    for token in ("_hurt_player", "_tick_boss_skills", "_tick_projectiles",
+                  "_fire_boss_skill", "_spawn_projectile", "projectiles",
+                  "BOSS_SKILL_SHOTS", "BOSS_PROJ_DAMAGE_SCALE", "boss_skill_fired"):
+        need(token in sv, f"StageView.gd 缺 Boss 远程技能落点 {token}")
+    need("invuln <= 0.0" in sv, "StageView.gd 远程弹未实现闪避无敌穿透")
+    cfg = (ROOT / "scripts" / "RunConfig.gd").read_text(encoding="utf-8")
+    for token in ("BOSS_SKILL_CD", "BOSS_SKILL_SHOTS", "BOSS_PROJ_SPEED",
+                  "BOSS_PROJ_VFX", "vfx_flying_sword"):
+        need(token in cfg, f"RunConfig.gd 缺 Boss 远程技能系数 {token}")
+
+    # 复用现有飞剑帧，未新增出图
+    need((ROOT / "assets" / "vfx" / "frames" / "vfx_flying_sword_00.png").is_file(),
+         "缺复用的飞剑特效帧 vfx_flying_sword_00.png")
+
+    # 冻结基线：卡库 / 10 张卡面 / docs/01 §12 / docs/12 §2 逐字节未动
+    frames_rep = load("codex-card-frames-report.json")
+    now = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+           for p in sorted((ROOT / "assets" / "ui" / "cards").glob("*.png"))}
+    need(now == frames_rep["frozenCardAssetsSha256"] and len(now) == 10,
+         "第 44 轮改动了冻结的 10 张卡面")
+    spec12 = (ROOT / "docs" / "12-卡牌UI规格.md").read_text(encoding="utf-8")
+    need("72 张卡只需要 4 张卡框 + 6 张纹样共 **10 张小图**" in spec12,
+         "docs/12 §2 冻结口径被改写")
+    spec01 = (ROOT / "docs" / "01-策划案.md").read_text(encoding="utf-8")
+    need("`TowerRun` | Node2D" in spec01 and "`RewardPicker` | CanvasLayer" in spec01,
+         "docs/01 §12 节点树规格被改写")
+    lib = (ROOT / "data" / "buff-card-library.json").read_bytes()
+    need(len(lib) > 0 and b'"cards"' in lib, "卡库异常")
+
+    # 边界文档口径
+    doc = (ROOT / "docs" / "33-Boss远程技能投射物与第44轮边界.md").read_text(encoding="utf-8")
+    for token in ("R56", "R66", "PROPOSAL", "不是逐帧一致", "Q17", "逐字节未动", "F5", "未新增"):
+        need(token in doc, f"docs/33 缺关键口径：{token}")
+
+    return ("Boss 远程技能投射物 / 阶段弹数 1-2-3 + CD 6.0-4.8-3.6 / 飞剑帧复用未新增出图 / "
+            "近战与投射物共用 _hurt_player 逐字段不变 / 闪避穿透 / 切层清理 / 非 Boss 零影响 / "
+            "可玩闭环 37/37（原 31 项不回退 + 6 项远程技能）/ "
+            "冻结卡库·10 张卡面·docs/01 §12·docs/12 §2 逐字节未动 / "
+            "R56 未跨端对齐、R66 弹幕参数未实测如实留档")
+
+
 def main() -> None:
     check("json_parse", "docs/*.json 全部可解析", c_json)
     check("csv_numbers", "数值源 9 列、无 BOM、无空行、含 round15", c_nums)
@@ -1674,6 +1734,7 @@ def main() -> None:
     check("tower_run_r41", "第 41 轮 Godot 可玩本体（菜单→9 层→三选一→结算 / headless 20 项 / 冻结基线未动）", c_tower_run_r41)
     check("card_effects_r42", "第 42 轮机制卡效果接入战斗（20 字段跨端 76 样本 / 闭环 24 项 / 冻结基线未动）", c_card_effects_r42)
     check("boss_phase_r43", "第 43 轮 Boss 三阶段接入战斗（0.66/0.33 划分 / 闭环 31 项 / 复用真帧 / 冻结基线未动）", c_boss_phase_r43)
+    check("boss_ranged_r44", "第 44 轮 Boss 远程技能投射物（阶段弹数/CD / 闭环 37 项 / 共用受伤路径 / 飞剑帧复用 / 冻结基线未动）", c_boss_ranged_r44)
 
     passed = sum(1 for c in CHECKS if c["status"] == "PASS")
     failed = len(CHECKS) - passed
@@ -1697,7 +1758,7 @@ def main() -> None:
             "python3 tools/check_traceability.py",
             "check_godot_project.py . --spec docs/project-spec.json --freeze docs/design-freeze.json --json docs/godot-project-check.json",
             "Godot --headless --script tools/verify_minimal_run.gd（须先由编辑器导入资源）",
-            "Godot --headless --path . --script res://tools/verify_tower_run.gd（可玩闭环 31 项：第 41 轮 20 + 第 42 轮效果 4 + 第 43 轮 Boss 阶段 7）",
+            "Godot --headless --path . --script res://tools/verify_tower_run.gd（可玩闭环 37 项：第 41 轮 20 + 第 42 轮效果 4 + 第 43 轮 Boss 阶段 7 + 第 44 轮远程技能 6）",
         ],
         "boundary": "本脚本只做离线/静态验证。像素硬边、朝右镜像、480×270×4 对齐、阴兵对比度等仍需用户按 docs/13 §12 在 GUI 按 F5 目检；PASS 不等于游戏可玩。",
     }

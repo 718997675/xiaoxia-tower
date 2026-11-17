@@ -156,6 +156,36 @@
 			"detail": "probe空=true snapshot=0",
 			"name": "boss_phase_nonboss_zero",
 			"ok": true
+		},
+		{
+			"detail": "复用现有飞剑特效帧，未新增出图",
+			"name": "boss_proj_vfx_reused",
+			"ok": true
+		},
+		{
+			"detail": "阶段1弹数=1（应 1）",
+			"name": "boss_skill_shots_phase1",
+			"ok": true
+		},
+		{
+			"detail": "阶段3弹数=3 snapshot=3（应 3）",
+			"name": "boss_skill_shots_phase3",
+			"ok": true
+		},
+		{
+			"detail": "HP 300.0→246.1 命中后投射物清空",
+			"name": "boss_proj_hit_damages",
+			"ok": true
+		},
+		{
+			"detail": "无敌时 HP 246.1→246.1 不扣血",
+			"name": "boss_proj_dodge_ignores",
+			"ok": true
+		},
+		{
+			"detail": "切层前=3 切层后=0 非Boss施法=0",
+			"name": "boss_proj_clear_on_stage_change",
+			"ok": true
 		}
 	],
 	"engine": "4.7.2.stable",
@@ -163,7 +193,7 @@
 	"finalResult": "win",
 	"mainScene": "res://scenes/TowerRun.tscn",
 	"maxHit": 3996,
-	"passed": 31,
+	"passed": 37,
 	"picks": 8,
 	"reachedStage": 9,
 	"round": 41,

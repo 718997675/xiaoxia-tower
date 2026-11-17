@@ -219,6 +219,53 @@ func _init() -> void:
 	var nsnap: Dictionary = stage_node.call("snapshot")
 	_ck("boss_phase_nonboss_zero", nb.is_empty() and int(nsnap.get("boss_phase", -1)) == 0,
 		"probe空=%s snapshot=%d" % [str(nb.is_empty()), int(nsnap.get("boss_phase", -1))])
+
+	# ---- 第 44 轮：Boss 远程技能（投射物，表现层，R56 未跨端对齐） ----
+	_ck("boss_proj_vfx_reused", ResourceLoader.exists(
+		"res://assets/vfx/frames/vfx_flying_sword_00.png"),
+		"复用现有飞剑特效帧，未新增出图")
+	# 回到 Boss 层（上一段测试末尾停在非 Boss 层）。
+	stage_node.call("start_stage", 4, inst.deck)
+	stage_node.call("debug_clear_projectiles")
+	# 阶段 1 施法发 1 弹。
+	var shots1: int = int(stage_node.call("debug_boss_fire_skill"))
+	_ck("boss_skill_shots_phase1", shots1 == 1, "阶段1弹数=%d（应 1）" % shots1)
+	# 阶段 3 施法发 3 弹。
+	stage_node.call("debug_clear_projectiles")
+	stage_node.call("debug_set_boss_hp_ratio", 0.2)
+	var shots3: int = int(stage_node.call("debug_boss_fire_skill"))
+	var snap_proj: Dictionary = stage_node.call("snapshot")
+	_ck("boss_skill_shots_phase3", shots3 == 3 \
+		and int(snap_proj.get("projectile_count", -1)) == 3,
+		"阶段3弹数=%d snapshot=%d（应 3）" % [shots3, int(snap_proj.get("projectile_count", -1))])
+	# 命中扣血：把 3 发弹瞬移到玩家身上推进一帧，HP 应下降。
+	stage_node.call("debug_clear_projectiles")
+	stage_node.call("debug_boss_fire_skill")
+	var hp_before: float = float(stage_node.call("snapshot").get("hp", 0.0))
+	stage_node.call("debug_place_projectiles_on_player")
+	stage_node.call("debug_tick_projectiles", 0.016)
+	var hp_after: float = float(stage_node.call("snapshot").get("hp", 0.0))
+	_ck("boss_proj_hit_damages", hp_after < hp_before and int(stage_node.call("debug_projectiles").size()) == 0,
+		"HP %.1f→%.1f 命中后投射物清空" % [hp_before, hp_after])
+	# 闪避无敌：设 invuln>0 后投射物命中不扣血。
+	stage_node.call("debug_clear_projectiles")
+	stage_node.call("debug_boss_fire_skill")
+	stage_node.set("invuln", 1.0)
+	var hp_before_dodge: float = float(stage_node.call("snapshot").get("hp", 0.0))
+	stage_node.call("debug_place_projectiles_on_player")
+	stage_node.call("debug_tick_projectiles", 0.016)
+	var hp_after_dodge: float = float(stage_node.call("snapshot").get("hp", 0.0))
+	_ck("boss_proj_dodge_ignores", absf(hp_after_dodge - hp_before_dodge) < 0.001,
+		"无敌时 HP %.1f→%.1f 不扣血" % [hp_before_dodge, hp_after_dodge])
+	stage_node.set("invuln", 0.0)
+	# 切层清理投射物 + 非 Boss 层不施法。
+	stage_node.call("debug_boss_fire_skill")
+	var n_before: int = int(stage_node.call("debug_projectiles").size())
+	stage_node.call("start_stage", 0, inst.deck)
+	var n_after: int = int(stage_node.call("debug_projectiles").size())
+	var shots_nonboss: int = int(stage_node.call("debug_boss_fire_skill"))
+	_ck("boss_proj_clear_on_stage_change", n_before > 0 and n_after == 0 and shots_nonboss == 0,
+		"切层前=%d 切层后=%d 非Boss施法=%d" % [n_before, n_after, shots_nonboss])
 	stage_node.call("stop")
 
 	_finish({

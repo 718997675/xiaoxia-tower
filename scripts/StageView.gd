@@ -17,13 +17,18 @@ extends Node2D
 ##     第 42 轮只落地 20 个可观测 mods 字段（从冻结卡库编译），语义未定的键仍不模拟，
 ##     未映射清单见 docs/card-effects 报告；不是完整 hook 实现。
 ##   - 逐 tick 状态机跨端对齐（R56）；6 s 读卡窗口（R33）；本地存档 / 元进度（M2/M3）。
-##   - Boss 三阶段色、装备 / 词缀 / 灵韵、音频；表现层只做「按得动、看得见」的闭环。
+##   - 装备 / 词缀 / 灵韵、音频；表现层只做「按得动、看得见」的闭环。
+## 第 44 轮：Boss 远程技能（投射物）——定时发扇形飞剑弹，复用现有 vfx_flying_sword 帧，
+##   伤害走与近战同一条 _hurt_player() 路径（护盾/减伤/无敌/复活一致）；阶段越高弹数越多、
+##   CD 越短。网页无弹幕系统，这是 Godot 表现层增强，R56 仍未跨端对齐，非冻结数值。
 ## 画面资源：gpt-image2 回稿转录真帧（docs/24 / docs/25），非占位 CSS。
 
 signal stage_cleared(layer_index: int)
 signal player_dead()
 ## 第 43 轮：Boss 血量跌破阈值切阶段时发出（phase=1/2/3），供 HUD / 表现层订阅。
 signal boss_phase_changed(phase: int, mob_id: String)
+## 第 44 轮：Boss 释放远程技能时发出（弹数），供 HUD / 表现层订阅。
+signal boss_skill_fired(shots: int, mob_id: String)
 
 const BattleFormula = preload("res://scripts/BattleFormula.gd")
 const CardEffects = preload("res://scripts/CardEffects.gd")
@@ -63,6 +68,9 @@ var floats_root: Node2D
 var float_theme: Theme
 var enemies: Array = []
 var floating: Array = []
+# 第 44 轮：Boss 投射物（每项 {node,sprite,x,y,vx,vy,damage,life}）。非 Boss 层恒为空。
+var projectiles: Array = []
+var proj_root: Node2D
 var _fx_rng: int = 0x2f6e2b1b
 
 
@@ -84,6 +92,9 @@ func _ready() -> void:
     vfx_root = Node2D.new()
     vfx_root.name = "VfxLayer"
     add_child(vfx_root)
+    proj_root = Node2D.new()
+    proj_root.name = "Projectiles"
+    add_child(proj_root)
     floats_root = Node2D.new()
     floats_root.name = "Floats"
     add_child(floats_root)
@@ -242,6 +253,8 @@ func _spawn_enemy(mob_id: String, mob_hp: float, i: int, total: int,
         # 第 43 轮：Boss 阶段状态。非 Boss phase=0 且不参与任何阶段逻辑。
         "boss": is_boss, "phase": 1 if is_boss else 0,
         "phase_timer": 0.0,
+        # 第 44 轮：Boss 远程技能冷却计时；首次施法有独立延迟。
+        "skill_cd": RunConfig.BOSS_SKILL_FIRST_DELAY if is_boss else 0.0,
     })
 
 
@@ -251,12 +264,23 @@ func _clear_enemies() -> void:
         if is_instance_valid(n):
             n.queue_free()
     enemies = []
+    # 第 44 轮：切层时清掉所有在飞投射物，不跨层残留。
+    _clear_projectiles()
+
+
+func _clear_projectiles() -> void:
+    for p in projectiles:
+        var pn: Node2D = p["node"]
+        if is_instance_valid(pn):
+            pn.queue_free()
+    projectiles = []
 
 
 func stop() -> void:
     running = false
     paused = false
     visible = false
+    _clear_projectiles()
 
 
 func set_paused(v: bool) -> void:
@@ -279,6 +303,9 @@ func _physics_process(delta: float) -> void:
     _tick_player(delta)
     _tick_skills(delta)
     _tick_enemies(delta)
+    # 第 44 轮：Boss 远程技能与投射物飞行（非 Boss 层两者都是空操作）。
+    _tick_boss_skills(delta)
+    _tick_projectiles(delta)
     _check_cleared()
 
 
@@ -494,43 +521,164 @@ func _tick_enemies(delta: float) -> void:
             if invuln > 0.0:
                 _float_text("闪", player.position + Vector2(0, -46), RunConfig.C_JADE_LIGHT)
                 continue
-            var off: Dictionary = deck.offense_state() if deck != null else {}
-            var reduction: float = clampf(float(off.get("defense_rate", 0.0)), 0.0, 0.75)
-            # 承伤系数（铁皮/混元/守拙）与固定减伤（铁骨）；默认 scale=1/flat=0，与第 41 轮一致。
-            # hit_incoming 已含第 43 轮 Boss 阶段伤害系数（非 Boss = incoming，行为不变）。
-            var taken: float = hit_incoming * (1.0 - reduction) * float(mods.get("damageTakenScale", 1.0))
-            taken = maxf(0.0, taken - float(mods.get("flatReduce", 0.0)))
-            # 护盾（卷甲）先吸收；默认 shield=0，不改变原扣血路径。
-            if shield > 0.0:
-                var absorbed: float = minf(shield, taken)
-                shield -= absorbed
-                taken -= absorbed
-                if absorbed > 0.0:
-                    _float_text("盾-%d" % int(absorbed), player.position + Vector2(-30, -52),
-                        RunConfig.C_JADE_LIGHT)
-            if taken > 0.0:
-                hp = maxf(0.0, hp - taken)
-                _float_text("-%d" % int(taken), player.position + Vector2(0, -52), RunConfig.C_CINNABAR)
-            # 受击无敌窗口（避水）+ 受击回灵（接气）；默认 0，与第 41 轮一致。
-            var hurt_invuln: float = float(mods.get("hurtInvuln", 0.0))
-            if hurt_invuln > 0.0:
-                invuln = maxf(invuln, hurt_invuln)
-            if float(mods.get("spiritOnHurt", 0.0)) > 0.0:
-                spirit = minf(max_spirit_effective, spirit + float(mods["spiritOnHurt"]))
-            if player_sprite.sprite_frames.has_animation("hit"):
-                player_sprite.play("hit")
-            if hp <= 0.0:
-                # 复活（舍利/转生）：本局首次阵亡按比例回血；默认 reviveHp=0，行为不变。
-                var revive_hp: float = float(mods.get("reviveHp", 0.0))
-                if revive_hp > 0.0 and not revive_used:
-                    revive_used = true
-                    hp = maxf(1.0, max_hp_effective * revive_hp)
-                    invuln = 1.0
-                    _float_text("复活", player.position + Vector2(0, -60), RunConfig.C_GOLD_LIGHT)
-                    continue
-                running = false
-                player_dead.emit()
-                return
+            # 第 44 轮：伤害结算抽到 _hurt_player()，近战与 Boss 投射物共用同一条路径
+            # （减伤/护盾/受击无敌/回灵/复活/死亡逐字段不变），hit_incoming 已含第 43 轮阶段系数。
+            var hr: int = _hurt_player(hit_incoming)
+            if hr == 1:
+                continue  # 复活触发，本敌本次攻击结束
+            if hr == 2:
+                return    # 玩家阵亡，停止本 tick
+
+
+## 统一玩家受伤结算（第 44 轮抽取，近战 / Boss 投射物共用）。
+## raw_incoming 是未过玩家减伤的原始伤害（投射物已乘 BOSS_PROJ_DAMAGE_SCALE）。
+## 返回：0=正常受击未死，1=复活触发，2=死亡。逻辑与第 41–43 轮逐字段一致。
+func _hurt_player(raw_incoming: float) -> int:
+    var off: Dictionary = deck.offense_state() if deck != null else {}
+    var reduction: float = clampf(float(off.get("defense_rate", 0.0)), 0.0, 0.75)
+    # 承伤系数（铁皮/混元/守拙）与固定减伤（铁骨）；默认 scale=1/flat=0，与第 41 轮一致。
+    var taken: float = raw_incoming * (1.0 - reduction) * float(mods.get("damageTakenScale", 1.0))
+    taken = maxf(0.0, taken - float(mods.get("flatReduce", 0.0)))
+    # 护盾（卷甲）先吸收；默认 shield=0，不改变原扣血路径。
+    if shield > 0.0:
+        var absorbed: float = minf(shield, taken)
+        shield -= absorbed
+        taken -= absorbed
+        if absorbed > 0.0:
+            _float_text("盾-%d" % int(absorbed), player.position + Vector2(-30, -52),
+                RunConfig.C_JADE_LIGHT)
+    if taken > 0.0:
+        hp = maxf(0.0, hp - taken)
+        _float_text("-%d" % int(taken), player.position + Vector2(0, -52), RunConfig.C_CINNABAR)
+    # 受击无敌窗口（避水）+ 受击回灵（接气）；默认 0，与第 41 轮一致。
+    var hurt_invuln: float = float(mods.get("hurtInvuln", 0.0))
+    if hurt_invuln > 0.0:
+        invuln = maxf(invuln, hurt_invuln)
+    if float(mods.get("spiritOnHurt", 0.0)) > 0.0:
+        spirit = minf(max_spirit_effective, spirit + float(mods["spiritOnHurt"]))
+    if player_sprite.sprite_frames.has_animation("hit"):
+        player_sprite.play("hit")
+    if hp <= 0.0:
+        # 复活（舍利/转生）：本局首次阵亡按比例回血；默认 reviveHp=0，行为不变。
+        var revive_hp: float = float(mods.get("reviveHp", 0.0))
+        if revive_hp > 0.0 and not revive_used:
+            revive_used = true
+            hp = maxf(1.0, max_hp_effective * revive_hp)
+            invuln = 1.0
+            _float_text("复活", player.position + Vector2(0, -60), RunConfig.C_GOLD_LIGHT)
+            return 1
+        running = false
+        player_dead.emit()
+        return 2
+    return 0
+
+
+## 第 44 轮：Boss 远程技能计时。每个存活 Boss 独立冷却，到点发一发扇形飞剑。
+## 非 Boss 无 skill_cd 字段，直接跳过；阶段越高 CD 越短（RunConfig.BOSS_SKILL_CD）。
+func _tick_boss_skills(delta: float) -> void:
+    for e in enemies:
+        if not bool(e.get("boss", false)) or bool(e["dead"]):
+            continue
+        var cd: float = float(e.get("skill_cd", 0.0)) - delta
+        if cd > 0.0:
+            e["skill_cd"] = cd
+            continue
+        _fire_boss_skill(e)
+        var slot: int = _boss_phase_slot(e)
+        var reset_cd: float = float(RunConfig.BOSS_SKILL_CD[slot])
+        e["skill_cd"] = reset_cd
+
+
+## 第 44 轮：Boss 发射远程技能。弹数 = BOSS_SKILL_SHOTS[阶段]，扇形展开。
+## 伤害基准与近战同源（stage dps + per_stage），再乘阶段伤害系数与投射物比例。
+func _fire_boss_skill(e: Dictionary) -> void:
+    if not ResourceLoader.exists("res://assets/vfx/frames/%s_00.png" % RunConfig.BOSS_PROJ_VFX):
+        return
+    var src: Node2D = e["node"]
+    var slot: int = _boss_phase_slot(e)
+    var shots: int = int(RunConfig.BOSS_SKILL_SHOTS[slot])
+    var data: Dictionary = RunConfig.stage_data(stage_index)
+    var incoming: float = RunConfig.ENEMY_ATTACK_BASE \
+        + RunConfig.ENEMY_ATTACK_PER_STAGE * float(stage_index) \
+        + float(data["dps"]) * 0.12
+    var phase_atk: float = float(RunConfig.BOSS_PHASE_ATK_SCALE[slot])
+    var per_damage: float = incoming * phase_atk * float(RunConfig.BOSS_PROJ_DAMAGE_SCALE)
+    # 朝玩家方向；多发时按 spread 均匀扇形展开。
+    var to_player: Vector2 = player.position - src.position
+    var base_angle: float = atan2(to_player.y, to_player.x)
+    var spread: float = float(RunConfig.BOSS_PROJ_SPREAD)
+    for i in range(shots):
+        var offset: float = (float(i) - float(shots - 1) * 0.5) * spread
+        _spawn_projectile(src.position, base_angle + offset, per_damage, String(e["id"]))
+    boss_skill_fired.emit(shots, String(e["id"]))
+
+
+func _spawn_projectile(origin: Vector2, angle: float, damage: float, owner_id: String) -> void:
+    var frames := SpriteFrames.new()
+    frames.add_animation("fly")
+    frames.set_animation_speed("fly", 14.0)
+    frames.set_animation_loop("fly", true)
+    var loaded: int = 0
+    for i in range(4):
+        var path: String = "res://assets/vfx/frames/%s_%02d.png" % [RunConfig.BOSS_PROJ_VFX, i]
+        if not ResourceLoader.exists(path):
+            continue
+        var tex := load(path) as Texture2D
+        if tex != null:
+            frames.add_frame("fly", tex)
+            loaded += 1
+    if loaded == 0:
+        return
+    var sp := AnimatedSprite2D.new()
+    sp.name = "BossProj"
+    sp.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+    sp.sprite_frames = frames
+    sp.position = origin
+    sp.play("fly")
+    proj_root.add_child(sp)
+    var speed: float = float(RunConfig.BOSS_PROJ_SPEED)
+    projectiles.append({
+        "node": sp, "x": origin.x, "y": origin.y,
+        "vx": cos(angle) * speed, "vy": sin(angle) * speed,
+        "damage": damage, "life": float(RunConfig.BOSS_PROJ_LIFETIME),
+        "owner": owner_id,
+    })
+
+
+## 第 44 轮：投射物飞行 + 命中。命中判定用圆形距离（半径 18px），
+## 玩家无敌（闪避 / 受击无敌）时投射物直接穿过不扣血——可闪避。
+func _tick_projectiles(delta: float) -> void:
+    if projectiles.is_empty():
+        return
+    var alive: Array = []
+    for p in projectiles:
+        var px: float = float(p["x"]) + float(p["vx"]) * delta
+        var py: float = float(p["y"]) + float(p["vy"]) * delta
+        p["x"] = px
+        p["y"] = py
+        p["life"] = float(p["life"]) - delta
+        var sp: AnimatedSprite2D = p["node"]
+        sp.position = Vector2(px, py)
+        # 超时 / 飞出逻辑屏（留 32px 余量）自毁。
+        if float(p["life"]) <= 0.0 or px < -32.0 or px > 512.0 or py < -32.0 or py > 302.0:
+            if is_instance_valid(sp):
+                sp.queue_free()
+            continue
+        # 命中玩家：圆形距离 18px。
+        if Vector2(px, py).distance_to(player.position) <= 18.0:
+            if is_instance_valid(sp):
+                sp.queue_free()
+            if invuln <= 0.0:
+                var hr: int = _hurt_player(float(p["damage"]))
+                if hr == 2:
+                    # 玩家阵亡：清掉剩余投射物后停止本 tick。
+                    _clear_projectiles()
+                    return
+            else:
+                _float_text("闪", player.position + Vector2(0, -46), RunConfig.C_JADE_LIGHT)
+            continue
+        alive.append(p)
+    projectiles = alive
 
 
 ## 第 43 轮：Boss 血量跌破阈值时切阶段。
@@ -612,6 +760,8 @@ func snapshot() -> Dictionary:
         "reveal": bool(mods.get("reveal", false)),
         # 第 43 轮：本层存活 Boss 当前阶段（0=无 Boss，1/2/3=有 Boss 且处于该阶段）
         "boss_phase": boss_phase,
+        # 第 44 轮：在飞投射物数量（供 HUD / headless 校验），非 Boss 层恒为 0
+        "projectile_count": projectiles.size(),
         "mods": mods.duplicate(true),
     }
 
@@ -647,3 +797,45 @@ func debug_set_boss_hp_ratio(ratio: float) -> void:
             e["hp"] = maxf(0.0, float(e["max_hp"]) * clampf(ratio, 0.0, 1.0))
             _check_boss_phase(e)
             return
+
+
+## 第 44 轮 headless 校验用：强制让首个存活 Boss 立即施放一次远程技能。
+## 返回本次实际发射弹数（帧资源缺失时为 0）。
+func debug_boss_fire_skill() -> int:
+    for e in enemies:
+        if bool(e.get("boss", false)) and not bool(e["dead"]):
+            var before: int = projectiles.size()
+            _fire_boss_skill(e)
+            return projectiles.size() - before
+    return 0
+
+
+## 第 44 轮 headless 校验用：返回当前投射物快照数组（弹数 / 阶段 / 伤害）。
+func debug_projectiles() -> Array:
+    var out: Array = []
+    for p in projectiles:
+        out.append({
+            "damage": float(p["damage"]), "owner": String(p["owner"]),
+            "x": float(p["x"]), "y": float(p["y"]),
+            "vx": float(p["vx"]), "vy": float(p["vy"]),
+        })
+    return out
+
+
+## 第 44 轮 headless 校验用：手动推进投射物系统一帧（--script 模式不自动跑物理帧）。
+func debug_tick_projectiles(delta: float) -> void:
+    _tick_projectiles(delta)
+
+
+## 第 44 轮 headless 校验用：把所有投射物瞬移到玩家身上，用于验证命中扣血 / 闪避。
+func debug_place_projectiles_on_player() -> void:
+    for p in projectiles:
+        p["x"] = player.position.x
+        p["y"] = player.position.y
+        var sp: AnimatedSprite2D = p["node"]
+        sp.position = player.position
+
+
+## 第 44 轮 headless 校验用：清掉全部投射物。
+func debug_clear_projectiles() -> void:
+    _clear_projectiles()
