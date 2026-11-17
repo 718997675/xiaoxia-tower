@@ -1751,6 +1751,65 @@ def c_mob_attacks_r45() -> str:
             "R56 未跨端对齐、R67 风格参数未实测如实留档")
 
 
+def c_feedback_r46() -> str:
+    """第 46 轮：战斗打击感反馈，冻结基线不许动、战斗数值零影响。"""
+    import hashlib
+
+    # 可玩闭环报告扩展了打击感断言（51/51，原 45 项不回退）
+    tr = load("tower-run-verify-report.json")
+    need(int(tr["passed"]) >= 51 and int(tr["failed"]) == 0,
+         "可玩闭环报告未含第 46 轮打击感断言或不是全过")
+    names = [c["name"] for c in tr.get("checks", [])]
+    for must in ("feedback_camera_ready", "feedback_shake_then_decay",
+                 "feedback_hurt_shake", "feedback_combo_milestones",
+                 "feedback_milestone_once", "feedback_stats_observable"):
+        need(must in names, f"可玩闭环报告缺打击感断言 {must}")
+
+    need((ROOT / "docs" / "35-战斗打击感反馈与第46轮边界.md").is_file(),
+         "缺第 46 轮文件 docs/35")
+
+    # 源码：相机震动 + 连击里程碑 + 暴击/击杀飘字；且必须不碰战斗数值判定。
+    sv = (ROOT / "scripts" / "StageView.gd").read_text(encoding="utf-8")
+    for token in ("ShakeCamera", "_trigger_shake", "_check_combo_milestone",
+                  "combo_milestone.emit", "HIT_SHAKE_DECAY", "feedback_stats",
+                  "debug_shake", "debug_tick_shake", "debug_set_combo"):
+        need(token in sv, f"StageView.gd 缺打击感落点 {token}")
+    # 震动只写 camera.offset（不写 position），保证战斗局部坐标不受影响。
+    need("shake_camera.offset = Vector2" in sv, "StageView.gd 震动未写 camera.offset")
+    cfg = (ROOT / "scripts" / "RunConfig.gd").read_text(encoding="utf-8")
+    for token in ("HIT_SHAKE_CRIT", "HIT_SHAKE_KILL", "HIT_SHAKE_HURT",
+                  "COMBO_MILESTONES", "CRIT_FONT_SIZE", "KILL_LABEL"):
+        need(token in cfg, f"RunConfig.gd 缺打击感系数 {token}")
+    hud = (ROOT / "scripts" / "RunHUD.gd").read_text(encoding="utf-8")
+    need("COMBO_MILESTONE_LABELS" in hud, "RunHUD.gd 未显示连击里程碑")
+
+    # 冻结基线：卡库 / 10 张卡面 / docs/01 §12 / docs/12 §2 逐字节未动
+    frames_rep = load("codex-card-frames-report.json")
+    now = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+           for p in sorted((ROOT / "assets" / "ui" / "cards").glob("*.png"))}
+    need(now == frames_rep["frozenCardAssetsSha256"] and len(now) == 10,
+         "第 46 轮改动了冻结的 10 张卡面")
+    spec12 = (ROOT / "docs" / "12-卡牌UI规格.md").read_text(encoding="utf-8")
+    need("72 张卡只需要 4 张卡框 + 6 张纹样共 **10 张小图**" in spec12,
+         "docs/12 §2 冻结口径被改写")
+    spec01 = (ROOT / "docs" / "01-策划案.md").read_text(encoding="utf-8")
+    need("`TowerRun` | Node2D" in spec01 and "`RewardPicker` | CanvasLayer" in spec01,
+         "docs/01 §12 节点树规格被改写")
+    lib = (ROOT / "data" / "buff-card-library.json").read_bytes()
+    need(len(lib) > 0 and b'"cards"' in lib, "卡库异常")
+
+    # 边界文档口径
+    doc = (ROOT / "docs" / "35-战斗打击感反馈与第46轮边界.md").read_text(encoding="utf-8")
+    for token in ("R56", "R68", "PROPOSAL", "不宣称", "Q17", "逐字节未动", "F5", "纯表现"):
+        need(token in doc, f"docs/35 缺关键口径：{token}")
+
+    return ("战斗打击感反馈 / Camera2D offset 衰减震动（暴击/击杀/受击，只改 offset 不动战斗坐标）/ "
+            "连击里程碑 0.5-1.0-1.5 三档 signal+飘字+HUD 高亮 / 暴击字号放大与击杀「斩」/ "
+            "纯表现不改伤害·HP·CD·命中判定 / 可玩闭环 51/51（原 45 项不回退 + 6 项反馈）/ "
+            "冻结卡库·10 张卡面·docs/01 §12·docs/12 §2 逐字节未动 / "
+            "R56 未跨端对齐、R68 反馈参数未实测如实留档")
+
+
 def main() -> None:
     check("json_parse", "docs/*.json 全部可解析", c_json)
     check("csv_numbers", "数值源 9 列、无 BOM、无空行、含 round15", c_nums)
@@ -1796,6 +1855,7 @@ def main() -> None:
     check("boss_phase_r43", "第 43 轮 Boss 三阶段接入战斗（0.66/0.33 划分 / 闭环 31 项 / 复用真帧 / 冻结基线未动）", c_boss_phase_r43)
     check("boss_ranged_r44", "第 44 轮 Boss 远程技能投射物（阶段弹数/CD / 闭环 37 项 / 共用受伤路径 / 飞剑帧复用 / 冻结基线未动）", c_boss_ranged_r44)
     check("mob_attacks_r45", "第 45 轮杂兵攻击方式差异化（4 风格 / 闭环 45 项 / 远程可闪避 / 阴兵与 Boss 不回退 / 复用 vfx 帧 / 冻结基线未动）", c_mob_attacks_r45)
+    check("feedback_r46", "第 46 轮战斗打击感反馈（相机震动 / 连击里程碑 / 暴击击杀飘字 / 闭环 51 项 / 纯表现不改战斗数值 / 冻结基线未动）", c_feedback_r46)
 
     passed = sum(1 for c in CHECKS if c["status"] == "PASS")
     failed = len(CHECKS) - passed
@@ -1819,7 +1879,7 @@ def main() -> None:
             "python3 tools/check_traceability.py",
             "check_godot_project.py . --spec docs/project-spec.json --freeze docs/design-freeze.json --json docs/godot-project-check.json",
             "Godot --headless --script tools/verify_minimal_run.gd（须先由编辑器导入资源）",
-            "Godot --headless --path . --script res://tools/verify_tower_run.gd（可玩闭环 45 项：第 41 轮 20 + 第 42 轮效果 4 + 第 43 轮 Boss 阶段 7 + 第 44 轮远程技能 6 + 第 45 轮杂兵差异化 8）",
+            "Godot --headless --path . --script res://tools/verify_tower_run.gd（可玩闭环 51 项：第 41 轮 20 + 第 42 轮效果 4 + 第 43 轮 Boss 阶段 7 + 第 44 轮远程技能 6 + 第 45 轮杂兵差异化 8 + 第 46 轮打击感 6）",
         ],
         "boundary": "本脚本只做离线/静态验证。像素硬边、朝右镜像、480×270×4 对齐、阴兵对比度等仍需用户按 docs/13 §12 在 GUI 按 F5 目检；PASS 不等于游戏可玩。",
     }

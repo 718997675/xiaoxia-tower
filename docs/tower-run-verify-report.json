@@ -226,6 +226,36 @@
 			"detail": "Boss 层无杂兵风格注入",
 			"name": "mob_boss_style_unchanged",
 			"ok": true
+		},
+		{
+			"detail": "相机存在=true 初始幅度=0.00",
+			"name": "feedback_camera_ready",
+			"ok": true
+		},
+		{
+			"detail": "触发=3.60 offset=(0.14,-0.80) 衰减后=0.00",
+			"name": "feedback_shake_then_decay",
+			"ok": true
+		},
+		{
+			"detail": "真扣血 6→7，闪避不增 7",
+			"name": "feedback_hurt_shake",
+			"ok": true
+		},
+		{
+			"detail": "signal=3 combo_tier=2 末档=2",
+			"name": "feedback_combo_milestones",
+			"ok": true
+		},
+		{
+			"detail": "同档重设不重复发 signal（计数 3）",
+			"name": "feedback_milestone_once",
+			"ok": true
+		},
+		{
+			"detail": "反馈统计字段齐备=true",
+			"name": "feedback_stats_observable",
+			"ok": true
 		}
 	],
 	"engine": "4.7.2.stable",
@@ -233,7 +263,7 @@
 	"finalResult": "win",
 	"mainScene": "res://scenes/TowerRun.tscn",
 	"maxHit": 3996,
-	"passed": 45,
+	"passed": 51,
 	"picks": 8,
 	"reachedStage": 9,
 	"round": 41,

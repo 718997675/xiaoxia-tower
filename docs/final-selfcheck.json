@@ -5,8 +5,8 @@
   "scope": "第 15 轮收口 · 交付前全量静态自检",
   "verdict": "PASS",
   "summary": {
-    "checks": 44,
-    "passed": 44,
+    "checks": 45,
+    "passed": 45,
     "failed": 0
   },
   "checks": [
@@ -116,7 +116,7 @@
       "id": "absolute_paths",
       "desc": "文档/工程无机器绝对路径",
       "status": "PASS",
-      "detail": "扫描 99 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
+      "detail": "扫描 100 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
     },
     {
       "id": "stale_handover",
@@ -158,7 +158,7 @@
       "id": "workspace_path_r41",
       "desc": "第 41 轮 工作空间迁址：路径断言与机器绝对路径解耦（文档零本机绝对路径）",
       "status": "PASS",
-      "detail": "工作空间根为固定名 ai-game/（上级非会话时间戳目录）；扫描 77 个文档，当前机绝对路径命中 0；迁址事实已按相对路径记录（第 41 轮）"
+      "detail": "工作空间根为固定名 ai-game/（上级非会话时间戳目录）；扫描 78 个文档，当前机绝对路径命中 0；迁址事实已按相对路径记录（第 41 轮）"
     },
     {
       "id": "card_runtime_data_r45",
@@ -273,6 +273,12 @@
       "desc": "第 45 轮杂兵攻击方式差异化（4 风格 / 闭环 45 项 / 远程可闪避 / 阴兵与 Boss 不回退 / 复用 vfx 帧 / 冻结基线未动）",
       "status": "PASS",
       "detail": "杂兵攻击方式差异化 / 重击-符弹-常规-疾刺 4 风格 / 纸傀远程可闪避弹 / 复用现有 vfx 帧未新增出图 / 阴兵基准档与 Boss 逐字段不变 / 可玩闭环 45/45（原 37 项不回退 + 8 项杂兵差异化）/ 冻结卡库·10 张卡面·docs/01 §12·docs/12 §2 逐字节未动 / R56 未跨端对齐、R67 风格参数未实测如实留档"
+    },
+    {
+      "id": "feedback_r46",
+      "desc": "第 46 轮战斗打击感反馈（相机震动 / 连击里程碑 / 暴击击杀飘字 / 闭环 51 项 / 纯表现不改战斗数值 / 冻结基线未动）",
+      "status": "PASS",
+      "detail": "战斗打击感反馈 / Camera2D offset 衰减震动（暴击/击杀/受击，只改 offset 不动战斗坐标）/ 连击里程碑 0.5-1.0-1.5 三档 signal+飘字+HUD 高亮 / 暴击字号放大与击杀「斩」/ 纯表现不改伤害·HP·CD·命中判定 / 可玩闭环 51/51（原 45 项不回退 + 6 项反馈）/ 冻结卡库·10 张卡面·docs/01 §12·docs/12 §2 逐字节未动 / R56 未跨端对齐、R68 反馈参数未实测如实留档"
     }
   ],
   "knownExceptions": [
@@ -287,7 +293,7 @@
     "python3 tools/check_traceability.py",
     "check_godot_project.py . --spec docs/project-spec.json --freeze docs/design-freeze.json --json docs/godot-project-check.json",
     "Godot --headless --script tools/verify_minimal_run.gd（须先由编辑器导入资源）",
-    "Godot --headless --path . --script res://tools/verify_tower_run.gd（可玩闭环 45 项：第 41 轮 20 + 第 42 轮效果 4 + 第 43 轮 Boss 阶段 7 + 第 44 轮远程技能 6 + 第 45 轮杂兵差异化 8）"
+    "Godot --headless --path . --script res://tools/verify_tower_run.gd（可玩闭环 51 项：第 41 轮 20 + 第 42 轮效果 4 + 第 43 轮 Boss 阶段 7 + 第 44 轮远程技能 6 + 第 45 轮杂兵差异化 8 + 第 46 轮打击感 6）"
   ],
   "boundary": "本脚本只做离线/静态验证。像素硬边、朝右镜像、480×270×4 对齐、阴兵对比度等仍需用户按 docs/13 §12 在 GUI 按 F5 目检；PASS 不等于游戏可玩。"
 }

@@ -24,6 +24,9 @@ extends Node2D
 ## 第 45 轮：杂兵攻击方式差异化——4 种杂兵各有攻击风格（重击/符弹/常规/疾刺），
 ##   远征兵复用第 44 轮投射物系统发可闪避弹，近战风格调 CD/伤害比例；全部 PROPOSAL
 ##   集中在 RunConfig.MOB_ATTACK_STYLE。阴兵「常规」档与 Boss 逐字段不变，默认不回退。
+## 第 46 轮：战斗打击感反馈——Camera2D.offset 衰减抖动（暴击/击杀/玩家受击）+ 连击里程碑
+##   signal/飘字 + 暴击字号放大与击杀标识。全部只影响画面与提示，不改伤害/HP/CD/命中判定，
+##   数值集中在 RunConfig（R51）；headless 可验证状态量，画面仍需 F5 目检。
 ## 画面资源：gpt-image2 回稿转录真帧（docs/24 / docs/25），非占位 CSS。
 
 signal stage_cleared(layer_index: int)
@@ -32,6 +35,8 @@ signal player_dead()
 signal boss_phase_changed(phase: int, mob_id: String)
 ## 第 44 轮：Boss 释放远程技能时发出（弹数），供 HUD / 表现层订阅。
 signal boss_skill_fired(shots: int, mob_id: String)
+## 第 46 轮：combo 跨过里程碑阈值时发出（档位 index=0/1/2，标签文字），供 HUD 高亮。
+signal combo_milestone(tier: int, label: String)
 
 const BattleFormula = preload("res://scripts/BattleFormula.gd")
 const CardEffects = preload("res://scripts/CardEffects.gd")
@@ -76,6 +81,14 @@ var projectiles: Array = []
 var proj_root: Node2D
 var _fx_rng: int = 0x2f6e2b1b
 
+# 第 46 轮：打击感反馈状态（纯表现，不改任何战斗数值）。
+var shake_camera: Camera2D          # 震动专用相机；position 固定逻辑中心，只改 offset
+var shake_amount: float = 0.0      # 当前抖动幅度（px），随时间衰减
+var shake_seed: float = 0.0        # 抖动相位，避免每帧同向
+var combo_tier: int = -1           # 已触发的连击里程碑档位（-1=未触发；reset 清零）
+var feedback_stats: Dictionary = {"crit_shakes": 0, "kill_shakes": 0,
+    "hurt_shakes": 0, "milestones": 0, "crit_labels": 0, "kill_labels": 0}
+
 
 func _ready() -> void:
     float_theme = RunConfig.make_cjk_theme()
@@ -101,6 +114,14 @@ func _ready() -> void:
     floats_root = Node2D.new()
     floats_root.name = "Floats"
     add_child(floats_root)
+    # 第 46 轮：震动专用相机。position 固定逻辑屏中心，只改 offset 做抖动；
+    # 所有战斗坐标是 StageView 局部坐标，相机偏移不影响移动/命中/投射物任何判定。
+    shake_camera = Camera2D.new()
+    shake_camera.name = "ShakeCamera"
+    shake_camera.position = Vector2(float(RunConfig.LOGICAL_W) * 0.5,
+        float(RunConfig.LOGICAL_H) * 0.5)
+    shake_camera.enabled = true
+    add_child(shake_camera)
     _apply_backdrop(0)
     visible = false
 
@@ -190,6 +211,12 @@ func reset_player() -> void:
     spirit = max_spirit_effective
     stamina = RunConfig.PLAYER_MAX_STAMINA
     combo = 0.0
+    # 第 46 轮：新局重置连击里程碑档位与相机抖动（feedback_stats 累计统计保留供校验）。
+    combo_tier = -1
+    shake_amount = 0.0
+    shake_seed = 0.0
+    if shake_camera != null:
+        shake_camera.offset = Vector2.ZERO
     cds = [0.0, 0.0, 0.0, 0.0]
     cast_lock = 0.0
     invuln = 0.0
@@ -431,7 +458,12 @@ func _cast(idx: int) -> void:
             var dmg: int = maxi(1, int(float(res["damage"]) * ratio))
             e["hp"] = maxf(0.0, float(e["hp"]) - float(dmg))
             var color: Color = RunConfig.C_GOLD_LIGHT if is_crit else RunConfig.C_PAPER
-            _float_text(str(dmg), n.position + Vector2(0, -44), color)
+            # 第 46 轮：暴击飘字字号放大 + 震屏；非暴击走原 11 号字，飘字内容/颜色不变。
+            var use_font: int = RunConfig.CRIT_FONT_SIZE if is_crit else 11
+            _float_text(str(dmg), n.position + Vector2(0, -44), color, use_font)
+            if is_crit:
+                _trigger_shake(RunConfig.HIT_SHAKE_CRIT, "crit_shakes")
+                feedback_stats["crit_labels"] = int(feedback_stats.get("crit_labels", 0)) + 1
             _spawn_vfx("vfx_hit", n.position, -1)
             if spirit_on_hit > 0.0:
                 spirit = minf(max_spirit_effective, spirit + spirit_on_hit)
@@ -442,10 +474,17 @@ func _cast(idx: int) -> void:
                 var target_sp: AnimatedSprite2D = e["sprite"]
                 if target_sp.sprite_frames.has_animation("death"):
                     target_sp.play("death")
+                # 第 46 轮：击杀额外「斩」飘字 + 震屏（纯表现，不改 spiritOnKill 等数值）。
+                _float_text(RunConfig.KILL_LABEL, n.position + Vector2(14, -58),
+                    RunConfig.C_GOLD_LIGHT, RunConfig.CRIT_FONT_SIZE)
+                _trigger_shake(RunConfig.HIT_SHAKE_KILL, "kill_shakes")
+                feedback_stats["kill_labels"] = int(feedback_stats.get("kill_labels", 0)) + 1
                 if float(mods.get("spiritOnKill", 0.0)) > 0.0:
                     spirit = minf(max_spirit_effective, spirit + float(mods["spiritOnKill"]))
     if hit_any:
         combo = minf(1.5, combo + RunConfig.COMBO_GAIN_PER_HIT)
+        # 第 46 轮：combo 增长后检查里程碑（signal + 飘字），不改 combo 数值与上界。
+        _check_combo_milestone()
 
 
 func _spawn_vfx(vfx_id: String, pos: Vector2, dir: int) -> void:
@@ -480,7 +519,8 @@ func _on_vfx_finished(sp: AnimatedSprite2D) -> void:
         sp.queue_free()
 
 
-func _float_text(text: String, pos: Vector2, color: Color) -> void:
+## 第 46 轮：font_size 可选，暴击飘字传 CRIT_FONT_SIZE 放大；默认 11 与第 41 轮一致。
+func _float_text(text: String, pos: Vector2, color: Color, font_size: int = 11) -> void:
     if floating.size() >= 12:
         var old: Dictionary = floating.pop_front()
         var old_node: Label = old["node"]
@@ -490,11 +530,35 @@ func _float_text(text: String, pos: Vector2, color: Color) -> void:
     l.theme = float_theme
     l.text = text
     l.position = pos
-    l.add_theme_font_size_override("font_size", 11)
+    l.add_theme_font_size_override("font_size", font_size)
     l.add_theme_color_override("font_color", color)
     l.mouse_filter = Control.MOUSE_FILTER_IGNORE
     floats_root.add_child(l)
     floating.append({"node": l, "t": 0.0})
+
+
+## 第 46 轮：触发一次相机震动。幅度取较大者并钳到上限，避免多事件叠加失控。
+## 纯表现：只改 shake_amount / camera.offset，不碰任何战斗数值。
+func _trigger_shake(amount: float, stat_key: String) -> void:
+    shake_amount = minf(maxf(shake_amount, amount), RunConfig.HIT_SHAKE_MAX)
+    feedback_stats[stat_key] = int(feedback_stats.get(stat_key, 0)) + 1
+
+
+## 第 46 轮：combo 跨过里程碑阈值时发 signal + 飘字；同一档只触发一次。
+func _check_combo_milestone() -> void:
+    var tiers: Array = RunConfig.COMBO_MILESTONES
+    var reached: int = -1
+    for i in range(tiers.size()):
+        if combo >= float(tiers[i]):
+            reached = i
+    if reached <= combo_tier:
+        return
+    combo_tier = reached
+    var label: String = String(RunConfig.COMBO_MILESTONE_LABELS[reached])
+    feedback_stats["milestones"] = int(feedback_stats.get("milestones", 0)) + 1
+    _float_text(label, player.position + Vector2(0, -74), RunConfig.C_GOLD_LIGHT,
+        RunConfig.CRIT_FONT_SIZE)
+    combo_milestone.emit(reached, label)
 
 
 func _tick_enemies(delta: float) -> void:
@@ -596,6 +660,8 @@ func _hurt_player(raw_incoming: float) -> int:
     if taken > 0.0:
         hp = maxf(0.0, hp - taken)
         _float_text("-%d" % int(taken), player.position + Vector2(0, -52), RunConfig.C_CINNABAR)
+        # 第 46 轮：真扣血才震屏（护盾吸收/闪避不震），纯表现不改扣血数值。
+        _trigger_shake(RunConfig.HIT_SHAKE_HURT, "hurt_shakes")
     # 受击无敌窗口（避水）+ 受击回灵（接气）；默认 0，与第 41 轮一致。
     var hurt_invuln: float = float(mods.get("hurtInvuln", 0.0))
     if hurt_invuln > 0.0:
@@ -774,6 +840,17 @@ func _check_cleared() -> void:
 
 
 func _process(delta: float) -> void:
+    # 第 46 轮：相机抖动衰减。用真实 delta，暂停时也能让抖动自然停下，不影响战斗 tick。
+    if shake_amount > 0.0:
+        shake_amount = maxf(0.0, shake_amount - RunConfig.HIT_SHAKE_DECAY * delta)
+        shake_seed += delta * 60.0
+        if shake_camera != null:
+            if shake_amount <= 0.0:
+                shake_camera.offset = Vector2.ZERO
+            else:
+                shake_camera.offset = Vector2(
+                    sin(shake_seed * 1.7) * shake_amount,
+                    cos(shake_seed * 2.3) * shake_amount * 0.6)
     var alive: Array = []
     for item in floating:
         var l := item["node"] as Label
@@ -813,6 +890,10 @@ func snapshot() -> Dictionary:
         "boss_phase": boss_phase,
         # 第 44 轮：在飞投射物数量（供 HUD / headless 校验），非 Boss 层恒为 0
         "projectile_count": projectiles.size(),
+        # 第 46 轮：打击感反馈状态（供 HUD 高亮 / headless 校验；纯表现）
+        "shake_amount": shake_amount,
+        "combo_tier": combo_tier,
+        "feedback_stats": feedback_stats.duplicate(),
         "mods": mods.duplicate(true),
     }
 
@@ -920,8 +1001,46 @@ func debug_mob_attack(mob_id: String, unit_incoming: float) -> int:
         if bool(style.get("ranged", false)):
             _fire_mob_ranged(e, style, unit_incoming)
             return projectiles.size() - before
-        # 近战：直接结算一次（风格 dmg 比例），返回 -1 表示走的是近战扣血路径。
+        # 近战：与真实 _tick_enemies 路径一致——先过 invuln 闪避检查再结算。
+        if invuln > 0.0:
+            return -2  # 闪避，未结算
         var dmg_scale: float = float(style.get("dmg", 1.0)) if not style.is_empty() else 1.0
         _hurt_player(unit_incoming * dmg_scale)
         return -1
     return 0
+
+
+## 第 46 轮 headless 校验用：返回当前相机抖动状态（幅度 / offset）。
+func debug_shake() -> Dictionary:
+    return {
+        "amount": shake_amount,
+        "offset_x": shake_camera.offset.x if shake_camera != null else 0.0,
+        "offset_y": shake_camera.offset.y if shake_camera != null else 0.0,
+        "has_camera": shake_camera != null,
+    }
+
+
+## 第 46 轮 headless 校验用：手动推进一帧抖动衰减（--script 模式不自动跑 _process）。
+func debug_tick_shake(delta: float) -> void:
+    if shake_amount > 0.0:
+        shake_amount = maxf(0.0, shake_amount - RunConfig.HIT_SHAKE_DECAY * delta)
+        shake_seed += delta * 60.0
+        if shake_camera != null:
+            if shake_amount <= 0.0:
+                shake_camera.offset = Vector2.ZERO
+            else:
+                shake_camera.offset = Vector2(
+                    sin(shake_seed * 1.7) * shake_amount,
+                    cos(shake_seed * 2.3) * shake_amount * 0.6)
+
+
+## 第 46 轮 headless 校验用：强制触发一次震动（指定幅度），返回是否成功。
+func debug_trigger_shake(amount: float) -> bool:
+    _trigger_shake(amount, "debug_shakes")
+    return true
+
+
+## 第 46 轮 headless 校验用：设置 combo 并检查里程碑（用于验证跨阈值 signal/飘字）。
+func debug_set_combo(value: float) -> void:
+    combo = clampf(value, 0.0, 1.5)
+    _check_combo_milestone()

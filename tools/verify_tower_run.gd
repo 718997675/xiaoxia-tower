@@ -14,6 +14,13 @@ var checks: Array = []
 var passed: int = 0
 var failed: int = 0
 var ended_count: int = 0
+var milestone_count: int = 0
+var last_milestone_tier: int = -1
+
+
+func _on_combo_milestone(tier: int, _label: String) -> void:
+	milestone_count += 1
+	last_milestone_tier = tier
 
 
 func _ck(name: String, ok: bool, detail: String = "") -> void:
@@ -56,6 +63,8 @@ func _init() -> void:
 	var picker_node := inst.get_node("RewardPicker") as Node
 	if stage_node.get("player") == null:
 		stage_node.call("_ready")
+	# 第 46 轮：订阅连击里程碑信号，验证跨阈值确实发出。
+	stage_node.connect("combo_milestone", Callable(self, "_on_combo_milestone"))
 	if hud_node.get("root") == null:
 		hud_node.call("_ready")
 	if picker_node.get("root") == null:
@@ -351,6 +360,66 @@ func _init() -> void:
 		if bool((bs as Dictionary)["boss"]) and not String((bs as Dictionary)["style"]).is_empty():
 			boss_style_empty = false
 	_ck("mob_boss_style_unchanged", boss_style_empty, "Boss 层无杂兵风格注入")
+
+	# ===== 第 46 轮：战斗打击感反馈 =====
+	# 1. 震动专用相机存在，offset 可衰减归零（--script 不自动跑 _process，用 debug tick）。
+	stage_node.call("start_stage", 0, inst.deck)
+	stage_node.call("debug_tick_shake", 1.0)
+	var shk0: Dictionary = stage_node.call("debug_shake")
+	_ck("feedback_camera_ready", bool(shk0.get("has_camera", false)) \
+		and absf(float(shk0.get("amount", -1.0))) < 0.001,
+		"相机存在=%s 初始幅度=%.2f" % [str(bool(shk0.get("has_camera", false))),
+			float(shk0.get("amount", -1.0))])
+	# 2. 触发震动 → 幅度>0 且 offset 非零（画面抖动）；推进足够时间 → 归零。
+	stage_node.call("debug_trigger_shake", RunConfig.HIT_SHAKE_KILL)
+	var shk1: Dictionary = stage_node.call("debug_shake")
+	stage_node.call("debug_tick_shake", 0.016)
+	var shk2: Dictionary = stage_node.call("debug_shake")
+	stage_node.call("debug_tick_shake", 1.0)
+	var shk3: Dictionary = stage_node.call("debug_shake")
+	_ck("feedback_shake_then_decay", float(shk1.get("amount", 0.0)) > 0.0 \
+		and absf(float(shk2.get("offset_x", 0.0))) + absf(float(shk2.get("offset_y", 0.0))) > 0.0 \
+		and absf(float(shk3.get("amount", -1.0))) < 0.001,
+		"触发=%.2f offset=(%.2f,%.2f) 衰减后=%.2f" % [float(shk1.get("amount", 0.0)),
+			float(shk2.get("offset_x", 0.0)), float(shk2.get("offset_y", 0.0)),
+			float(shk3.get("amount", -1.0))])
+	# 3. 玩家真扣血触发 hurt 震动；护盾吸收 / 闪避不应触发（数值路径不变）。
+	var hs_before: int = int((stage_node.call("snapshot").get("feedback_stats", {}) as Dictionary).get("hurt_shakes", 0))
+	stage_node.set("invuln", 0.0)
+	stage_node.set("hp", 300.0)
+	stage_node.call("debug_mob_attack", "mob_shanxiao", 50.0)
+	var hs_after: int = int((stage_node.call("snapshot").get("feedback_stats", {}) as Dictionary).get("hurt_shakes", 0))
+	stage_node.set("invuln", 1.0)
+	stage_node.call("debug_mob_attack", "mob_shanxiao", 50.0)
+	var hs_dodge: int = int((stage_node.call("snapshot").get("feedback_stats", {}) as Dictionary).get("hurt_shakes", 0))
+	_ck("feedback_hurt_shake", hs_after == hs_before + 1 and hs_dodge == hs_after,
+		"真扣血 %d→%d，闪避不增 %d" % [hs_before, hs_after, hs_dodge])
+	stage_node.set("invuln", 0.0)
+	# 4. 连击里程碑：重置后依次跨 0.5/1.0/1.5 三档，signal 发 3 次、combo_tier=2。
+	stage_node.call("reset_player")
+	var mc_before: int = milestone_count
+	stage_node.call("debug_set_combo", 0.6)
+	stage_node.call("debug_set_combo", 1.1)
+	stage_node.call("debug_set_combo", 1.5)
+	var m_snap: Dictionary = stage_node.call("snapshot")
+	_ck("feedback_combo_milestones", milestone_count == mc_before + 3 \
+		and int(m_snap.get("combo_tier", -1)) == 2 and last_milestone_tier == 2,
+		"signal=%d combo_tier=%d 末档=%d" % [milestone_count - mc_before,
+			int(m_snap.get("combo_tier", -1)), last_milestone_tier])
+	# 5. 里程碑不重复触发：再设同档/低档不再发 signal。
+	var mc_after: int = milestone_count
+	stage_node.call("debug_set_combo", 0.7)
+	_ck("feedback_milestone_once", milestone_count == mc_after,
+		"同档重设不重复发 signal（计数 %d）" % milestone_count)
+	# 6. 反馈统计字段齐备（暴击字号 / 击杀标识 / 各类震动计数可观测）。
+	var fb: Dictionary = m_snap.get("feedback_stats", {}) as Dictionary
+	var fb_keys: Array = ["crit_shakes", "kill_shakes", "hurt_shakes",
+		"milestones", "crit_labels", "kill_labels"]
+	var fb_ok: bool = true
+	for k in fb_keys:
+		if not fb.has(k):
+			fb_ok = false
+	_ck("feedback_stats_observable", fb_ok, "反馈统计字段齐备=%s" % str(fb_ok))
 	stage_node.call("stop")
 
 	_finish({

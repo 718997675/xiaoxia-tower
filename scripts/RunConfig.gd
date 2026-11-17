@@ -95,6 +95,21 @@ const MOB_ATTACK_STYLE: Dictionary = {
                      "vfx": "vfx_sword_qi"},
 }
 
+# 战斗打击感反馈（第 46 轮 · 表现层 PROPOSAL 占位，非冻结、非平衡结论 R51）。
+# 全部只影响「画面抖动 / 飘字 / 连击提示」，不改伤害 / HP / CD / 命中判定任何数值。
+# 相机震动：暴击 / 击杀 / 玩家受击时给 Camera2D.offset 一个随机抖动并按衰减率回落。
+const HIT_SHAKE_CRIT: float = 2.4        # 暴击抖动幅度（px）
+const HIT_SHAKE_KILL: float = 3.6        # 击杀抖动幅度（px）
+const HIT_SHAKE_HURT: float = 2.0        # 玩家受击抖动幅度（px）
+const HIT_SHAKE_DECAY: float = 14.0      # 抖动衰减速率（每秒），越大停得越快
+const HIT_SHAKE_MAX: float = 6.0         # 抖动幅度上限（px），防止叠加失控
+# 连击里程碑：combo 是 0~1.5 的小数；跨过阈值时飘一次「连击·N」，record 避免重复。
+const COMBO_MILESTONES: Array = [0.5, 1.0, 1.5]
+const COMBO_MILESTONE_LABELS: Array = ["连击·起", "连击·势", "连击·极"]
+# 暴击 / 击杀飘字：只改字号与文案，不改伤害数值。
+const CRIT_FONT_SIZE: int = 16           # 暴击飘字字号（普通 11）
+const KILL_LABEL: String = "斩"          # 击杀额外飘字
+
 # 4 技能槽：id / name / key / vfx / direction 来自 docs/06 §4 冻结字段；
 # cd / spirit / base / reach / hits / heal 全部 PROPOSAL（battle_sim.js 同源）。
 const SKILLS: Array = [

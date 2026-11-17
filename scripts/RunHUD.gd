@@ -116,6 +116,13 @@ func update_state(s: Dictionary) -> void:
     var bp: int = int(s.get("boss_phase", 0))
     if bp > 0 and bp <= RunConfig.BOSS_PHASE_LABEL.size():
         info_label.text = "Boss " + String(RunConfig.BOSS_PHASE_LABEL[bp - 1]) + " · " + info_label.text
+    # 第 46 轮：连击里程碑达成时，info_label 追加档位标签并染金色；未达成时恢复默认色。
+    var tier: int = int(s.get("combo_tier", -1))
+    if tier >= 0 and tier < RunConfig.COMBO_MILESTONE_LABELS.size():
+        info_label.text = String(RunConfig.COMBO_MILESTONE_LABELS[tier]) + " · " + info_label.text
+        info_label.add_theme_color_override("font_color", RunConfig.C_GOLD_LIGHT)
+    else:
+        info_label.add_theme_color_override("font_color", RunConfig.C_PAPER_DIM)
 
     var cds: Array = s.get("cds", [])
     for i in range(skill_labels.size()):
