@@ -7,9 +7,15 @@ extends Node2D
 ## BattleFormula.damage_formula() 的统一伤害公式与五上界钳制（R32 / DF-21）。
 ## PROPOSAL 数值全部集中在 RunConfig，本文件不新开数值池（R51）。
 ##
+## 第 42 轮（R64）：卡牌「非五上界」机制效果接入表现层。效果集由 CardEffects.gd
+## 从冻结卡库编译（与网页 card_effects.js 逐字段对齐，76 样本跨端验证），默认 mods
+## 全 0 / 全 1 时与第 41 轮行为逐字段一致，20/20 基线不回退。仍是 PROPOSAL 表现层口径，
+## 不是冻结规格、不是平衡结论；需设计确认 / 归局外系统的键不在此模拟（docs/18 / R54）。
+##
 ## 明确未实现（不假装已做）：
-##   - 46 张卡的非五上界 hook（RunState.* / VfxLayer.* / signal.* / MetaSave.*），
-##     选中后只登记在 TowerRun.picks，不改变战斗表现（docs/18 / R54）。
+##   - 46 张卡的非五上界 hook（RunState.* / VfxLayer.* / signal.* / MetaSave.*）的真系统仍不建；
+##     第 42 轮只落地 20 个可观测 mods 字段（从冻结卡库编译），语义未定的键仍不模拟，
+##     未映射清单见 docs/card-effects 报告；不是完整 hook 实现。
 ##   - 逐 tick 状态机跨端对齐（R56）；6 s 读卡窗口（R33）；本地存档 / 元进度（M2/M3）。
 ##   - Boss 三阶段色、装备 / 词缀 / 灵韵、音频；表现层只做「按得动、看得见」的闭环。
 ## 画面资源：gpt-image2 回稿转录真帧（docs/24 / docs/25），非占位 CSS。
@@ -18,9 +24,19 @@ signal stage_cleared(layer_index: int)
 signal player_dead()
 
 const BattleFormula = preload("res://scripts/BattleFormula.gd")
+const CardEffects = preload("res://scripts/CardEffects.gd")
 
 const PLAYER_PREFIX := "res://assets/char/char_player"
 const VFX_DIR := "res://assets/vfx/frames/"
+
+# 效果集默认全 0 / 全 1（与 CardEffects.default_mods() 一致）。
+# 选卡后由 TowerRun 调 apply_mods() 注入，未注入时整段逻辑与第 41 轮相同。
+var mods: Dictionary = CardEffects.default_mods()
+var max_hp_effective: float = RunConfig.PLAYER_MAX_HP
+var max_spirit_effective: float = RunConfig.PLAYER_MAX_SPIRIT
+var shield: float = 0.0
+var revive_used: bool = false
+var free_cast_used: int = 0
 
 var deck: CardDeck
 var stage_index: int = 0
@@ -129,15 +145,42 @@ func _apply_backdrop(index: int) -> void:
 
 
 ## 开新局时由 TowerRun 调用；跨层不重置 HP / 灵力 / 体力（单局持续消耗）。
+## 注入已选卡的效果集（TowerRun 每次 pick 后调用）。重算上限并把当前值夹到新上限内。
+## 默认 mods 时 max_hp_effective=PLAYER_MAX_HP、max_spirit_effective=PLAYER_MAX_SPIRIT，
+## 与第 41 轮逐字段一致。
+func apply_mods(new_mods: Dictionary) -> void:
+    mods = new_mods
+    var flat_hp: float = float(mods.get("hpMaxFlat", 0.0))
+    var ratio_hp: float = float(mods.get("hpMaxRatio", 0.0))
+    var flat_sp: float = float(mods.get("spiritMaxFlat", 0.0))
+    var ratio_sp: float = float(mods.get("spiritMaxRatio", 0.0))
+    max_hp_effective = maxf(1.0, (RunConfig.PLAYER_MAX_HP + flat_hp) * (1.0 + ratio_hp))
+    max_spirit_effective = maxf(1.0, (RunConfig.PLAYER_MAX_SPIRIT + flat_sp) * (1.0 + ratio_sp))
+    hp = minf(hp, max_hp_effective)
+    spirit = minf(spirit, max_spirit_effective)
+    # 同步护盾快照：apply_mods 后紧接的 start_stage 会再刷新一次同值，保持一致。
+    shield = float(mods.get("shieldMax", 0.0))
+
+
 func reset_player() -> void:
-    hp = RunConfig.PLAYER_MAX_HP
-    spirit = RunConfig.PLAYER_MAX_SPIRIT
+    # 上限受卡牌影响；默认 mods 时两值就是 RunConfig 常量，行为不变。
+    var flat_hp: float = float(mods.get("hpMaxFlat", 0.0))
+    var ratio_hp: float = float(mods.get("hpMaxRatio", 0.0))
+    var flat_sp: float = float(mods.get("spiritMaxFlat", 0.0))
+    var ratio_sp: float = float(mods.get("spiritMaxRatio", 0.0))
+    max_hp_effective = maxf(1.0, (RunConfig.PLAYER_MAX_HP + flat_hp) * (1.0 + ratio_hp))
+    max_spirit_effective = maxf(1.0, (RunConfig.PLAYER_MAX_SPIRIT + flat_sp) * (1.0 + ratio_sp))
+    hp = max_hp_effective
+    spirit = max_spirit_effective
     stamina = RunConfig.PLAYER_MAX_STAMINA
     combo = 0.0
     cds = [0.0, 0.0, 0.0, 0.0]
     cast_lock = 0.0
     invuln = 0.0
     facing = 1
+    shield = 0.0
+    revive_used = false
+    free_cast_used = 0
     player.position = Vector2(120, RunConfig.GROUND_Y - 32.0)
     player_sprite.scale.x = 1.0
 
@@ -153,6 +196,8 @@ func start_stage(index: int, p_deck: CardDeck) -> void:
     var each_hp: float = float(data["hp"]) / float(maxi(1, mobs.size()))
     for i in range(mobs.size()):
         _spawn_enemy(String(mobs[i]), each_hp, i, mobs.size(), float(data["d"]))
+    # 护盾（卷甲）：每层开局按 shieldMax 刷新；默认 0，与第 41 轮一致。
+    shield = float(mods.get("shieldMax", 0.0))
     running = true
     paused = false
     visible = true
@@ -230,7 +275,9 @@ func _physics_process(delta: float) -> void:
 
 func _tick_player(delta: float) -> void:
     var axis: float = Input.get_axis("move_left", "move_right")
-    player.velocity = Vector2(axis * RunConfig.MOVE_SPEED, 0.0)
+    # 移速加成（步摇）：默认 0，速度不变。
+    var move_speed: float = RunConfig.MOVE_SPEED * (1.0 + float(mods.get("moveSpeedBonus", 0.0)))
+    player.velocity = Vector2(axis * move_speed, 0.0)
     player.move_and_slide()
     player.position.x = clampf(player.position.x, 16.0, 464.0)
     if axis != 0.0:
@@ -244,7 +291,7 @@ func _tick_player(delta: float) -> void:
     elif cast_lock <= 0.0 and player_sprite.animation != "idle":
         player_sprite.play("idle")
 
-    spirit = minf(RunConfig.PLAYER_MAX_SPIRIT, spirit + RunConfig.SPIRIT_REGEN * delta)
+    spirit = minf(max_spirit_effective, spirit + RunConfig.SPIRIT_REGEN * delta)
     stamina = minf(RunConfig.PLAYER_MAX_STAMINA, stamina + RunConfig.STAMINA_REGEN * delta)
     combo = maxf(0.0, combo - RunConfig.COMBO_DECAY * delta)
     cast_lock = maxf(0.0, cast_lock - delta)
@@ -277,12 +324,20 @@ func _cast(idx: int) -> void:
     if cast_lock > 0.0 or float(cds[idx]) > 0.0:
         return
     var s: Dictionary = RunConfig.SKILLS[idx]
-    var cost: float = float(s["spirit"])
+    var cost: float = float(s["spirit"]) * float(mods.get("spiritCostScale", 1.0))
     if spirit < cost:
         _float_text("灵力不足", player.position + Vector2(0, -46), RunConfig.C_PAPER_DIM)
         return
-    spirit -= cost
-    cds[idx] = float(s["cd"])
+    # 免费施法（灵潮）：灵力满且还有次数时本次不耗灵；默认 freeCastOnFull=false。
+    var free_cast: bool = bool(mods.get("freeCastOnFull", false)) \
+        and spirit >= max_spirit_effective - 0.001 \
+        and free_cast_used < int(CardEffects.CAPS["freeCastUses"])
+    if not free_cast:
+        spirit -= cost
+    else:
+        free_cast_used += 1
+        _float_text("灵潮·免费", player.position + Vector2(0, -58), RunConfig.C_JADE_LIGHT)
+    cds[idx] = float(s["cd"]) * float(mods.get("cdScale", 1.0))
     cast_lock = RunConfig.CAST_LOCK
     if player_sprite.sprite_frames.has_animation("cast"):
         player_sprite.play("cast")
@@ -290,7 +345,9 @@ func _cast(idx: int) -> void:
 
     if String(s["kind"]) == "heal":
         var amount: float = float(s.get("heal", 0.0))
-        hp = minf(RunConfig.PLAYER_MAX_HP, hp + amount)
+        # heal 在卡库里语义需确认（NONE_REASON.heal），本原型只按技能固定治疗量，
+        # 不按卡牌治疗比例缩放（不猜数值）；上限用 effective。
+        hp = minf(max_hp_effective, hp + amount)
         _float_text("+%d" % int(amount), player.position + Vector2(0, -52), RunConfig.C_JADE_LIGHT)
         return
 
@@ -300,11 +357,18 @@ func _cast(idx: int) -> void:
     var realm: float = 1.0 + float(off.get("realm_ratio", 0.0))
     var combo_mult: float = 1.0 + combo + float(off.get("combo_multiplier", 0.0))
     var crit: float = 1.0 + float(off.get("crit_multiplier", 0.0))
-    var is_crit: bool = _fx_randf() < RunConfig.CRIT_CHANCE
+    var crit_chance: float = RunConfig.CRIT_CHANCE + float(mods.get("critRateBonus", 0.0))
+    var is_crit: bool = _fx_randf() < crit_chance
     if is_crit:
         crit = BattleFormula.CAP_CRIT
     var reach: float = float(s["reach"])
-    var hits: int = int(s["hits"])
+    var pierce: float = float(mods.get("pierceDefense", 0.0))
+    var spirit_on_hit: float = float(mods.get("spiritOnHit", 0.0))
+    # 分段：默认 segmentRatios=[1.0] → 用技能自带 hits，每段满伤，与第 41 轮逐字段一致。
+    # 多段卡（如破云 [0.5,0.5]）→ 用该数组作为每段的伤害比例，总伤不变。
+    var ratios: Array = mods.get("segmentRatios", [1.0]) as Array
+    var use_ratios: bool = ratios.size() > 1
+    var seg_count: int = ratios.size() if use_ratios else int(s["hits"])
     var hit_any: bool = false
     for e in enemies:
         if bool(e["dead"]):
@@ -313,21 +377,27 @@ func _cast(idx: int) -> void:
         if absf(n.position.x - player.position.x) > reach:
             continue
         hit_any = true
-        for _h in range(hits):
+        var eff_defense: float = float(e["defense"]) * (1.0 - pierce)
+        for h in range(seg_count):
             if bool(e["dead"]):
                 break
+            var ratio: float = float(ratios[h]) if use_ratios else 1.0
             var res: Dictionary = BattleFormula.damage_formula(
-                base, realm, pool, combo_mult, crit, float(e["defense"]))
-            var dmg: int = int(res["damage"])
+                base, realm, pool, combo_mult, crit, eff_defense)
+            var dmg: int = maxi(1, int(float(res["damage"]) * ratio))
             e["hp"] = maxf(0.0, float(e["hp"]) - float(dmg))
             var color: Color = RunConfig.C_GOLD_LIGHT if is_crit else RunConfig.C_PAPER
             _float_text(str(dmg), n.position + Vector2(0, -44), color)
             _spawn_vfx("vfx_hit", n.position, -1)
+            if spirit_on_hit > 0.0:
+                spirit = minf(max_spirit_effective, spirit + spirit_on_hit)
             if float(e["hp"]) <= 0.0:
                 e["dead"] = true
                 var target_sp: AnimatedSprite2D = e["sprite"]
                 if target_sp.sprite_frames.has_animation("death"):
                     target_sp.play("death")
+                if float(mods.get("spiritOnKill", 0.0)) > 0.0:
+                    spirit = minf(max_spirit_effective, spirit + float(mods["spiritOnKill"]))
     if hit_any:
         combo = minf(1.5, combo + RunConfig.COMBO_GAIN_PER_HIT)
 
@@ -408,12 +478,37 @@ func _tick_enemies(delta: float) -> void:
                 continue
             var off: Dictionary = deck.offense_state() if deck != null else {}
             var reduction: float = clampf(float(off.get("defense_rate", 0.0)), 0.0, 0.75)
-            var taken: float = incoming * (1.0 - reduction)
-            hp = maxf(0.0, hp - taken)
-            _float_text("-%d" % int(taken), player.position + Vector2(0, -52), RunConfig.C_CINNABAR)
+            # 承伤系数（铁皮/混元/守拙）与固定减伤（铁骨）；默认 scale=1/flat=0，与第 41 轮一致。
+            var taken: float = incoming * (1.0 - reduction) * float(mods.get("damageTakenScale", 1.0))
+            taken = maxf(0.0, taken - float(mods.get("flatReduce", 0.0)))
+            # 护盾（卷甲）先吸收；默认 shield=0，不改变原扣血路径。
+            if shield > 0.0:
+                var absorbed: float = minf(shield, taken)
+                shield -= absorbed
+                taken -= absorbed
+                if absorbed > 0.0:
+                    _float_text("盾-%d" % int(absorbed), player.position + Vector2(-30, -52),
+                        RunConfig.C_JADE_LIGHT)
+            if taken > 0.0:
+                hp = maxf(0.0, hp - taken)
+                _float_text("-%d" % int(taken), player.position + Vector2(0, -52), RunConfig.C_CINNABAR)
+            # 受击无敌窗口（避水）+ 受击回灵（接气）；默认 0，与第 41 轮一致。
+            var hurt_invuln: float = float(mods.get("hurtInvuln", 0.0))
+            if hurt_invuln > 0.0:
+                invuln = maxf(invuln, hurt_invuln)
+            if float(mods.get("spiritOnHurt", 0.0)) > 0.0:
+                spirit = minf(max_spirit_effective, spirit + float(mods["spiritOnHurt"]))
             if player_sprite.sprite_frames.has_animation("hit"):
                 player_sprite.play("hit")
             if hp <= 0.0:
+                # 复活（舍利/转生）：本局首次阵亡按比例回血；默认 reviveHp=0，行为不变。
+                var revive_hp: float = float(mods.get("reviveHp", 0.0))
+                if revive_hp > 0.0 and not revive_used:
+                    revive_used = true
+                    hp = maxf(1.0, max_hp_effective * revive_hp)
+                    invuln = 1.0
+                    _float_text("复活", player.position + Vector2(0, -60), RunConfig.C_GOLD_LIGHT)
+                    continue
                 running = false
                 player_dead.emit()
                 return
@@ -453,12 +548,16 @@ func snapshot() -> Dictionary:
         enemy_max += float(e["max_hp"])
     var data: Dictionary = RunConfig.stage_data(stage_index)
     return {
-        "hp": hp, "max_hp": RunConfig.PLAYER_MAX_HP,
-        "spirit": spirit, "max_spirit": RunConfig.PLAYER_MAX_SPIRIT,
+        "hp": hp, "max_hp": max_hp_effective,
+        "spirit": spirit, "max_spirit": max_spirit_effective,
         "stamina": stamina, "max_stamina": RunConfig.PLAYER_MAX_STAMINA,
         "combo": combo, "enemy_hp": enemy_hp, "enemy_max_hp": maxf(1.0, enemy_max),
         "stage_index": stage_index, "stage_type": String(data["type"]),
         "cds": cds.duplicate(), "running": running,
+        # 第 42 轮效果可观测字段（默认时 shield=0 / reveal=false / 其余为默认值）
+        "shield": shield, "revive_used": revive_used, "free_cast_used": free_cast_used,
+        "reveal": bool(mods.get("reveal", false)),
+        "mods": mods.duplicate(true),
     }
 
 

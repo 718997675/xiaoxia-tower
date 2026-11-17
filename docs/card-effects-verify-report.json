@@ -1,0 +1,9 @@
+{
+  "failed": 0,
+  "failures": [],
+  "golden_source": "tools/card_effects.js",
+  "passed": 10,
+  "scope": "PROPOSAL / web-validation-mirrored / not frozen spec / not balance conclusion",
+  "status": "PASS",
+  "total": 10
+}

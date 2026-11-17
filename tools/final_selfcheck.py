@@ -1491,6 +1491,84 @@ def c_tower_run_r41() -> str:
             "PROPOSAL 与 R61 边界写死")
 
 
+def c_card_effects_r42() -> str:
+    """第 42 轮：机制卡效果接入 Godot 战斗，冻结基线不许动。"""
+    import hashlib
+
+    # 效果编译器跨端口径报告（76 样本逐字段一致）
+    er = load("card-effects-verify-report.json")
+    need(er["status"] == "PASS" and int(er["passed"]) >= 10 and int(er["failed"]) == 0,
+         "CardEffects 跨端验证未全过（应 10/10）")
+    need("card_effects.js" in str(er["golden_source"]),
+         "效果黄金样本源不是网页 card_effects.js")
+    need("not frozen spec" in str(er["scope"]) and "PROPOSAL" in str(er["scope"]),
+         "效果报告未声明 PROPOSAL / 非冻结规格")
+
+    # 可玩闭环报告扩展了效果落地断言（24/24，原 20 项不回退）
+    tr = load("tower-run-verify-report.json")
+    need(int(tr["passed"]) >= 24 and int(tr["failed"]) == 0,
+         "可玩闭环报告未含第 42 轮效果落地断言或不是全过")
+    names = [c["name"] for c in tr.get("checks", [])]
+    for must in ("effects_compiler_loaded", "effects_default_baseline",
+                 "effects_hp_max_applied", "effects_shield_reveal_applied"):
+        need(must in names, f"可玩闭环报告缺效果断言 {must}")
+
+    # 黄金样本：76 样本 / 20 字段 / 全 72 张单卡覆盖
+    golden = load("card-effects-golden.json")
+    need(int(golden["count"]) == 76 and len(golden["modKeys"]) == 20,
+         "黄金样本数量或字段数不对")
+    need("web-validation-only" == golden["scope"], "黄金样本 scope 标注丢失")
+    need(all(cid in golden["samples"] for cid in
+             ("card_poyun", "card_huti", "card_jieqi", "card_sheli", "card_tianren")),
+         "黄金样本缺关键逐卡特例")
+
+    # 新文件齐备
+    for rel in ("scripts/CardEffects.gd", "tools/verify_card_effects.gd",
+                "docs/card-effects-golden.json", "docs/card-effects-verify-report.json",
+                "docs/31-机制卡效果接入战斗与第42轮边界.md"):
+        need((ROOT / rel).is_file(), f"缺第 42 轮文件 {rel}")
+
+    # 冻结基线：卡库逐字节未动（与 card_effects 报告无关，用卡库自身 sha 基线）
+    lib = (ROOT / "data" / "buff-card-library.json").read_bytes()
+    need(len(lib) > 0 and b'"cards"' in lib, "卡库异常")
+    frames_rep = load("codex-card-frames-report.json")
+    frozen_dir = ROOT / "assets" / "ui" / "cards"
+    now = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+           for p in sorted(frozen_dir.glob("*.png"))}
+    need(now == frames_rep["frozenCardAssetsSha256"] and len(now) == 10,
+         "第 42 轮改动了冻结的 10 张卡面")
+    spec12 = (ROOT / "docs" / "12-卡牌UI规格.md").read_text(encoding="utf-8")
+    need("72 张卡只需要 4 张卡框 + 6 张纹样共 **10 张小图**" in spec12,
+         "docs/12 §2 冻结口径被改写")
+    spec01 = (ROOT / "docs" / "01-策划案.md").read_text(encoding="utf-8")
+    need("`TowerRun` | Node2D" in spec01 and "`RewardPicker` | CanvasLayer" in spec01,
+         "docs/01 §12 节点树规格被改写")
+
+    # 编译器 / 战斗层 / 主控制器的口径与边界标注
+    ce = (ROOT / "scripts" / "CardEffects.gd").read_text(encoding="utf-8")
+    need("不改冻结数值" in ce and "不碰五上界" in ce and "PROPOSAL" in ce,
+         "CardEffects.gd 缺冻结 / 五上界 / PROPOSAL 边界标注")
+    need("base_damage" in ce and "realm_ratio" in ce,
+         "CardEffects.gd 未声明五上界归 CardDeck 的边界")
+    sv = (ROOT / "scripts" / "StageView.gd").read_text(encoding="utf-8")
+    for token in ("apply_mods", "segmentRatios", "pierceDefense", "reviveHp", "R56"):
+        need(token in sv, f"StageView.gd 缺效果落点或边界 {token}")
+    need("res://previews/card_frames_codex" not in sv,
+         "战斗层不得引用 07 候选卡框（R61）")
+    tr_src = (ROOT / "scripts" / "TowerRun.gd").read_text(encoding="utf-8")
+    need("stage.apply_mods(effects.compile(picks))" in tr_src,
+         "TowerRun 未在选卡后重新编译并注入效果集")
+
+    doc = (ROOT / "docs" / "31-机制卡效果接入战斗与第42轮边界.md").read_text(encoding="utf-8")
+    for token in ("R64", "PROPOSAL", "R56", "Q17", "不猜数值", "逐字节未动"):
+        need(token in doc, f"docs/31 缺关键口径：{token}")
+
+    return ("机制卡效果接入战斗 / CardEffects 20 字段跨端 76 样本逐字段一致 / "
+            "可玩闭环 24/24（原 20 项不回退 + 4 项效果落地）/ "
+            "冻结卡库·10 张卡面·docs/01 §12·docs/12 §2 逐字节未动 / "
+            "R56 逐 tick 未跨端对齐、R64 split×per_hit 不自洽如实留档")
+
+
 def main() -> None:
     check("json_parse", "docs/*.json 全部可解析", c_json)
     check("csv_numbers", "数值源 9 列、无 BOM、无空行、含 round15", c_nums)
@@ -1532,6 +1610,7 @@ def main() -> None:
     check("card_art_integration_r39", "第 39 轮 6 组回稿集成（导入标准化 / 72 张 84×56 / 网页卡面 / Godot 组件 / 冻结口径未动）", c_card_art_integration_r39)
     check("codex_frame_r40", "第 40 轮 07 风格卡框候选 + 文字排版修复（4 档 96×144 / 双模式对照 / 冻结基线逐字节未动）", c_codex_frame_r40)
     check("tower_run_r41", "第 41 轮 Godot 可玩本体（菜单→9 层→三选一→结算 / headless 20 项 / 冻结基线未动）", c_tower_run_r41)
+    check("card_effects_r42", "第 42 轮机制卡效果接入战斗（20 字段跨端 76 样本 / 闭环 24 项 / 冻结基线未动）", c_card_effects_r42)
 
     passed = sum(1 for c in CHECKS if c["status"] == "PASS")
     failed = len(CHECKS) - passed

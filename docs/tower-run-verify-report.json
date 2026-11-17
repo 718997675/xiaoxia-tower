@@ -101,6 +101,26 @@
 			"detail": "peak<4400 且违规 0",
 			"name": "ceiling_not_violated",
 			"ok": true
+		},
+		{
+			"detail": "cards=72",
+			"name": "effects_compiler_loaded",
+			"ok": true
+		},
+		{
+			"detail": "maxHP=300 maxSP=100 shield=0 reveal=false",
+			"name": "effects_default_baseline",
+			"ok": true
+		},
+		{
+			"detail": "maxHP=360（寿元 +60）",
+			"name": "effects_hp_max_applied",
+			"ok": true
+		},
+		{
+			"detail": "shield=20 reveal=true",
+			"name": "effects_shield_reveal_applied",
+			"ok": true
 		}
 	],
 	"engine": "4.7.2.stable",
@@ -108,7 +128,7 @@
 	"finalResult": "win",
 	"mainScene": "res://scenes/TowerRun.tscn",
 	"maxHit": 3996,
-	"passed": 20,
+	"passed": 24,
 	"picks": 8,
 	"reachedStage": 9,
 	"round": 41,

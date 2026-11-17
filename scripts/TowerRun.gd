@@ -21,6 +21,7 @@ const LIB_PATH := "res://data/buff-card-library.json"
 
 var state: int = State.MENU
 var deck: CardDeck
+var effects: CardEffects
 var library: Dictionary = {}
 var run_id: String = ""
 var stage_index: int = 0
@@ -56,6 +57,9 @@ func _ready() -> void:
     deck = CardDeck.new()
     if not deck.is_loaded():
         push_error("TowerRun: 卡库未加载 72 张：" + deck.last_error())
+    effects = CardEffects.new()
+    if not effects.is_loaded():
+        push_error("TowerRun: 效果编译器未加载卡库")
 
     stage.stage_cleared.connect(_on_stage_cleared)
     stage.player_dead.connect(_on_player_dead)
@@ -211,8 +215,10 @@ func _on_start_pressed() -> void:
 func start_run(p_run_id: String = "") -> void:
     run_id = p_run_id if p_run_id != "" else str(Time.get_unix_time_from_system())
     deck.new_run(run_id)
-    stage.reset_player()
     picks = []
+    # 清空效果集 → 默认 mods，reset_player 用 RunConfig 上限，与第 41 轮一致。
+    stage.apply_mods(effects.compile(picks))
+    stage.reset_player()
     result_text = ""
     pause_label.visible = false
     stage.set_paused(false)
@@ -261,6 +267,8 @@ func _on_card_picked(cid: String) -> void:
         return
     if deck.pick(cid, stage_index + 1):
         picks.append(cid)
+    # 用已选全序列重编译效果集并注入战斗层（同卡可堆叠，CardEffects 按序列累加）。
+    stage.apply_mods(effects.compile(picks))
     picker.show_layer(false)
     _enter_battle(stage_index + 1)
 

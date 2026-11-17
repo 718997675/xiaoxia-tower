@@ -147,6 +147,35 @@ func _init() -> void:
 	_ck("ceiling_not_violated", bool(final["damage_ceiling_ok"]),
 		"peak<4400 且违规 0")
 
+	# ---- 第 42 轮：机制卡效果落地到战斗层（可观测、可复算） ----
+	var eff: CardEffects = inst.effects as CardEffects
+	_ck("effects_compiler_loaded", eff != null and eff.is_loaded() and eff.card_count() == 72,
+		"cards=%d" % (eff.card_count() if eff != null else -1))
+	# 默认 mods：reset 后上限就是 RunConfig 常量、护盾 0、reveal=false。
+	stage_node.call("apply_mods", eff.compile([]))
+	stage_node.call("reset_player")
+	var dflt: Dictionary = stage_node.call("snapshot")
+	_ck("effects_default_baseline",
+		absf(float(dflt["max_hp"]) - RunConfig.PLAYER_MAX_HP) < 0.001 \
+		and absf(float(dflt["max_spirit"]) - RunConfig.PLAYER_MAX_SPIRIT) < 0.001 \
+		and float(dflt["shield"]) == 0.0 and bool(dflt["reveal"]) == false,
+		"maxHP=%d maxSP=%d shield=%d reveal=%s" % [int(dflt["max_hp"]),
+			int(dflt["max_spirit"]), int(dflt["shield"]), str(dflt["reveal"])])
+	# 寿元（hp_max +60）：注入后 max_hp=360，可观测。
+	stage_node.call("apply_mods", eff.compile(["card_shouyuan"]))
+	var hp_card: Dictionary = stage_node.call("snapshot")
+	_ck("effects_hp_max_applied",
+		absf(float(hp_card["max_hp"]) - (RunConfig.PLAYER_MAX_HP + 60.0)) < 0.001,
+		"maxHP=%d（寿元 +60）" % int(hp_card["max_hp"]))
+	# 卷甲（shield_max 20）+ 天人感应（reveal）：注入后 shield=20、reveal=true。
+	stage_node.call("apply_mods", eff.compile(["card_huti", "card_tianren"]))
+	var util_card: Dictionary = stage_node.call("snapshot")
+	_ck("effects_shield_reveal_applied",
+		float(util_card["shield"]) == 20.0 and bool(util_card["reveal"]) == true,
+		"shield=%d reveal=%s" % [int(util_card["shield"]), str(util_card["reveal"])])
+	# 还原默认，避免影响后续任何读取。
+	stage_node.call("apply_mods", eff.compile([]))
+
 	_finish({
 		"round": 41,
 		"engine": "4.7.2.stable",
