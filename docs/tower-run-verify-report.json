@@ -121,6 +121,41 @@
 			"detail": "shield=20 reveal=true",
 			"name": "effects_shield_reveal_applied",
 			"ok": true
+		},
+		{
+			"detail": "判官/塔主 skill 真帧首帧存在",
+			"name": "boss_skill_frames",
+			"ok": true
+		},
+		{
+			"detail": "phase=1 skillFrames=4",
+			"name": "boss_phase_init",
+			"ok": true
+		},
+		{
+			"detail": "probe=2 snapshot=2",
+			"name": "boss_phase_2",
+			"ok": true
+		},
+		{
+			"detail": "phase=3",
+			"name": "boss_phase_3",
+			"ok": true
+		},
+		{
+			"detail": "回血到 0.9 仍为 3",
+			"name": "boss_phase_no_downgrade",
+			"ok": true
+		},
+		{
+			"detail": "atk=[1.0, 1.15, 1.35] interval=[1.0, 0.85, 0.7]",
+			"name": "boss_phase_scales",
+			"ok": true
+		},
+		{
+			"detail": "probe空=true snapshot=0",
+			"name": "boss_phase_nonboss_zero",
+			"ok": true
 		}
 	],
 	"engine": "4.7.2.stable",
@@ -128,7 +163,7 @@
 	"finalResult": "win",
 	"mainScene": "res://scenes/TowerRun.tscn",
 	"maxHit": 3996,
-	"passed": 24,
+	"passed": 31,
 	"picks": 8,
 	"reachedStage": 9,
 	"round": 41,

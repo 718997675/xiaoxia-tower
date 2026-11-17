@@ -22,6 +22,8 @@ extends Node2D
 
 signal stage_cleared(layer_index: int)
 signal player_dead()
+## 第 43 轮：Boss 血量跌破阈值切阶段时发出（phase=1/2/3），供 HUD / 表现层订阅。
+signal boss_phase_changed(phase: int, mob_id: String)
 
 const BattleFormula = preload("res://scripts/BattleFormula.gd")
 const CardEffects = preload("res://scripts/CardEffects.gd")
@@ -222,6 +224,10 @@ func _spawn_enemy(mob_id: String, mob_hp: float, i: int, total: int,
     _add_anim(frames, "atk", prefix, "atk", 4, 8.0, false)
     _add_anim(frames, "hit", prefix, "hit", 1, 6.0, false)
     _add_anim(frames, "death", prefix, "death", 3, 6.0, false)
+    # 第 43 轮：Boss 的 skill 真帧（判官 4 帧 / 塔主 10 帧）作为阶段变身表现。
+    # 非 Boss 也会尝试加载，但 assets/enemy/ 无 skill 帧 → loaded=0 自动移除，安全。
+    if is_boss:
+        _add_anim(frames, "skill", prefix, "skill", 10, 12.0, false)
     sp.sprite_frames = frames
     if frames.has_animation("idle"):
         sp.play("idle")
@@ -233,6 +239,9 @@ func _spawn_enemy(mob_id: String, mob_hp: float, i: int, total: int,
         "speed": float(info.get("speed", 1.0)) * difficulty,
         "atk_timer": RunConfig.ENEMY_ATTACK_INTERVAL * (0.6 + 0.2 * float(i)),
         "dead": false,
+        # 第 43 轮：Boss 阶段状态。非 Boss phase=0 且不参与任何阶段逻辑。
+        "boss": is_boss, "phase": 1 if is_boss else 0,
+        "phase_timer": 0.0,
     })
 
 
@@ -391,6 +400,8 @@ func _cast(idx: int) -> void:
             _spawn_vfx("vfx_hit", n.position, -1)
             if spirit_on_hit > 0.0:
                 spirit = minf(max_spirit_effective, spirit + spirit_on_hit)
+            # 第 43 轮：扣血后按血量比检查 Boss 阶段跃迁（与网页 0.66/0.33 同口径）。
+            _check_boss_phase(e)
             if float(e["hp"]) <= 0.0:
                 e["dead"] = true
                 var target_sp: AnimatedSprite2D = e["sprite"]
@@ -459,18 +470,25 @@ func _tick_enemies(delta: float) -> void:
     for e in enemies:
         if bool(e["dead"]):
             continue
+        # 第 43 轮：Boss 阶段越高单次伤害越高；非 Boss slot=0 系数 1.0，行为不变。
+        var phase_atk: float = float(RunConfig.BOSS_PHASE_ATK_SCALE[_boss_phase_slot(e)])
+        var hit_incoming: float = incoming * phase_atk
         var n: Node2D = e["node"]
         var dx: float = player.position.x - n.position.x
         var dist: float = absf(dx)
         var sp: AnimatedSprite2D = e["sprite"]
         if dist > RunConfig.ENEMY_ATTACK_RANGE * 0.7:
-            var step: float = RunConfig.ENEMY_MOVE_SPEED * float(e["speed"]) * delta
+            # 第 43 轮：Boss 阶段越高移动越快；非 Boss slot=0 系数 1.0，行为不变。
+            var move_scale: float = float(RunConfig.BOSS_PHASE_MOVE_SCALE[_boss_phase_slot(e)])
+            var step: float = RunConfig.ENEMY_MOVE_SPEED * float(e["speed"]) * move_scale * delta
             n.position.x += signf(dx) * minf(step, dist)
             if sp.sprite_frames.has_animation("run") and sp.animation != "run":
                 sp.play("run")
         e["atk_timer"] = float(e["atk_timer"]) - delta
         if dist <= RunConfig.ENEMY_ATTACK_RANGE and float(e["atk_timer"]) <= 0.0:
-            e["atk_timer"] = RunConfig.ENEMY_ATTACK_INTERVAL
+            # 第 43 轮：Boss 阶段越高出手越快；非 Boss slot=0 系数 1.0，行为不变。
+            var interval_scale: float = float(RunConfig.BOSS_PHASE_ATK_INTERVAL_SCALE[_boss_phase_slot(e)])
+            e["atk_timer"] = RunConfig.ENEMY_ATTACK_INTERVAL * interval_scale
             if sp.sprite_frames.has_animation("atk"):
                 sp.play("atk")
             if invuln > 0.0:
@@ -479,7 +497,8 @@ func _tick_enemies(delta: float) -> void:
             var off: Dictionary = deck.offense_state() if deck != null else {}
             var reduction: float = clampf(float(off.get("defense_rate", 0.0)), 0.0, 0.75)
             # 承伤系数（铁皮/混元/守拙）与固定减伤（铁骨）；默认 scale=1/flat=0，与第 41 轮一致。
-            var taken: float = incoming * (1.0 - reduction) * float(mods.get("damageTakenScale", 1.0))
+            # hit_incoming 已含第 43 轮 Boss 阶段伤害系数（非 Boss = incoming，行为不变）。
+            var taken: float = hit_incoming * (1.0 - reduction) * float(mods.get("damageTakenScale", 1.0))
             taken = maxf(0.0, taken - float(mods.get("flatReduce", 0.0)))
             # 护盾（卷甲）先吸收；默认 shield=0，不改变原扣血路径。
             if shield > 0.0:
@@ -514,6 +533,37 @@ func _tick_enemies(delta: float) -> void:
                 return
 
 
+## 第 43 轮：Boss 血量跌破阈值时切阶段。
+## 划分与网页 tools/battle_sim.js 完全一致：ratio>0.66→1，>0.33→2，否则 3。
+## 只在 Boss 上生效（phase=0 的普通怪直接返回），阶段只升不降，
+## 切阶段播放 skill 变身真帧 + 飘字 + 发 signal；不改冻结 HP / dps。
+func _check_boss_phase(e: Dictionary) -> void:
+    if not bool(e.get("boss", false)) or bool(e["dead"]):
+        return
+    var ratio: float = float(e["hp"]) / maxf(1.0, float(e["max_hp"]))
+    var next_phase: int = 1 if ratio > 0.66 else (2 if ratio > 0.33 else 3)
+    var cur: int = int(e["phase"])
+    if next_phase <= cur:
+        return
+    e["phase"] = next_phase
+    var n: Node2D = e["node"]
+    var label: String = String(RunConfig.BOSS_PHASE_LABEL[next_phase - 1]) if \
+        next_phase <= RunConfig.BOSS_PHASE_LABEL.size() else "变身"
+    _float_text(label, n.position + Vector2(0, -66), RunConfig.C_CINNABAR)
+    var sp: AnimatedSprite2D = e["sprite"]
+    if sp.sprite_frames.has_animation("skill"):
+        sp.play("skill")
+    boss_phase_changed.emit(next_phase, String(e["id"]))
+
+
+## 取某敌人的当前阶段序号（0-based，用于索引 RunConfig.BOSS_PHASE_* 系数）。
+## 非 Boss / phase=0 → 返回 0（系数数组首项均为 1.0，行为不变）。
+func _boss_phase_slot(e: Dictionary) -> int:
+    if not bool(e.get("boss", false)):
+        return 0
+    return clampi(int(e["phase"]) - 1, 0, RunConfig.BOSS_PHASE_ATK_SCALE.size() - 1)
+
+
 func _check_cleared() -> void:
     if not running or enemies.is_empty():
         return
@@ -543,9 +593,12 @@ func _process(delta: float) -> void:
 func snapshot() -> Dictionary:
     var enemy_hp: float = 0.0
     var enemy_max: float = 0.0
+    var boss_phase: int = 0  # 0 = 本层无 Boss
     for e in enemies:
         enemy_hp += float(e["hp"])
         enemy_max += float(e["max_hp"])
+        if bool(e.get("boss", false)) and not bool(e["dead"]):
+            boss_phase = maxi(boss_phase, int(e["phase"]))
     var data: Dictionary = RunConfig.stage_data(stage_index)
     return {
         "hp": hp, "max_hp": max_hp_effective,
@@ -557,6 +610,8 @@ func snapshot() -> Dictionary:
         # 第 42 轮效果可观测字段（默认时 shield=0 / reveal=false / 其余为默认值）
         "shield": shield, "revive_used": revive_used, "free_cast_used": free_cast_used,
         "reveal": bool(mods.get("reveal", false)),
+        # 第 43 轮：本层存活 Boss 当前阶段（0=无 Boss，1/2/3=有 Boss 且处于该阶段）
+        "boss_phase": boss_phase,
         "mods": mods.duplicate(true),
     }
 
@@ -567,3 +622,28 @@ func debug_clear_stage() -> void:
         e["hp"] = 0.0
         e["dead"] = true
     _check_cleared()
+
+
+## 第 43 轮 headless 校验用：返回当前层首个 Boss 的阶段快照（无 Boss 返回空字典）。
+func debug_boss_probe() -> Dictionary:
+    for e in enemies:
+        if bool(e.get("boss", false)):
+            var sp: AnimatedSprite2D = e["sprite"]
+            return {
+                "id": String(e["id"]), "phase": int(e["phase"]),
+                "hp": float(e["hp"]), "max_hp": float(e["max_hp"]),
+                "has_skill_anim": sp.sprite_frames.has_animation("skill"),
+                "skill_frames": sp.sprite_frames.get_frame_count("skill") \
+                    if sp.sprite_frames.has_animation("skill") else 0,
+                "dead": bool(e["dead"]),
+            }
+    return {}
+
+
+## 第 43 轮 headless 校验用：把首个存活 Boss 血量设为指定比例并触发一次阶段判定。
+func debug_set_boss_hp_ratio(ratio: float) -> void:
+    for e in enemies:
+        if bool(e.get("boss", false)) and not bool(e["dead"]):
+            e["hp"] = maxf(0.0, float(e["max_hp"]) * clampf(ratio, 0.0, 1.0))
+            _check_boss_phase(e)
+            return

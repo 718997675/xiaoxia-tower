@@ -5,8 +5,8 @@
   "scope": "第 15 轮收口 · 交付前全量静态自检",
   "verdict": "PASS",
   "summary": {
-    "checks": 41,
-    "passed": 41,
+    "checks": 42,
+    "passed": 42,
     "failed": 0
   },
   "checks": [
@@ -116,7 +116,7 @@
       "id": "absolute_paths",
       "desc": "文档/工程无机器绝对路径",
       "status": "PASS",
-      "detail": "扫描 96 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
+      "detail": "扫描 97 个文档与工程文件，机器绝对路径命中 0（两份报告自指已排除）"
     },
     {
       "id": "stale_handover",
@@ -158,7 +158,7 @@
       "id": "workspace_path_r41",
       "desc": "第 41 轮 工作空间迁址：路径断言与机器绝对路径解耦（文档零本机绝对路径）",
       "status": "PASS",
-      "detail": "工作空间根为固定名 ai-game/（上级非会话时间戳目录）；扫描 74 个文档，当前机绝对路径命中 0；迁址事实已按相对路径记录（第 41 轮）"
+      "detail": "工作空间根为固定名 ai-game/（上级非会话时间戳目录）；扫描 75 个文档，当前机绝对路径命中 0；迁址事实已按相对路径记录（第 41 轮）"
     },
     {
       "id": "card_runtime_data_r45",
@@ -255,6 +255,12 @@
       "desc": "第 42 轮机制卡效果接入战斗（20 字段跨端 76 样本 / 闭环 24 项 / 冻结基线未动）",
       "status": "PASS",
       "detail": "机制卡效果接入战斗 / CardEffects 20 字段跨端 76 样本逐字段一致 / 可玩闭环 24/24（原 20 项不回退 + 4 项效果落地）/ 冻结卡库·10 张卡面·docs/01 §12·docs/12 §2 逐字节未动 / R56 逐 tick 未跨端对齐、R64 split×per_hit 不自洽如实留档"
+    },
+    {
+      "id": "boss_phase_r43",
+      "desc": "第 43 轮 Boss 三阶段接入战斗（0.66/0.33 划分 / 闭环 31 项 / 复用真帧 / 冻结基线未动）",
+      "status": "PASS",
+      "detail": "Boss 三阶段接入战斗 / 阶段划分 0.66/0.33 与网页一致（R56 仍逐 tick 未对齐）/ 可玩闭环 31/31（原 24 项不回退 + 7 项 Boss 阶段）/ 复用现有 skill 真帧未新增出图 / 非 Boss 零影响 / 冻结卡库·10 张卡面·docs/01 §12·docs/12 §2 逐字节未动 / R65 阶段系数未实测如实留档"
     }
   ],
   "knownExceptions": [
@@ -269,7 +275,7 @@
     "python3 tools/check_traceability.py",
     "check_godot_project.py . --spec docs/project-spec.json --freeze docs/design-freeze.json --json docs/godot-project-check.json",
     "Godot --headless --script tools/verify_minimal_run.gd（须先由编辑器导入资源）",
-    "Godot --headless --path . --script res://tools/verify_tower_run.gd（第 41 轮可玩闭环 20 项）"
+    "Godot --headless --path . --script res://tools/verify_tower_run.gd（可玩闭环 31 项：第 41 轮 20 + 第 42 轮效果 4 + 第 43 轮 Boss 阶段 7）"
   ],
   "boundary": "本脚本只做离线/静态验证。像素硬边、朝右镜像、480×270×4 对齐、阴兵对比度等仍需用户按 docs/13 §12 在 GUI 按 F5 目检；PASS 不等于游戏可玩。"
 }

@@ -112,6 +112,10 @@ func update_state(s: Dictionary) -> void:
         int(s.get("hp", 0.0)), int(s.get("max_hp", 0.0)), int(s.get("spirit", 0.0)),
         float(s.get("combo", 0.0)), int(s.get("picks", 0)),
     ]
+    # 第 43 轮：Boss 层显示当前阶段（1/2/3），非 Boss 层不显示。
+    var bp: int = int(s.get("boss_phase", 0))
+    if bp > 0 and bp <= RunConfig.BOSS_PHASE_LABEL.size():
+        info_label.text = "Boss " + String(RunConfig.BOSS_PHASE_LABEL[bp - 1]) + " · " + info_label.text
 
     var cds: Array = s.get("cds", [])
     for i in range(skill_labels.size()):

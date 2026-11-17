@@ -176,6 +176,51 @@ func _init() -> void:
 	# 还原默认，避免影响后续任何读取。
 	stage_node.call("apply_mods", eff.compile([]))
 
+	# ---- 第 43 轮：Boss 三阶段（表现层，划分对齐网页 0.66/0.33，R56 未跨端对齐） ----
+	# Boss skill 真帧资源存在（判官 4 帧 / 塔主 10 帧）。
+	var boss_skill_ok: bool = true
+	for bid in ["boss_judge", "boss_tower_lord"]:
+		var f0: String = "res://assets/boss/" + bid + "_skill_r_00.png"
+		if not ResourceLoader.exists(f0):
+			boss_skill_ok = false
+	_ck("boss_skill_frames", boss_skill_ok, "判官/塔主 skill 真帧首帧存在")
+	# 用冻结第 5 层（boss_judge）启一层，阶段应初始化为 1 且加载 skill 动画。
+	stage_node.call("start_stage", 4, inst.deck)
+	var bp0: Dictionary = stage_node.call("debug_boss_probe")
+	_ck("boss_phase_init", int(bp0.get("phase", -1)) == 1 \
+		and bool(bp0.get("has_skill_anim", false)) \
+		and int(bp0.get("skill_frames", 0)) >= 4,
+		"phase=%d skillFrames=%d" % [int(bp0.get("phase", -1)), int(bp0.get("skill_frames", 0))])
+	# 血量比 0.5 → 阶段 2；snapshot 暴露 boss_phase=2。
+	stage_node.call("debug_set_boss_hp_ratio", 0.5)
+	var bp2: Dictionary = stage_node.call("debug_boss_probe")
+	var snap2: Dictionary = stage_node.call("snapshot")
+	_ck("boss_phase_2", int(bp2.get("phase", -1)) == 2 \
+		and int(snap2.get("boss_phase", -1)) == 2,
+		"probe=%d snapshot=%d" % [int(bp2.get("phase", -1)), int(snap2.get("boss_phase", -1))])
+	# 血量比 0.2 → 阶段 3；阶段只升不降。
+	stage_node.call("debug_set_boss_hp_ratio", 0.2)
+	var bp3: Dictionary = stage_node.call("debug_boss_probe")
+	_ck("boss_phase_3", int(bp3.get("phase", -1)) == 3,
+		"phase=%d" % int(bp3.get("phase", -1)))
+	stage_node.call("debug_set_boss_hp_ratio", 0.9)  # 回血也不应降阶段
+	_ck("boss_phase_no_downgrade", int(stage_node.call("debug_boss_probe").get("phase", -1)) == 3,
+		"回血到 0.9 仍为 3")
+	# 阶段系数数组：长度 3、逐阶段伤害/攻速系数单调递增（非 Boss slot=0 恒为 1.0）。
+	var atk_scale: Array = RunConfig.BOSS_PHASE_ATK_SCALE
+	var int_scale: Array = RunConfig.BOSS_PHASE_ATK_INTERVAL_SCALE
+	_ck("boss_phase_scales", atk_scale.size() == 3 and int_scale.size() == 3 \
+		and float(atk_scale[0]) < float(atk_scale[1]) and float(atk_scale[1]) < float(atk_scale[2]) \
+		and float(int_scale[0]) > float(int_scale[1]) and float(int_scale[1]) > float(int_scale[2]),
+		"atk=%s interval=%s" % [str(atk_scale), str(int_scale)])
+	# 非 Boss 层（第 1 层）无阶段、snapshot.boss_phase=0。
+	stage_node.call("start_stage", 0, inst.deck)
+	var nb: Dictionary = stage_node.call("debug_boss_probe")
+	var nsnap: Dictionary = stage_node.call("snapshot")
+	_ck("boss_phase_nonboss_zero", nb.is_empty() and int(nsnap.get("boss_phase", -1)) == 0,
+		"probe空=%s snapshot=%d" % [str(nb.is_empty()), int(nsnap.get("boss_phase", -1))])
+	stage_node.call("stop")
+
 	_finish({
 		"round": 41,
 		"engine": "4.7.2.stable",

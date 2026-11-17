@@ -1569,6 +1569,68 @@ def c_card_effects_r42() -> str:
             "R56 逐 tick 未跨端对齐、R64 split×per_hit 不自洽如实留档")
 
 
+def c_boss_phase_r43() -> str:
+    """第 43 轮：Boss 三阶段接入战斗，冻结基线不许动。"""
+    import hashlib
+
+    # 可玩闭环报告扩展了 Boss 阶段断言（31/31，原 24 项不回退）
+    tr = load("tower-run-verify-report.json")
+    need(int(tr["passed"]) >= 31 and int(tr["failed"]) == 0,
+         "可玩闭环报告未含第 43 轮 Boss 阶段断言或不是全过")
+    names = [c["name"] for c in tr.get("checks", [])]
+    for must in ("boss_skill_frames", "boss_phase_init", "boss_phase_2",
+                 "boss_phase_3", "boss_phase_no_downgrade", "boss_phase_scales",
+                 "boss_phase_nonboss_zero"):
+        need(must in names, f"可玩闭环报告缺 Boss 阶段断言 {must}")
+
+    for rel in ("docs/32-Boss三阶段与第43轮边界.md",):
+        need((ROOT / rel).is_file(), f"缺第 43 轮文件 {rel}")
+
+    # 表现层源码：阶段划分 0.66/0.33、系数、snapshot 暴露、非 Boss 零影响
+    sv = (ROOT / "scripts" / "StageView.gd").read_text(encoding="utf-8")
+    for token in ("_check_boss_phase", "_boss_phase_slot", "boss_phase_changed",
+                  "0.66", "0.33", "BOSS_PHASE_ATK_SCALE", "boss_phase"):
+        need(token in sv, f"StageView.gd 缺 Boss 阶段落点 {token}")
+    cfg = (ROOT / "scripts" / "RunConfig.gd").read_text(encoding="utf-8")
+    for token in ("BOSS_PHASE_ATK_SCALE", "BOSS_PHASE_ATK_INTERVAL_SCALE",
+                  "BOSS_PHASE_MOVE_SCALE", "BOSS_PHASE_LABEL", "PROPOSAL"):
+        need(token in cfg, f"RunConfig.gd 缺 Boss 阶段系数或边界 {token}")
+    hud = (ROOT / "scripts" / "RunHUD.gd").read_text(encoding="utf-8")
+    need("boss_phase" in hud, "RunHUD.gd 未显示 Boss 阶段")
+
+    # Boss skill 真帧未新增出图（复用 assets/boss 现有帧）
+    boss_dir = ROOT / "assets" / "boss"
+    for bid in ("boss_judge", "boss_tower_lord"):
+        need((boss_dir / f"{bid}_skill_r_00.png").is_file(),
+             f"缺 {bid} skill 变身首帧（不应新增出图，复用现有）")
+
+    # 冻结基线：卡库 / 10 张卡面 / docs/01 §12 / docs/12 §2 逐字节未动
+    frames_rep = load("codex-card-frames-report.json")
+    now = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+           for p in sorted((ROOT / "assets" / "ui" / "cards").glob("*.png"))}
+    need(now == frames_rep["frozenCardAssetsSha256"] and len(now) == 10,
+         "第 43 轮改动了冻结的 10 张卡面")
+    spec12 = (ROOT / "docs" / "12-卡牌UI规格.md").read_text(encoding="utf-8")
+    need("72 张卡只需要 4 张卡框 + 6 张纹样共 **10 张小图**" in spec12,
+         "docs/12 §2 冻结口径被改写")
+    spec01 = (ROOT / "docs" / "01-策划案.md").read_text(encoding="utf-8")
+    need("`TowerRun` | Node2D" in spec01 and "`RewardPicker` | CanvasLayer" in spec01,
+         "docs/01 §12 节点树规格被改写")
+    lib = (ROOT / "data" / "buff-card-library.json").read_bytes()
+    need(len(lib) > 0 and b'"cards"' in lib, "卡库异常")
+
+    # 边界文档口径
+    doc = (ROOT / "docs" / "32-Boss三阶段与第43轮边界.md").read_text(encoding="utf-8")
+    for token in ("R56", "R65", "PROPOSAL", "不是逐帧一致", "Q17", "逐字节未动", "F5"):
+        need(token in doc, f"docs/32 缺关键口径：{token}")
+
+    return ("Boss 三阶段接入战斗 / 阶段划分 0.66/0.33 与网页一致（R56 仍逐 tick 未对齐）/ "
+            "可玩闭环 31/31（原 24 项不回退 + 7 项 Boss 阶段）/ "
+            "复用现有 skill 真帧未新增出图 / 非 Boss 零影响 / "
+            "冻结卡库·10 张卡面·docs/01 §12·docs/12 §2 逐字节未动 / "
+            "R65 阶段系数未实测如实留档")
+
+
 def main() -> None:
     check("json_parse", "docs/*.json 全部可解析", c_json)
     check("csv_numbers", "数值源 9 列、无 BOM、无空行、含 round15", c_nums)
@@ -1611,6 +1673,7 @@ def main() -> None:
     check("codex_frame_r40", "第 40 轮 07 风格卡框候选 + 文字排版修复（4 档 96×144 / 双模式对照 / 冻结基线逐字节未动）", c_codex_frame_r40)
     check("tower_run_r41", "第 41 轮 Godot 可玩本体（菜单→9 层→三选一→结算 / headless 20 项 / 冻结基线未动）", c_tower_run_r41)
     check("card_effects_r42", "第 42 轮机制卡效果接入战斗（20 字段跨端 76 样本 / 闭环 24 项 / 冻结基线未动）", c_card_effects_r42)
+    check("boss_phase_r43", "第 43 轮 Boss 三阶段接入战斗（0.66/0.33 划分 / 闭环 31 项 / 复用真帧 / 冻结基线未动）", c_boss_phase_r43)
 
     passed = sum(1 for c in CHECKS if c["status"] == "PASS")
     failed = len(CHECKS) - passed
@@ -1634,7 +1697,7 @@ def main() -> None:
             "python3 tools/check_traceability.py",
             "check_godot_project.py . --spec docs/project-spec.json --freeze docs/design-freeze.json --json docs/godot-project-check.json",
             "Godot --headless --script tools/verify_minimal_run.gd（须先由编辑器导入资源）",
-            "Godot --headless --path . --script res://tools/verify_tower_run.gd（第 41 轮可玩闭环 20 项）",
+            "Godot --headless --path . --script res://tools/verify_tower_run.gd（可玩闭环 31 项：第 41 轮 20 + 第 42 轮效果 4 + 第 43 轮 Boss 阶段 7）",
         ],
         "boundary": "本脚本只做离线/静态验证。像素硬边、朝右镜像、480×270×4 对齐、阴兵对比度等仍需用户按 docs/13 §12 在 GUI 按 F5 目检；PASS 不等于游戏可玩。",
     }

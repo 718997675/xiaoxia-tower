@@ -57,6 +57,15 @@ const ENEMY_MOVE_SPEED: float = 42.0
 const ENEMY_ATTACK_RANGE: float = 88.0
 const VFX_LIFETIME: float = 0.28
 
+# Boss 三阶段（第 43 轮 · 表现层 PROPOSAL 占位）。
+# 血量比阈值与网页 tools/battle_sim.js 的 0.66 / 0.33 划分一致（跨端口径）；
+# 阶段带来的攻速 / 伤害递增是 Godot 侧表现层增强，R56 逐 tick 仍未跨端对齐，
+# 不宣称「网页测过 = Godot 一致」。这些不是冻结数值、不是平衡结论（R51）。
+const BOSS_PHASE_ATK_SCALE: Array = [1.0, 1.15, 1.35]   # 阶段 1/2/3 敌人伤害系数
+const BOSS_PHASE_ATK_INTERVAL_SCALE: Array = [1.0, 0.85, 0.70]  # 阶段越高出手越快
+const BOSS_PHASE_MOVE_SCALE: Array = [1.0, 1.10, 1.25]  # 阶段越高移动越快
+const BOSS_PHASE_LABEL: Array = ["", "壹·镇", "贰·狂", "叁·殁"]
+
 # 4 技能槽：id / name / key / vfx / direction 来自 docs/06 §4 冻结字段；
 # cd / spirit / base / reach / hits / heal 全部 PROPOSAL（battle_sim.js 同源）。
 const SKILLS: Array = [
