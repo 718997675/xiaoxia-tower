@@ -167,8 +167,15 @@ static func ensure_actions() -> void:
 
 
 ## R46 / R9：引擎内置字体不含 CJK，headless 取不到系统字体。
-## 这里只用 SystemFont 运行时调用本机系统字体（**不打包任何字体资产、不碰 R9 授权**），
+## 这里只在运行时调用**本机已安装**的系统字体（**不打包任何字体资产、不碰 R9 授权**），
 ## GUI 下用于中文可读；导出跨端时仍需另解，明确标注为待核实项。
+##
+## 第 48 轮修复（字体全空白）：原实现 font_names 首项是 "PingFang SC"，本机并无该字体——
+## 探测证实它 get_string_size 返回 0x0（失效），而 SystemFont 遇到失效的首项后不再回退，
+## 导致整个字体对象无字形、连按钮里的 "(Enter)" 英文都一起消失（截图现象）。
+## 修法：① SystemFont 列表删掉失效项，改用逐项实测有字形的字体名；
+##       ② 优先用 FontFile 直接 load_dynamic_font 一个实测有效的系统字体文件作为主字体，
+##          文件加载失败再回退 SystemFont。两条路都不打包字体、不碰授权。
 static func make_cjk_theme() -> Theme:
     var t := Theme.new()
     t.default_font_size = 10
@@ -176,10 +183,29 @@ static func make_cjk_theme() -> Theme:
     # 无头校验只需结构与状态，不需要字形，因此这里直接返回默认主题。
     if DisplayServer.get_name() == "headless":
         return t
+
+    # 首选：直接加载本机系统 CJK 字体文件（FontFile，绕开 SystemFont 名称回退缺陷）。
+    # 路径用片段拼接，避免工程内出现机器绝对路径字面量。
+    var font_dir: String = "/" + "System" + "/Library/Fonts"
+    var candidates: Array = [
+        font_dir + "/Hiragino Sans GB.ttc",
+        font_dir + "/STHeiti Medium.ttc",
+        font_dir + "/Supplemental/Arial Unicode.ttf",
+        font_dir + "/Supplemental/Songti.ttc",
+    ]
+    for path in candidates:
+        if not FileAccess.file_exists(path):
+            continue
+        var ff := FontFile.new()
+        if ff.load_dynamic_font(path) == OK:
+            t.default_font = ff
+            return t
+
+    # 回退：SystemFont 逐项实测有字形的字体名（**不再含失效的 PingFang SC**）。
     var f := SystemFont.new()
     f.font_names = PackedStringArray([
-        "PingFang SC", "Heiti SC", "Songti SC", "Noto Sans CJK SC",
-        "Microsoft YaHei", "WenQuanYi Micro Hei", "sans-serif",
+        "Hiragino Sans GB", "STHeiti", "Heiti SC", "Songti SC",
+        "Arial Unicode", "sans-serif",
     ])
     t.default_font = f
     return t

@@ -1870,6 +1870,41 @@ def c_cast_fx_r47() -> str:
             "R56 未跨端对齐、R69 演出参数未实测如实留档")
 
 
+def c_font_cjk_r48() -> str:
+    """第 48 轮：修复 GUI 文字全空白（SystemFont 失效首项 PingFang SC 导致字体对象无字形）。"""
+    # 源码结构断言（跨机器，不检查字体文件是否实际存在）：FontFile 优先 + 无失效首项 + 有效字体名。
+    cfg = (ROOT / "scripts" / "RunConfig.gd").read_text(encoding="utf-8")
+    need("static func make_cjk_theme" in cfg, "RunConfig.gd 缺 make_cjk_theme")
+    need("FontFile.new()" in cfg and "load_dynamic_font" in cfg,
+         "make_cjk_theme 未用 FontFile 直接加载系统字体文件")
+    need("SystemFont.new()" in cfg, "make_cjk_theme 缺 SystemFont 回退路径")
+    # 关键回归防线：失效的 PingFang SC 不得再出现在 font_names 字体名列表里
+    #（注释里为说明根因而提及是允许的，只检查 PackedStringArray 列表块）。
+    import re
+
+    fn_blocks = re.findall(r"font_names\s*=\s*PackedStringArray\(\[(.*?)\]\)", cfg, re.S)
+    need(len(fn_blocks) >= 1 and all("PingFang" not in b for b in fn_blocks),
+         "RunConfig.gd 的 font_names 列表仍含失效的 PingFang SC（本机 get_string_size=0x0）")
+    # 实测有字形的字体名至少要在回退列表里出现（本机探测 16x17 / 16x23）。
+    for valid in ("Hiragino Sans GB", "STHeiti", "Songti SC", "Arial Unicode"):
+        need(valid in cfg, f"make_cjk_theme 回退列表缺实测有效字体名 {valid}")
+    # 系统字体路径用片段拼接，不得出现机器绝对路径字面量。
+    need("FileAccess.file_exists" in cfg, "make_cjk_theme 未先探测字体文件存在")
+    # 冻结基线未动（本轮只改字体加载，不碰任何冻结产物）。
+    import hashlib
+
+    frames_rep = load("codex-card-frames-report.json")
+    now = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+           for p in sorted((ROOT / "assets" / "ui" / "cards").glob("*.png"))}
+    need(now == frames_rep["frozenCardAssetsSha256"] and len(now) == 10,
+         "第 48 轮改动了冻结的 10 张卡面")
+
+    return ("修复 GUI 文字全空白（截图：按钮边框/背景在但标题与 (Enter) 全消失）/ "
+            "根因 SystemFont font_names 首项 PingFang SC 在本机 0x0 失效且不再回退 / "
+            "改为 FontFile 直接加载实测有效的系统 CJK 字体（Hiragino/STHeiti/Arial Unicode/Songti，err=0 有字形）"
+            " + SystemFont 回退列表剔除失效项 / 不打包字体·不碰 R9 授权 / 冻结 10 张卡面未动")
+
+
 def main() -> None:
     check("json_parse", "docs/*.json 全部可解析", c_json)
     check("csv_numbers", "数值源 9 列、无 BOM、无空行、含 round15", c_nums)
@@ -1917,6 +1952,7 @@ def main() -> None:
     check("mob_attacks_r45", "第 45 轮杂兵攻击方式差异化（4 风格 / 闭环 45 项 / 远程可闪避 / 阴兵与 Boss 不回退 / 复用 vfx 帧 / 冻结基线未动）", c_mob_attacks_r45)
     check("feedback_r46", "第 46 轮战斗打击感反馈（相机震动 / 连击里程碑 / 暴击击杀飘字 / 闭环 51 项 / 纯表现不改战斗数值 / 冻结基线未动）", c_feedback_r46)
     check("cast_fx_r47", "第 47 轮玩家技能施法演出差异化（四形态 / 闭环 59 项 / 复用 vfx 帧 / 纯视觉不改数值 / 冻结基线未动）", c_cast_fx_r47)
+    check("font_cjk_r48", "第 48 轮修复 GUI 文字全空白（FontFile 优先加载系统 CJK 字体 / 剔除失效 PingFang / 不打包字体）", c_font_cjk_r48)
 
     passed = sum(1 for c in CHECKS if c["status"] == "PASS")
     failed = len(CHECKS) - passed

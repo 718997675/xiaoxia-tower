@@ -5,8 +5,8 @@
   "scope": "第 15 轮收口 · 交付前全量静态自检",
   "verdict": "PASS",
   "summary": {
-    "checks": 46,
-    "passed": 46,
+    "checks": 47,
+    "passed": 47,
     "failed": 0
   },
   "checks": [
@@ -285,6 +285,12 @@
       "desc": "第 47 轮玩家技能施法演出差异化（四形态 / 闭环 59 项 / 复用 vfx 帧 / 纯视觉不改数值 / 冻结基线未动）",
       "status": "PASS",
       "detail": "玩家技能施法演出差异化 / 四形态 dash 前冲·strike 天降·spray 扇形·aura 上浮 / 复用现有 vfx 帧未新增出图 / CastFx 独立层不改命中·伤害·灵力·CD / 可玩闭环 59/59（原 51 项不回退 + 8 项演出）/ 冻结卡库·10 张卡面·docs/01 §12·docs/12 §2 逐字节未动 / R56 未跨端对齐、R69 演出参数未实测如实留档"
+    },
+    {
+      "id": "font_cjk_r48",
+      "desc": "第 48 轮修复 GUI 文字全空白（FontFile 优先加载系统 CJK 字体 / 剔除失效 PingFang / 不打包字体）",
+      "status": "PASS",
+      "detail": "修复 GUI 文字全空白（截图：按钮边框/背景在但标题与 (Enter) 全消失）/ 根因 SystemFont font_names 首项 PingFang SC 在本机 0x0 失效且不再回退 / 改为 FontFile 直接加载实测有效的系统 CJK 字体（Hiragino/STHeiti/Arial Unicode/Songti，err=0 有字形） + SystemFont 回退列表剔除失效项 / 不打包字体·不碰 R9 授权 / 冻结 10 张卡面未动"
     }
   ],
   "knownExceptions": [
